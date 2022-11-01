@@ -3,10 +3,11 @@ plugins {
 }
 
 android {
+    namespace 'com.example.asm_pro1121'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.edward.myapplication"
+        applicationId "com.example.asm_pro1121"
         minSdk 21
         targetSdk 32
         versionCode 1

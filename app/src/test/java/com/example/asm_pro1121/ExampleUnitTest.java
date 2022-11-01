@@ -1,4 +1,4 @@
-package com.edward.myapplication;
+package com.example.asm_pro1121;
 
 import org.junit.Test;
 

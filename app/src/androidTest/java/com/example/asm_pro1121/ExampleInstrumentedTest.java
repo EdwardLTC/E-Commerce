@@ -1,4 +1,4 @@
-package com.edward.myapplication;
+package com.example.asm_pro1121;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.edward.myapplication", appContext.getPackageName());
+        assertEquals("com.example.asm_pro1121", appContext.getPackageName());
     }
 }
