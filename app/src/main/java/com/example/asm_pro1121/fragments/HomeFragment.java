@@ -1,4 +1,4 @@
-package com.example.asm_pro1121;
+package com.example.asm_pro1121.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.asm_pro1121.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -33,6 +34,7 @@ public class HomeFragment extends Fragment {
                 int id = item.getItemId();
                 switch (id) {
                     case R.id.bottom_home:
+                        loadFragment(new HomePageFragment());
                         break;
                     case R.id.bottom_shop:
                         break;
@@ -45,7 +47,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
+        loadFragment(new HomePageFragment());
     }
 
     private void loadFragment(Fragment fragment) {
