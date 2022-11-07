@@ -7,4 +7,29 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="text_default">#000000</color>
+    <color name="text_on_button">#FFFFFF</color>
+    <color name="category_item_background_type1">#E3670D</color>
+    <color name="category_item_background_type2">#0B5AA3</color>
+    <color name="button_default">#F67952</color>
+    <color name="button_cancel_background">#FFFFFFFF</color>
+    <color name="button_cancel_background_outline">#F67952</color>
+    <color name="field_input_outline">#F67952</color>
+    <color name="notify_background_type1">#C86161</color>
+    <color name="notify_background_type2">#369908</color>
+    <color name="notify_background_type3">#5167D9</color>
+    <color name="notify_background_type4">#CDAF43</color>
+
+    <color name="voucher_background_type1">#C86161</color>
+    <color name="voucher_background_type2">#369908</color>
+    <color name="voucher_background_type3">#5167D9</color>
+    <color name="voucher_background_type4">#CDAF43</color>
+
+
+    <color name="chat_background_type1">#F5F5F5</color>
+    <color name="chat_background_type2">#37A65B</color>
+
+
+
 </resources>
