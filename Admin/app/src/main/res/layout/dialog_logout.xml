@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_dialog_logout"
+    android:orientation="vertical"
+    android:paddingTop="24dp"
+    android:paddingBottom="24dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="56dp"
+    android:id="@+id/llBottomSheet">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Do you want to logout?"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/gordita_medium"
+        android:textColor="@color/black"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="17dp" />
+
+    <Button
+        android:id="@+id/btLogout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:textAllCaps="false"
+        android:text="Log out"
+        android:fontFamily="@font/gordita_medium"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:textColor="@color/white"
+        android:background="@drawable/background_button_dialog_logout"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"/>
+
+    <Button
+        android:id="@+id/btCancel"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Cancel"
+        android:background="@drawable/background_cancel_dialog_logout"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/gordita_medium"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"/>
+</LinearLayout>

@@ -8,6 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+
+    <color name="background">#FBFBFD</color>
+
+    <color name="text_blur">#7E7E7F</color>
     <color name="text_default">#000000</color>
     <color name="text_on_button">#FFFFFF</color>
     <color name="category_item_background_type1">#E3670D</color>
@@ -29,7 +33,11 @@
 
     <color name="chat_background_type1">#F5F5F5</color>
     <color name="chat_background_type2">#37A65B</color>
-
+    <color name="red_blur">#F01A1A</color>
+    <color name="yellow_blur">#E5BC4E</color>
+    <color name="blue_blur">#4DB2EA</color>
+    <color name="orange_blur">#FD764C</color>
+    <color name="green_blur">#5BD159</color>
 
 
 </resources>
