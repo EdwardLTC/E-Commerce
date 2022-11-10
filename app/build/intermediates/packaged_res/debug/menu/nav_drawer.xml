@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item android:id="@+id/home_page"
+            android:title="Home"
+            android:icon="@drawable/ic_home_page" />
+
+        <item android:id="@+id/my_favorites"
+            android:title="My favorites"
+            android:icon="@drawable/ic_my_favorite_orange" />
+
+        <item android:id="@+id/wallets"
+            android:title="Wallets"
+            android:icon="@drawable/ic_wallets_orange"/>
+
+        <item android:id="@+id/my_orders"
+            android:title="My orders"
+            android:icon="@drawable/ic_my_orders_orange"/>
+
+<!--        <item android:id="@+id/about_us"-->
+<!--            android:title="About us"-->
+<!--            android:icon="@drawable/ic_about_us_orange"/>-->
+
+<!--        <item android:id="@+id/privacy_policy"-->
+<!--            android:title="Privacy policy"-->
+<!--            android:icon="@drawable/ic_lock_orange"/>-->
+
+        <item android:id="@+id/settings"
+            android:title="Settings"
+            android:icon="@drawable/ic_settings_orange"/>
+
+        <item
+            android:title=""
+            android:enabled="false" >
+        </item>
+
+
+
+        <item android:id="@+id/log_out"
+            android:title="Log out"
+            android:icon="@drawable/ic_logout_orange"/>
+    </group>
+</menu>
