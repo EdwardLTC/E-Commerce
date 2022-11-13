@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -16,33 +19,45 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.edward.adminapp.API.ServiceAPI;
+import com.edward.adminapp.adapter.ProgressDialogCustom;
 import com.edward.adminapp.adapters.UsersAdapter;
 import com.edward.adminapp.model.modelrespon.PersonRes;
+import com.edward.adminapp.model.modelrespon.ResGetListPerson;
+import com.edward.adminapp.model.modelrespon.ResGetPerson;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 public class SellersManagementActivity extends AppCompatActivity implements View.OnClickListener {
     RecyclerView rcvSellersManagement;
     UsersAdapter usersAdapter;
-    List<PersonRes> ls;
     EditText edtSearchSellers;
     Dialog dialog;
+    List<PersonRes> ls;
 
+    private final String TAG = ">>>>>>>>>>>>>> SellersManagementActivity ";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sellers_management);
-        ls = new ArrayList<>();
-        initData();
         initViews();
+        initRecyclerView();
+        loadRecycleView();
+
         dialog = new Dialog(this);
-        usersAdapter = new UsersAdapter(this, ls, rcvSellersManagement);
-        rcvSellersManagement.setLayoutManager(new LinearLayoutManager(this));
-        rcvSellersManagement.setAdapter(usersAdapter);
+
+//        usersAdapter = new UsersAdapter(this, ls, rcvSellersManagement);
 
 
         edtSearchSellers.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -57,18 +72,17 @@ public class SellersManagementActivity extends AppCompatActivity implements View
         });
     }
 
-    private void initData() {
-        ls.add(new PersonRes(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
-        ls.add(new PersonRes(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
-        ls.add(new PersonRes(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
-        ls.add(new PersonRes(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
-        ls.add(new PersonRes(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
-        ls.add(new PersonRes(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
-    }
+
 
     private void initViews() {
         rcvSellersManagement = findViewById(R.id.rcvSellersManagement);
         edtSearchSellers = findViewById(R.id.edtSearchSellers);
+    }
+
+    private void initRecyclerView() {
+        rcvSellersManagement.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        rcvSellersManagement.setLayoutManager(layoutManager);
     }
 
     @Override
@@ -114,4 +128,42 @@ public class SellersManagementActivity extends AppCompatActivity implements View
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         dialog.show();
     }
+
+    private void loadRecycleView() {
+        ServiceAPI.serviceApi.GetAllPerson(2)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListPerson>() {
+                               @Override
+                               public void onSubscribe(Disposable d) {
+                               }
+
+                               @SuppressLint("LongLogTag")
+                               @Override
+                               public void onNext(ResGetListPerson resGetListPerson) {
+
+                                    ls = resGetListPerson._PersonRes;
+//                                    usersAdapter = new UsersAdapter(getApplicationContext(), ls, rcvSellersManagement);
+//                                    rcvSellersManagement.setAdapter(usersAdapter);
+//                                    Log.d(TAG, ls.size()+"");
+
+//                                    usersAdapter = new UsersAdapter(SellersManagementActivity.this, ls, rcvSellersManagement);
+                               }
+
+                               @SuppressLint("LongLogTag")
+                               @Override
+                               public void onError(Throwable e) {
+                                   Log.d(TAG, "get data failed");
+                               }
+
+                               @Override
+                               public void onComplete() {
+
+                               }
+
+                           }
+                );
+    }
+
+
 }

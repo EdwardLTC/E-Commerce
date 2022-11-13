@@ -31,16 +31,16 @@ public interface ServiceAPI {
     Observable<ResGetPerson> Login(@Query(("_email")) String _email, @Query(("_psw")) String _psw);
 
     @GET("GetAllPersonByType")
-    Observable<ResGetListPerson> GetAllPerson(int type);
+    Observable<ResGetListPerson> GetAllPerson(@Query("role")int type);
 
     @GET("GetPersonWhere")
-    Observable<ResGetPerson> GetPersonWhere(int id);
+    Observable<ResGetPerson> GetPersonWhere(@Query("id")int id);
 
     @GET("GetAllCategory")
     Observable<ResGetListCategory> GetAllCategory();
 
     @GET("GetCategoryWhere")
-    Observable<ResGetCategory> GetCategoryWhere(int id);
+    Observable<ResGetCategory> GetCategoryWhere(@Query("id")int id);
 
     @POST("UpdateCategory")
     Observable<Respon> UpdateCategory(@Body CategoryReq categoryReq);
