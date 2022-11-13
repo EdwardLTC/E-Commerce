@@ -8,6 +8,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.edward.adminapp.API.ServiceAPI;
@@ -24,10 +26,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-public class LoginActivity extends AppCompatActivity {
-import android.view.View;
-import android.widget.Button;
 
 public class LoginActivity extends AppCompatActivity {
 
