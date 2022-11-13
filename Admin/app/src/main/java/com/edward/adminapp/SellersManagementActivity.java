@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.edward.adminapp.adapters.UsersAdapter;
+import com.edward.adminapp.model.modelrespon.PersonRes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ import java.util.List;
 public class SellersManagementActivity extends AppCompatActivity implements View.OnClickListener {
     RecyclerView rcvSellersManagement;
     UsersAdapter usersAdapter;
-    List<Users> ls;
+    List<PersonRes> ls;
     EditText edtSearchSellers;
     Dialog dialog;
 
@@ -57,12 +58,12 @@ public class SellersManagementActivity extends AppCompatActivity implements View
     }
 
     private void initData() {
-        ls.add(new Users(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
-        ls.add(new Users(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
-        ls.add(new Users(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
-        ls.add(new Users(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
-        ls.add(new Users(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
-        ls.add(new Users(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
+        ls.add(new PersonRes(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
+        ls.add(new PersonRes(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
+        ls.add(new PersonRes(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
+        ls.add(new PersonRes(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
+        ls.add(new PersonRes(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
+        ls.add(new PersonRes(1, "Alex", "alex@gmail.com", "222-456-768", 2, "", "New York"));
     }
 
     private void initViews() {

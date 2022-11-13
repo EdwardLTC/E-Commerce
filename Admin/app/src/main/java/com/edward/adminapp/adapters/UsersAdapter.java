@@ -18,10 +18,10 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.edward.adminapp.MainActivity;
 import com.edward.adminapp.R;
 import com.edward.adminapp.SellersManagementActivity;
-import com.edward.adminapp.Users;
+import com.edward.adminapp.model.modelrequest.PersonReq;
+import com.edward.adminapp.model.modelrespon.PersonRes;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
@@ -29,12 +29,12 @@ import java.util.List;
 
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> {
     Context context;
-    List<Users> ls;
+    List<PersonRes> ls;
     RecyclerView rcv;
     private static final int UNSELECTED = -1;
     private int selectedItem = UNSELECTED;
 
-    public UsersAdapter(Context context, List<Users> ls, RecyclerView rcv) {
+    public UsersAdapter(Context context, List<PersonRes> ls, RecyclerView rcv) {
         this.context = context;
         this.ls = ls;
         this.rcv = rcv;
@@ -49,11 +49,11 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        Users user = ls.get(position);
+        PersonRes user = ls.get(position);
         holder.tvNameUserItem.setText(user.getName());
         holder.tvAddressUserItem.setText(user.getAddress());
         holder.tvMailUserItem.setText(user.getMail());
-        holder.tvPhoneUserItem.setText(user.getPhone());
+        holder.tvPhoneUserItem.setText(user.getPhoneNum());
         holder.bind();
         holder.ivDeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
