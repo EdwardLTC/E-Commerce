@@ -73,7 +73,6 @@ public class SellersManagementActivity extends AppCompatActivity implements View
     }
 
 
-
     private void initViews() {
         rcvSellersManagement = findViewById(R.id.rcvSellersManagement);
         edtSearchSellers = findViewById(R.id.edtSearchSellers);
@@ -108,7 +107,7 @@ public class SellersManagementActivity extends AppCompatActivity implements View
     }
 
     public void showDialogDeleteUser() {
-       
+
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_delete_user);
 
@@ -117,10 +116,10 @@ public class SellersManagementActivity extends AppCompatActivity implements View
 
         Button btCancelDialogDeleteUser = dialog.findViewById(R.id.btCancelDialogDeleteUser);
         Button btDeleteUser = dialog.findViewById(R.id.btDeleteUser);
-        
+
         btDeleteUser.setOnClickListener(this);
         btCancelDialogDeleteUser.setOnClickListener(this);
-        
+
         Window window = dialog.getWindow();
         if (window == null)
             return;
@@ -136,18 +135,16 @@ public class SellersManagementActivity extends AppCompatActivity implements View
                 .subscribe(new Observer<ResGetListPerson>() {
                                @Override
                                public void onSubscribe(Disposable d) {
+                                   ProgressDialogCustom.showProgressDialog(SellersManagementActivity.this, "please wait");
                                }
 
                                @SuppressLint("LongLogTag")
                                @Override
                                public void onNext(ResGetListPerson resGetListPerson) {
-
-                                    ls = resGetListPerson._PersonRes;
-//                                    usersAdapter = new UsersAdapter(getApplicationContext(), ls, rcvSellersManagement);
-//                                    rcvSellersManagement.setAdapter(usersAdapter);
-//                                    Log.d(TAG, ls.size()+"");
-
-//                                    usersAdapter = new UsersAdapter(SellersManagementActivity.this, ls, rcvSellersManagement);
+                                   if (resGetListPerson.get_Respon().getRespone_code() != 200) { // lucs nafo cung phai check ket qua tra ve
+                                      Log.e(String.valueOf(resGetListPerson.get_Respon().getRespone_code()),"Error");
+                                   }
+                                  //anh xa recyle ow day
                                }
 
                                @SuppressLint("LongLogTag")
@@ -158,7 +155,7 @@ public class SellersManagementActivity extends AppCompatActivity implements View
 
                                @Override
                                public void onComplete() {
-
+                                   ProgressDialogCustom.dismissProgressDialog();
                                }
 
                            }
