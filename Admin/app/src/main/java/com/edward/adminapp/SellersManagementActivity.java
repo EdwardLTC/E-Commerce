@@ -51,6 +51,7 @@ public class SellersManagementActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sellers_management);
+        ls = new ArrayList<>();
         initViews();
         initRecyclerView();
         loadRecycleView();
@@ -130,24 +131,28 @@ public class SellersManagementActivity extends AppCompatActivity implements View
     }
 
     private void loadRecycleView() {
+
         ServiceAPI.serviceApi.GetAllPerson(2)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResGetListPerson>() {
                                @Override
                                public void onSubscribe(Disposable d) {
+                                   ProgressDialogCustom.showProgressDialog(SellersManagementActivity.this, "please wait");
                                }
 
                                @SuppressLint("LongLogTag")
                                @Override
                                public void onNext(ResGetListPerson resGetListPerson) {
+//                                   Log.d(TAG, resGetListPerson._Respon.getRespone_code()+"");
+                                   if (resGetListPerson._Respon.getRespone_code() != 200) {
+                                       Toast.makeText(getApplicationContext(), "Check username, Psw pls", Toast.LENGTH_SHORT).show();
+                                   } else {
+                                       ls = resGetListPerson._PersonRes;
+                                       usersAdapter = new UsersAdapter(getApplicationContext(), ls, rcvSellersManagement);
+                                       rcvSellersManagement.setAdapter(usersAdapter);
+                                   }
 
-                                    ls = resGetListPerson._PersonRes;
-//                                    usersAdapter = new UsersAdapter(getApplicationContext(), ls, rcvSellersManagement);
-//                                    rcvSellersManagement.setAdapter(usersAdapter);
-//                                    Log.d(TAG, ls.size()+"");
-
-//                                    usersAdapter = new UsersAdapter(SellersManagementActivity.this, ls, rcvSellersManagement);
                                }
 
                                @SuppressLint("LongLogTag")
@@ -156,14 +161,26 @@ public class SellersManagementActivity extends AppCompatActivity implements View
                                    Log.d(TAG, "get data failed");
                                }
 
+                               @SuppressLint("LongLogTag")
                                @Override
                                public void onComplete() {
-
+                                   ProgressDialogCustom.dismissProgressDialog();
+                                   Log.d(TAG, "complete");
                                }
-
                            }
                 );
     }
+
+//    private List<PersonRes> getSellersList(List<PersonRes> ls) {
+//        List<PersonRes> lsSellers = new ArrayList<>();
+//        for (PersonRes person: ls) {
+//            if (person.getRole() == 2) {
+//                lsSellers.add(person);
+//            }
+//        }
+//
+//        return lsSellers;
+//    };
 
 
 }

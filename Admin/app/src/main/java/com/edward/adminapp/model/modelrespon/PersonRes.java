@@ -76,4 +76,17 @@ public class PersonRes implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "PersonRes{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", mail='" + mail + '\'' +
+                ", phoneNum='" + phoneNum + '\'' +
+                ", role=" + role +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }
