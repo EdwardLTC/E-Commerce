@@ -28,9 +28,11 @@ import com.edward.adminapp.model.modelrespon.PersonRes;
 import com.edward.adminapp.model.modelrespon.ResGetListPerson;
 import com.edward.adminapp.model.modelrespon.ResGetPerson;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -47,6 +49,7 @@ public class SellersManagementActivity extends AppCompatActivity implements View
     private final String TAG = ">>>>>>>>>>>>>> SellersManagementActivity ";
 
 
+    @SuppressLint("LongLogTag")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +58,17 @@ public class SellersManagementActivity extends AppCompatActivity implements View
         initViews();
         initRecyclerView();
         loadRecycleView();
+
+        String password = "123";
+        byte[] bcryptHashBytes = BCrypt.withDefaults().hash(6, password.getBytes(StandardCharsets.UTF_8));
+        Log.d(TAG, bcryptHashBytes.toString());
+
+        // verify hash
+        BCrypt.Result result = BCrypt.verifyer().verify(password.getBytes(StandardCharsets.UTF_8), bcryptHashBytes);
+        Log.d(TAG, String.valueOf(result.verified));
+
+
+
 
         dialog = new Dialog(this);
 
@@ -148,10 +162,10 @@ public class SellersManagementActivity extends AppCompatActivity implements View
                                        Toast.makeText(getApplicationContext(), "Check username, Psw pls", Toast.LENGTH_SHORT).show();
                                    } else {
                                        ls = resGetListPerson._PersonRes;
-                                       usersAdapter = new UsersAdapter(getApplicationContext(), ls, rcvSellersManagement);
+                                       Log.d(TAG, ls.size()+"");
+                                       usersAdapter = new UsersAdapter(SellersManagementActivity.this, ls, rcvSellersManagement);
                                        rcvSellersManagement.setAdapter(usersAdapter);
                                    }
-
                                }
 
                                @SuppressLint("LongLogTag")
@@ -169,17 +183,5 @@ public class SellersManagementActivity extends AppCompatActivity implements View
                            }
                 );
     }
-
-//    private List<PersonRes> getSellersList(List<PersonRes> ls) {
-//        List<PersonRes> lsSellers = new ArrayList<>();
-//        for (PersonRes person: ls) {
-//            if (person.getRole() == 2) {
-//                lsSellers.add(person);
-//            }
-//        }
-//
-//        return lsSellers;
-//    };
-
 
 }

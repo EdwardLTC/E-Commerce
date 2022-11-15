@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SellersManagementActivity"
-    android:background="@color/background">
+    tools:context=".NotificationsManagementActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -16,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvBackToHomeFromSellers"
+            android:id="@+id/cvBackToHomeFromNotifications"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_margin="16dp"
@@ -39,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gordita_medium"
-            android:text="Sellers Management"
+            android:text="Notifications"
             android:textColor="@color/black"
             android:textSize="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -51,7 +50,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
-        android:id="@+id/edtSearchSellers"
+        android:id="@+id/edtSearchNotifications"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:background="@drawable/background_edt_log_in"
@@ -63,7 +62,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:fontFamily="@font/gordita_regular"
-        android:hint="Search sellers..."
+        android:hint="Search notifications..."
         android:imeOptions="actionSearch"
         android:paddingLeft="12dp"
         android:textColor="@color/black"
@@ -81,7 +80,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtSearchSellers" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSearchNotifications" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
