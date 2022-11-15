@@ -74,7 +74,6 @@ public class SellersManagementActivity extends AppCompatActivity implements View
     }
 
 
-
     private void initViews() {
         rcvSellersManagement = findViewById(R.id.rcvSellersManagement);
         edtSearchSellers = findViewById(R.id.edtSearchSellers);
@@ -109,7 +108,7 @@ public class SellersManagementActivity extends AppCompatActivity implements View
     }
 
     public void showDialogDeleteUser() {
-       
+
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_delete_user);
 
@@ -118,10 +117,10 @@ public class SellersManagementActivity extends AppCompatActivity implements View
 
         Button btCancelDialogDeleteUser = dialog.findViewById(R.id.btCancelDialogDeleteUser);
         Button btDeleteUser = dialog.findViewById(R.id.btDeleteUser);
-        
+
         btDeleteUser.setOnClickListener(this);
         btCancelDialogDeleteUser.setOnClickListener(this);
-        
+
         Window window = dialog.getWindow();
         if (window == null)
             return;
