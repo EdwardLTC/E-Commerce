@@ -1,6 +1,7 @@
 package com.edward.adminapp.API;
 
 import com.edward.adminapp.model.modelrequest.CategoryReq;
+import com.edward.adminapp.model.modelrequest.PersonReq;
 import com.edward.adminapp.model.modelrespon.ResGetCategory;
 import com.edward.adminapp.model.modelrespon.ResGetListCategory;
 import com.edward.adminapp.model.modelrespon.ResGetListPerson;
@@ -51,4 +52,9 @@ public interface ServiceAPI {
     @POST("DeleteCategory")
     Observable<Respon> DeleteCategory(@Body int id);
 
+    @POST("DeletePerson")
+    Observable<Respon> DeletePerson(@Body int id);
+
+    @POST("CreatePerson")
+    Observable<Respon> CreatePerson(@Body PersonReq personReq); // id tu tanwg neen la cu set mac dinh la 1
 }
