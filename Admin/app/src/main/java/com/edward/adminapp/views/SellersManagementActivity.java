@@ -37,6 +37,7 @@ import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -49,7 +50,7 @@ public class SellersManagementActivity extends AppCompatActivity implements View
     UsersAdapter usersAdapter;
     EditText edtSearchSellers;
     Dialog dialog;
-    TextView tvRefreshSellers;
+    TextView tvRefreshSellers, tvTryAgainSellers, tvCantFindSellers;
     List<PersonRes> ls;
 
     private final String TAG = ">>>>>>>>>>>>>> SellersManagementActivity ";
@@ -103,6 +104,9 @@ public class SellersManagementActivity extends AppCompatActivity implements View
         cvBackToHomeFromSellers = findViewById(R.id.cvBackToHomeFromSellers);
         tvRefreshSellers = findViewById(R.id.tvRefreshSellers);
         tvRefreshSellers.setPaintFlags(tvRefreshSellers.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        tvTryAgainSellers = findViewById(R.id.tvTryAgainSellers);
+        tvCantFindSellers = findViewById(R.id.tvCantFindSellers);
     }
 
     private void initRecyclerView() {
@@ -177,13 +181,19 @@ public class SellersManagementActivity extends AppCompatActivity implements View
     private void searchSellers(String find) {
         List<PersonRes> lsSearch = new ArrayList<>();
         for (PersonRes personRes : ls) {
-            if (personRes.getName().contains(find)) {
+            if (personRes.getName().toLowerCase().contains(find.toLowerCase())) {
                 lsSearch.add(personRes);
             }
         }
-        if (lsSearch.size() > 0) {
-            usersAdapter = new UsersAdapter(this, lsSearch, rcvSellersManagement);
-            rcvSellersManagement.setAdapter(usersAdapter);
+        usersAdapter = new UsersAdapter(this, lsSearch, rcvSellersManagement);
+        rcvSellersManagement.setAdapter(usersAdapter);
+
+        if (lsSearch.size() == 0) {
+            tvTryAgainSellers.setVisibility(View.VISIBLE);
+            tvCantFindSellers.setVisibility(View.VISIBLE);
+        } else {
+            tvTryAgainSellers.setVisibility(View.INVISIBLE);
+            tvCantFindSellers.setVisibility(View.INVISIBLE);
         }
     }
 

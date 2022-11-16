@@ -15,4 +15,5 @@ public class MyHelpers {
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+
 }
