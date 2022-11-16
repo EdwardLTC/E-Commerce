@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SellersManagementActivity"
+    tools:context=".views.SellersManagementActivity"
     android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,12 +39,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gordita_medium"
-            android:text="Sellers Management"
+            android:text="Sellers"
             android:textColor="@color/black"
             android:textSize="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvRefreshSellers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Refresh"
+            android:textSize="14sp"
+            android:fontFamily="@font/gordita_medium"
+            android:textColor="@color/notify_background_type3"
+            android:layout_marginRight="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -59,6 +72,7 @@
         android:drawablePadding="12dp"
         android:elevation="6dp"
         android:maxLines="1"
+        android:text="Robby Cars"
         android:inputType="text"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"

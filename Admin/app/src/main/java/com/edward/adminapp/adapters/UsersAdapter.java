@@ -6,11 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.DecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
-import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,8 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.adminapp.R;
-import com.edward.adminapp.SellersManagementActivity;
-import com.edward.adminapp.model.modelrequest.PersonReq;
+import com.edward.adminapp.views.SellersManagementActivity;
 import com.edward.adminapp.model.modelrespon.PersonRes;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
@@ -58,7 +53,8 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
         holder.ivDeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((SellersManagementActivity)view.getContext()).showDialogDeleteUser() ;
+
+                ((SellersManagementActivity)view.getContext()).showDialogDeleteUser(user) ;
             }
         });
 

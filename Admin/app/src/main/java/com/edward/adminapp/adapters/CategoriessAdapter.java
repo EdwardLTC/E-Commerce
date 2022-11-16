@@ -13,20 +13,20 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.adminapp.R;
-import com.edward.adminapp.model.Notifications;
+import com.edward.adminapp.model.modelrespon.CategoryRes;
 
 import java.util.List;
 
-public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.ViewHolder> {
+public class CategoriessAdapter extends RecyclerView.Adapter<CategoriessAdapter.ViewHolder> {
     Context context;
-    List<Notifications> ls;
+    List<CategoryRes> ls;
     int[] backgrounds = {R.drawable.background_notify_color_blue,
             R.drawable.background_notify_color_green,
             R.drawable.background_notify_color_red,
             R.drawable.background_notify_color_yellow};
 
 
-    public NotificationsAdapter(Context context, List<Notifications> ls) {
+    public CategoriessAdapter(Context context, List<CategoryRes> ls) {
         this.context = context;
         this.ls = ls;
     }
@@ -34,25 +34,20 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.layout_notifications_item, parent, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.layout_categories_item, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        Notifications notifications = ls.get(position);
-        holder.tvNameNotificationsItem.setText(notifications.getName());
-        holder.clNotificationsItem.setBackgroundResource(backgrounds[(int)(Math.random()*4)]);
+        CategoryRes categoryRes = ls.get(position);
+        holder.tvNameCategoriesItem.setText(categoryRes.getName());
+//        holder.ivCategoriesItem
 
 
 
 
-        holder.ivDeleteNotification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
     }
 
     @Override
@@ -62,15 +57,16 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        ConstraintLayout clNotificationsItem;
-        TextView tvNameNotificationsItem;
-        ImageView ivDeleteNotification;
+
+        TextView tvNameCategoriesItem;
+        ImageView ivDeleteCategories;
+        ImageView ivCategoriesItem;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            clNotificationsItem = itemView.findViewById(R.id.clNotificationsItem);
-            tvNameNotificationsItem = itemView.findViewById(R.id.tvNameNotificationsItem);
-            ivDeleteNotification = itemView.findViewById(R.id.ivDeleteNotification);
+            tvNameCategoriesItem = itemView.findViewById(R.id.tvNameCategoriesItem);
+            ivDeleteCategories = itemView.findViewById(R.id.ivDeleteCategoriesItem);
+            ivCategoriesItem = itemView.findViewById(R.id.ivCategoriesItem);
 
         }
     }

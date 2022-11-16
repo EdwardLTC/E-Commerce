@@ -67,6 +67,7 @@
         android:layout_height="160dp"
         app:el_duration="300"
         app:el_expanded="true"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

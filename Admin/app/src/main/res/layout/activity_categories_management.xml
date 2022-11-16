@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.NotificationsManagementActivity">
+    tools:context=".CategoriesManagementActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvBackToHomeFromNotifications"
+            android:id="@+id/cvBackToHomeFromCategories"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_margin="16dp"
@@ -38,15 +38,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gordita_medium"
-            android:text="Notifications"
+            android:text="Categories"
             android:textColor="@color/black"
             android:textSize="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:id="@+id/tvRefreshNotifications"
+            android:id="@+id/tvRefreshCategories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Refresh"
@@ -58,10 +59,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <EditText
-        android:id="@+id/edtSearchNotifications"
+        android:id="@+id/edtSearchCategories"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:background="@drawable/background_edt_log_in"
@@ -73,7 +74,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:fontFamily="@font/gordita_regular"
-        android:hint="Search notifications..."
+        android:hint="Search categories..."
         android:imeOptions="actionSearch"
         android:paddingLeft="12dp"
         android:textColor="@color/black"
@@ -83,15 +84,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvNotificationsManagement"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtSearchNotifications" />
-
+        app:layout_constraintTop_toBottomOf="@+id/edtSearchCategories" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
