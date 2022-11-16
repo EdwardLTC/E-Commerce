@@ -3,7 +3,6 @@ package com.edward.adminapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -17,23 +16,21 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.edward.adminapp.API.ServiceAPI;
 import com.edward.adminapp.adapter.ProgressDialogCustom;
 import com.edward.adminapp.adapters.CategoriesAdapter;
-import com.edward.adminapp.adapters.UsersAdapter;
 import com.edward.adminapp.helpers.MyHelpers;
+import com.edward.adminapp.model.modelrequest.CategoryReq;
 import com.edward.adminapp.model.modelrespon.CategoryRes;
-import com.edward.adminapp.model.modelrespon.PersonRes;
 import com.edward.adminapp.model.modelrespon.ResGetListCategory;
-import com.edward.adminapp.model.modelrespon.ResGetListPerson;
 import com.edward.adminapp.model.modelrespon.Respon;
 import com.edward.adminapp.views.MainActivity;
-import com.edward.adminapp.views.SellersManagementActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.saadahmedsoft.popupdialog.PopupDialog;
 import com.saadahmedsoft.popupdialog.Styles;
@@ -87,6 +84,13 @@ public class CategoriesManagementActivity extends AppCompatActivity  implements 
                 return false;
             }
         });
+
+        fabAddCategories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialogCreateCategory();
+            }
+        });
     }
     private void initViews() {
         rcvCategoriesManagement = findViewById(R.id.rcvCategoriesManagement);
@@ -137,6 +141,48 @@ public class CategoriesManagementActivity extends AppCompatActivity  implements 
                     @Override
                     public void onComplete() {
                         ProgressDialogCustom.dismissProgressDialog();
+
+                    }
+                });
+    }
+
+    private void addCategory(String name) {
+        CategoryReq categoryReq = new CategoryReq(1, name);
+        ServiceAPI.serviceApi.CreateCategory(categoryReq)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Respon>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Respon respon) {
+                        if (respon.getRespone_code() == 200) {
+                            PopupDialog.getInstance(CategoriesManagementActivity.this)
+                                    .setStyle(Styles.SUCCESS)
+                                    .setHeading("Well Done")
+                                    .setHeading("You have successfully"+
+                                            " added")
+                                    .setCancelable(false)
+                                    .showDialog(new OnDialogButtonClickListener() {
+                                        @Override
+                                        public void onDismissClicked(Dialog dialog1) {
+                                            super.onDismissClicked(dialog1);
+                                            loadRecycleView();
+                                        }
+                                    });
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
 
                     }
                 });
@@ -213,11 +259,34 @@ public class CategoriesManagementActivity extends AppCompatActivity  implements 
     public void showDialogCreateCategory() {
         dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_create_category);
+        dialog.setContentView(R.layout.dialog_add_category);
 
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogFade2;
 
+        Button btAddCategory = dialog.findViewById(R.id.btAddCategory);
+        Button btCancelDialogAddCategory = dialog.findViewById(R.id.btCancelDialogAddCategory);
+        EditText edtCreateCategory = dialog.findViewById(R.id.edtCreateNameCategory);
+
+        btCancelDialogAddCategory.setOnClickListener(this);
+        btAddCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = edtCreateCategory.getText().toString();
+                if (name.length() != 0) {
+                    addCategory(name);
+                    dialog.dismiss();
+                }
+            }
+
+        });
+
+        Window window = dialog.getWindow();
+        if (window == null)
+            return;
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.show();
     }
 
     private void searchCategories(String find) {
@@ -250,8 +319,8 @@ public class CategoriesManagementActivity extends AppCompatActivity  implements 
                 loadRecycleView();
                 edtSearchCategories.setText("");
                 break;
-            case R.id.fabAddCategories:
-                showDialogCreateCategory();
+            case R.id.btCancelDialogAddCategory:
+                dialog.dismiss();
                 break;
 
         }

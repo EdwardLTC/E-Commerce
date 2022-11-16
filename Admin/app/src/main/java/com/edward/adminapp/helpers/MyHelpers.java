@@ -16,4 +16,7 @@ public class MyHelpers {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    public static void showDialogSuccess() {
+
+    }
 }
