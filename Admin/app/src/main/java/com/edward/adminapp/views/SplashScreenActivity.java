@@ -1,8 +1,10 @@
-package com.edward.adminapp;
+package com.edward.adminapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.edward.adminapp.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
