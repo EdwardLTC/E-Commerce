@@ -31,6 +31,9 @@ import com.edward.adminapp.helpers.MyHelpers;
 import com.edward.adminapp.model.modelrespon.PersonRes;
 import com.edward.adminapp.model.modelrespon.ResGetListPerson;
 import com.edward.adminapp.model.modelrespon.Respon;
+import com.saadahmedsoft.popupdialog.PopupDialog;
+import com.saadahmedsoft.popupdialog.Styles;
+import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -141,8 +144,22 @@ public class SellersManagementActivity extends AppCompatActivity implements View
                     @SuppressLint("LongLogTag")
                     @Override
                     public void onNext(Respon respon) {
-                        Log.d(">>>>> ", respon.getRespone_code()+"");
-                        Log.d(">>>>> ", personRes.getId()+"");
+                        if (respon.getRespone_code() == 200) {
+                            PopupDialog.getInstance(SellersManagementActivity.this)
+                                    .setStyle(Styles.SUCCESS)
+                                    .setHeading("Well Done")
+                                    .setHeading("You have successfully"+
+                                            " deleted")
+                                    .setCancelable(false)
+                                    .showDialog(new OnDialogButtonClickListener() {
+                                        @Override
+                                        public void onDismissClicked(Dialog dialog1) {
+                                            super.onDismissClicked(dialog1);
+                                            loadRecycleView();
+                                        }
+                                    });
+                        }
+
                     }
 
                     @Override
@@ -184,10 +201,11 @@ public class SellersManagementActivity extends AppCompatActivity implements View
         btDeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(">>>>>>>>>>>>>>", personRes.getId()+"");
-
                 deleteUser(personRes);
+                dialog.dismiss();
+
             }
+
         });
         btCancelDialogDeleteUser.setOnClickListener(this);
 

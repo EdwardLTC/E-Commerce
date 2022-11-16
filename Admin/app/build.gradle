@@ -46,4 +46,7 @@ dependencies {
 
 //    link hash: https://github.com/patrickfav/bcrypt
     implementation group: 'at.favre.lib', name: 'bcrypt', version: '0.9.0'
+
+    // popup dialog link: https://github.com/saadahmedscse/Android-Popup-Dialog
+    implementation 'com.saadahmedev.popup-dialog:popup-dialog:1.0.1'
 }
