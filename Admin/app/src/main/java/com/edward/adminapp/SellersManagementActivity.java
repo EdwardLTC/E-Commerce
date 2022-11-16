@@ -27,6 +27,7 @@ import com.edward.adminapp.adapters.UsersAdapter;
 import com.edward.adminapp.model.modelrespon.PersonRes;
 import com.edward.adminapp.model.modelrespon.ResGetListPerson;
 import com.edward.adminapp.model.modelrespon.ResGetPerson;
+import com.edward.adminapp.model.modelrespon.Respon;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -68,8 +69,6 @@ public class SellersManagementActivity extends AppCompatActivity implements View
         Log.d(TAG, String.valueOf(result.verified));
 
 
-
-
         dialog = new Dialog(this);
 
 //        usersAdapter = new UsersAdapter(this, ls, rcvSellersManagement);
@@ -85,6 +84,7 @@ public class SellersManagementActivity extends AppCompatActivity implements View
                 return false;
             }
         });
+
     }
 
 
@@ -162,7 +162,7 @@ public class SellersManagementActivity extends AppCompatActivity implements View
                                        Toast.makeText(getApplicationContext(), "Check username, Psw pls", Toast.LENGTH_SHORT).show();
                                    } else {
                                        ls = resGetListPerson._PersonRes;
-                                       Log.d(TAG, ls.size()+"");
+                                       Log.d(TAG, ls.size() + "");
                                        usersAdapter = new UsersAdapter(SellersManagementActivity.this, ls, rcvSellersManagement);
                                        rcvSellersManagement.setAdapter(usersAdapter);
                                    }

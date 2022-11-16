@@ -32,16 +32,16 @@ public interface ServiceAPI {
     Observable<ResGetPerson> Login(@Query(("_email")) String _email, @Query(("_psw")) String _psw);
 
     @GET("GetAllPersonByType")
-    Observable<ResGetListPerson> GetAllPerson(@Query("type")int type);
+    Observable<ResGetListPerson> GetAllPerson(@Query("type") int type);
 
     @GET("GetPersonWhere")
-    Observable<ResGetPerson> GetPersonWhere(@Query("Id")int id);
+    Observable<ResGetPerson> GetPersonWhere(@Query("Id") int id);
 
     @GET("GetAllCategory")
     Observable<ResGetListCategory> GetAllCategory();
 
     @GET("GetCategoryWhere")
-    Observable<ResGetCategory> GetCategoryWhere(@Query("id")int id);
+    Observable<ResGetCategory> GetCategoryWhere(@Query("id") int id);
 
     @POST("UpdateCategory")
     Observable<Respon> UpdateCategory(@Body CategoryReq categoryReq);
@@ -50,10 +50,10 @@ public interface ServiceAPI {
     Observable<Respon> CreateCategory(@Body CategoryReq categoryReq); // id tu tanwg neen la cu set mac dinh la 1
 
     @POST("DeleteCategory")
-    Observable<Respon> DeleteCategory(@Body int id);
+    Observable<Respon> DeleteCategory(@Query("id") int id);
 
     @POST("DeletePerson")
-    Observable<Respon> DeletePerson(@Body int id);
+    Observable<Respon> DeletePerson(@Query("id") int id);
 
     @POST("CreatePerson")
     Observable<Respon> CreatePerson(@Body PersonReq personReq); // id tu tanwg neen la cu set mac dinh la 1
