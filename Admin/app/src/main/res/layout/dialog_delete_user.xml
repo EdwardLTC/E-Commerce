@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="12dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You're about to delete this user"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/gordita_medium"
+            android:layout_margin="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="32dp"
+            android:fontFamily="@font/gordita_regular"
+            android:text="All your informations will be permanently removed and you won't be able to see them again."
+            android:textAlignment="textStart"
+            android:textColor="@color/text_blur"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/background_blur"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/btDeleteUser"
+                android:layout_width="110dp"
+                android:layout_height="45dp"
+                android:text="Delete"
+                android:background="@drawable/background_delete"
+                android:textAllCaps="false"
+                android:layout_marginRight="24dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/gordita_medium"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btCancelDialogDeleteUser"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:text="Cancel"
+                android:fontFamily="@font/gordita_regular"
+                android:textColor="@color/text_blur"
+                android:background="@null"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btDeleteUser"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
