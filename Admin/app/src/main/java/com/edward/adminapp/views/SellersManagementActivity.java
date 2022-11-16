@@ -91,7 +91,6 @@ public class SellersManagementActivity extends AppCompatActivity implements View
             }
         });
 
-
     }
 
 
@@ -219,7 +218,7 @@ public class SellersManagementActivity extends AppCompatActivity implements View
                                        Toast.makeText(getApplicationContext(), "Check username, Psw pls", Toast.LENGTH_SHORT).show();
                                    } else {
                                        ls = resGetListPerson._PersonRes;
-                                       Log.d(TAG, ls.size()+"");
+                                       Log.d(TAG, ls.size() + "");
                                        usersAdapter = new UsersAdapter(SellersManagementActivity.this, ls, rcvSellersManagement);
                                        rcvSellersManagement.setAdapter(usersAdapter);
                                    }
