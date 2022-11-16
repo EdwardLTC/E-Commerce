@@ -62,8 +62,6 @@ public class CategoriesManagementActivity extends AppCompatActivity  implements 
         initRecyclerView();
         loadRecycleView();
 
-
-
         // handle listener
         cvBackToHomeFromCategories.setOnClickListener(this);
         tvRefreshCategories.setOnClickListener(this);
@@ -165,6 +163,46 @@ public class CategoriesManagementActivity extends AppCompatActivity  implements 
                                     .setHeading("Well Done")
                                     .setHeading("You have successfully"+
                                             " added")
+                                    .setCancelable(false)
+                                    .showDialog(new OnDialogButtonClickListener() {
+                                        @Override
+                                        public void onDismissClicked(Dialog dialog1) {
+                                            super.onDismissClicked(dialog1);
+                                            loadRecycleView();
+                                        }
+                                    });
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    private void updateCategory(CategoryReq categoryReq) {
+        ServiceAPI.serviceApi.UpdateCategory(categoryReq)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Respon>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Respon respon) {
+                        if (respon.getRespone_code() == 200) {
+                            PopupDialog.getInstance(CategoriesManagementActivity.this)
+                                    .setStyle(Styles.SUCCESS)
+                                    .setHeading("Well Done")
+                                    .setHeading("You have successfully"+
+                                            " updated")
                                     .setCancelable(false)
                                     .showDialog(new OnDialogButtonClickListener() {
                                         @Override
@@ -289,6 +327,44 @@ public class CategoriesManagementActivity extends AppCompatActivity  implements 
         dialog.show();
     }
 
+    public void showDialogUpdateCategory(CategoryRes categoryRes) {
+        dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_update_category);
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogFade2;
+
+        Button btUpdateCategory = dialog.findViewById(R.id.btUpdateCategory);
+        Button btCancelDialogUpdateCategory = dialog.findViewById(R.id.btCancelDialogUpdateCategory);
+        EditText edtUpdateCategory = dialog.findViewById(R.id.edtUpdateNameCategory);
+
+        edtUpdateCategory.setText(categoryRes.getName());
+
+
+
+        btCancelDialogUpdateCategory.setOnClickListener(this);
+        btUpdateCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = edtUpdateCategory.getText().toString();
+                if (name.length() != 0) {
+                    CategoryReq categoryReq = new CategoryReq(categoryRes.getId(), name);
+                    updateCategory(categoryReq);
+                    dialog.dismiss();
+                }
+            }
+
+        });
+
+        Window window = dialog.getWindow();
+        if (window == null)
+            return;
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.show();
+    }
+
     private void searchCategories(String find) {
         List<CategoryRes> lsSearch = new ArrayList<>();
         for (CategoryRes categoryRes : ls) {
@@ -320,6 +396,9 @@ public class CategoriesManagementActivity extends AppCompatActivity  implements 
                 edtSearchCategories.setText("");
                 break;
             case R.id.btCancelDialogAddCategory:
+                dialog.dismiss();
+                break;
+            case R.id.btCancelDialogUpdateCategory:
                 dialog.dismiss();
                 break;
 

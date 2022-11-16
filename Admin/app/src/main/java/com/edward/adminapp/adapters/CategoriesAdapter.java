@@ -58,6 +58,13 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             }
         });
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((CategoriesManagementActivity)context).showDialogUpdateCategory(categoryRes);
+            }
+        });
+
 
 
 

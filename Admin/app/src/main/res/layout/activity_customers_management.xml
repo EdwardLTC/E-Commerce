@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".CategoriesManagementActivity">
+    tools:context=".views.CustomersManagementActivity"
+    android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvBackToHomeFromCategories"
+            android:id="@+id/cvBackToHomeFromCustomers"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_margin="16dp"
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gordita_medium"
-            android:text="Categories"
+            android:text="Customers"
             android:textColor="@color/black"
             android:textSize="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvRefreshCategories"
+            android:id="@+id/tvRefreshCustomers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Refresh"
@@ -60,10 +60,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <EditText
-        android:id="@+id/edtSearchCategories"
+        android:id="@+id/edtSearchCustomers"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:background="@drawable/background_edt_log_in"
@@ -71,11 +71,12 @@
         android:drawablePadding="12dp"
         android:elevation="6dp"
         android:maxLines="1"
+        android:text="Robby Cars"
         android:inputType="text"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:fontFamily="@font/gordita_regular"
-        android:hint="Search categories..."
+        android:hint="Search customers..."
         android:imeOptions="actionSearch"
         android:paddingLeft="12dp"
         android:textColor="@color/black"
@@ -85,23 +86,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvCategoriesManagement"
+        android:id="@+id/rcvCustomersManagement"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtSearchCategories"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSearchCustomers" />
 
     <TextView
-        android:id="@+id/tvCantFindCategories"
+        android:id="@+id/tvCantFindCustomers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/gordita_bold"
@@ -113,10 +109,10 @@
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rcvCategoriesManagement" />
+        app:layout_constraintTop_toTopOf="@+id/rcvCustomersManagement" />
 
     <TextView
-        android:id="@+id/tvTryAgainCategories"
+        android:id="@+id/tvTryAgainCustomers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/gordita_regular"
@@ -128,17 +124,8 @@
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCantFindCategories" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCantFindCustomers" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddCategories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:backgroundTint="#E15427"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add_categories" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
