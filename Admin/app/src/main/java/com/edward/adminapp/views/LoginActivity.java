@@ -26,6 +26,7 @@ import com.edward.adminapp.model.modelrespon.Respon;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Locale;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import io.reactivex.Observer;
@@ -55,8 +56,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+        // create person
         String pass = MyHelpers.getHashPassword("abc");
+        Log.d("pass ", pass);
         boolean verified = MyHelpers.isVerifiedHash("abc", pass);
+        Log.d("pass ", verified+"");
+
 
         ServiceAPI.serviceApi.CreatePerson(new PersonReq(1, "admin", "admin1@gmail.com", pass,
                 "0909123456", 1, "https://i.pravatar.cc/150?img=54",

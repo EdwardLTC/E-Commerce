@@ -9,7 +9,10 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.Locale;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
@@ -42,24 +45,12 @@ public class MyHelpers {
         view.setBackground(listDrawable);
     }
 
-
     public static String getHashPassword(String password) {
-        byte[] bcryptHashBytes = BCrypt.withDefaults().hash(6, password.getBytes(StandardCharsets.UTF_8));
-        String result = "";
-        for (int i = 0; i < bcryptHashBytes.length; i++) {
-            result+=bcryptHashBytes[i]+" ";
-        }
-        return result.trim();
+        return BCrypt.withDefaults().hashToString(12, password.toCharArray());
     }
 
     public static Boolean isVerifiedHash(String password, String passwordHash) {
-        String[] a = passwordHash.split(" ");
-        byte[] bcrypt = new byte[a.length];
-        for (int i = 0; i < a.length; i++) {
-            bcrypt[i] = Byte.parseByte(a[i]);
-        }
-
-        BCrypt.Result result = BCrypt.verifyer().verify(password.getBytes(StandardCharsets.UTF_8), bcrypt);
+        BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), passwordHash);
         return result.verified;
     }
 }
