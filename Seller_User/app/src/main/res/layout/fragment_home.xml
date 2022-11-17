@@ -30,6 +30,7 @@
                 tools:ignore="MissingConstraints"
                 android:text="Explore"
                 android:textSize="35dp"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:paddingLeft="20dp">
             </TextView>
@@ -123,28 +124,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="Dress"
-                    android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:layout_marginLeft="17dp">
                 </TextView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="Shirt"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="55dp">
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="57dp">
                 </TextView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="Pants"
-                    android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:layout_marginLeft="57dp">
                 </TextView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="Tshirt"
-                    android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:layout_marginLeft="52dp">
                 </TextView>
 
@@ -160,6 +161,7 @@
                     android:layout_height="wrap_content"
                     android:text="New Arrival"
                     android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:layout_marginLeft="20dp"
                     android:textSize="23dp">
                 </TextView>
@@ -206,14 +208,15 @@
                             android:layout_width="100dp"
                             android:layout_height="60dp"
                             android:text="Long sleeve shirt"
-                            android:textStyle="bold"
+                            android:textColor="@color/black"
                             android:layout_marginLeft="10dp">
                         </TextView>
                         <TextView
                             android:layout_width="40dp"
                             android:layout_height="60dp"
                             android:text="160$"
-                            android:textStyle="bold">
+                            android:textStyle="bold"
+                            android:textColor="@color/black">
                         </TextView>
                     </LinearLayout>
 
@@ -248,14 +251,15 @@
                         <TextView
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Long sleeve shirt"
-                            android:textStyle="bold"
+                            android:text="Henley shirt"
+                            android:textColor="@color/black"
                             android:layout_marginLeft="10dp">
                         </TextView>
                         <TextView
                             android:layout_width="40dp"
                             android:layout_height="60dp"
                             android:text="160$"
+                            android:textColor="@color/black"
                             android:textStyle="bold">
                         </TextView>
                     </LinearLayout>
