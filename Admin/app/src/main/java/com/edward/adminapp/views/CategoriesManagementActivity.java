@@ -1,4 +1,4 @@
-package com.edward.adminapp;
+package com.edward.adminapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.edward.adminapp.API.ServiceAPI;
+import com.edward.adminapp.R;
 import com.edward.adminapp.adapter.ProgressDialogCustom;
 import com.edward.adminapp.adapters.CategoriesAdapter;
 import com.edward.adminapp.helpers.MyHelpers;
@@ -30,7 +31,6 @@ import com.edward.adminapp.model.modelrequest.CategoryReq;
 import com.edward.adminapp.model.modelrespon.CategoryRes;
 import com.edward.adminapp.model.modelrespon.ResGetListCategory;
 import com.edward.adminapp.model.modelrespon.Respon;
-import com.edward.adminapp.views.MainActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.saadahmedsoft.popupdialog.PopupDialog;
 import com.saadahmedsoft.popupdialog.Styles;

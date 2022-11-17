@@ -11,9 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.edward.adminapp.CategoriesManagementActivity;
 import com.edward.adminapp.R;
 import com.edward.adminapp.model.modelrespon.CategoryRes;
+import com.edward.adminapp.views.CategoriesManagementActivity;
 
 import java.util.List;
 

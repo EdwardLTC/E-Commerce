@@ -11,11 +11,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.edward.adminapp.CategoriesManagementActivity;
 import com.edward.adminapp.R;
-import com.edward.adminapp.StatisticsActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

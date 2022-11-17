@@ -1,10 +1,21 @@
 package com.edward.adminapp.helpers;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class MyHelpers {
+
+    // gõ xong tự ẩn bàn phím
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         //Find the currently focused view, so we can grab the correct window token from it.
@@ -16,7 +27,39 @@ public class MyHelpers {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    public static void showDialogSuccess() {
+    // thêm hiệu ứng khi click
+    public static void addClickEffect(View view)
+    {
+        Drawable drawableNormal = view.getBackground();
 
+        Drawable drawablePressed = view.getBackground().getConstantState().newDrawable();
+        drawablePressed.mutate();
+        drawablePressed.setColorFilter(Color.argb(50, 0, 0, 0), PorterDuff.Mode.SRC_ATOP);
+
+        StateListDrawable listDrawable = new StateListDrawable();
+        listDrawable.addState(new int[] {android.R.attr.state_pressed}, drawablePressed);
+        listDrawable.addState(new int[] {}, drawableNormal);
+        view.setBackground(listDrawable);
+    }
+
+
+    public static String getHashPassword(String password) {
+        byte[] bcryptHashBytes = BCrypt.withDefaults().hash(6, password.getBytes(StandardCharsets.UTF_8));
+        String result = "";
+        for (int i = 0; i < bcryptHashBytes.length; i++) {
+            result+=bcryptHashBytes[i]+" ";
+        }
+        return result.trim();
+    }
+
+    public static Boolean isVerifiedHash(String password, String passwordHash) {
+        String[] a = passwordHash.split(" ");
+        byte[] bcrypt = new byte[a.length];
+        for (int i = 0; i < a.length; i++) {
+            bcrypt[i] = Byte.parseByte(a[i]);
+        }
+
+        BCrypt.Result result = BCrypt.verifyer().verify(password.getBytes(StandardCharsets.UTF_8), bcrypt);
+        return result.verified;
     }
 }

@@ -4,8 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,8 +19,15 @@ import android.widget.Toast;
 import com.edward.adminapp.API.ServiceAPI;
 import com.edward.adminapp.R;
 import com.edward.adminapp.adapter.ProgressDialogCustom;
+import com.edward.adminapp.helpers.MyHelpers;
+import com.edward.adminapp.model.modelrequest.PersonReq;
 import com.edward.adminapp.model.modelrespon.ResGetPerson;
+import com.edward.adminapp.model.modelrespon.Respon;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -37,9 +50,46 @@ public class LoginActivity extends AppCompatActivity {
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DemoCallAPI();
+                MyHelpers.addClickEffect(view);
+//                DemoCallAPI();
             }
         });
+
+        String pass = MyHelpers.getHashPassword("abc");
+        boolean verified = MyHelpers.isVerifiedHash("abc", pass);
+
+        ServiceAPI.serviceApi.CreatePerson(new PersonReq(1, "admin", "admin1@gmail.com", pass,
+                "0909123456", 1, "https://i.pravatar.cc/150?img=54",
+                "Vietnam Q.TB"))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Respon>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.d(">>>>>>", "subscribe");
+
+                    }
+
+                    @Override
+                    public void onNext(Respon respon) {
+                        Log.d(">>>>>>", respon.getRespone_code()+"");
+                        if (respon.getRespone_code() == 200) {
+                            Toast.makeText(LoginActivity.this, "success", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(">>>>>>", " error");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(">>>>>>", "complete");
+
+                    }
+                });
+
     }
 
 
