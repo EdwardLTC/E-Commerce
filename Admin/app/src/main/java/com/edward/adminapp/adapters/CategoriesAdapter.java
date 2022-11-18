@@ -9,15 +9,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.adminapp.R;
 import com.edward.adminapp.model.modelrespon.CategoryRes;
+import com.edward.adminapp.views.CategoriesManagementActivity;
 
 import java.util.List;
 
-public class CategoriessAdapter extends RecyclerView.Adapter<CategoriessAdapter.ViewHolder> {
+public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder> {
     Context context;
     List<CategoryRes> ls;
     int[] backgrounds = {R.drawable.background_notify_color_blue,
@@ -26,7 +26,7 @@ public class CategoriessAdapter extends RecyclerView.Adapter<CategoriessAdapter.
             R.drawable.background_notify_color_yellow};
 
 
-    public CategoriessAdapter(Context context, List<CategoryRes> ls) {
+    public CategoriesAdapter(Context context, List<CategoryRes> ls) {
         this.context = context;
         this.ls = ls;
     }
@@ -42,7 +42,28 @@ public class CategoriessAdapter extends RecyclerView.Adapter<CategoriessAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         CategoryRes categoryRes = ls.get(position);
         holder.tvNameCategoriesItem.setText(categoryRes.getName());
+
+        if (position % 2 == 0)
+            holder.ivCategoriesItem.setBackgroundResource(backgrounds[0]);
+        else
+            holder.ivCategoriesItem.setBackgroundResource(backgrounds[2]);
+
 //        holder.ivCategoriesItem
+
+        holder.ivDeleteCategories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setSelected(true);
+                ((CategoriesManagementActivity)context).showDialogDeleteCategory(categoryRes);
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((CategoriesManagementActivity)context).showDialogUpdateCategory(categoryRes);
+            }
+        });
 
 
 

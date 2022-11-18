@@ -1,10 +1,5 @@
 package com.edward.adminapp.views;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
@@ -23,10 +18,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.edward.adminapp.API.ServiceAPI;
 import com.edward.adminapp.R;
 import com.edward.adminapp.adapter.ProgressDialogCustom;
-import com.edward.adminapp.adapters.UsersAdapter;
+import com.edward.adminapp.adapters.UsersCustomerAdapter;
 import com.edward.adminapp.helpers.MyHelpers;
 import com.edward.adminapp.model.modelrespon.PersonRes;
 import com.edward.adminapp.model.modelrespon.ResGetListPerson;
@@ -37,50 +37,56 @@ import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class SellersManagementActivity extends AppCompatActivity implements View.OnClickListener {
-    RecyclerView rcvSellersManagement;
-    CardView cvBackToHomeFromSellers;
-    UsersAdapter usersAdapter;
-    EditText edtSearchSellers;
+public class CustomersManagementActivity extends AppCompatActivity implements View.OnClickListener {
+    RecyclerView rcvCustomersManagement;
+    CardView cvBackToHomeFromCustomers;
+    UsersCustomerAdapter usersCustomerAdapter;
+    EditText edtSearchCustomers;
     Dialog dialog;
-    TextView tvRefreshSellers, tvTryAgainSellers, tvCantFindSellers;
+    TextView tvRefreshCustomers, tvTryAgainCustomers, tvCantFindCustomers;
     List<PersonRes> ls;
 
-    private final String TAG = ">>>>>>>>>>>>>> SellersManagementActivity ";
+    private final String TAG = ">>>>>>>>>>>>>> CustomersManagementActivity ";
 
 
     @SuppressLint("LongLogTag")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sellers_management);
+        setContentView(R.layout.activity_customers_management);
         ls = new ArrayList<>();
         initViews();
         initRecyclerView();
         loadRecycleView();
 
         // handle listener
-        cvBackToHomeFromSellers.setOnClickListener(this);
-        tvRefreshSellers.setOnClickListener(this);
+        cvBackToHomeFromCustomers.setOnClickListener(this);
+        tvRefreshCustomers.setOnClickListener(this);
+
+//        String password = "123";
+//        byte[] bcryptHashBytes = BCrypt.withDefaults().hash(6, password.getBytes(StandardCharsets.UTF_8));
+//        Log.d(TAG, bcryptHashBytes.toString());
+//
+//        // verify hash
+//        BCrypt.Result result = BCrypt.verifyer().verify(password.getBytes(StandardCharsets.UTF_8), bcryptHashBytes);
+//        Log.d(TAG, String.valueOf(result.verified));
 
 
-
-        edtSearchSellers.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        edtSearchCustomers.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 if (i == EditorInfo.IME_ACTION_SEARCH) {
                     String find = textView.getText().toString();
                     if (!find.isEmpty()) {
-                        searchSellers(find);
+                        searchCustomers(find);
                     }
-                    MyHelpers.hideKeyboard(SellersManagementActivity.this);
+                    MyHelpers.hideKeyboard(CustomersManagementActivity.this);
                     return true;
                 }
 
@@ -92,36 +98,36 @@ public class SellersManagementActivity extends AppCompatActivity implements View
 
 
     private void initViews() {
-        rcvSellersManagement = findViewById(R.id.rcvSellersManagement);
-        edtSearchSellers = findViewById(R.id.edtSearchSellers);
-        cvBackToHomeFromSellers = findViewById(R.id.cvBackToHomeFromSellers);
-        tvRefreshSellers = findViewById(R.id.tvRefreshSellers);
-        tvRefreshSellers.setPaintFlags(tvRefreshSellers.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        rcvCustomersManagement = findViewById(R.id.rcvCustomersManagement);
+        edtSearchCustomers = findViewById(R.id.edtSearchCustomers);
+        cvBackToHomeFromCustomers = findViewById(R.id.cvBackToHomeFromCustomers);
+        tvRefreshCustomers = findViewById(R.id.tvRefreshCustomers);
+        tvRefreshCustomers.setPaintFlags(tvRefreshCustomers.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
-        tvTryAgainSellers = findViewById(R.id.tvTryAgainSellers);
-        tvCantFindSellers = findViewById(R.id.tvCantFindSellers);
+        tvTryAgainCustomers = findViewById(R.id.tvTryAgainCustomers);
+        tvCantFindCustomers = findViewById(R.id.tvCantFindCustomers);
     }
 
     private void initRecyclerView() {
-        rcvSellersManagement.setHasFixedSize(true);
+        rcvCustomersManagement.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        rcvSellersManagement.setLayoutManager(layoutManager);
+        rcvCustomersManagement.setLayoutManager(layoutManager);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.edtSearchSellers:
+            case R.id.edtSearchCustomers:
                 break;
             case R.id.btCancelDialogDeleteUser:
                 dialog.dismiss();
                 break;
-            case R.id.cvBackToHomeFromSellers:
-                startActivity(new Intent(SellersManagementActivity.this, MainActivity.class));
+            case R.id.cvBackToHomeFromCustomers:
+                startActivity(new Intent(CustomersManagementActivity.this, MainActivity.class));
                 break;
-            case R.id.tvRefreshSellers:
+            case R.id.tvRefreshCustomers:
                 loadRecycleView();
-                edtSearchSellers.setText("");
+                edtSearchCustomers.setText("");
                 break;
 
         }
@@ -142,7 +148,7 @@ public class SellersManagementActivity extends AppCompatActivity implements View
                     @Override
                     public void onNext(Respon respon) {
                         if (respon.getRespone_code() == 200) {
-                            PopupDialog.getInstance(SellersManagementActivity.this)
+                            PopupDialog.getInstance(CustomersManagementActivity.this)
                                     .setStyle(Styles.SUCCESS)
                                     .setHeading("Well Done")
                                     .setHeading("You have successfully"+
@@ -171,22 +177,22 @@ public class SellersManagementActivity extends AppCompatActivity implements View
                 });
     }
 
-    private void searchSellers(String find) {
+    private void searchCustomers(String find) {
         List<PersonRes> lsSearch = new ArrayList<>();
         for (PersonRes personRes : ls) {
             if (personRes.getName().toLowerCase().contains(find.toLowerCase())) {
                 lsSearch.add(personRes);
             }
         }
-        usersAdapter = new UsersAdapter(this, lsSearch, rcvSellersManagement);
-        rcvSellersManagement.setAdapter(usersAdapter);
+        usersCustomerAdapter = new UsersCustomerAdapter(this, lsSearch, rcvCustomersManagement);
+        rcvCustomersManagement.setAdapter(usersCustomerAdapter);
 
         if (lsSearch.size() == 0) {
-            tvTryAgainSellers.setVisibility(View.VISIBLE);
-            tvCantFindSellers.setVisibility(View.VISIBLE);
+            tvTryAgainCustomers.setVisibility(View.VISIBLE);
+            tvCantFindCustomers.setVisibility(View.VISIBLE);
         } else {
-            tvTryAgainSellers.setVisibility(View.INVISIBLE);
-            tvCantFindSellers.setVisibility(View.INVISIBLE);
+            tvTryAgainCustomers.setVisibility(View.INVISIBLE);
+            tvCantFindCustomers.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -222,13 +228,13 @@ public class SellersManagementActivity extends AppCompatActivity implements View
 
     private void loadRecycleView() {
 
-        ServiceAPI.serviceApi.GetAllPerson(2)
+        ServiceAPI.serviceApi.GetAllPerson(3)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResGetListPerson>() {
                                @Override
                                public void onSubscribe(Disposable d) {
-                                   ProgressDialogCustom.showProgressDialog(SellersManagementActivity.this, "please wait");
+                                   ProgressDialogCustom.showProgressDialog(CustomersManagementActivity.this, "please wait");
                                }
 
                                @SuppressLint("LongLogTag")
@@ -240,8 +246,8 @@ public class SellersManagementActivity extends AppCompatActivity implements View
                                    } else {
                                        ls = resGetListPerson._PersonRes;
                                        Log.d(TAG, ls.size() + "");
-                                       usersAdapter = new UsersAdapter(SellersManagementActivity.this, ls, rcvSellersManagement);
-                                       rcvSellersManagement.setAdapter(usersAdapter);
+                                       usersCustomerAdapter = new UsersCustomerAdapter(CustomersManagementActivity.this, ls, rcvCustomersManagement);
+                                       rcvCustomersManagement.setAdapter(usersCustomerAdapter);
                                    }
                                }
 
