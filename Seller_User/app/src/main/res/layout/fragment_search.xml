@@ -142,13 +142,14 @@
                                     android:layout_width="100dp"
                                     android:layout_height="50dp"
                                     android:text="Long sleeve shirt"
-                                    android:textStyle="bold"
+                                    android:textColor="@color/black"
                                     android:layout_marginLeft="10dp">
                                 </TextView>
                                 <TextView
                                     android:layout_width="40dp"
                                     android:layout_height="50dp"
                                     android:text="160$"
+                                    android:textColor="@color/black"
                                     android:textStyle="bold">
                                 </TextView>
                             </LinearLayout>
@@ -192,13 +193,14 @@
                                     android:layout_height="50dp"
                                     android:layout_marginLeft="10dp"
                                     android:text="Long sleeve shirt"
-                                    android:textStyle="bold">
+                                    android:textColor="@color/black">
                                 </TextView>
 
                                 <TextView
                                     android:layout_width="40dp"
                                     android:layout_height="50dp"
                                     android:text="160$"
+                                    android:textColor="@color/black"
                                     android:textStyle="bold">
                                 </TextView>
                             </LinearLayout>
@@ -246,13 +248,14 @@
                                     android:layout_width="100dp"
                                     android:layout_height="50dp"
                                     android:text="Long sleeve shirt"
-                                    android:textStyle="bold"
+                                    android:textColor="@color/black"
                                     android:layout_marginLeft="10dp">
                                 </TextView>
                                 <TextView
                                     android:layout_width="40dp"
                                     android:layout_height="50dp"
                                     android:text="160$"
+                                    android:textColor="@color/black"
                                     android:textStyle="bold">
                                 </TextView>
                             </LinearLayout>
@@ -296,13 +299,14 @@
                                     android:layout_height="50dp"
                                     android:layout_marginLeft="10dp"
                                     android:text="Long sleeve shirt"
-                                    android:textStyle="bold">
+                                    android:textColor="@color/black">
                                 </TextView>
 
                                 <TextView
                                     android:layout_width="40dp"
                                     android:layout_height="50dp"
                                     android:text="160$"
+                                    android:textColor="@color/black"
                                     android:textStyle="bold">
                                 </TextView>
                             </LinearLayout>
@@ -350,13 +354,14 @@
                                     android:layout_width="100dp"
                                     android:layout_height="50dp"
                                     android:text="Long sleeve shirt"
-                                    android:textStyle="bold"
+                                    android:textColor="@color/black"
                                     android:layout_marginLeft="10dp">
                                 </TextView>
                                 <TextView
                                     android:layout_width="40dp"
                                     android:layout_height="50dp"
                                     android:text="160$"
+                                    android:textColor="@color/black"
                                     android:textStyle="bold">
                                 </TextView>
                             </LinearLayout>
@@ -400,13 +405,14 @@
                                     android:layout_height="50dp"
                                     android:layout_marginLeft="10dp"
                                     android:text="Long sleeve shirt"
-                                    android:textStyle="bold">
+                                    android:textColor="@color/black">
                                 </TextView>
 
                                 <TextView
                                     android:layout_width="40dp"
                                     android:layout_height="50dp"
                                     android:text="160$"
+                                    android:textColor="@color/black"
                                     android:textStyle="bold">
                                 </TextView>
                             </LinearLayout>
