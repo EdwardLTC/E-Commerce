@@ -22,4 +22,13 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">#000</item>
     </style>
+
+    <!--  Custom TabLayout  -->
+    <style name="CustomTabLayout">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/gordita_medium</item>
+    </style>
+
 </resources>

@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 bottomSheetDialog.hide();
                 break;
             case R.id.btLogout:
+                startActivity(new Intent(this, LoginActivity.class));
                 bottomSheetDialog.hide();
                 logout();
                 break;
