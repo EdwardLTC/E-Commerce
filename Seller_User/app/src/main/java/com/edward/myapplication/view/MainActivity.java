@@ -1,4 +1,4 @@
-package com.edward.myapplication;
+package com.edward.myapplication.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -21,6 +21,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
+import com.edward.myapplication.HomeFragment;
+import com.edward.myapplication.R;
 import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity {
 

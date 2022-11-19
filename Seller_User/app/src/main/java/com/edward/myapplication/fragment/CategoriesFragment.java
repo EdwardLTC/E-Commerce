@@ -2,13 +2,22 @@ package com.edward.myapplication.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.edward.myapplication.R;
+import com.edward.myapplication.adapter.CategoriesAdapter;
+import com.edward.myapplication.model.Categories;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +25,10 @@ import com.edward.myapplication.R;
  * create an instance of this fragment.
  */
 public class CategoriesFragment extends Fragment {
+
+    private RecyclerView rcvCategoriesManagement;
+    private List<Categories> ls;
+    private CategoriesAdapter categoriesAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,5 +75,33 @@ public class CategoriesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_categories, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initViews(view);
+        initRecycleView();
+        ls = new ArrayList<>();
+
+        ls.add(new Categories("Sleeve Shirt Rolo"));
+        ls.add(new Categories("Sleeve Shirt Rolo"));
+        ls.add(new Categories("Sleeve Shirt Rolo"));
+        ls.add(new Categories("Sleeve Shirt Rolo"));
+        ls.add(new Categories("Sleeve Shirt Rolo"));
+        ls.add(new Categories("Sleeve Shirt Rolo"));
+
+        categoriesAdapter = new CategoriesAdapter(ls, requireContext());
+        rcvCategoriesManagement.setAdapter(categoriesAdapter);
+    }
+
+    private void initViews(View view) {
+        rcvCategoriesManagement = view.findViewById(R.id.rcvCategoriesManagement);
+    }
+
+    private void initRecycleView() {
+        rcvCategoriesManagement.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(requireContext(), 4);
+        rcvCategoriesManagement.setLayoutManager(layoutManager);
     }
 }

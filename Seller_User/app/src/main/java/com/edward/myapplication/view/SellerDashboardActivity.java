@@ -1,4 +1,4 @@
-package com.edward.myapplication;
+package com.edward.myapplication.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.edward.myapplication.R;
 
 public class SellerDashboardActivity extends AppCompatActivity {
 

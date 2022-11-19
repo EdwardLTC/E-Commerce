@@ -2,15 +2,32 @@ package com.edward.myapplication.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.edward.myapplication.R;
+import com.edward.myapplication.adapter.CategoriesAdapter;
+import com.edward.myapplication.adapter.ClothesAdapter;
+import com.edward.myapplication.model.Categories;
+import com.edward.myapplication.model.Clothes;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClothesFragment extends Fragment {
+
+    private RecyclerView rcvClothesManagement;
+    private List<Clothes> ls;
+    private ClothesAdapter clothesAdapter;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,5 +66,41 @@ public class ClothesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_clothes, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initViews(view);
+        initRecycleView();
+        ls = new ArrayList<>();
+//
+//        ls.add(new Categories("Sleeve Shirt Rolo"));
+//        ls.add(new Categories("Sleeve Shirt Rolo"));
+//        ls.add(new Categories("Sleeve Shirt Rolo"));
+//        ls.add(new Categories("Sleeve Shirt Rolo"));
+//        ls.add(new Categories("Sleeve Shirt Rolo"));
+//        ls.add(new Categories("Sleeve Shirt Rolo"));
+
+        ls.add(new Clothes("shirt", 20, "shirt"));
+        ls.add(new Clothes("shirtshirtshirtshirtshirt", 20, "shirt"));
+        ls.add(new Clothes("shirt", 20, "shirt"));
+        ls.add(new Clothes("shirt", 20, "shirt"));
+        ls.add(new Clothes("shirt", 20, "shirt"));
+        ls.add(new Clothes("shirt", 20, "shirt"));
+        ls.add(new Clothes("shirt", 20, "shirt"));
+
+        clothesAdapter = new ClothesAdapter(ls, requireContext());
+        rcvClothesManagement.setAdapter(clothesAdapter);
+    }
+
+    private void initViews(View view) {
+        rcvClothesManagement = view.findViewById(R.id.rcvClothesManagement);
+    }
+
+    private void initRecycleView() {
+        rcvClothesManagement.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext());
+        rcvClothesManagement.setLayoutManager(layoutManager);
     }
 }
