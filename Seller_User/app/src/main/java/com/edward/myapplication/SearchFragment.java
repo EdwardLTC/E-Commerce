@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class SearchFragment extends Fragment {
     BottomNavigationView bottomNavigationView;
+    ImageView img;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -27,6 +29,15 @@ public class SearchFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setItemIconTintList(null);
+        img = view.findViewById(R.id.filter);
+
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Filtering filtering = new Filtering();
+                filtering.show(getActivity().getSupportFragmentManager(), "TAG");
+            }
+        });
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
