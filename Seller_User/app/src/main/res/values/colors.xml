@@ -10,6 +10,7 @@
     <color name="white_blur">#FBFBFD</color>
 
 
+    <color name="background">#FBFBFD</color>
     <color name="btn_default">#F67952</color>
     <color name="text_default">#000000</color>
     <color name="text_hint">#808080</color>
@@ -18,4 +19,5 @@
     <color name="text_main_app">#230A06</color>
     <color name="text_price_in_cart">#FF3535</color>
     <color name="text_personal_Information">#231F20</color>
+    <color name="text_blur">#7E7E7F</color>
 </resources>

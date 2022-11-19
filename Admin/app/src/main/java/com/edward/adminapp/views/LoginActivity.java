@@ -52,54 +52,18 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MyHelpers.addClickEffect(view);
-//                DemoCallAPI();
+                login();
             }
         });
-
-
         // create person
-        String pass = MyHelpers.getHashPassword("abc");
-        Log.d("pass ", pass);
-        boolean verified = MyHelpers.isVerifiedHash("abc", pass);
-        Log.d("pass ", verified+"");
-
-
-        ServiceAPI.serviceApi.CreatePerson(new PersonReq(1, "admin", "admin1@gmail.com", pass,
-                "0909123456", 1, "https://i.pravatar.cc/150?img=54",
-                "Vietnam Q.TB"))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Respon>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        Log.d(">>>>>>", "subscribe");
-
-                    }
-
-                    @Override
-                    public void onNext(Respon respon) {
-                        Log.d(">>>>>>", respon.getRespone_code()+"");
-                        if (respon.getRespone_code() == 200) {
-                            Toast.makeText(LoginActivity.this, "success", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d(">>>>>>", " error");
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        Log.d(">>>>>>", "complete");
-
-                    }
-                });
-
+//        String pass = MyHelpers.getHashPassword("abc");
+//        Log.d("pass ", pass);
+//        boolean verified = MyHelpers.isVerifiedHash("abc", pass);
+//        Log.d("pass ", verified+"");
     }
 
 
-    private void DemoCallAPI() {
+    private void login() {
         ServiceAPI.serviceApi.Login(edtEmailLogin.getText().toString(), edtPassword.getText().toString())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
