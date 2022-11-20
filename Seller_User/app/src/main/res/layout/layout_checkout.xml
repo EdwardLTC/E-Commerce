@@ -319,6 +319,7 @@
         </LinearLayout>
     </LinearLayout>
     <Button
+        android:id="@+id/btncheckout"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_add"
