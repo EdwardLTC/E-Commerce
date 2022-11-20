@@ -1,4 +1,4 @@
-package com.edward.myapplication.API;
+package com.edward.myapplication.api;
 
 import com.edward.myapplication.model.modelrequest.ClothesReq;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
