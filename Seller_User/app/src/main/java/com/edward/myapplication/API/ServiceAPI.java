@@ -1,6 +1,7 @@
 package com.edward.myapplication.API;
 
 import com.edward.myapplication.model.modelrequest.ClothesReq;
+import com.edward.myapplication.model.modelrequest.FavoriteReq;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 import com.edward.myapplication.model.modelrespon.ResGetPerson;
@@ -43,4 +44,19 @@ public interface ServiceAPI {
 
     @GET("Login")
     Observable<ResGetPerson> Login(@Query(("_email")) String _email, @Query(("_psw")) String _psw);
+
+    @GET("GetAllFavoritesOf")
+    Observable<ResGetListClothes> GetAllFavoritesOf(@Query(("userID")) int userID);
+
+    @POST("AddToFavorite")
+    Observable<Respon> AddToFavorite(@Body FavoriteReq favoriteReq);
+
+    @POST("RemoveFromFavorite")
+    Observable<Respon> RemoveFromFavorite(@Body FavoriteReq favoriteReq);
+
+    @GET("GetClothesFromSellerAndCategory")
+    Observable<ResGetClothes> GetClothesFromSellerAndCategory(@Query("idSellerReq") int idSellerReq, @Query("idCategoryReq") int idCategoryReq);
+
+    @GET("GetClothesWhereCategory")
+    Observable<ResGetClothes> GetClothesWhereCategory(@Query("idCategoryReq") int idCategoryReq);
 }
