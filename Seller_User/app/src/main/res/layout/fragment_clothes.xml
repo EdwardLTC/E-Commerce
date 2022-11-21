@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.ClothesFragment"
+    android:background="@color/background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/edtSearchClothes"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@drawable/background_edt_search"
+            android:drawableLeft="@drawable/ic_search"
+            android:drawablePadding="12dp"
+            android:elevation="6dp"
+            android:maxLines="1"
+            android:inputType="text"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/gordita_regular"
+            android:hint="Search clothes..."
+            android:imeOptions="actionSearch"
+            android:paddingLeft="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_blur"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvClothesManagement"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtSearchClothes" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
