@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.edward.myapplication.R;
+import com.edward.myapplication.interfaces.OnItem;
 import com.edward.myapplication.model.Clothes;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 
@@ -23,10 +24,12 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
 
     List<ClothesRes> ls;
     Context c;
+    OnItem onItem;
 
-    public ClothesAdapter(List<ClothesRes> ls, Context c) {
+    public ClothesAdapter(List<ClothesRes> ls, Context c, OnItem onItem) {
         this.ls = ls;
         this.c = c;
+        this.onItem = onItem;
     }
 
     @NonNull
@@ -48,6 +51,12 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
 //        Glide.with(c).load(linkUrlTest).into(holder.ivClothesItem);
         holder.tVMoreDetailsClothesItem.setPaintFlags(holder.tVMoreDetailsClothesItem.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
+        onItem.fillData(holder.ivClothesItem,
+                holder.tvNameClothesItem,
+                holder.tvTypeClothesItem,
+                holder.tvQuantityClothesItem,
+                clothes,
+                position);
 
     }
 

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.edward.myapplication.adapter.ClothesAdapter;
 import com.edward.myapplication.adapter.ProgressDialogCustom;
 import com.edward.myapplication.api.ServiceAPI;
+import com.edward.myapplication.interfaces.OnItem;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 import com.edward.myapplication.view.ClothesManagementActivity;
@@ -26,7 +27,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class ClothesListOfCategoryActivity extends AppCompatActivity implements View.OnClickListener {
+public class ClothesListOfCategoryActivity extends AppCompatActivity implements View.OnClickListener, OnItem {
 
     private int idCategory;
     private int idSeller = 7;
@@ -37,6 +38,9 @@ public class ClothesListOfCategoryActivity extends AppCompatActivity implements 
     private TextView tvRefreshClothesOfCategory, tvCantFindClothesOfCategory, tvTryAgainClothesOfCategory;
     private EditText edtSearchClothesOfCategory;
     private RecyclerView rcvClothesOfCategory;
+    public OnItem onItem;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +84,7 @@ public class ClothesListOfCategoryActivity extends AppCompatActivity implements 
                     public void onNext(ResGetListClothes resGetListClothes) {
                         if (resGetListClothes.get_Respon().getRespone_code() == 200) {
                             ls = resGetListClothes.get_ClothesRes();
-                            clothesAdapter = new ClothesAdapter(ls, ClothesListOfCategoryActivity.this);
+                            clothesAdapter = new ClothesAdapter(ls, ClothesListOfCategoryActivity.this, ClothesListOfCategoryActivity.this);
                             rcvClothesOfCategory.setAdapter(clothesAdapter);
 
                             if (ls.size() == 0) {
@@ -108,7 +112,7 @@ public class ClothesListOfCategoryActivity extends AppCompatActivity implements 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.ivBackToClothesActivityFromClothesOfCategory:
+            case R.id.ivBackToClothesActivityFromClothesOfCategory:ko có
                 startActivity(new Intent(this, ClothesManagementActivity.class));
                 break;
             case R.id.tvRefreshClothesOfCategory:
@@ -117,5 +121,10 @@ public class ClothesListOfCategoryActivity extends AppCompatActivity implements 
                 break;
         }
 
+    }
+
+    @Override
+    public void fillData(ImageView ivClothes, TextView tvNameClothes, TextView tvTypeClothes, TextView tvQuantity, ClothesRes clothesRes, int position) {
+        tvNameClothes.setText(clothesRes.getName());
     }
 }
