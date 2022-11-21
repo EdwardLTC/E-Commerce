@@ -8,6 +8,7 @@ import com.edward.myapplication.model.modelrespon.ResGetListCategory;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListVoucher;
 import com.edward.myapplication.model.modelrespon.ResGetPerson;
+import com.edward.myapplication.model.modelrespon.ResGetProperties;
 import com.edward.myapplication.model.modelrespon.ResGetVoucher;
 import com.edward.myapplication.model.modelrespon.Respon;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -44,7 +45,7 @@ public interface ServiceAPI {
     Observable<Respon> DeleteClothes(@Query("id") int id);
 
     @POST("GetClothesProperties")
-    Observable<ResGetClothes> GetClothesProperties(@Query("id") int id);
+    Observable<ResGetProperties> GetClothesProperties(@Query("id") int id);
 
     @GET("Login")
     Observable<ResGetPerson> Login(@Query(("_email")) String _email, @Query(("_psw")) String _psw);
