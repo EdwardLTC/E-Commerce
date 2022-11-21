@@ -10,7 +10,7 @@
 
 
     <color name="background">#FBFBFD</color>
-
+    <color name="colorFocused">#F0F48965</color>
     <color name="text_blur">#7E7E7F</color>
     <color name="text_default">#000000</color>
     <color name="text_on_button">#FFFFFF</color>
@@ -20,12 +20,12 @@
     <color name="button_cancel_background">#FFFFFFFF</color>
     <color name="button_cancel_background_outline">#F67952</color>
     <color name="field_input_outline">#F67952</color>
-    <color name="notify_background_type1">#C86161</color>
+    <color name="notify_background_type1">#BD4040</color>
     <color name="notify_background_type2">#369908</color>
     <color name="notify_background_type3">#5167D9</color>
     <color name="notify_background_type4">#CDAF43</color>
 
-    <color name="voucher_background_type1">#C86161</color>
+    <color name="voucher_background_type1">#D84D4D</color>
     <color name="voucher_background_type2">#369908</color>
     <color name="voucher_background_type3">#5167D9</color>
     <color name="voucher_background_type4">#CDAF43</color>
