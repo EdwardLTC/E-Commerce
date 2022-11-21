@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,16 +17,25 @@ import android.view.ViewGroup;
 import com.edward.myapplication.R;
 import com.edward.myapplication.adapter.CategoriesAdapter;
 import com.edward.myapplication.adapter.ClothesAdapter;
+import com.edward.myapplication.adapter.ProgressDialogCustom;
+import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.model.Categories;
 import com.edward.myapplication.model.Clothes;
+import com.edward.myapplication.model.modelrespon.ClothesRes;
+import com.edward.myapplication.model.modelrespon.ResGetClothes;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 public class ClothesFragment extends Fragment {
 
     private RecyclerView rcvClothesManagement;
-    private List<Clothes> ls;
+    private List<ClothesRes> ls;
     private ClothesAdapter clothesAdapter;
 
 
@@ -73,22 +83,9 @@ public class ClothesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
         initRecycleView();
+//        loadClothesList();
         ls = new ArrayList<>();
-//
-//        ls.add(new Categories("Sleeve Shirt Rolo"));
-//        ls.add(new Categories("Sleeve Shirt Rolo"));
-//        ls.add(new Categories("Sleeve Shirt Rolo"));
-//        ls.add(new Categories("Sleeve Shirt Rolo"));
-//        ls.add(new Categories("Sleeve Shirt Rolo"));
-//        ls.add(new Categories("Sleeve Shirt Rolo"));
 
-        ls.add(new Clothes("shirt", 20, "shirt"));
-        ls.add(new Clothes("shirtshirtshirtshirtshirt", 20, "shirt"));
-        ls.add(new Clothes("shirt", 20, "shirt"));
-        ls.add(new Clothes("shirt", 20, "shirt"));
-        ls.add(new Clothes("shirt", 20, "shirt"));
-        ls.add(new Clothes("shirt", 20, "shirt"));
-        ls.add(new Clothes("shirt", 20, "shirt"));
 
         clothesAdapter = new ClothesAdapter(ls, requireContext());
         rcvClothesManagement.setAdapter(clothesAdapter);
@@ -102,5 +99,32 @@ public class ClothesFragment extends Fragment {
         rcvClothesManagement.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext());
         rcvClothesManagement.setLayoutManager(layoutManager);
+    }
+
+    private void loadClothesList() {
+        ServiceAPI.serviceApi.Get
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetClothes>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResGetClothes resGetClothes) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }

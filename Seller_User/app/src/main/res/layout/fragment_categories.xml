@@ -11,29 +11,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+
         <EditText
             android:id="@+id/edtSearchCategories"
             android:layout_width="0dp"
             android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/background_edt_search"
             android:drawableLeft="@drawable/ic_search"
             android:drawablePadding="12dp"
             android:elevation="6dp"
-            android:maxLines="1"
-            android:inputType="text"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:fontFamily="@font/gordita_regular"
             android:hint="Search categories..."
             android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
             android:paddingLeft="12dp"
             android:textColor="@color/black"
             android:textColorHint="@color/text_blur"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivReloadCategoriesList"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvCategoriesManagement"
@@ -46,6 +47,49 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edtSearchCategories" />
+
+        <TextView
+            android:id="@+id/tvCantFindCategories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gordita_bold"
+            android:text="Can't not find any result"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:visibility="invisible"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rcvCategoriesManagement" />
+
+        <TextView
+            android:id="@+id/tvTryAgainCategories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gordita_regular"
+            android:text="Please try again"
+            android:textAlignment="center"
+            android:textColor="@color/text_blur"
+            android:textSize="18dp"
+            android:visibility="invisible"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCantFindCategories" />
+
+        <ImageView
+            android:id="@+id/ivReloadCategoriesList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_edt_search"
+            android:elevation="4dp"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_load"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

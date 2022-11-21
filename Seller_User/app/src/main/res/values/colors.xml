@@ -20,6 +20,8 @@
     <color name="text_price_in_cart">#FF3535</color>
     <color name="text_personal_Information">#231F20</color>
     <color name="text_blur">#7E7E7F</color>
+    <color name="red_blur">#F01A1A</color>
+
 
     <color name="notify_background_type1">#BD4040</color>
     <color name="notify_background_type2">#369908</color>

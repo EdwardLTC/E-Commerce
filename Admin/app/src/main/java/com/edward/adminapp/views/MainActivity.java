@@ -22,12 +22,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView tvQuantitySellers, tvQuantityCustomers, tvQuantityCategories;
 
+    private ImageView ivAdminAvatar;
+
     private ConstraintLayout clSellers, clCustomers, clCategories,
             clStatistics, clNotifications;
 
     private ImageButton ibLogout;
     private TextView tvAdminUsername;
-    private ImageView ivAdminAvatar;
 
     private BottomSheetDialog bottomSheetDialog;
 

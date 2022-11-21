@@ -39,4 +39,10 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">22sp</item>
     </style>
+
+    <style name="DialogFade2">
+        <item name="android:windowEnterAnimation">@anim/fadein</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
 </resources>

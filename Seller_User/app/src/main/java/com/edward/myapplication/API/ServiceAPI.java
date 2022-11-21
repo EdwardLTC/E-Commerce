@@ -1,9 +1,10 @@
-package com.edward.myapplication.API;
+package com.edward.myapplication.api;
 
 import com.edward.myapplication.model.modelrequest.ClothesReq;
 import com.edward.myapplication.model.modelrequest.FavoriteReq;
 import com.edward.myapplication.model.modelrequest.VoucherReq;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
+import com.edward.myapplication.model.modelrespon.ResGetListCategory;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListVoucher;
 import com.edward.myapplication.model.modelrespon.ResGetPerson;
@@ -58,10 +59,16 @@ public interface ServiceAPI {
     Observable<Respon> RemoveFromFavorite(@Body FavoriteReq favoriteReq);
 
     @GET("GetClothesFromSellerAndCategory")
-    Observable<ResGetListClothes> hesFromSellerAndCategory(@Query("idSellerReq") int idSellerReq, @Query("idCategoryReq") int idCategoryReq);
+    Observable<ResGetListClothes> getAllClothesFromSellerAndCategory(@Query("idSellerReq") int idSellerReq, @Query("idCategoryReq") int idCategoryReq);
 
     @GET("GetClothesWhereCategory")
     Observable<ResGetListClothes> GetClothesWhereCategory(@Query("idCategoryReq") int idCategoryReq);
+
+
+    @GET("GetAllCategory")
+    Observable<ResGetListCategory> GetAllCategory();
+
+
 
     @GET("GetAllVoucher")
     Observable<ResGetListVoucher> GetAllVoucher();
