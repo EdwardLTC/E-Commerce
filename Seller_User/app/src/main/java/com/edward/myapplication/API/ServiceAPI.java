@@ -1,10 +1,13 @@
-package com.edward.myapplication.api;
+package com.edward.myapplication.API;
 
 import com.edward.myapplication.model.modelrequest.ClothesReq;
 import com.edward.myapplication.model.modelrequest.FavoriteReq;
+import com.edward.myapplication.model.modelrequest.VoucherReq;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
+import com.edward.myapplication.model.modelrespon.ResGetListVoucher;
 import com.edward.myapplication.model.modelrespon.ResGetPerson;
+import com.edward.myapplication.model.modelrespon.ResGetVoucher;
 import com.edward.myapplication.model.modelrespon.Respon;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -55,8 +58,26 @@ public interface ServiceAPI {
     Observable<Respon> RemoveFromFavorite(@Body FavoriteReq favoriteReq);
 
     @GET("GetClothesFromSellerAndCategory")
-    Observable<ResGetClothes> GetClothesFromSellerAndCategory(@Query("idSellerReq") int idSellerReq, @Query("idCategoryReq") int idCategoryReq);
+    Observable<ResGetListClothes> hesFromSellerAndCategory(@Query("idSellerReq") int idSellerReq, @Query("idCategoryReq") int idCategoryReq);
 
     @GET("GetClothesWhereCategory")
-    Observable<ResGetClothes> GetClothesWhereCategory(@Query("idCategoryReq") int idCategoryReq);
+    Observable<ResGetListClothes> GetClothesWhereCategory(@Query("idCategoryReq") int idCategoryReq);
+
+    @GET("GetAllVoucher")
+    Observable<ResGetListVoucher> GetAllVoucher();
+
+    @GET("GetAllVoucherOf")
+    Observable<ResGetListVoucher> GetAllVoucherOf(@Query("idSeller") int idSeller);
+
+    @GET("GetVoucherWhere")
+    Observable<ResGetVoucher> GetVoucherWhere(@Query("id") int id);
+
+    @POST("UpdateVoucher")
+    Observable<Respon> UpdateVoucher(@Body VoucherReq voucherReq);
+
+    @POST("CreateVoucher")
+    Observable<Respon> CreateVoucher(@Body VoucherReq voucherReq); // id = 1
+
+    @POST("DeleteVoucher")
+    Observable<Respon> DeleteVoucher(@Query("id") int id);
 }
