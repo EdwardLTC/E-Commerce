@@ -112,7 +112,7 @@ public class ClothesListOfCategoryActivity extends AppCompatActivity implements 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.ivBackToClothesActivityFromClothesOfCategory:ko có
+            case R.id.ivBackToClothesActivityFromClothesOfCategory:
                 startActivity(new Intent(this, ClothesManagementActivity.class));
                 break;
             case R.id.tvRefreshClothesOfCategory:
