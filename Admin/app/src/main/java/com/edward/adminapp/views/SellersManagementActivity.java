@@ -70,13 +70,6 @@ public class SellersManagementActivity extends AppCompatActivity implements View
         cvBackToHomeFromSellers.setOnClickListener(this);
         tvRefreshSellers.setOnClickListener(this);
 
-//        String password = "123";
-//        byte[] bcryptHashBytes = BCrypt.withDefaults().hash(6, password.getBytes(StandardCharsets.UTF_8));
-//        Log.d(TAG, bcryptHashBytes.toString());
-//
-//        // verify hash
-//        BCrypt.Result result = BCrypt.verifyer().verify(password.getBytes(StandardCharsets.UTF_8), bcryptHashBytes);
-//        Log.d(TAG, String.valueOf(result.verified));
 
 
         edtSearchSellers.setOnEditorActionListener(new TextView.OnEditorActionListener() {

@@ -22,4 +22,27 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">#000</item>
     </style>
+
+    <!--  Custom TabLayout  -->
+    <style name="CustomTabLayout">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#B3000000</item>
+        <item name="fontFamily">@font/gordita_medium</item>
+    </style>
+
+    <style name="action_button_bs">
+        <item name="android:textColor">#3B73CC</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="DialogFade2">
+        <item name="android:windowEnterAnimation">@anim/fadein</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
 </resources>

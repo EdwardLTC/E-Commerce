@@ -11,9 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.edward.adminapp.CategoriesManagementActivity;
 import com.edward.adminapp.R;
 import com.edward.adminapp.model.modelrespon.CategoryRes;
+import com.edward.adminapp.views.CategoriesManagementActivity;
 
 import java.util.List;
 
@@ -55,6 +55,13 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             public void onClick(View view) {
                 view.setSelected(true);
                 ((CategoriesManagementActivity)context).showDialogDeleteCategory(categoryRes);
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((CategoriesManagementActivity)context).showDialogUpdateCategory(categoryRes);
             }
         });
 

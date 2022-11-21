@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
     android:background="#FBFBFD"
-    tools:context=".MainActivity">
+    tools:context=".Customer.views.MainActivity">
 
     <LinearLayout
         android:id="@+id/content"

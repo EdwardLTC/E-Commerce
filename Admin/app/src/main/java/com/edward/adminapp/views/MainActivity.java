@@ -3,6 +3,7 @@ package com.edward.adminapp.views;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.edward.adminapp.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -22,12 +22,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView tvQuantitySellers, tvQuantityCustomers, tvQuantityCategories;
 
+    private ImageView ivAdminAvatar;
+
     private ConstraintLayout clSellers, clCustomers, clCategories,
             clStatistics, clNotifications;
 
     private ImageButton ibLogout;
     private TextView tvAdminUsername;
-    private ImageView ivAdminAvatar;
 
     private BottomSheetDialog bottomSheetDialog;
 
@@ -83,17 +84,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         int id = view.getId();
+        Intent intent = null;
         switch (id) {
             case R.id.clSellers:
-                Toast.makeText(this, "hi", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, SellersManagementActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
                 break;
             case R.id.clCustomers:
+                intent = new Intent(this, CustomersManagementActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
                 break;
             case R.id.clCategories:
+                intent = new Intent(this, CategoriesManagementActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
                 break;
             case R.id.clStatistics:
+                intent = new Intent(this, StatisticsActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
                 break;
             case R.id.clNotifications:
+                intent = new Intent(this, NotificationsManagementActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
                 break;
             case R.id.ibLogout:
                 showBottomSheetDialog();
@@ -102,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 bottomSheetDialog.hide();
                 break;
             case R.id.btLogout:
+                startActivity(new Intent(this, LoginActivity.class));
                 bottomSheetDialog.hide();
                 logout();
                 break;
