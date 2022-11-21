@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".Seller.views.AddClothesActivity"
+    android:scrollbars="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/ivBackFromAddClothesToClothesActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back"
+            android:layout_margin="16dp"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gordita_medium"
+            android:text="Add Clothes"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivBackFromAddClothesToClothesActivity"
+            app:layout_constraintStart_toEndOf="@+id/ivBackFromAddClothesToClothesActivity"
+            app:layout_constraintTop_toTopOf="@+id/ivBackFromAddClothesToClothesActivity" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:textSize="16dp"
+            android:fontFamily="@font/gordita_regular"
+            android:textColor="@color/black"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivBackFromAddClothesToClothesActivity" />
+
+        <EditText
+            android:id="@+id/edtAddNameClothes"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_margin="16dp"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:background="@drawable/background_edt_search"
+            android:elevation="4dp"
+            android:paddingLeft="12dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/gordita_regular"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Picture (Add at least 2 pictures):"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
+            android:textSize="16dp"
+            android:fontFamily="@font/gordita_regular"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/edtAddNameClothes"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView9">
+
+            <ImageButton
+                android:id="@+id/ibAddImageClothes1"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_edt_search"
+                android:elevation="2dp"
+                app:srcCompat="@drawable/ic_add_image_clothes" />
+
+            <ImageButton
+                android:id="@+id/ibAddImageClothes2"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_edt_search"
+                android:elevation="2dp"
+                app:srcCompat="@drawable/ic_add_image_clothes" />
+
+            <ImageButton
+                android:id="@+id/ibAddImageClothes3"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_edt_search"
+                android:elevation="2dp"
+                app:srcCompat="@drawable/ic_add_image_clothes" />
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/gordita_regular"
+            android:text="Size:"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/textView12"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/textView11"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="16dp"
+            app:layout_constraintTop_toTopOf="@+id/textView11">
+
+            <Button
+                android:id="@+id/btSizeS"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/background_size_clothes"
+                android:fontFamily="@font/gordita_regular"
+                android:text="S"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+            <Button
+                android:id="@+id/btSizeM"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/background_size_clothes"
+                android:fontFamily="@font/gordita_regular"
+                android:text="M"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btSizeL"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/background_size_clothes"
+                android:fontFamily="@font/gordita_regular"
+                android:text="L"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btSizeXL"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/background_size_clothes"
+                android:fontFamily="@font/gordita_regular"
+                android:text="XL"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="44dp"
+            android:fontFamily="@font/gordita_regular"
+            android:text="Quantity:"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+
+        <com.mcdev.quantitizerlibrary.HorizontalQuantitizer
+            android:id="@+id/hqAddClothes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView12" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price ($):"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/gordita_regular"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/hqAddClothes" />
+
+        <EditText
+            android:id="@+id/edtAddPriceClothes"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/background_edt_search"
+            android:elevation="4dp"
+            android:fontFamily="@font/gordita_regular"
+            android:inputType="number"
+            android:gravity="right|center"
+            android:layout_marginLeft="24dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:text="000000"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView10"
+            app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/gordita_regular"
+            android:text="Description:"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView10" />
+
+        <EditText
+            android:id="@+id/edtAddDescriptionClothes"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/background_edt_search"
+            android:elevation="4dp"
+            android:minLines="5"
+            android:fontFamily="@font/gordita_regular"
+            android:inputType="textPersonName"
+            android:paddingLeft="12dp"
+            android:text="Name"
+            android:lineHeight="20dp"
+            android:padding="12dp"
+            android:gravity="left"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <Button
+            android:id="@+id/btAddClothes"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Add Clothes"
+            android:textAllCaps="false"
+            android:fontFamily="@font/gordita_medium"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:background="@drawable/background_add_clothes"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtAddDescriptionClothes" />
+
+        <TextView
+            android:id="@+id/tvCountChooseImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/3"
+            android:textSize="14sp"
+            android:fontFamily="@font/gordita_regular"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="@+id/edtAddNameClothes"
+            app:layout_constraintTop_toTopOf="@+id/textView9" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
+
+
+
