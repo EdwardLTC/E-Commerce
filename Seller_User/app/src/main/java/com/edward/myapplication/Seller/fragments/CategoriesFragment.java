@@ -1,4 +1,4 @@
-package com.edward.myapplication.fragment;
+package com.edward.myapplication.Seller.fragments;
 
 import android.os.Bundle;
 
@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,13 +18,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.edward.myapplication.R;
-import com.edward.myapplication.adapter.CategoriesAdapter;
-import com.edward.myapplication.adapter.ProgressDialogCustom;
+import com.edward.myapplication.Seller.adapters.CategoriesAdapter;
+import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.helper.MyHelper;
-import com.edward.myapplication.model.Categories;
 import com.edward.myapplication.model.modelrespon.CategoryRes;
-import com.edward.myapplication.model.modelrespon.ResGetClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListCategory;
 
 import java.util.ArrayList;

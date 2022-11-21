@@ -20,21 +20,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".MainPayment"
+            android:name=".Customer.fragments.MainPayment"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainCheckout"
+            android:name=".Customer.views.MainCheckout"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainMycart"
+            android:name=".Customer.views.MainMycart"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -42,10 +42,10 @@
         </activity>
         <activity
 
-            android:name=".ClothesListOfCategoryActivity"
+            android:name=".Seller.views.ClothesListOfCategoryActivity"
             android:exported="false" />
         <activity
-            android:name=".VouchersManagementActivity"
+            android:name=".Seller.views.VouchersManagementActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,7 +54,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.ClothesManagementActivity"
+            android:name=".Seller.views.ClothesManagementActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -63,7 +63,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddClothesActivity"
+            android:name=".Seller.views.AddClothesActivity"
 
             android:exported="true">
             <intent-filter>
@@ -73,7 +73,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SellerClothesInformationActivity"
+            android:name=".Seller.views.SellerClothesInformationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -82,7 +82,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.SellerDashboardActivity"
+            android:name=".Seller.views.SellerDashboardActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -91,7 +91,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.MainActivity"
+            android:name=".Customer.views.MainActivity"
             android:exported="false" />
     </application>
 

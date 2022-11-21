@@ -1,4 +1,4 @@
-package com.edward.myapplication;
+package com.edward.myapplication.Seller.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -9,10 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.edward.myapplication.adapter.ClothesImageAdapter;
-import com.edward.myapplication.helper.MyHelper;
+import com.edward.myapplication.R;
+import com.edward.myapplication.Seller.adapters.ClothesImageAdapter;
 import com.edward.myapplication.model.ClothesImage;
 
 import java.util.ArrayList;

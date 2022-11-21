@@ -1,9 +1,8 @@
-package com.edward.myapplication;
+package com.edward.myapplication.Seller.views;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,16 +23,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.edward.myapplication.adapter.VouchersAdapter;
+import com.edward.myapplication.Seller.adapters.VouchersAdapter;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.R;
-import com.edward.myapplication.adapter.ProgressDialogCustom;
+import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.helper.MyHelper;
 import com.edward.myapplication.model.modelrequest.VoucherReq;
 import com.edward.myapplication.model.modelrespon.ResGetListVoucher;
 import com.edward.myapplication.model.modelrespon.Respon;
 import com.edward.myapplication.model.modelrespon.VoucherRes;
-import com.edward.myapplication.view.SellerDashboardActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.saadahmedsoft.popupdialog.PopupDialog;
 import com.saadahmedsoft.popupdialog.Styles;

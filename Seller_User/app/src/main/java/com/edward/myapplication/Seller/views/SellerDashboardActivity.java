@@ -1,4 +1,4 @@
-package com.edward.myapplication.view;
+package com.edward.myapplication.Seller.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;

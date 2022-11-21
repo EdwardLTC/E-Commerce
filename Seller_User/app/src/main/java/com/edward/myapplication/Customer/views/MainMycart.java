@@ -1,14 +1,15 @@
-package com.edward.myapplication;
+package com.edward.myapplication.Customer.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainPayment extends AppCompatActivity {
+import com.edward.myapplication.R;
 
+public class MainMycart extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_payment);
+        setContentView(R.layout.layout_mycart);
     }
 }

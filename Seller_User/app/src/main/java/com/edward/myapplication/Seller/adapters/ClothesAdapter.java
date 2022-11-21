@@ -1,4 +1,4 @@
-package com.edward.myapplication.adapter;
+package com.edward.myapplication.Seller.adapters;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -11,10 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.edward.myapplication.R;
 import com.edward.myapplication.interfaces.OnItem;
-import com.edward.myapplication.model.Clothes;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 
 import java.util.List;

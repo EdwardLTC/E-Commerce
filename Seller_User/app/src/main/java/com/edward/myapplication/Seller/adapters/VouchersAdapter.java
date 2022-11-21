@@ -1,4 +1,4 @@
-package com.edward.myapplication.adapter;
+package com.edward.myapplication.Seller.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,7 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.myapplication.R;
-import com.edward.myapplication.VouchersManagementActivity;
+import com.edward.myapplication.Seller.views.VouchersManagementActivity;
 import com.edward.myapplication.model.modelrespon.VoucherRes;
 
 import java.util.List;

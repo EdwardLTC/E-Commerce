@@ -1,10 +1,9 @@
-package com.edward.myapplication.view;
+package com.edward.myapplication.Customer.views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -12,16 +11,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-import com.edward.myapplication.HomeFragment;
+import com.edward.myapplication.Customer.fragments.HomeFragment;
 import com.edward.myapplication.R;
 import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.edward.myapplication.adapter;
+package com.edward.myapplication;
 
 import android.app.ProgressDialog;
 import android.content.Context;

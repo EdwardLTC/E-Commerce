@@ -1,4 +1,4 @@
-package com.edward.myapplication;
+package com.edward.myapplication.Seller.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,13 +11,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.edward.myapplication.adapter.ClothesAdapter;
-import com.edward.myapplication.adapter.ProgressDialogCustom;
+import com.edward.myapplication.R;
+import com.edward.myapplication.Seller.adapters.ClothesAdapter;
+import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.interfaces.OnItem;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
-import com.edward.myapplication.view.ClothesManagementActivity;
 
 import java.util.ArrayList;
 import java.util.List;

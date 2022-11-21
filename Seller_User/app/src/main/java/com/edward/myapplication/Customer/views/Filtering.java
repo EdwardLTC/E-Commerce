@@ -1,4 +1,4 @@
-package com.edward.myapplication;
+package com.edward.myapplication.Customer.views;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatSeekBar;
 
+import com.edward.myapplication.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class Filtering extends BottomSheetDialogFragment {

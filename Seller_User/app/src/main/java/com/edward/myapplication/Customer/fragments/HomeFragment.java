@@ -1,4 +1,4 @@
-package com.edward.myapplication;
+package com.edward.myapplication.Customer.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.edward.myapplication.Customer.views.Filtering;
+import com.edward.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 

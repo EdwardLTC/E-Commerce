@@ -1,4 +1,4 @@
-package com.edward.myapplication.view;
+package com.edward.myapplication.Seller.views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,12 +7,11 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.edward.myapplication.R;
-import com.edward.myapplication.adapter.ViewPagerClothes;
+import com.edward.myapplication.Seller.adapters.ViewPagerClothes;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 

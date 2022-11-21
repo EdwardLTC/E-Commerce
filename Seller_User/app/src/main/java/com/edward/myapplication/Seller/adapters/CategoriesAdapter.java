@@ -1,4 +1,4 @@
-package com.edward.myapplication.adapter;
+package com.edward.myapplication.Seller.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.edward.myapplication.ClothesListOfCategoryActivity;
+import com.edward.myapplication.Seller.views.ClothesListOfCategoryActivity;
 import com.edward.myapplication.R;
-import com.edward.myapplication.model.Categories;
 import com.edward.myapplication.model.modelrespon.CategoryRes;
 
 import java.util.List;

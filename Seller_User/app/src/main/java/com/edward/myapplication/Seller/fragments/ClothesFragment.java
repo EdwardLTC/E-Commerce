@@ -1,36 +1,23 @@
-package com.edward.myapplication.fragment;
+package com.edward.myapplication.Seller.fragments;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.edward.myapplication.R;
-import com.edward.myapplication.adapter.CategoriesAdapter;
-import com.edward.myapplication.adapter.ClothesAdapter;
-import com.edward.myapplication.adapter.ProgressDialogCustom;
-import com.edward.myapplication.api.ServiceAPI;
-import com.edward.myapplication.model.Categories;
-import com.edward.myapplication.model.Clothes;
+import com.edward.myapplication.Seller.adapters.ClothesAdapter;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
-import com.edward.myapplication.model.modelrespon.ResGetClothes;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 public class ClothesFragment extends Fragment {
 
@@ -87,8 +74,8 @@ public class ClothesFragment extends Fragment {
         ls = new ArrayList<>();
 
 
-        clothesAdapter = new ClothesAdapter(ls, requireContext());
-        rcvClothesManagement.setAdapter(clothesAdapter);
+//        clothesAdapter = new ClothesAdapter(ls, requireContext());
+//        rcvClothesManagement.setAdapter(clothesAdapter);
     }
 
     private void initViews(View view) {
@@ -101,30 +88,30 @@ public class ClothesFragment extends Fragment {
         rcvClothesManagement.setLayoutManager(layoutManager);
     }
 
-    private void loadClothesList() {
-        ServiceAPI.serviceApi.Get
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResGetClothes>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(ResGetClothes resGetClothes) {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-    }
+//    private void loadClothesList() {
+//        ServiceAPI.serviceApi.Get
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<ResGetClothes>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(ResGetClothes resGetClothes) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//
+//                    }
+//                });
+//    }
 }

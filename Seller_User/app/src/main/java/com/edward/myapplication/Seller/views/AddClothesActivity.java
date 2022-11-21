@@ -1,4 +1,4 @@
-package com.edward.myapplication;
+package com.edward.myapplication.Seller.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -16,8 +16,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import com.edward.myapplication.R;
 import com.edward.myapplication.helper.MyHelper;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.mcdev.quantitizerlibrary.AnimationStyle;
