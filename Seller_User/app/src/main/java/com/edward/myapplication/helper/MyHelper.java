@@ -1,10 +1,12 @@
 package com.edward.myapplication.helper;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import com.edward.myapplication.R;
@@ -45,7 +47,19 @@ public class MyHelper {
         bt2.setBackgroundResource(R.drawable.background_size_clothes);
         bt3.setBackgroundResource(R.drawable.background_size_clothes);
         bt4.setBackgroundResource(R.drawable.background_size_clothes);
-
-
     }
+
+
+    // gõ xong tự ẩn bàn phím
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
 }

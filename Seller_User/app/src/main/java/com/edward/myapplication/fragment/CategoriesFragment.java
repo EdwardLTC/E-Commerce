@@ -8,27 +8,47 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.edward.myapplication.R;
 import com.edward.myapplication.adapter.CategoriesAdapter;
+import com.edward.myapplication.adapter.ProgressDialogCustom;
+import com.edward.myapplication.api.ServiceAPI;
+import com.edward.myapplication.helper.MyHelper;
 import com.edward.myapplication.model.Categories;
+import com.edward.myapplication.model.modelrespon.CategoryRes;
+import com.edward.myapplication.model.modelrespon.ResGetClothes;
+import com.edward.myapplication.model.modelrespon.ResGetListCategory;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CategoriesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CategoriesFragment extends Fragment {
+public class CategoriesFragment extends Fragment implements View.OnClickListener {
 
     private RecyclerView rcvCategoriesManagement;
-    private List<Categories> ls;
+    private List<CategoryRes> ls;
     private CategoriesAdapter categoriesAdapter;
+    private TextView tvCantFindCategories, tvTryAgainCategories;
+    private EditText edtSearchCategories;
+    private ImageView ivReloadCategoriesList;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,25 +103,97 @@ public class CategoriesFragment extends Fragment {
         initViews(view);
         initRecycleView();
         ls = new ArrayList<>();
+        loadCategoriesList();
 
-        ls.add(new Categories("Sleeve Shirt Rolo"));
-        ls.add(new Categories("Sleeve Shirt Rolo"));
-        ls.add(new Categories("Sleeve Shirt Rolo"));
-        ls.add(new Categories("Sleeve Shirt Rolo"));
-        ls.add(new Categories("Sleeve Shirt Rolo"));
-        ls.add(new Categories("Sleeve Shirt Rolo"));
+        edtSearchCategories.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_SEARCH) {
+                    String find = textView.getText().toString();
+                    if (!find.isEmpty()) {
+                        searchCategories(find);
+                    }
+                    MyHelper.hideKeyboard(requireActivity());
+                    return true;
+                }
 
-        categoriesAdapter = new CategoriesAdapter(ls, requireContext());
-        rcvCategoriesManagement.setAdapter(categoriesAdapter);
+                return false;
+            }
+        });
+
     }
 
     private void initViews(View view) {
         rcvCategoriesManagement = view.findViewById(R.id.rcvCategoriesManagement);
+        tvCantFindCategories = view.findViewById(R.id.tvCantFindCategories);
+        tvTryAgainCategories = view.findViewById(R.id.tvTryAgainCategories);
+        edtSearchCategories = view.findViewById(R.id.edtSearchCategories);
+        ivReloadCategoriesList = view.findViewById(R.id.ivReloadCategoriesList);
+
     }
 
     private void initRecycleView() {
         rcvCategoriesManagement.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(requireContext(), 4);
         rcvCategoriesManagement.setLayoutManager(layoutManager);
+    }
+
+    private void loadCategoriesList() {
+        ServiceAPI.serviceApi.GetAllCategory()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListCategory>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        ProgressDialogCustom.showProgressDialog(requireContext(), "Please wait");
+                    }
+
+                    @Override
+                    public void onNext(ResGetListCategory resGetListCategory) {
+                        if (resGetListCategory.get_Respon().getRespone_code() == 200) {
+                            ls = resGetListCategory.get_CategoryRes();
+                            categoriesAdapter = new CategoriesAdapter(ls, requireContext());
+                            rcvCategoriesManagement.setAdapter(categoriesAdapter);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        ProgressDialogCustom.dismissProgressDialog();
+                    }
+                });
+    }
+
+    private void searchCategories(String find) {
+        List<CategoryRes> lsSearch = new ArrayList<>();
+        for (CategoryRes categoryRes : ls) {
+            if (categoryRes.getName().toLowerCase().contains(find.toLowerCase())) {
+                lsSearch.add(categoryRes);
+            }
+        }
+        categoriesAdapter = new CategoriesAdapter(lsSearch, requireContext());
+        rcvCategoriesManagement.setAdapter(categoriesAdapter);
+
+        if (lsSearch.size() == 0) {
+            tvTryAgainCategories.setVisibility(View.VISIBLE);
+            tvCantFindCategories.setVisibility(View.VISIBLE);
+        } else {
+            tvTryAgainCategories.setVisibility(View.INVISIBLE);
+            tvCantFindCategories.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ivReloadCategoriesList:
+                loadCategoriesList();
+                break;
+        }
     }
 }

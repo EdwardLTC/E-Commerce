@@ -3,6 +3,7 @@ package com.edward.myapplication.api;
 import com.edward.myapplication.model.modelrequest.ClothesReq;
 import com.edward.myapplication.model.modelrequest.FavoriteReq;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
+import com.edward.myapplication.model.modelrespon.ResGetListCategory;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 import com.edward.myapplication.model.modelrespon.ResGetPerson;
 import com.edward.myapplication.model.modelrespon.Respon;
@@ -59,4 +60,8 @@ public interface ServiceAPI {
 
     @GET("GetClothesWhereCategory")
     Observable<ResGetClothes> GetClothesWhereCategory(@Query("idCategoryReq") int idCategoryReq);
+
+
+    @GET("GetAllCategory")
+    Observable<ResGetListCategory> GetAllCategory();
 }

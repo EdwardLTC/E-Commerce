@@ -12,15 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.myapplication.R;
 import com.edward.myapplication.model.Categories;
+import com.edward.myapplication.model.modelrespon.CategoryRes;
 
 import java.util.List;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder> {
 
-    List<Categories> ls;
+    List<CategoryRes> ls;
     Context c;
 
-    public CategoriesAdapter(List<Categories> ls, Context c) {
+    public CategoriesAdapter(List<CategoryRes> ls, Context c) {
         this.ls = ls;
         this.c = c;
     }
@@ -34,9 +35,9 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Categories categories = ls.get(position);
+        CategoryRes category = ls.get(position);
 
-        holder.tvNameCategoriesItem.setText(categories.getName());
+        holder.tvNameCategoriesItem.setText(category.getName());
 
         if (position % 2 == 0) {
             holder.ivCategoriesItem.setBackgroundResource(R.drawable.background_notify_color_blue);
