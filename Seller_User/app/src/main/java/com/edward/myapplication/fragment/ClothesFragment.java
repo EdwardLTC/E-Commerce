@@ -21,6 +21,7 @@ import com.edward.myapplication.adapter.ProgressDialogCustom;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.model.Categories;
 import com.edward.myapplication.model.Clothes;
+import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ import io.reactivex.schedulers.Schedulers;
 public class ClothesFragment extends Fragment {
 
     private RecyclerView rcvClothesManagement;
-    private List<Clothes> ls;
+    private List<ClothesRes> ls;
     private ClothesAdapter clothesAdapter;
 
 
@@ -84,21 +85,7 @@ public class ClothesFragment extends Fragment {
         initRecycleView();
 //        loadClothesList();
         ls = new ArrayList<>();
-//
-//        ls.add(new Categories("Sleeve Shirt Rolo"));
-//        ls.add(new Categories("Sleeve Shirt Rolo"));
-//        ls.add(new Categories("Sleeve Shirt Rolo"));
-//        ls.add(new Categories("Sleeve Shirt Rolo"));
-//        ls.add(new Categories("Sleeve Shirt Rolo"));
-//        ls.add(new Categories("Sleeve Shirt Rolo"));
 
-        ls.add(new Clothes("shirt", 20, "shirt"));
-        ls.add(new Clothes("shirtshirtshirtshirtshirt", 20, "shirt"));
-        ls.add(new Clothes("shirt", 20, "shirt"));
-        ls.add(new Clothes("shirt", 20, "shirt"));
-        ls.add(new Clothes("shirt", 20, "shirt"));
-        ls.add(new Clothes("shirt", 20, "shirt"));
-        ls.add(new Clothes("shirt", 20, "shirt"));
 
         clothesAdapter = new ClothesAdapter(ls, requireContext());
         rcvClothesManagement.setAdapter(clothesAdapter);
@@ -115,22 +102,18 @@ public class ClothesFragment extends Fragment {
     }
 
     private void loadClothesList() {
-        ServiceAPI.serviceApi.GetClothesWhere(7)
+        ServiceAPI.serviceApi.Get
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResGetClothes>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        ProgressDialogCustom.showProgressDialog(requireContext(), "please wait");
+
                     }
 
                     @Override
                     public void onNext(ResGetClothes resGetClothes) {
-                        Log.d(">>>>>>>>>>>>>>> ", resGetClothes.get_Respon().getRespone_code()+"");
 
-                        if (resGetClothes.get_Respon().getRespone_code() == 200) {
-//                            List<> ls = resGetClothes.
-                        }
                     }
 
                     @Override
@@ -140,7 +123,7 @@ public class ClothesFragment extends Fragment {
 
                     @Override
                     public void onComplete() {
-                        ProgressDialogCustom.dismissProgressDialog();
+
                     }
                 });
     }

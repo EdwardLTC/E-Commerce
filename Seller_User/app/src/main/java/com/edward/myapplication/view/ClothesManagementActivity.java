@@ -29,17 +29,17 @@ public class ClothesManagementActivity extends AppCompatActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clothes_management);
         initViews();
-
-        String hash1 = MD5("123");
-        String hash2 = MD5("123");
-        Log.d("hash1", hash1);
-        Log.d("hash2", hash2);
-        Log.d("", "===========================");
-
-        String hash3 = MD5("123");
-        String hash4 = MD5("abc");
-        Log.d("hash3", hash3);
-        Log.d("hash4", hash4);
+//
+//        String hash1 = MD5("123");
+//        String hash2 = MD5("123");
+//        Log.d("hash1", hash1);
+//        Log.d("hash2", hash2);
+//        Log.d("", "===========================");
+//
+//        String hash3 = MD5("123");
+//        String hash4 = MD5("abc");
+//        Log.d("hash3", hash3);
+//        Log.d("hash4", hash4);
 
         viewPagerClothesAdapter =new ViewPagerClothes(this);
         viewPagerClothes.setAdapter(viewPagerClothesAdapter);

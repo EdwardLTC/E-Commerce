@@ -1,6 +1,7 @@
 package com.edward.myapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.edward.myapplication.ClothesListOfCategoryActivity;
 import com.edward.myapplication.R;
 import com.edward.myapplication.model.Categories;
 import com.edward.myapplication.model.modelrespon.CategoryRes;
@@ -43,6 +45,15 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             holder.ivCategoriesItem.setBackgroundResource(R.drawable.background_notify_color_blue);
         } else
             holder.ivCategoriesItem.setBackgroundResource(R.drawable.background_notify_color_green);
+
+        holder.ivCategoriesItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(c, ClothesListOfCategoryActivity.class);
+                intent.putExtra("idCategory", category.getId());
+                c.startActivity(intent);
+            }
+        });
 
     }
 

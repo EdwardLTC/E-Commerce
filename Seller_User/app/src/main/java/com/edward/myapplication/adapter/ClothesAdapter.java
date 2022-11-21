@@ -14,16 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.edward.myapplication.R;
 import com.edward.myapplication.model.Clothes;
+import com.edward.myapplication.model.modelrespon.ClothesRes;
 
 import java.util.List;
 
 public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHolder> {
     String linkUrlTest = "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80";
 
-    List<Clothes> ls;
+    List<ClothesRes> ls;
     Context c;
 
-    public ClothesAdapter(List<Clothes> ls, Context c) {
+    public ClothesAdapter(List<ClothesRes> ls, Context c) {
         this.ls = ls;
         this.c = c;
     }
@@ -37,11 +38,14 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Clothes clothes = ls.get(position);
+        ClothesRes clothes = ls.get(position);
+
         holder.tvNameClothesItem.setText(clothes.getName());
-        holder.tvTypeClothesItem.setText(clothes.getCategory());
-        holder.tvQuantityClothesItem.setText(clothes.getQuantity()+"");
-        Glide.with(c).load(linkUrlTest).into(holder.ivClothesItem);
+//        holder.tvTypeClothesItem.setText(clothes.get);
+//        holder.tvNameClothesItem.setText(clothes.getName());
+//        holder.tvTypeClothesItem.setText(clothes.getCategory());
+//        holder.tvQuantityClothesItem.setText(clothes.getQuantity()+"");
+//        Glide.with(c).load(linkUrlTest).into(holder.ivClothesItem);
         holder.tVMoreDetailsClothesItem.setPaintFlags(holder.tVMoreDetailsClothesItem.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 
