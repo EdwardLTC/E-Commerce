@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="4dp"
-    android:background="@drawable/style_white">
+    android:background="@color/background">
 
     <FrameLayout
         android:id="@+id/content_frame_home"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#D7F5F5F8"
+        android:background="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -281,7 +281,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="12dp"
-        android:background="@drawable/style_white"
+        android:background="@drawable/background_bottom_nav"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
