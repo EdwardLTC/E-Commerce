@@ -6,9 +6,9 @@ import com.edward.myapplication.model.modelrequest.VoucherReq;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListCategory;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
+import com.edward.myapplication.model.modelrespon.ResGetListProperties;
 import com.edward.myapplication.model.modelrespon.ResGetListVoucher;
 import com.edward.myapplication.model.modelrespon.ResGetPerson;
-import com.edward.myapplication.model.modelrespon.ResGetProperties;
 import com.edward.myapplication.model.modelrespon.ResGetVoucher;
 import com.edward.myapplication.model.modelrespon.Respon;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -45,7 +45,7 @@ public interface ServiceAPI {
     Observable<Respon> DeleteClothes(@Query("id") int id);
 
     @POST("GetClothesProperties")
-    Observable<ResGetProperties> GetClothesProperties(@Query("id") int id);
+    Observable<ResGetListProperties> GetClothesProperties(@Query("idClothes") int id);
 
     @GET("Login")
     Observable<ResGetPerson> Login(@Query(("_email")) String _email, @Query(("_psw")) String _psw);
@@ -65,11 +65,8 @@ public interface ServiceAPI {
     @GET("GetClothesWhereCategory")
     Observable<ResGetListClothes> GetClothesWhereCategory(@Query("idCategoryReq") int idCategoryReq);
 
-
     @GET("GetAllCategory")
     Observable<ResGetListCategory> GetAllCategory();
-
-
 
     @GET("GetAllVoucher")
     Observable<ResGetListVoucher> GetAllVoucher();
@@ -88,4 +85,7 @@ public interface ServiceAPI {
 
     @POST("DeleteVoucher")
     Observable<Respon> DeleteVoucher(@Query("id") int id);
+
+    @GET("GetClothesFrom")
+    Observable<ResGetListClothes> getAllClothesFromSeller(@Query("idSellerReq")int idSeller);
 }
