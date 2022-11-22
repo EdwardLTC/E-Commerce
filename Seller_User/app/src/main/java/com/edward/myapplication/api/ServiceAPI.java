@@ -85,4 +85,7 @@ public interface ServiceAPI {
 
     @POST("DeleteVoucher")
     Observable<Respon> DeleteVoucher(@Query("id") int id);
+
+    @GET("GetClothesFrom")
+    Observable<ResGetListClothes> getAllClothesFromSeller(@Query("idSellerReq"));
 }
