@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -19,7 +20,9 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class SearchFragment extends Fragment {
     BottomNavigationView bottomNavigationView;
-    ImageView img;
+    ImageView Imgfilter, ImgFind, ImgHistory;
+    EditText edtFind;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,9 +34,12 @@ public class SearchFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setItemIconTintList(null);
-        img = view.findViewById(R.id.filter);
+        Imgfilter = view.findViewById(R.id.filter);
+        ImgFind = view.findViewById(R.id.ImgFind);
+        edtFind = view.findViewById(R.id.edtFind);
+        ImgHistory = view.findViewById(R.id.ImgHistory);
 
-        img.setOnClickListener(new View.OnClickListener() {
+        Imgfilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Filtering filtering = new Filtering();

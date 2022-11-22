@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +21,9 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class HomeFragment extends Fragment {
     BottomNavigationView bottomNavigationView;
-    ImageView img;
+    ImageView filter, find, dress, shirts, pants, tshirts;
+    TextView seeAll;
+    EditText edtFind;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,9 +35,16 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setItemIconTintList(null);
-        img = view.findViewById(R.id.filter);
+        filter = view.findViewById(R.id.btnfilter);
+        find = view.findViewById(R.id.ImgFind);
+        edtFind = view.findViewById(R.id.txtFind);
+        dress = view.findViewById(R.id.ImgDress);
+        shirts = view.findViewById(R.id.ImgShirts);
+        pants = view.findViewById(R.id.ImgPants);
+        tshirts = view.findViewById(R.id.ImgTshirts);
+        seeAll = view.findViewById(R.id.txtSeeAll);
 
-        img.setOnClickListener(new View.OnClickListener() {
+        filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Filtering filtering = new Filtering();
