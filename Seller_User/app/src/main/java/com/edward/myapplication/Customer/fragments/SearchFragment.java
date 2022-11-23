@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.myapplication.Customer.views.Filtering;
 import com.edward.myapplication.R;
@@ -22,6 +23,7 @@ public class SearchFragment extends Fragment {
     BottomNavigationView bottomNavigationView;
     ImageView Imgfilter, ImgFind, ImgHistory;
     EditText edtFind;
+    RecyclerView recyclerView;
 
     @Nullable
     @Override
@@ -38,6 +40,7 @@ public class SearchFragment extends Fragment {
         ImgFind = view.findViewById(R.id.ImgFind);
         edtFind = view.findViewById(R.id.edtFind);
         ImgHistory = view.findViewById(R.id.ImgHistory);
+        recyclerView = view.findViewById(R.id.RecyclerViewSearch);
 
         Imgfilter.setOnClickListener(new View.OnClickListener() {
             @Override

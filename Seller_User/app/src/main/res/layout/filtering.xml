@@ -81,7 +81,7 @@
             android:id="@+id/btnTop"
             android:layout_width="110dp"
             android:layout_height="70dp"
-            android:background="@drawable/style_white"
+            android:background="@drawable/style_white2"
             android:text="Top Tranding"
             android:layout_marginLeft="10dp">
         </Button>
@@ -90,7 +90,7 @@
             android:id="@+id/btnFeatured"
             android:layout_width="150dp"
             android:layout_height="70dp"
-            android:background="@drawable/style_white"
+            android:background="@drawable/style_white2"
             android:text="Featured Products"
             android:layout_marginLeft="10dp">
         </Button>

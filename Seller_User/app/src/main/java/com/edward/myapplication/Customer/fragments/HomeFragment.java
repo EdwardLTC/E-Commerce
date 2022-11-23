@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.myapplication.Customer.views.Filtering;
 import com.edward.myapplication.R;
@@ -24,6 +25,7 @@ public class HomeFragment extends Fragment {
     ImageView filter, find, dress, shirts, pants, tshirts;
     TextView seeAll;
     EditText edtFind;
+    RecyclerView recyclerView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class HomeFragment extends Fragment {
         pants = view.findViewById(R.id.ImgPants);
         tshirts = view.findViewById(R.id.ImgTshirts);
         seeAll = view.findViewById(R.id.txtSeeAll);
+        recyclerView = view.findViewById(R.id.RecyclerViewInHome);
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
