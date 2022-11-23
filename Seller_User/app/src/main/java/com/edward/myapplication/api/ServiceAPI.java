@@ -45,7 +45,7 @@ public interface ServiceAPI {
     Observable<Respon> DeleteClothes(@Query("id") int id);
 
     @POST("GetClothesProperties")
-    Observable<ResGetListProperties> GetClothesProperties(@Query("idClothes") int id);
+    Observable<ResGetListProperties> GetAllClothesProperties(@Query("idClothes") int id);
 
     @GET("Login")
     Observable<ResGetPerson> Login(@Query(("_email")) String _email, @Query(("_psw")) String _psw);
