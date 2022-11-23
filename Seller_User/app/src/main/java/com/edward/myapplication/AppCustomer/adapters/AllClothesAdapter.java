@@ -16,9 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.model.Clothes;
+import com.edward.myapplication.model.modelrespon.ClothesPropertiesRes;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.ResGetListProperties;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observer;
@@ -47,10 +49,46 @@ public class AllClothesAdapter extends RecyclerView.Adapter<AllClothesAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ClothesRes clothesRes = ls.get(position);
-        getClothesPrice(clothesRes.getId());
+//        getClothesPrice(clothesRes.getId());
         holder.tvNameAllClothesItem.setText(clothesRes.getName());
-        holder.tvPriceAllClothesItem.setText(price+"");
+//        holder.tvPriceAllClothesItem.setText(price);
 
+        ServiceAPI.serviceApi.GetAllClothesProperties(clothesRes.getId())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListProperties>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResGetListProperties resGetListProperties) {
+                        Log.d(">>>>>>>>>>>.. ", resGetListProperties.get_Respon().getRespone_code()+"");
+                        if (resGetListProperties.get_Respon().getRespone_code() == 200) {
+                            List<ClothesPropertiesRes> ls = new ArrayList<>();
+                            ls = resGetListProperties.get_ClothesPropertiesRes();
+
+                            if (ls.size() == 0) {
+                                price = "0.0";
+                            } else
+                                price = "$" + resGetListProperties.get_ClothesPropertiesRes().get(0).getPrice();
+                            holder.tvPriceAllClothesItem.setText(price);
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(">>>>>>>>>>>.. ", "errr");
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
 //        holder.tvPriceAllClothesItem.setText();
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -102,7 +140,13 @@ public class AllClothesAdapter extends RecyclerView.Adapter<AllClothesAdapter.Vi
                     public void onNext(ResGetListProperties resGetListProperties) {
                         Log.d(">>>>>>>>>>>.. ", resGetListProperties.get_Respon().getRespone_code()+"");
                         if (resGetListProperties.get_Respon().getRespone_code() == 200) {
-                            price = resGetListProperties.get_ClothesPropertiesRes().get(0).getPrice();
+                            List<ClothesPropertiesRes> ls = new ArrayList<>();
+                            ls = resGetListProperties.get_ClothesPropertiesRes();
+
+                            if (ls.size() == 0) {
+                                price = "0.0";
+                            } else
+                                price = "$" + resGetListProperties.get_ClothesPropertiesRes().get(0).getPrice();
                         }
 
                     }

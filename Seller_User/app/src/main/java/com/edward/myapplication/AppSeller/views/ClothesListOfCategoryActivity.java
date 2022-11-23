@@ -89,10 +89,10 @@ public class ClothesListOfCategoryActivity extends AppCompatActivity implements 
 
                             if (ls.size() == 0) {
                                 tvCantFindClothesOfCategory.setVisibility(View.VISIBLE);
-                                tvCantFindClothesOfCategory.setVisibility(View.VISIBLE);
+                                tvTryAgainClothesOfCategory.setVisibility(View.VISIBLE);
                             } else {
                                 tvCantFindClothesOfCategory.setVisibility(View.INVISIBLE);
-                                tvCantFindClothesOfCategory.setVisibility(View.INVISIBLE);
+                                tvTryAgainClothesOfCategory.setVisibility(View.INVISIBLE);
                             }
                         }
                     }

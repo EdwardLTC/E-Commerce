@@ -58,6 +58,7 @@ public class CustomerAllClothesActivity extends AppCompatActivity implements Vie
         ivBackToMainActivityFromAllClothes = findViewById(R.id.ivBackToMainActivityFromAllClothes);
 
         tvRefreshAllClothes = findViewById(R.id.tvRefreshAllClothes);
+        tvRefreshAllClothes.setPaintFlags(tvRefreshAllClothes.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         tvCantFindAllClothes = findViewById(R.id.tvCantFindAllClothes);
         tvTryAgainAllClothes = findViewById(R.id.tvTryAgainAllClothes);

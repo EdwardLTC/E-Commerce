@@ -3,6 +3,7 @@ package com.edward.myapplication.api;
 import com.edward.myapplication.model.modelrequest.ClothesReq;
 import com.edward.myapplication.model.modelrequest.FavoriteReq;
 import com.edward.myapplication.model.modelrequest.VoucherReq;
+import com.edward.myapplication.model.modelrespon.ResGetCategory;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListCategory;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
@@ -44,7 +45,7 @@ public interface ServiceAPI {
     @POST("DeleteClothes")
     Observable<Respon> DeleteClothes(@Query("id") int id);
 
-    @POST("GetClothesProperties")
+    @GET("GetClothesProperties")
     Observable<ResGetListProperties> GetAllClothesProperties(@Query("idClothes") int id);
 
     @GET("Login")
@@ -67,6 +68,10 @@ public interface ServiceAPI {
 
     @GET("GetAllCategory")
     Observable<ResGetListCategory> GetAllCategory();
+
+    @GET("GetCategoryWhere")
+    Observable<ResGetCategory> GetCategoryWhere(@Query("id") int id);
+
 
     @GET("GetAllVoucher")
     Observable<ResGetListVoucher> GetAllVoucher();
