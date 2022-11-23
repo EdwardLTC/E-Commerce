@@ -1,9 +1,7 @@
 package com.edward.myapplication.model.modelrequest;
 
-public class ClothesProperty {
+public class ClothesPropertyReq {
     public String size;
     public int quantily;
-    public int price;
-
-
+    public String price;
 }

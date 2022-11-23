@@ -9,6 +9,7 @@ public class ClothesRes {
     public String des;
     public String name;
     public ArrayList<String> imgsUrl;
+    public int quantily;
 
     public ClothesRes() {
     }

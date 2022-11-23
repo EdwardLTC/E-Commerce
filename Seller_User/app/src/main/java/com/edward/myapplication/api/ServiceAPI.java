@@ -88,4 +88,5 @@ public interface ServiceAPI {
 
     @GET("GetClothesFrom")
     Observable<ResGetListClothes> getAllClothesFromSeller(@Query("idSellerReq")int idSeller);
+
 }
