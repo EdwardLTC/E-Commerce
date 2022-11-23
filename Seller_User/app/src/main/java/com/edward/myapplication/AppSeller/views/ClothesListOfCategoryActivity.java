@@ -27,7 +27,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class ClothesListOfCategoryActivity extends AppCompatActivity implements View.OnClickListener, OnItem {
+public class ClothesListOfCategoryActivity extends AppCompatActivity implements View.OnClickListener{
 
     private int idCategory;
     private int idSeller = 7;
@@ -84,7 +84,7 @@ public class ClothesListOfCategoryActivity extends AppCompatActivity implements 
                     public void onNext(ResGetListClothes resGetListClothes) {
                         if (resGetListClothes.get_Respon().getRespone_code() == 200) {
                             ls = resGetListClothes.get_ClothesRes();
-                            clothesAdapter = new ClothesAdapter(ls, ClothesListOfCategoryActivity.this, ClothesListOfCategoryActivity.this);
+                            clothesAdapter = new ClothesAdapter(ls, ClothesListOfCategoryActivity.this);
                             rcvClothesOfCategory.setAdapter(clothesAdapter);
 
                             if (ls.size() == 0) {
@@ -123,8 +123,5 @@ public class ClothesListOfCategoryActivity extends AppCompatActivity implements 
 
     }
 
-    @Override
-    public void fillData(ImageView ivClothes, TextView tvNameClothes, TextView tvTypeClothes, TextView tvQuantity, ClothesRes clothesRes, int position) {
-        tvNameClothes.setText(clothesRes.getName());
-    }
+
 }

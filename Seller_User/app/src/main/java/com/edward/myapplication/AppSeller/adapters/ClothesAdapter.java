@@ -24,10 +24,9 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
     Context c;
     OnItem onItem;
 
-    public ClothesAdapter(List<ClothesRes> ls, Context c, OnItem onItem) {
+    public ClothesAdapter(List<ClothesRes> ls, Context c) {
         this.ls = ls;
         this.c = c;
-        this.onItem = onItem;
     }
 
     @NonNull
@@ -42,6 +41,7 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
         ClothesRes clothes = ls.get(position);
 
         holder.tvNameClothesItem.setText(clothes.getName());
+        holder.tvQuantityClothesItem.setText(clothes.getQuantily()+"");
 //        holder.tvTypeClothesItem.setText(clothes.get);
 //        holder.tvNameClothesItem.setText(clothes.getName());
 //        holder.tvTypeClothesItem.setText(clothes.getCategory());
@@ -49,12 +49,12 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
 //        Glide.with(c).load(linkUrlTest).into(holder.ivClothesItem);
         holder.tVMoreDetailsClothesItem.setPaintFlags(holder.tVMoreDetailsClothesItem.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
-        onItem.fillData(holder.ivClothesItem,
-                holder.tvNameClothesItem,
-                holder.tvTypeClothesItem,
-                holder.tvQuantityClothesItem,
-                clothes,
-                position);
+//        onItem.fillData(holder.ivClothesItem,
+//                holder.tvNameClothesItem,
+//                holder.tvTypeClothesItem,
+//                holder.tvQuantityClothesItem,
+//                clothes,
+//                position);
 
     }
 

@@ -71,6 +71,14 @@ public class ClothesRes {
         this.imgsUrl = imgsUrl;
     }
 
+    public int getQuantily() {
+        return quantily;
+    }
+
+    public void setQuantily(int quantily) {
+        this.quantily = quantily;
+    }
+
     @Override
     public String toString() {
         return "ClothesRes{" +

@@ -11,19 +11,31 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.AppSeller.adapters.ClothesAdapter;
+import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
+import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class ClothesFragment extends Fragment {
 
     private RecyclerView rcvClothesManagement;
     private List<ClothesRes> ls;
+    private TextView tvCantFindClothesManagement, tvTryAgainClothesManagement;
     private ClothesAdapter clothesAdapter;
+
+    private int idSeller = 7;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -70,8 +82,8 @@ public class ClothesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
         initRecycleView();
-//        loadClothesList();
         ls = new ArrayList<>();
+        loadClothesList();
 
 
 //        clothesAdapter = new ClothesAdapter(ls, requireContext());
@@ -88,31 +100,42 @@ public class ClothesFragment extends Fragment {
         rcvClothesManagement.setLayoutManager(layoutManager);
     }
 
-//    private void loadClothesList() {
-//        ServiceAPI.serviceApi.Get
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Observer<ResGetClothes>() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onNext(ResGetClothes resGetClothes) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//
-//                    }
-//                });
-////    }
-//}
+    private void loadClothesList() {
+        ServiceAPI.serviceApi.getAllClothesFromSeller(idSeller)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListClothes>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        ProgressDialogCustom.showProgressDialog(requireContext(), "Please wait");
+                    }
+
+                    @Override
+                    public void onNext(ResGetListClothes resGetListClothes) {
+                        if (resGetListClothes.get_Respon().getRespone_code() == 200) {
+                            ls = resGetListClothes.get_ClothesRes();
+                            clothesAdapter = new ClothesAdapter(ls, requireContext());
+                            rcvClothesManagement.setAdapter(clothesAdapter);
+
+                            if (ls.size() == 0) {
+                                tvCantFindClothesManagement.setVisibility(View.VISIBLE);
+                                tvCantFindClothesManagement.setVisibility(View.VISIBLE);
+                            } else {
+                                tvCantFindClothesManagement.setVisibility(View.INVISIBLE);
+                                tvCantFindClothesManagement.setVisibility(View.INVISIBLE);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        ProgressDialogCustom.dismissProgressDialog();
+                    }
+                });
+    }
 }
