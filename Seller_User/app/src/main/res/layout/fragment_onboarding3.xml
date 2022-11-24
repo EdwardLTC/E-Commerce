@@ -3,56 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="16dp"
     tools:context=".OnboardingFragment1">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/splash3"/>
+        android:src="@drawable/splash3" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Get Your Order"
+        android:textColor="@color/black"
         android:textSize="30dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"/>
+        android:textStyle="bold" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Business or commerce an order is a stated "
-        android:textSize="15dp"
         android:textColor="@color/black"
-        android:layout_marginTop="20dp"/>
+        android:textSize="15dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="intention either spoken to engage in a"
-        android:textSize="15dp"
-        android:gravity="center"
         android:textColor="@color/black"
-      />
+        android:textSize="15dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="commercial transaction specific products"
-        android:textSize="15dp"
         android:gravity="center"
+        android:text="commercial transaction specific products"
         android:textColor="@color/black"
-        />
+        android:textSize="15dp" />
+
     <Button
         android:id="@+id/btn_obd3"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/group_224"
-        android:textColor="@color/white"
-        />
-
-
+        android:textColor="@color/white" />
 
 
 </LinearLayout>

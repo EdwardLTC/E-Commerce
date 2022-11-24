@@ -1,5 +1,6 @@
 package com.edward.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,7 +17,6 @@ import androidx.fragment.app.Fragment;
  */
 public class OnboardingFragment3 extends Fragment {
     private Button btn_obf3;
-    private View nview3;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -59,16 +59,17 @@ public class OnboardingFragment3 extends Fragment {
         }
     }
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView (LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        nview3= inflater.inflate(R.layout.fragment_onboarding3, container, false);
-        btn_obf3 = nview3.findViewById(R.id.btn_obd2);
+        View nview3 = inflater.inflate(R.layout.fragment_onboarding3, container, false);
+        btn_obf3 = nview3.findViewById(R.id.btn_obd3);
         btn_obf3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),HomeFragment.class);
+                Intent intent = new Intent(getActivity(),MainActivity.class);
                 getActivity().startActivity(intent);
             }
         });
