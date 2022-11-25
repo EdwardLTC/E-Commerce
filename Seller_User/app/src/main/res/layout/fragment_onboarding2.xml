@@ -16,31 +16,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Make Payment"
-        android:textSize="30dp"
-        android:textStyle="bold"
+        android:textSize="22dp"
+        android:fontFamily="@font/gordita_medium"
         android:textColor="@color/black"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="16dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Payment is the transfer of money "
-        android:textSize="15dp"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="services in exchange product or Payments typically made terms agreed"
-        android:textSize="15dp"
-        android:gravity="center"
-        android:textColor="@color/black"
-      />
+        android:text="Payment is the transfer of money\n services in exchange product or Payments\n typically made terms agreed"
+        android:textSize="14dp"
+        android:fontFamily="@font/gordita_regular"
+        android:textColor="@color/text_blur"
+        android:textAlignment="center"
+        android:layout_marginTop="12dp"/>
+
     <Button
         android:id="@+id/btn_obd2"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/group_218__1_"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:fontFamily="@font/gordita_medium"
+        android:textSize="16sp"
+        android:background="@drawable/orange2"
         android:textColor="@color/white"
         />
 

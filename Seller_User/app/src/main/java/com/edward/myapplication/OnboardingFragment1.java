@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.edward.myapplication.AppCustomer.views.MainActivity;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link OnboardingFragment1#newInstance} factory method to

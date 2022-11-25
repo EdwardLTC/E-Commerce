@@ -8,6 +8,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.edward.myapplication.AppCustomer.views.MainActivity;
+
 public class LoginActivity extends AppCompatActivity {
 
     private Button btLogin;
