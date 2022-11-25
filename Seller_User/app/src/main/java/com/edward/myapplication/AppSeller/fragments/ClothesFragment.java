@@ -10,9 +10,12 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,8 +24,8 @@ import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.AppSeller.adapters.ClothesAdapter;
 import com.edward.myapplication.api.ServiceAPI;
+import com.edward.myapplication.helper.MyHelper;
 import com.edward.myapplication.interfaces.OnItem;
-import com.edward.myapplication.model.Clothes;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 import com.edward.myapplication.model.modelrespon.Respon;
@@ -32,6 +35,7 @@ import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -44,8 +48,9 @@ public class ClothesFragment extends Fragment implements OnItem {
     private List<ClothesRes> ls;
     private TextView tvCantFindClothesManagement, tvTryAgainClothesManagement;
     private ClothesAdapter clothesAdapter;
+    private EditText edtSearchClothes;
 
-    private int idSeller = 6;
+    private int idSeller = 11;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -95,15 +100,47 @@ public class ClothesFragment extends Fragment implements OnItem {
         ls = new ArrayList<>();
         loadClothesList();
 
+        edtSearchClothes.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_SEARCH) {
+                    String find = textView.getText().toString();
+                    if (!find.isEmpty()) {
+                        edtSearchClothes(find);
+                    }
+                    MyHelper.hideKeyboard(requireActivity());
+                    return true;
+                }
 
-//        clothesAdapter = new ClothesAdapter(ls, requireContext());
-//        rcvClothesManagement.setAdapter(clothesAdapter);
+                return false;
+            }
+        });
+
+    }
+
+    private void edtSearchClothes(String find) {
+        List<ClothesRes> lsSearch = new ArrayList<>();
+        for (ClothesRes clothesRes : ls) {
+            if (clothesRes.getName().toLowerCase().contains(find.toLowerCase()))
+                lsSearch.add(clothesRes);
+        }
+        clothesAdapter = new ClothesAdapter(lsSearch, requireContext(), this);
+        rcvClothesManagement.setAdapter(clothesAdapter);
+
+        if (lsSearch.size() == 0) {
+            tvTryAgainClothesManagement.setVisibility(View.VISIBLE);
+            tvCantFindClothesManagement.setVisibility(View.VISIBLE);
+        } else {
+            tvCantFindClothesManagement.setVisibility(View.INVISIBLE);
+            tvTryAgainClothesManagement.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void initViews(View view) {
         rcvClothesManagement = view.findViewById(R.id.rcvClothesManagement);
         tvCantFindClothesManagement = view.findViewById(R.id.tvCantFindClothesManagement);
         tvTryAgainClothesManagement = view.findViewById(R.id.tvTryAgainClothesManagement);
+        edtSearchClothes = view.findViewById(R.id.edtSearchClothes);
     }
 
     private void initRecycleView() {
@@ -126,14 +163,14 @@ public class ClothesFragment extends Fragment implements OnItem {
                     public void onNext(ResGetListClothes resGetListClothes) {
                         if (resGetListClothes.get_Respon().getRespone_code() == 200) {
                             ls = resGetListClothes.get_ClothesRes();
-                            clothesAdapter = new ClothesAdapter(ls, requireContext());
+                            clothesAdapter = new ClothesAdapter(ls, requireContext(), ClothesFragment.this);
                             rcvClothesManagement.setAdapter(clothesAdapter);
 
                             if (ls.size() == 0) {
                                 tvCantFindClothesManagement.setVisibility(View.VISIBLE);
                                 tvCantFindClothesManagement.setText("You have no products");
                                 tvTryAgainClothesManagement.setVisibility(View.VISIBLE);
-                                tvTryAgainClothesManagement.setText("Let's create a new one");
+                                tvTryAgainClothesManagement.setText("Let's create a new once");
                             } else {
                                 tvCantFindClothesManagement.setVisibility(View.INVISIBLE);
                                 tvCantFindClothesManagement.setText("Can't not find any result");
@@ -162,31 +199,28 @@ public class ClothesFragment extends Fragment implements OnItem {
 
     @Override
     public void showDialogDeleteClothes(ClothesRes clothesRes) {
+        PopupDialog.getInstance(requireContext())
+                .setStyle(Styles.IOS)
+                .setHeading("Delete")
+                .setDescription("Are you sure you want to delete this Vouchers?"+
+                        " You won't be able to see them again.")
+                .setPositiveButtonText("Delete")
+                .setPositiveButtonTextColor(R.color.red_blur)
+                .setCancelable(false)
+                .showDialog(new OnDialogButtonClickListener() {
+                    @Override
+                    public void onPositiveClicked(Dialog dialog) {
+                        deleteClothes(clothesRes);
+                        super.onPositiveClicked(dialog);
+                    }
 
+                    @Override
+                    public void onNegativeClicked(Dialog dialog) {
+                        super.onNegativeClicked(dialog);
+                    }
+                });
     }
 
-//    public void showDialogDeleteClothes(ClothesRes clothesRes) {
-//        PopupDialog.getInstance(requireContext())
-//                .setStyle(Styles.IOS)
-//                .setHeading("Delete")
-//                .setDescription("Are you sure you want to delete this Vouchers?"+
-//                        " You won't be able to see them again.")
-//                .setPositiveButtonText("Delete")
-//                .setPositiveButtonTextColor(R.color.red_blur)
-//                .setCancelable(false)
-//                .showDialog(new OnDialogButtonClickListener() {
-//                    @Override
-//                    public void onPositiveClicked(Dialog dialog) {
-//                        deleteClothes(clothesRes);
-//                        super.onPositiveClicked(dialog);
-//                    }
-//
-//                    @Override
-//                    public void onNegativeClicked(Dialog dialog) {
-//                        super.onNegativeClicked(dialog);
-//                    }
-//                });
-//    }
 
     public void deleteClothes(ClothesRes clothesRes) {
         ServiceAPI.serviceApi.DeleteClothes(clothesRes.getId())

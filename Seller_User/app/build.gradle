@@ -46,6 +46,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
     // circle indicatior link: https://github.com/ongakuer/CircleIndicator
     implementation 'me.relex:circleindicator:2.1.6'
 

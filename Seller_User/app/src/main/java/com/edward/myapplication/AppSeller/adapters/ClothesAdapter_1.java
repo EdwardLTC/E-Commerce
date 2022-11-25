@@ -1,7 +1,6 @@
 package com.edward.myapplication.AppSeller.adapters;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
@@ -15,8 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.edward.myapplication.AppSeller.fragments.ClothesFragment;
 import com.edward.myapplication.AppSeller.views.SellerClothesInformationActivity;
+import com.edward.myapplication.AppSeller.views.SellerClothesInformationActivity_1;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.interfaces.OnItem;
@@ -30,7 +29,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHolder> {
+public class ClothesAdapter_1 extends RecyclerView.Adapter<ClothesAdapter_1.ViewHolder> {
     String linkUrlTest = "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80";
 
     List<ClothesRes> ls;
@@ -38,7 +37,7 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
     OnItem onItem;
     private String categoryName = "er";
 
-    public ClothesAdapter(List<ClothesRes> ls, Context c, OnItem onItem) {
+    public ClothesAdapter_1(List<ClothesRes> ls, Context c, OnItem onItem) {
         this.ls = ls;
         this.c = c;
         this.onItem = onItem;
@@ -102,7 +101,7 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(c, SellerClothesInformationActivity.class);
+                Intent intent = new Intent(c, SellerClothesInformationActivity_1.class);
                 intent.putExtra("clothes", clothes);
                 c.startActivity(intent);
             }

@@ -94,4 +94,12 @@ public interface ServiceAPI {
     @GET("GetClothesFrom")
     Observable<ResGetListClothes> getAllClothesFromSeller(@Query("idSellerReq")int idSeller);
 
+
+    @GET("GetPersonWhere")
+    Observable<ResGetPerson> GetPersonWhere(@Query("Id") int id);
+
+    @POST("DeletePerson")
+    Observable<Respon> DeletePerson(@Query("id") int id);
+
+
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppSeller.views.SellerClothesInformationActivity"
+    tools:context=".AppSeller.views.SellerClothesInformationActivity_1"
     android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPagerClothesImage"
+            android:id="@+id/viewPagerClothesImage_1"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,15 +23,15 @@
         </androidx.viewpager2.widget.ViewPager2>
 
         <me.relex.circleindicator.CircleIndicator3
-            android:id="@+id/indicator"
+            android:id="@+id/indicator_1"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            app:layout_constraintBottom_toBottomOf="@+id/viewPagerClothesImage"
+            app:layout_constraintBottom_toBottomOf="@+id/viewPagerClothesImage_1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/ivBackToClothesActivity"
+            android:id="@+id/ivBackToClothesActivity_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back"
@@ -40,7 +40,7 @@
             android:layout_margin="16dp"/>
 
         <ImageView
-            android:id="@+id/ivMoreOptionsClothes"
+            android:id="@+id/ivMoreOptionsClothes_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="parent"
@@ -50,7 +50,7 @@
 
 
         <TextView
-            android:id="@+id/tvSellerNameClothesInfo"
+            android:id="@+id/tvSellerNameClothesInfo_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -60,34 +60,51 @@
             android:text="Casual Henley Shirts"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/tvSellerPriceClothesInfo"
+            app:layout_constraintEnd_toStartOf="@+id/tvSellerPriceClothesInfo_1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewPagerClothesImage" />
+            app:layout_constraintTop_toBottomOf="@id/viewPagerClothesImage_1" />
 
         <TextView
-            android:id="@+id/tvSellerPriceClothesInfo"
+            android:id="@+id/tvSellerPriceClothesInfo_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$175"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewPagerClothesImage"
+            app:layout_constraintTop_toBottomOf="@id/viewPagerClothesImage_1"
             android:layout_marginRight="16dp"
             android:layout_marginTop="24dp"
             android:textSize="18sp"
             android:fontFamily="@font/gordita_medium"
             android:textColor="@color/black"/>
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvSellerClothesPropertiesInfo"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tvSellerQuantityClothesInfo_1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Quantity: 678"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSellerNameClothesInfo"/>
+            app:layout_constraintTop_toBottomOf="@id/tvSellerNameClothesInfo_1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/gordita_regular"
+            android:textColor="#000000"/>
 
         <TextView
-            android:id="@+id/tvSellerDescriptionClothesTitle"
+            android:id="@+id/tvSellerSizeClothesInfo_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Size: M"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/gordita_regular"
+            android:textColor="#000000"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSellerQuantityClothesInfo_1"/>
+
+        <TextView
+            android:id="@+id/tvSellerDescriptionClothesTitle_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Description:"
@@ -97,10 +114,10 @@
             android:fontFamily="@font/gordita_regular"
             android:textColor="#000000"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rcvSellerClothesPropertiesInfo"/>
+            app:layout_constraintTop_toBottomOf="@id/tvSellerSizeClothesInfo_1"/>
 
         <TextView
-            android:id="@+id/tvSellerDescriptionClothesInfo"
+            android:id="@+id/tvSellerDescriptionClothesInfo_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="A Henley shirt is a collarless pullover shirt, by a round neckline and a placket about 3 to 5 inches (8 to 13 cm) long and usually having 2–5 buttons."
@@ -113,7 +130,7 @@
             android:textColor="#80000000"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSellerDescriptionClothesTitle" />
+            app:layout_constraintTop_toBottomOf="@id/tvSellerDescriptionClothesTitle_1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

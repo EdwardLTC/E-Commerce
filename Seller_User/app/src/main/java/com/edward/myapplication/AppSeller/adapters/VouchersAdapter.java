@@ -42,7 +42,7 @@ public class VouchersAdapter extends RecyclerView.Adapter<VouchersAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         VoucherRes voucherRes = ls.get(position);
-        holder.tvNameVouchersItem.setText("Sale off " + voucherRes.getRatio() + " %");
+        holder.tvNameVouchersItem.setText("Sale off " + voucherRes.getRatio() + "%");
         holder.clVouchersItem.setBackgroundResource(backgrounds[(int)(Math.random()*4)]);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

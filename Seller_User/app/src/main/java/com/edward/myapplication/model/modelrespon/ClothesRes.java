@@ -1,8 +1,9 @@
 package com.edward.myapplication.model.modelrespon;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ClothesRes {
+public class ClothesRes implements Serializable {
     public int id;
     public int idseller;
     public int idCategory;

@@ -8,25 +8,43 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.edward.myapplication.AppSeller.adapters.ClothesAdapter;
+import com.edward.myapplication.AppSeller.adapters.VouchersAdapter;
+import com.edward.myapplication.AppSeller.fragments.ClothesFragment;
+import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
+import com.edward.myapplication.api.ServiceAPI;
+import com.edward.myapplication.model.modelrespon.ResGetListClothes;
+import com.edward.myapplication.model.modelrespon.ResGetListVoucher;
+import com.edward.myapplication.model.modelrespon.ResGetPerson;
 import com.saadahmedsoft.popupdialog.PopupDialog;
 import com.saadahmedsoft.popupdialog.Styles;
 import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class SellerDashboardActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView tvMoreDetailsClothes, tvMoreDetailsVouchers, tvMoreDetailsBills,
             tvMoreDetailsStatistics, tvMoreDetailsSupports,
-            tvNameSellerDashboard, tvEmailSellerDashboard;
+            tvNameSellerDashboard, tvEmailSellerDashboard,
+            tvQuantityClothes, tvQuantityVouchers;
     ImageButton ibLogoutSellerAccount;
-    ImageView ivAvatarSeller;
+    CircleImageView ivAvatarSeller;
     ConstraintLayout clClothes, clVouchers, clBills,
             clStatistics, clSupports;
+
+    private int idSeller = 11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +52,65 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
         setContentView(R.layout.activity_seller_dashboard);
         initViews();
         underLineText();
-
+        fillValueSeller();
         handleListener();
+
+
+        // đếm số lượng vouchers
+        ServiceAPI.serviceApi.GetAllVoucherOf(idSeller)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListVoucher>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(ResGetListVoucher resGetListVoucher) {
+                        if (resGetListVoucher.get_Respon().getRespone_code() == 200) {
+                            String sizeVouchers = resGetListVoucher.get_VoucherRes().size() + "";
+                            tvQuantityVouchers.setText(sizeVouchers);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(">>>>>>>>>> ", "vouchers error");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+
+        // đếm số lượng sản phẩm
+        ServiceAPI.serviceApi.getAllClothesFromSeller(idSeller)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListClothes>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(ResGetListClothes resGetListClothes) {
+                        if (resGetListClothes.get_Respon().getRespone_code() == 200) {
+                            String sizeClothes = resGetListClothes.get_ClothesRes().size() + "";
+                            tvQuantityClothes.setText(sizeClothes);
+
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        ProgressDialogCustom.dismissProgressDialog();
+                    }
+                });
     }
 
     private void handleListener() {
@@ -59,6 +134,8 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
         clVouchers = findViewById(R.id.clVouchers);
         clStatistics = findViewById(R.id.clStatistics);
         clSupports = findViewById(R.id.clSupports);
+        tvQuantityClothes = findViewById(R.id.tvQuantityClothes);
+        tvQuantityVouchers = findViewById(R.id.tvQuantityVouchers);
     }
 
     private void underLineText() {
@@ -67,6 +144,39 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
         tvMoreDetailsBills.setPaintFlags(tvMoreDetailsBills.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         tvMoreDetailsStatistics.setPaintFlags(tvMoreDetailsStatistics.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         tvMoreDetailsSupports.setPaintFlags(tvMoreDetailsSupports.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+    }
+
+    private void fillValueSeller() {
+        ServiceAPI.serviceApi.GetPersonWhere(idSeller)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetPerson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        ProgressDialogCustom.showProgressDialog(SellerDashboardActivity.this, "Please wait");
+                    }
+
+                    @Override
+                    public void onNext(ResGetPerson resGetPerson) {
+//                        Log.d(">>>>>>>>>>",resGetPerson.get_Respon().respone_code+"" );
+//                        if (resGetPerson.get_Respon().respone_code== 200) {
+                            tvNameSellerDashboard.setText(resGetPerson.get_PersonRes().getName());
+                            tvEmailSellerDashboard.setText(resGetPerson.get_PersonRes().getMail());
+//                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(">>>>>>>>>>","err" );
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        ProgressDialogCustom.dismissProgressDialog();
+
+                    }
+                });
     }
 
     @SuppressLint("NonConstantResourceId")

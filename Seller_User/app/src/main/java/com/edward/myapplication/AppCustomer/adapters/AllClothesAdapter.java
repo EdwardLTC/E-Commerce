@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
-import com.edward.myapplication.model.Clothes;
 import com.edward.myapplication.model.modelrespon.ClothesPropertiesRes;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.ResGetListProperties;

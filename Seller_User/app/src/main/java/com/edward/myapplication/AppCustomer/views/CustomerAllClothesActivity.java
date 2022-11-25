@@ -19,7 +19,6 @@ import com.edward.myapplication.AppCustomer.adapters.AllClothesAdapter;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
-import com.edward.myapplication.model.Clothes;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 
