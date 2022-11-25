@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.edward.myapplication.AppSeller.adapters.ClothesAdapter;
 import com.edward.myapplication.AppSeller.adapters.VouchersAdapter;
 import com.edward.myapplication.AppSeller.fragments.ClothesFragment;
@@ -158,11 +159,12 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
 
                     @Override
                     public void onNext(ResGetPerson resGetPerson) {
-//                        Log.d(">>>>>>>>>>",resGetPerson.get_Respon().respone_code+"" );
-//                        if (resGetPerson.get_Respon().respone_code== 200) {
+                        Log.d(">>>>>>>>>>",resGetPerson.get_Respon().respone_code+"" );
+                        if (resGetPerson.get_Respon().respone_code== 200) {
                             tvNameSellerDashboard.setText(resGetPerson.get_PersonRes().getName());
                             tvEmailSellerDashboard.setText(resGetPerson.get_PersonRes().getMail());
-//                        }
+                            Glide.with(SellerDashboardActivity.this).load(resGetPerson.get_PersonRes().getImgUrl()).into(ivAvatarSeller);
+                        }
                     }
 
                     @Override
