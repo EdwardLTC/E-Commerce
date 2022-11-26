@@ -3,8 +3,10 @@ package com.edward.myapplication.api;
 import com.edward.myapplication.model.modelrequest.ClothesReq;
 import com.edward.myapplication.model.modelrequest.FavoriteReq;
 import com.edward.myapplication.model.modelrequest.VoucherReq;
+import com.edward.myapplication.model.modelrequest.BillReq;
 import com.edward.myapplication.model.modelrespon.ResGetCategory;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
+import com.edward.myapplication.model.modelrespon.ResGetListBill;
 import com.edward.myapplication.model.modelrespon.ResGetListCategory;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListProperties;
@@ -94,12 +96,24 @@ public interface ServiceAPI {
     @GET("GetClothesFrom")
     Observable<ResGetListClothes> getAllClothesFromSeller(@Query("idSellerReq")int idSeller);
 
-
     @GET("GetPersonWhere")
     Observable<ResGetPerson> GetPersonWhere(@Query("Id") int id);
 
     @POST("DeletePerson")
     Observable<Respon> DeletePerson(@Query("id") int id);
 
+    @GET("UpdateStatusBill")
+    Observable<Respon> UpdateStatusBill (@Query("status") String status, @Query("idBill") int idBill);
 
+    @GET("GetBillOfUser")
+    Observable<ResGetListBill> GetBillOfUser (@Query("idUser") int idUser);
+
+    @GET("GetBillOfSeller")
+    Observable<ResGetListBill> GetBillOfSeller (@Query("idSeller") int idSeller);
+
+    @GET("MarkBillComplete")
+    Observable<Respon> MarkBillComplete (@Query("idBill") int idBill);
+
+    @POST("CreateBill")
+    Observable<BillReq> CreateBill (@Body BillReq billReq);
 }
