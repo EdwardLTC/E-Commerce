@@ -17,21 +17,21 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/product"
+                android:id="@+id/productsearch"
                 android:layout_width="140dp"
                 android:layout_height="180dp"
                 android:src="@drawable/product_1"
                 android:layout_marginLeft="10dp" />
             <ImageView
-                android:id="@+id/like"
+                android:id="@+id/likesearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_heart_selected">
+                android:src="@drawable/ic_favorite_24">
             </ImageView>
         </LinearLayout>
 
         <TextView
-            android:id="@+id/NameProduct"
+            android:id="@+id/NameProductsearch"
             android:layout_width="150dp"
             android:layout_height="30dp"
             android:layout_marginLeft="30dp"
@@ -40,7 +40,7 @@
         </TextView>
 
         <TextView
-            android:id="@+id/PriceProduct"
+            android:id="@+id/PriceProductsearch"
             android:layout_width="40dp"
             android:layout_height="20dp"
             android:text="160$"
