@@ -11,6 +11,7 @@
 
 
     <color name="background">#FBFBFD</color>
+    <color name="button_default">#F67952</color>
     <color name="btn_default">#F67952</color>
     <color name="text_default">#000000</color>
     <color name="text_hint">#808080</color>
