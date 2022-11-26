@@ -42,7 +42,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    //    link hash: https://github.com/patrickfav/bcrypt
+//        link hash: https://github.com/patrickfav/bcrypt
     implementation group: 'at.favre.lib', name: 'bcrypt', version: '0.9.0'
 
     // popup dialog link: https://github.com/saadahmedscse/Android-Popup-Dialog

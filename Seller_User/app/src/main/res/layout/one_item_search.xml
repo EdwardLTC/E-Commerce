@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:layout_height="240dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="15dp"
+    app:cardCornerRadius="15dp">
+
+    <LinearLayout
+        android:layout_width="180dp"
+        android:layout_height="240dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/productsearch"
+                android:layout_width="140dp"
+                android:layout_height="180dp"
+                android:src="@drawable/product_1"
+                android:layout_marginLeft="10dp" />
+            <ImageView
+                android:id="@+id/likesearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_favorite_24">
+            </ImageView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/NameProductsearch"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:text="Long sleeve shirt"
+            android:textColor="@color/black">
+        </TextView>
+
+        <TextView
+            android:id="@+id/PriceProductsearch"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:text="160$"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginLeft="60dp">
+        </TextView>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
