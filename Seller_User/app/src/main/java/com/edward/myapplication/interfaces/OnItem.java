@@ -12,4 +12,6 @@ public interface OnItem {
                          TextView tvTypeClothes,
                          TextView tvQuantity,
                          ClothesRes clothesRes, int position);
+
+    public void showDialogDeleteClothes(ClothesRes clothesRes);
 }

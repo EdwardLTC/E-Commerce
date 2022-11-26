@@ -45,4 +45,24 @@
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
+    <!--add categories-->
+    <style name="DialogA" parent="RecyclerPickerDialogTheme">
+        <item name="colorPrimary">@color/btn_default</item>
+        <item name="recyclerPickerDialogCornerRadius">20dp</item>
+    </style>
+
+    <style name="RecyclerPickerDialogTheme" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="colorPrimary"/>
+        <item name="colorOnPrimary"/>
+        <item name="colorSecondary"/>
+
+        <item name="android:textColorPrimary"/>
+        <item name="android:textColorSecondary"/>
+
+        <item name="colorAccent"/>
+        <item name="android:colorEdgeEffect"/>
+        <item name="recyclerPickerDialogCornerRadius"/>
+    </style>
+    <!--end categories-->
+
 </resources>
