@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="16dp" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,6 +12,7 @@
         android:paddingTop="10dp">
 
         <Button
+            android:id="@+id/btnbackcheckout"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/ic_back" />
@@ -25,10 +27,20 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:padding="10dp"
         android:text="Delivery address"
         android:textColor="@color/black"
@@ -39,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
         android:background="@color/text_onBtn"
         android:orientation="horizontal">
@@ -93,7 +105,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
         android:background="@color/text_onBtn"
         android:orientation="horizontal">
@@ -146,7 +158,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:padding="10dp"
         android:text="Billing information"
         android:textColor="@color/black"
@@ -157,7 +169,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
         android:background="@color/text_onBtn"
         android:orientation="vertical">
@@ -318,6 +330,7 @@
                 android:src="@mipmap/img_10" />
         </LinearLayout>
     </LinearLayout>
+
     <Button
         android:id="@+id/btncheckout"
         android:layout_width="300dp"
@@ -325,5 +338,8 @@
         android:background="@drawable/button_add"
         android:text="Payment"
         android:textColor="#FFFFFF"
-        android:layout_marginLeft="50dp"/>
+        android:layout_marginLeft="50dp"></Button>
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

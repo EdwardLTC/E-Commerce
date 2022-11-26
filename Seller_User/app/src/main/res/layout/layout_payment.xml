@@ -26,6 +26,7 @@
         android:textAlignment="center" />
 
     <Button
+        android:id="@+id/btnpayment"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
@@ -35,6 +36,7 @@
         android:textColor="#FFFFFF" />
 
     <Button
+        android:id="@+id/btnbacktohome"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
