@@ -181,16 +181,6 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-//    private void showDialogSelectCategories() {
-//        Toast.makeText(this, "Heller", Toast.LENGTH_SHORT).show();
-//        RecyclerPickerDialogFragment.class.newInstance(
-//                SelectionType.MULTIPLE,
-//                SelectorType.CHECK_BOX,
-//                R.style.DialogA,
-//
-//        )
-//        RecyclerPickerDialogFragment nwq = new RecyclerPickerDialogFragment();
-//    }
 
     private void openCamera() {
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
