@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".AppSeller.views.ClothesListOfCategoryActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivBackToClothesActivityFromClothesOfCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_back" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gordita_medium"
+            android:text="Clothes Management"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvRefreshClothesOfCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Refresh"
+            android:textSize="14sp"
+            android:fontFamily="@font/gordita_medium"
+            android:textColor="@color/notify_background_type3"
+            android:layout_marginRight="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/edtSearchClothesOfCategory"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/background_edt_search"
+        android:drawableLeft="@drawable/ic_search"
+        android:drawablePadding="12dp"
+        android:elevation="6dp"
+        android:maxLines="1"
+        android:inputType="text"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:fontFamily="@font/gordita_regular"
+        android:hint="Search clothes..."
+        android:imeOptions="actionSearch"
+        android:paddingLeft="12dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/text_blur"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvClothesOfCategory"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtSearchClothesOfCategory"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tvCantFindClothesOfCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gordita_bold"
+        android:text="Can't not find any result"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rcvClothesOfCategory" />
+
+    <TextView
+        android:id="@+id/tvTryAgainClothesOfCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gordita_regular"
+        android:text="Please try again"
+        android:textAlignment="center"
+        android:textColor="@color/text_blur"
+        android:textSize="18dp"
+        android:visibility="invisible"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCantFindClothesOfCategory" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

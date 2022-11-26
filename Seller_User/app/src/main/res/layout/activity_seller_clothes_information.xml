@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AppSeller.views.SellerClothesInformationActivity"
+    android:background="@color/background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerClothesImage"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+
+        </androidx.viewpager2.widget.ViewPager2>
+
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="@+id/viewPagerClothesImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivBackToClothesActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="16dp"/>
+
+        <ImageView
+            android:id="@+id/ivMoreOptionsClothes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="16dp"
+            app:srcCompat="@drawable/ic_more_option_clothes" />
+
+
+        <TextView
+            android:id="@+id/tvSellerNameClothesInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="32dp"
+            android:fontFamily="@font/gordita_medium"
+            android:text="Casual Henley Shirts"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/tvSellerPriceClothesInfo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewPagerClothesImage" />
+
+        <TextView
+            android:id="@+id/tvSellerPriceClothesInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$175"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewPagerClothesImage"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="24dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/gordita_medium"
+            android:textColor="@color/black"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvSellerClothesPropertiesInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSellerNameClothesInfo"/>
+
+        <TextView
+            android:id="@+id/tvSellerDescriptionClothesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description:"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/gordita_regular"
+            android:textColor="#000000"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rcvSellerClothesPropertiesInfo"/>
+
+        <TextView
+            android:id="@+id/tvSellerDescriptionClothesInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="A Henley shirt is a collarless pullover shirt, by a round neckline and a placket about 3 to 5 inches (8 to 13 cm) long and usually having 2–5 buttons."
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:textSize="14sp"
+            android:lineHeight="20dp"
+            android:fontFamily="@font/gordita_regular"
+            android:textColor="#80000000"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSellerDescriptionClothesTitle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

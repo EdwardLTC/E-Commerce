@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_background_profile" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/gordita_medium"
+        android:text="Profile"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/ic_more"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="104dp"
+        android:layout_height="107dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/img_avatar"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="232dp"
+        android:fontFamily="@font/gordita_medium"
+        android:text="Alex Nikiforov"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="280dp"
+        android:layout_marginRight="136dp"
+        android:fontFamily="@font/gordita_light"
+        android:text="alex@msn.com"
+        android:textSize="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/round_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="288dp"
+        android:layout_marginRight="240dp"
+        android:background="@drawable/border_white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/round_orange"
+        app:layout_constraintLeft_toLeftOf="@id/round_white"
+        app:layout_constraintTop_toTopOf="@id/round_white" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="57dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/ic_bag"
+        app:layout_constraintLeft_toLeftOf="@id/round_white"
+        app:layout_constraintTop_toTopOf="@id/round_white" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/gordita_black"
+        android:text="Progress Order"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/round_white"
+        app:layout_constraintTop_toTopOf="@id/round_white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="124dp"
+        android:fontFamily="@font/gordita_medium"
+        android:textStyle="bold"
+        android:text="10+"
+        android:textSize="10dp"
+        app:layout_constraintLeft_toLeftOf="@id/round_white"
+        app:layout_constraintTop_toTopOf="@id/round_white" />
+
+    <ImageView
+        android:id="@+id/round_white2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="288dp"
+        android:layout_marginRight="100dp"
+        android:background="@drawable/border_white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/round_blue"
+        app:layout_constraintLeft_toLeftOf="@id/round_white2"
+        app:layout_constraintTop_toTopOf="@id/round_white2" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="63dp"
+        android:background="@drawable/ic_ticket"
+        app:layout_constraintLeft_toLeftOf="@id/round_white2"
+        app:layout_constraintTop_toTopOf="@id/round_white2" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/gordita_black"
+        android:text="Promocodes"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/round_white2"
+        app:layout_constraintTop_toTopOf="@id/round_white2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="124dp"
+        android:fontFamily="@font/gordita_medium"
+        android:textStyle="bold"
+        android:text="5"
+        android:textSize="10dp"
+        app:layout_constraintLeft_toLeftOf="@id/round_white2"
+        app:layout_constraintTop_toTopOf="@id/round_white2" />
+
+    <ImageView
+        android:id="@+id/round_white3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="256dp"
+        android:layout_marginTop="288dp"
+        android:background="@drawable/border_white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/round_yellow"
+        app:layout_constraintLeft_toLeftOf="@id/round_white3"
+        app:layout_constraintTop_toTopOf="@id/round_white3" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="57dp"
+        android:layout_marginTop="58dp"
+        android:background="@drawable/ic_star"
+        app:layout_constraintLeft_toLeftOf="@id/round_white3"
+        app:layout_constraintTop_toTopOf="@id/round_white3" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/gordita_black"
+        android:text="Reviewes"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/round_white3"
+        app:layout_constraintTop_toTopOf="@id/round_white3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="124dp"
+        android:fontFamily="@font/gordita_medium"
+        android:textStyle="bold"
+        android:text="4.5K"
+        android:textSize="10dp"
+        app:layout_constraintLeft_toLeftOf="@id/round_white3"
+        app:layout_constraintTop_toTopOf="@id/round_white3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="468dp"
+        android:fontFamily="@font/gordita_bold"
+        android:text="Personal Information"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="524dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/gordita_light"
+                android:layout_marginLeft="26dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chris Harison"
+                android:fontFamily="@font/gordita_black"
+                android:layout_marginLeft="200dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:fontFamily="@font/gordita_light"
+                android:layout_marginLeft="26dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chris@gmail.com"
+                android:fontFamily="@font/gordita_black"
+                android:layout_marginLeft="200dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:fontFamily="@font/gordita_light"
+                android:layout_marginLeft="26dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="San Diego"
+                android:fontFamily="@font/gordita_black"
+                android:layout_marginLeft="200dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:fontFamily="@font/gordita_light"
+                android:layout_marginLeft="26dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="012345678"
+                android:fontFamily="@font/gordita_black"
+                android:layout_marginLeft="150dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
