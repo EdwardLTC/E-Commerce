@@ -11,6 +11,8 @@ import android.widget.Button;
 
 import com.edward.myapplication.R;
 
+import java.util.List;
+
 public class MyHelper {
 
     // thêm hiệu ứng khi click
@@ -42,12 +44,17 @@ public class MyHelper {
         return "";
     }
 
-    public static void checkButtonSize(Button bt1, Button bt2, Button bt3, Button bt4) {
-        bt1.setBackgroundResource(R.drawable.background_size_clothes_selected);
-        bt2.setBackgroundResource(R.drawable.background_size_clothes);
-        bt3.setBackgroundResource(R.drawable.background_size_clothes);
-        bt4.setBackgroundResource(R.drawable.background_size_clothes);
-    }
+//    public static void checkButtonSize(String size, String check, String uncheck, List<String> ls, Button bt) {
+//        if (!size.equals(check)) {
+//            size = check;
+//            bt.setBackgroundResource(R.drawable.background_size_clothes_selected);
+//            ls.add(size);
+//        } else {
+//            size = uncheck;
+//            bt.setBackgroundResource(R.drawable.background_size_clothes);
+//            ls.remove(size);
+//        }
+//    }
 
 
     // gõ xong tự ẩn bàn phím
@@ -60,6 +67,10 @@ public class MyHelper {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public static String convertToCapitalizeText(String str) {
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 
 }
