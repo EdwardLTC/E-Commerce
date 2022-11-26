@@ -3,6 +3,7 @@ package com.edward.myapplication.AppSeller.views;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.LifecycleOwner;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -13,21 +14,31 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.edward.myapplication.R;
 import com.edward.myapplication.helper.MyHelper;
+import com.edward.myapplication.model.modelrespon.CategoryRes;
+import com.github.guilhe.recyclerpickerdialog.RecyclerPickerDialogFragment;
+import com.github.guilhe.recyclerpickerdialog.SelectionType;
+import com.github.guilhe.recyclerpickerdialog.SelectorType;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.mcdev.quantitizerlibrary.AnimationStyle;
 import com.mcdev.quantitizerlibrary.HorizontalQuantitizer;
 import com.mcdev.quantitizerlibrary.QuantitizerListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AddClothesActivity extends AppCompatActivity implements View.OnClickListener {
 
     HorizontalQuantitizer hqAddClothes;
-    Button btSizeS, btSizeM, btSizeL, btSizeXL;
+    Button btSizeS, btSizeM, btSizeL, btSizeXL, btAddCategoryClothes;
     ImageButton ibAddCloth1, ibAddCloth2, ibAddCloth3;
     ImageView ivBackFromAddClothesToClothesActivity;
     private int quantity = 0;
@@ -35,6 +46,20 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
     private int chooseImageCheck = 0;
     private BottomSheetDialog bottomSheetDialog;
     Uri imageUri;
+
+    // picker dialog
+    String title = "";
+    Boolean showSearchBar = false;
+    String inputHint = "";
+    String buttonText = "OK";
+    Boolean resetValueOnShow = true;
+    Boolean dismissKeyboardOnSelection = true;
+    Boolean dismissOnSelection = true;
+    Boolean isChoiceMandatory = true;
+    List<CategoryRes> lsCategory = new ArrayList<>();
+    int dialogHeight = ViewGroup.LayoutParams.MATCH_PARENT;
+    LifecycleOwner lifecycleOwner = null;
+    // end picker dialog
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +75,7 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
         ibAddCloth2.setOnClickListener(this);
         ibAddCloth3.setOnClickListener(this);
         ivBackFromAddClothesToClothesActivity.setOnClickListener(this);
-
+        btAddCategoryClothes.setOnClickListener(this);
 
     }
 
@@ -64,6 +89,7 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
         ibAddCloth2 = findViewById(R.id.ibAddImageClothes2);
         ibAddCloth3 = findViewById(R.id.ibAddImageClothes3);
         ivBackFromAddClothesToClothesActivity = findViewById(R.id.ivBackFromAddClothesToClothesActivity);
+        btAddCategoryClothes = findViewById(R.id.btAddCategoryClothes);
     }
 
     private void loadHorizontalQuantitizer() {
@@ -139,9 +165,7 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.btn_camera:
-
                 enableRuntimePermission();
-//                openCamera();
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.btn_gallery:
@@ -150,8 +174,23 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.ivBackFromAddClothesToClothesActivity:
                 startActivity(new Intent(this, ClothesManagementActivity.class));
+                break;
+            case R.id.btAddCategoryClothes:
+//                showDialogSelectCategories();
+                break;
         }
     }
+
+//    private void showDialogSelectCategories() {
+//        Toast.makeText(this, "Heller", Toast.LENGTH_SHORT).show();
+//        RecyclerPickerDialogFragment.class.newInstance(
+//                SelectionType.MULTIPLE,
+//                SelectorType.CHECK_BOX,
+//                R.style.DialogA,
+//
+//        )
+//        RecyclerPickerDialogFragment nwq = new RecyclerPickerDialogFragment();
+//    }
 
     private void openCamera() {
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
