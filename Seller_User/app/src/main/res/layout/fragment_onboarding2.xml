@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="16dp"
     tools:context=".OnboardingFragment1">
 
     <ImageView
         android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
         android:layout_height="wrap_content"
         android:src="@drawable/splash2"/>
     <TextView
@@ -17,6 +18,7 @@
         android:layout_height="wrap_content"
         android:text="Make Payment"
         android:textSize="22dp"
+        android:layout_gravity="center"
         android:fontFamily="@font/gordita_medium"
         android:textColor="@color/black"
         android:layout_marginTop="16dp"/>
@@ -25,6 +27,7 @@
         android:layout_height="wrap_content"
         android:text="Payment is the transfer of money\n services in exchange product or Payments\n typically made terms agreed"
         android:textSize="14dp"
+        android:layout_gravity="center"
         android:fontFamily="@font/gordita_regular"
         android:textColor="@color/text_blur"
         android:textAlignment="center"
@@ -36,6 +39,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:text="Next"
+        android:layout_gravity="center"
         android:textAllCaps="false"
         android:fontFamily="@font/gordita_medium"
         android:textSize="16sp"
