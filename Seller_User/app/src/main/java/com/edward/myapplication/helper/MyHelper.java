@@ -11,8 +11,21 @@ import android.widget.Button;
 
 import com.edward.myapplication.R;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class MyHelper {
 
+    // thêm hiệu ứng khi click
+
+
+    public static String getHashPassword(String password) {
+        return BCrypt.withDefaults().hashToString(12, password.toCharArray());
+    }
+
+    public static Boolean isVerifiedHash(String password, String passwordHash) {
+        BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), passwordHash);
+        return result.verified;
+    }
     // thêm hiệu ứng khi click
     public static void addClickEffect(View view)
     {
