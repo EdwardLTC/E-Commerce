@@ -5,25 +5,38 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.myapplication.AppCustomer.views.Filtering;
+import com.edward.myapplication.Customer.fragments.FavotiteFragment;
 import com.edward.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class HomeFragment extends Fragment {
     BottomNavigationView bottomNavigationView;
-    ImageView img;
+    ImageView filter, find, dress, shirts, pants, tshirts;
+    TextView seeAll;
+    EditText edtFind;
+    RecyclerView recyclerView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view =  inflater.inflate(R.layout.fragment_home, container, false);
+
+        LinearLayoutManager linearLayoutManager  = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        return view;
     }
 
     @Override
@@ -31,9 +44,17 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setItemIconTintList(null);
-        img = view.findViewById(R.id.filter);
+        filter = view.findViewById(R.id.btnfilter);
+        find = view.findViewById(R.id.ImgFind);
+        edtFind = view.findViewById(R.id.txtFind);
+        dress = view.findViewById(R.id.ImgDress);
+        shirts = view.findViewById(R.id.ImgShirts);
+        pants = view.findViewById(R.id.ImgPants);
+        tshirts = view.findViewById(R.id.ImgTshirts);
+        seeAll = view.findViewById(R.id.txtSeeAll);
+        recyclerView = view.findViewById(R.id.RecyclerViewInHome);
 
-        img.setOnClickListener(new View.OnClickListener() {
+        filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Filtering filtering = new Filtering();
@@ -51,8 +72,10 @@ public class HomeFragment extends Fragment {
                     case R.id.bottom_shop:
                         break;
                     case R.id.bottom_heart:
+                        loadFragment(new FavotiteFragment());
                         break;
                     case R.id.bottom_profile:
+                        loadFragment(new ProfileFragment());
                         break;
                 }
                 return true;
