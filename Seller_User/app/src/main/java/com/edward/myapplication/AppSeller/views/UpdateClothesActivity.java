@@ -23,11 +23,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.cloudinary.android.MediaManager;
+import com.cloudinary.android.callback.ErrorInfo;
+import com.cloudinary.android.callback.UploadCallback;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
+import com.edward.myapplication.helper.MyHelper;
 import com.edward.myapplication.model.modelrequest.ClothesPropertyReq;
 import com.edward.myapplication.model.modelrequest.ClothesReq;
 import com.edward.myapplication.model.modelrespon.CategoryRes;
@@ -35,6 +40,7 @@ import com.edward.myapplication.model.modelrespon.ClothesPropertiesRes;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.ResGetCategory;
 import com.edward.myapplication.model.modelrespon.ResGetListCategory;
+import com.edward.myapplication.model.modelrespon.ResGetListProperties;
 import com.edward.myapplication.model.modelrespon.Respon;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.mcdev.quantitizerlibrary.AnimationStyle;
@@ -45,7 +51,10 @@ import com.saadahmedsoft.popupdialog.Styles;
 import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -61,6 +70,7 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
     ImageButton ibUpdateCloth1, ibUpdateCloth2, ibUpdateCloth3;
     ImageView ivBackFromUpdateClothesToClothesActivity;
     EditText edtUpdateDescriptionClothes, edtUpdateNameClothes, edtUpdatePriceClothes;
+    TextView tvCountChooseImageUpdate;
     private int quantity = 0;
     private int sizeCheck = 0;
     private int chooseImageCheck = 0;
@@ -78,30 +88,46 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
     // end picker dialog
 
     String sizeS = "", sizeM = "", sizeL = "", sizeXL = "";
-    List<String> lsSize;
+    private List<String> lsSize;
+
+    List<String> lsImageUrl;
+    List<Uri> lsImageUri;
+    private ProgressDialog mProgressDialogImage;
 
     private ClothesRes clothesUpdate;
     private List<ClothesPropertiesRes> lsClothesPropertiesUpdate;
+
+    private int countChooseImage = 0;
+
+    ClothesReq clothesReq = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_clothes);
         initViews();
+        mProgressDialogImage = new ProgressDialog(this);
+
+        // init list
+        lsImageUrl = new ArrayList<>();
+        lsImageUri = new ArrayList<>();
+        lsClothesPropertiesUpdate = new ArrayList<>();
+        lsSize = new ArrayList<>();
+        lsCategories = new ArrayList<>();
+        lsIdCategories = new ArrayList<>();
+        // end init
+
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setIndeterminate(true);
         mProgressDialog.setMessage("Wait");
         mProgressDialog.setCanceledOnTouchOutside(false);
         // fill value to update
         clothesUpdate = (ClothesRes)getIntent().getSerializableExtra("clothesUpdate");
+        idCategorySelected = clothesUpdate.getIdCategory();
         lsClothesPropertiesUpdate = (List<ClothesPropertiesRes>) getIntent().getSerializableExtra("lsClothesPropertiesUpdate");
+
         fillValueUpdate(clothesUpdate);
-        // end fill value
-        lsSize = new ArrayList<>();
-        lsCategories = new ArrayList<>();
-        lsIdCategories = new ArrayList<>();
-//        lsCategoriesSelected = new ArrayList<>();
-//        lsIdCategoriesSelected = new ArrayList<>();
+
         loadHorizontalQuantitizer();
         loadListCategories();
 
@@ -118,12 +144,30 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
     }
 
 
+    @SuppressLint("SetTextI18n")
     private void fillValueUpdate(ClothesRes clothesUpdate) {
         edtUpdateNameClothes.setText(clothesUpdate.getName());
         edtUpdateDescriptionClothes.setText(clothesUpdate.getDes());
         edtUpdatePriceClothes.setText(getIntent().getStringExtra("priceClothesUpdate").substring(1));
 
-        Log.d(">>>>>>", clothesUpdate.getIdCategory()+"");
+        countChooseImage = clothesUpdate.getImgsUrl().size();
+        tvCountChooseImageUpdate.setText(countChooseImage+ "/3");
+
+        lsSize = fillListSize();
+        // init size value
+        btSizeS.setBackgroundResource(getBackgroundResource(btSizeS));
+        btSizeM.setBackgroundResource(getBackgroundResource(btSizeM));
+        btSizeL.setBackgroundResource(getBackgroundResource(btSizeL));
+        btSizeXL.setBackgroundResource(getBackgroundResource(btSizeXL));
+
+        sizeS = lsSize.contains("S") ? "S" : "";
+        sizeM = lsSize.contains("M") ? "M" : "";
+        sizeL = lsSize.contains("L") ? "L" : "";
+        sizeXL = lsSize.contains("XL") ? "XL" : "";
+        Log.d("Size: ", sizeS+sizeM+sizeL+sizeXL);
+
+        // init size value
+
         ServiceAPI.serviceApi.GetCategoryWhere(clothesUpdate.getIdCategory())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -153,10 +197,7 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
                     }
                 });
 
-        btSizeS.setBackgroundResource(getBackgroundResource(btSizeS));
-        btSizeM.setBackgroundResource(getBackgroundResource(btSizeM));
-        btSizeL.setBackgroundResource(getBackgroundResource(btSizeL));
-        btSizeXL.setBackgroundResource(getBackgroundResource(btSizeXL));
+
 
         Glide.with(this).load(clothesUpdate.getImgsUrl().get(0)).into(ibUpdateCloth1);
         Glide.with(this).load(clothesUpdate.getImgsUrl().get(1)).into(ibUpdateCloth2);
@@ -167,10 +208,19 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
 
     }
 
+    private List<String> fillListSize () {
+        List<String> ls = new ArrayList<>();
+        for (ClothesPropertiesRes cloth : lsClothesPropertiesUpdate) {
+            ls.add(cloth.getSize());
+        }
+        return ls;
+    }
+
     private int getBackgroundResource(Button bt) {
         for (ClothesPropertiesRes cloth : lsClothesPropertiesUpdate) {
-            if (bt.getText().toString().equals(cloth.getSize()))
+            if (bt.getText().toString().equals(cloth.getSize())) {
                 return R.drawable.background_size_clothes_selected;
+            }
         }
         return R.drawable.background_size_clothes;
     }
@@ -190,11 +240,12 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
         edtUpdateDescriptionClothes = findViewById(R.id.edtUpdateDescriptionClothes);
         edtUpdateNameClothes = findViewById(R.id.edtUpdateNameClothes);
         edtUpdatePriceClothes = findViewById(R.id.edtUpdatePriceClothes);
+        tvCountChooseImageUpdate = findViewById(R.id.tvCountChooseImageUpdate);
     }
 
     private void loadHorizontalQuantitizer() {
-
-        hqUpdateClothes.setValue(getQuantityClothes());
+        quantity = getQuantityClothes();
+        hqUpdateClothes.setValue(quantity);
         hqUpdateClothes.setTextAnimationStyle(AnimationStyle.FALL_IN);
         hqUpdateClothes.setQuantitizerListener(new QuantitizerListener() {
             @Override
@@ -247,7 +298,7 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btSizeS:
+            case R.id.btSizeSUpdate:
                 if (!sizeS.equals("S")) {
                     sizeS = "S";
                     btSizeS.setBackgroundResource(R.drawable.background_size_clothes_selected);
@@ -258,7 +309,7 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
                     btSizeS.setBackgroundResource(R.drawable.background_size_clothes);
                 }
                 break;
-            case R.id.btSizeM:
+            case R.id.btSizeMUpdate:
                 if (!sizeM.equals("M")) {
                     sizeM = "M";
                     btSizeM.setBackgroundResource(R.drawable.background_size_clothes_selected);
@@ -269,7 +320,7 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
                     btSizeM.setBackgroundResource(R.drawable.background_size_clothes);
                 }
                 break;
-            case R.id.btSizeL:
+            case R.id.btSizeLUpdate:
                 if (!sizeL.equals("L")) {
                     sizeL = "L";
                     btSizeL.setBackgroundResource(R.drawable.background_size_clothes_selected);
@@ -280,7 +331,7 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
                     btSizeL.setBackgroundResource(R.drawable.background_size_clothes);
                 }
                 break;
-            case R.id.btSizeXL:
+            case R.id.btSizeXLUpdate:
                 if (!sizeXL.equals("XL")) {
                     sizeXL = "XL";
                     btSizeXL.setBackgroundResource(R.drawable.background_size_clothes_selected);
@@ -315,36 +366,137 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.ivBackFromUpdateClothesToClothesInformationActivity:
-                startActivity(new Intent(this, SellerClothesInformationActivity.class));
+                Intent intent = new Intent(this, SellerClothesInformationActivity.class);
+                ClothesRes clothesResBack = new ClothesRes(clothesUpdate.getId(), idSeller,
+                        clothesReq.getIdCategory(), clothesReq.getDes(),
+                        clothesReq.getName(), clothesReq.getImgUrls());
+                intent.putExtra("clothes", clothesResBack);
+                startActivity(intent);
                 break;
             case R.id.btUpdateCategoryClothes:
                 showDialogSelectCategories();
                 break;
             case R.id.btUpdateClothes:
-                updateClothes();
+                updateCloth();
                 break;
         }
     }
 
     private List<ClothesPropertyReq> getListClothesProperties(int quantity, String price) {
         List<ClothesPropertyReq> lsClothesProperty = new ArrayList<>();
+        Log.d("LItsize: ", lsSize.size()+"");
         for (String size : lsSize) {
             lsClothesProperty.add(new ClothesPropertyReq(size, quantity, price));
         }
         return lsClothesProperty;
     };
 
-    private void updateClothes() {
+    private void updateCloth() {
+        if (lsImageUri.size() == 0) {
+            updateClothesWithoutImage();
+        } else
+            updateClotheWithImage(lsImageUri);
+    }
+
+    private void updateClotheWithImage(List<Uri> uri) {
+        Map<String, String> config = new HashMap<>();
+        config.put("cloud_name", "di34trzsa");
+        config.put("api_key", "498634466359264");
+        config.put("api_secret", "SardrENb4IqdE80-Q72RtEu9xGQ");
+        MediaManager.init(this, config);
+        for (Uri ur : uri) {
+            if (!mProgressDialogImage.isShowing())
+                mProgressDialogImage.show();
+            MediaManager.get().upload(ur).callback(new UploadCallback() {
+                @Override
+                public void onStart(String requestId) {
+
+                }
+
+                @Override
+                public void onProgress(String requestId, long bytes, long totalBytes) {
+
+                }
+
+                @Override
+                public void onSuccess(String requestId, Map resultData) {
+                    Log.e("CHECK", Objects.requireNonNull(resultData.get("url")).toString());
+                    lsImageUrl.add(Objects.requireNonNull(resultData.get("url")).toString());
+                    if (lsImageUrl.size() == uri.size()) {
+                        Log.e(lsImageUrl.size()+"","");
+                        //call api hear, after that clear list
+                        //mProgressDialog.dismiss();
+                        String des = edtUpdateDescriptionClothes.getText().toString();
+                        String name = edtUpdateNameClothes.getText().toString();
+                        String price = edtUpdatePriceClothes.getText().toString();
+                        List<ClothesPropertyReq> lsClothesProperty = getListClothesProperties(quantity, price);
+
+                        ClothesReq clothesReq = new ClothesReq(clothesUpdate.getId(), idSeller, idCategorySelected, des, name,lsImageUrl, lsClothesProperty);
+                        ServiceAPI.serviceApi.UpdateClothes(clothesReq)
+                                .subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(new Observer<Respon>() {
+                                    @Override
+                                    public void onSubscribe(Disposable d) {
+                                        ProgressDialogCustom.showProgressDialog(UpdateClothesActivity.this, "Please wait");
+                                    }
+
+                                    @Override
+                                    public void onNext(Respon respon) {
+                                        if (respon.getRespone_code() == 200) {
+                                            PopupDialog.getInstance(UpdateClothesActivity.this)
+                                                    .setStyle(Styles.SUCCESS)
+                                                    .setHeading("Well Done")
+                                                    .setHeading("You have successfully" +
+                                                            " Updateed")
+                                                    .setCancelable(false)
+                                                    .showDialog(new OnDialogButtonClickListener() {
+                                                        @Override
+                                                        public void onDismissClicked(Dialog dialog1) {
+                                                            super.onDismissClicked(dialog1);
+                                                            mProgressDialogImage.dismiss();
+                                                        }
+                                                    });
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable e) {
+                                        Log.d("Update clothe ne: ", "err");
+
+                                    }
+
+                                    @Override
+                                    public void onComplete() {
+                                        ProgressDialogCustom.dismissProgressDialog();
+
+                                    }
+                                });
+                    }
+                }
+
+                @Override
+                public void onError(String requestId, ErrorInfo error) {
+                    Log.e("CHECK", "onError: " + error);
+                }
+
+                @Override
+                public void onReschedule(String requestId, ErrorInfo error) {
+                    Log.e("CHECK", "onReschedule: " + error);
+                }
+            }).dispatch();
+        }
+    }
+
+    private void updateClothesWithoutImage() {
         String des = edtUpdateDescriptionClothes.getText().toString();
         String name = edtUpdateNameClothes.getText().toString();
         String price = edtUpdatePriceClothes.getText().toString();
         List<ClothesPropertyReq> lsClothesProperty = getListClothesProperties(quantity, price);
-        List<String> lsImageUrl = new ArrayList<>();
-        lsImageUrl.add("https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80");
-        lsImageUrl.add("https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80");
-        lsImageUrl.add("https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1072&q=80");
+        Log.d("quantity: ", quantity+"");
+        Log.d("lsClothesProperty SIze: ", lsClothesProperty.size()+"");
 
-        ClothesReq clothesReq = new ClothesReq(clothesUpdate.getId(), idSeller, idCategorySelected, des, name,lsImageUrl, lsClothesProperty);
+        clothesReq = new ClothesReq(clothesUpdate.getId(), idSeller, idCategorySelected, des, name,clothesUpdate.getImgsUrl(), lsClothesProperty);
         ServiceAPI.serviceApi.UpdateClothes(clothesReq)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -367,6 +519,7 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
                                         @Override
                                         public void onDismissClicked(Dialog dialog1) {
                                             super.onDismissClicked(dialog1);
+                                            mProgressDialogImage.dismiss();
                                         }
                                     });
                         }
@@ -375,6 +528,7 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
                     @Override
                     public void onError(Throwable e) {
                         Log.d("Update clothe ne: ", "err");
+                        ProgressDialogCustom.dismissProgressDialog();
 
                     }
 
@@ -498,11 +652,17 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
     }
 
     private void fillImage(Uri imageUri1, ImageButton ib) {
+        countChooseImage++;
+        tvCountChooseImageUpdate.setText(countChooseImage+"/3");
+        lsImageUri.add(imageUri1);
         ib.setImageURI(imageUri1);
         ib.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
     private void fillImageBitmap(Bitmap bitmap, ImageButton ib) {
+        Uri uri = MyHelper.getImageUri(this, bitmap);
+        lsImageUri.add(uri);
+        tvCountChooseImageUpdate.setText(countChooseImage + "/3");
         ib.setImageBitmap(bitmap);
         ib.setScaleType(ImageView.ScaleType.FIT_XY);
     }

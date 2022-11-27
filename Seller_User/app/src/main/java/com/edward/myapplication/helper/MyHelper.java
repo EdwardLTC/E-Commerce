@@ -1,16 +1,21 @@
 package com.edward.myapplication.helper;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import com.edward.myapplication.R;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class MyHelper {
@@ -71,6 +76,13 @@ public class MyHelper {
 
     public static String convertToCapitalizeText(String str) {
         return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
+    public static Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 
 }

@@ -344,7 +344,7 @@
             app:layout_constraintTop_toBottomOf="@+id/edtUpdateDescriptionClothes" />
 
         <TextView
-            android:id="@+id/tvCountChooseImage"
+            android:id="@+id/tvCountChooseImageUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0/3"
