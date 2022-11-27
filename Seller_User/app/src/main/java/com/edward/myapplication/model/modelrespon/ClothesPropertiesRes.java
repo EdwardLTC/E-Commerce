@@ -1,6 +1,8 @@
 package com.edward.myapplication.model.modelrespon;
 
-public class ClothesPropertiesRes {
+import java.io.Serializable;
+
+public class ClothesPropertiesRes implements Serializable {
     public String size;
     public int quantily;
     public String price;
