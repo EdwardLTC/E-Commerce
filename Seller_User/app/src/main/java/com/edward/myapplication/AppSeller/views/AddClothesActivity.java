@@ -9,6 +9,7 @@ import androidx.lifecycle.LifecycleOwner;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -23,8 +24,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cloudinary.android.MediaManager;
+import com.cloudinary.android.callback.ErrorInfo;
+import com.cloudinary.android.callback.UploadCallback;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
@@ -34,6 +39,7 @@ import com.edward.myapplication.model.modelrequest.ClothesReq;
 import com.edward.myapplication.model.modelrespon.CategoryRes;
 import com.edward.myapplication.model.modelrespon.ClothesPropertiesRes;
 import com.edward.myapplication.model.modelrespon.ResGetListCategory;
+import com.edward.myapplication.model.modelrespon.ResGetListProperties;
 import com.edward.myapplication.model.modelrespon.Respon;
 import com.github.guilhe.recyclerpickerdialog.RecyclerPickerDialogFragment;
 import com.github.guilhe.recyclerpickerdialog.SelectionType;
@@ -47,8 +53,11 @@ import com.saadahmedsoft.popupdialog.Styles;
 import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -62,11 +71,14 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
     ImageButton ibAddCloth1, ibAddCloth2, ibAddCloth3;
     ImageView ivBackFromAddClothesToClothesActivity;
     EditText edtAddDescriptionClothes, edtAddNameClothes, edtAddPriceClothes;
+    TextView tvCountChooseImage;
     private int quantity = 0;
     private int sizeCheck = 0;
     private int chooseImageCheck = 0;
     private BottomSheetDialog bottomSheetDialog;
+
     Uri imageUri;
+    List<Uri> lsImageUri;
 
     private int idSeller = 11;
     // picker dialog
@@ -81,14 +93,24 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
     String sizeS = "", sizeM = "", sizeL = "", sizeXL = "";
     List<String> lsSize;
 
+    private ProgressDialog mProgressDialog;
+
+    List<String> lsImageUrl = new ArrayList<>();
+
+    private int countChooseImage = 0;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_clothes);
         initViews();
+        mProgressDialog = new ProgressDialog(this);
         lsSize = new ArrayList<>();
         lsCategories = new ArrayList<>();
         lsIdCategories = new ArrayList<>();
+        lsImageUri = new ArrayList<>();
 //        lsCategoriesSelected = new ArrayList<>();
 //        lsIdCategoriesSelected = new ArrayList<>();
         loadHorizontalQuantitizer();
@@ -108,6 +130,30 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
 
 //        String[] a = lsCategories.toArray(new String[0]);
 //        System.out.println(a.length);
+        ServiceAPI.serviceApi.GetAllClothesProperties(108)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListProperties>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResGetListProperties resGetListProperties) {
+                        Log.d("Size: ", resGetListProperties.get_ClothesPropertiesRes().size()+"");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     private void initViews() {
@@ -125,6 +171,7 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
         edtAddDescriptionClothes = findViewById(R.id.edtAddDescriptionClothes);
         edtAddNameClothes = findViewById(R.id.edtAddNameClothes);
         edtAddPriceClothes = findViewById(R.id.edtAddPriceClothes);
+        tvCountChooseImage = findViewById(R.id.tvCountChooseImage);
     }
 
     private void loadHorizontalQuantitizer() {
@@ -242,7 +289,7 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
                 showDialogSelectCategories();
                 break;
             case R.id.btAddClothes:
-                addClothes();
+                upload(lsImageUri);
                 break;
         }
     }
@@ -254,6 +301,98 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
         }
         return lsClothesProperty;
     };
+
+    private void upload(List<Uri> uri) {
+        Map<String, String> config = new HashMap<>();
+        config.put("cloud_name", "di34trzsa");
+        config.put("api_key", "498634466359264");
+        config.put("api_secret", "SardrENb4IqdE80-Q72RtEu9xGQ");
+        MediaManager.init(this, config);
+        for (Uri ur : uri) {
+            if (!mProgressDialog.isShowing())
+                mProgressDialog.show();
+            MediaManager.get().upload(ur).callback(new UploadCallback() {
+                @Override
+                public void onStart(String requestId) {
+
+                }
+
+                @Override
+                public void onProgress(String requestId, long bytes, long totalBytes) {
+
+                }
+
+                @Override
+                public void onSuccess(String requestId, Map resultData) {
+                    Log.e("CHECK", Objects.requireNonNull(resultData.get("url")).toString());
+                    lsImageUrl.add(Objects.requireNonNull(resultData.get("url")).toString());
+                    if (lsImageUrl.size() == uri.size()) {
+                        Log.e(lsImageUrl.size()+"","");
+                        //call api hear, after that clear list
+                        //mProgressDialog.dismiss();
+                        String des = edtAddDescriptionClothes.getText().toString();
+                        String name = edtAddNameClothes.getText().toString();
+                        String price = edtAddPriceClothes.getText().toString();
+                        List<ClothesPropertyReq> lsClothesProperty = getListClothesProperties(quantity, price);
+
+
+                        ClothesReq clothesReq = new ClothesReq(1, idSeller, idCategorySelected, des, name,lsImageUrl, lsClothesProperty);
+                        ServiceAPI.serviceApi.CreateClothes(clothesReq)
+                                .subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(new Observer<Respon>() {
+                                    @Override
+                                    public void onSubscribe(Disposable d) {
+                                        ProgressDialogCustom.showProgressDialog(AddClothesActivity.this, "Please wait");
+                                    }
+
+                                    @Override
+                                    public void onNext(Respon respon) {
+                                        if (respon.getRespone_code() == 200) {
+                                            PopupDialog.getInstance(AddClothesActivity.this)
+                                                    .setStyle(Styles.SUCCESS)
+                                                    .setHeading("Well Done")
+                                                    .setHeading("You have successfully" +
+                                                            " added")
+                                                    .setCancelable(false)
+                                                    .showDialog(new OnDialogButtonClickListener() {
+                                                        @Override
+                                                        public void onDismissClicked(Dialog dialog1) {
+                                                            super.onDismissClicked(dialog1);
+                                                            mProgressDialog.dismiss();
+                                                        }
+                                                    });
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable e) {
+                                        Log.d("add clothe ne: ", "err");
+
+                                    }
+
+                                    @Override
+                                    public void onComplete() {
+                                        ProgressDialogCustom.dismissProgressDialog();
+
+                                    }
+                                });
+
+                    }
+                }
+
+                @Override
+                public void onError(String requestId, ErrorInfo error) {
+                    Log.e("CHECK", "onError: " + error);
+                }
+
+                @Override
+                public void onReschedule(String requestId, ErrorInfo error) {
+                    Log.e("CHECK", "onReschedule: " + error);
+                }
+            }).dispatch();
+        }
+    }
 
     private void addClothes() {
         String des = edtAddDescriptionClothes.getText().toString();
@@ -419,11 +558,17 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void fillImage(Uri imageUri1, ImageButton ib) {
+        lsImageUri.add(imageUri1);
+        countChooseImage++;
+        tvCountChooseImage.setText(countChooseImage + "/3");
         ib.setImageURI(imageUri1);
         ib.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
     private void fillImageBitmap(Bitmap bitmap, ImageButton ib) {
+        Uri uri = MyHelper.getImageUri(this, bitmap);
+        lsImageUri.add(uri);
+        tvCountChooseImage.setText(countChooseImage + "/3");
         ib.setImageBitmap(bitmap);
         ib.setScaleType(ImageView.ScaleType.FIT_XY);
     }

@@ -55,7 +55,7 @@ public class VouchersManagementActivity extends AppCompatActivity implements Vie
     VouchersAdapter vouchersAdapter;
     List<VoucherRes> ls;
 
-    private int idSeller = 7;
+    private int idSeller = 11;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

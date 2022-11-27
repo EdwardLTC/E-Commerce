@@ -1,4 +1,4 @@
-package com.edward.myapplication.Customer.fragments;
+package com.edward.myapplication.AppCustomer.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

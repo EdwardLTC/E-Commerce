@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import com.edward.myapplication.AppSeller.views.SellerDashboardActivity;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link OnboardingFragment3#newInstance} factory method to
@@ -69,7 +71,7 @@ public class OnboardingFragment3 extends Fragment {
         btn_obf3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),LoginActivity.class);
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 getActivity().startActivity(intent);
             }
         });
