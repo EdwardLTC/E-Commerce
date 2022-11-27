@@ -45,6 +45,15 @@ app:layout_constraintTop_toBottomOf="@+id/iv10" />
         app:layout_constraintTop_toBottomOf="@+id/tv11"
         />
 
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtName" />
+
     <LinearLayout
         android:layout_width="48dp"
         android:layout_height="45dp"
@@ -69,7 +78,7 @@ app:layout_constraintTop_toBottomOf="@+id/iv10" />
         android:id="@+id/edtEmailSignup"
         android:layout_width="366dp"
         android:layout_height="57dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/background_edt_log_in"
         android:fontFamily="@font/gordita_regular"
         android:hint="Email"
@@ -77,9 +86,18 @@ app:layout_constraintTop_toBottomOf="@+id/iv10" />
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtName" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmailSignup" />
 
     <LinearLayout
 android:layout_width="48dp"
@@ -101,22 +119,30 @@ android:layout_marginLeft="8dp">
 
 </LinearLayout>
 
-<EditText
-android:id="@+id/edtPassword"
-android:layout_width="match_parent"
-android:layout_height="57dp"
-android:fontFamily="@font/gordita_regular"
-android:textSize="14sp"
-android:hint="Password"
-android:textColor="@color/black"
-android:paddingLeft="66dp"
-android:background="@drawable/background_edt_log_in"
-android:layout_marginLeft="24dp"
-android:layout_marginRight="24dp"
-android:layout_marginTop="16dp"
-app:layout_constraintTop_toBottomOf="@+id/edtEmailSignup"
-    />
 
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="362dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/background_edt_log_in"
+        android:fontFamily="@font/gordita_regular"
+        android:hint="Password"
+        android:paddingLeft="66dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmailSignup" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
 
     <LinearLayout
 android:layout_width="48dp"
@@ -179,15 +205,33 @@ app:layout_constraintBottom_toBottomOf="@+id/tv7"
 app:layout_constraintEnd_toStartOf="@+id/tv7"
 app:layout_constraintTop_toTopOf="@+id/tv7" />
 
-<androidx.constraintlayout.widget.ConstraintLayout
-android:id="@+id/constraintLayout2"
-android:layout_width="100dp"
-android:layout_height="0.5dp"
-android:layout_marginLeft="12dp"
-android:background="@color/black"
-app:layout_constraintBottom_toBottomOf="@+id/tv7"
-app:layout_constraintStart_toEndOf="@+id/tv7"
-app:layout_constraintTop_toTopOf="@+id/tv7" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="100dp"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/tv7"
+        app:layout_constraintStart_toEndOf="@+id/tv7"
+        app:layout_constraintTop_toTopOf="@+id/tv7">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvLoginFacebook"
+        android:layout_width="71dp"
+        android:layout_height="71dp"
+        app:cardCornerRadius="100dp"
+        tools:layout_editor_absoluteX="225dp"
+        tools:layout_editor_absoluteY="645dp">
+
+        <ImageView
+            android:id="@+id/iv9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_google" />
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvLoginGoogle"
@@ -207,30 +251,12 @@ app:layout_constraintTop_toTopOf="@+id/tv7" />
             app:srcCompat="@drawable/ic_facebook" />
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvLoginFacebook"
-        android:layout_width="71dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        app:cardCornerRadius="100dp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/tv7">
-
-        <ImageView
-            android:id="@+id/iv9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_google" />
-    </androidx.cardview.widget.CardView>
-
     <RadioButton
         android:id="@+id/radioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
         android:minHeight="48dp"
         android:text="I accept all the Terms &amp; Conditions"
         app:layout_constraintStart_toStartOf="parent"

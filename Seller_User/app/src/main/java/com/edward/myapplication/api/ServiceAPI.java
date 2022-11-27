@@ -2,6 +2,7 @@ package com.edward.myapplication.api;
 
 import com.edward.myapplication.model.modelrequest.ClothesReq;
 import com.edward.myapplication.model.modelrequest.FavoriteReq;
+import com.edward.myapplication.model.modelrequest.PersonReq;
 import com.edward.myapplication.model.modelrequest.VoucherReq;
 import com.edward.myapplication.model.modelrequest.BillReq;
 import com.edward.myapplication.model.modelrespon.ResGetCategory;
@@ -99,8 +100,11 @@ public interface ServiceAPI {
     @GET("GetPersonWhere")
     Observable<ResGetPerson> GetPersonWhere(@Query("Id") int id);
 
+
     @POST("DeletePerson")
     Observable<Respon> DeletePerson(@Query("id") int id);
+    @POST("CreatePerson")
+    Observable<Respon> CreatePerson(@Body PersonReq personReq); // id tu tanwg neen la cu set mac dinh la 1
 
     @GET("UpdateStatusBill")
     Observable<Respon> UpdateStatusBill (@Query("status") String status, @Query("idBill") int idBill);
