@@ -1,9 +1,10 @@
 package com.edward.myapplication.model.modelrequest;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClothesReq {
+public class ClothesReq implements Serializable {
     public int id;
     public int idseller;
     public int idCategory;

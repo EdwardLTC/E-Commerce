@@ -1,6 +1,8 @@
 package com.edward.myapplication.model.modelrespon;
 
-public class BillRes {
+import java.io.Serializable;
+
+public class BillRes implements Serializable {
     public int id;
     public int iduser;
     public int idseller;

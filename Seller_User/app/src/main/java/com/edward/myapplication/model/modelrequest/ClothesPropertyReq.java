@@ -1,6 +1,8 @@
 package com.edward.myapplication.model.modelrequest;
 
-public class ClothesPropertyReq {
+import java.io.Serializable;
+
+public class ClothesPropertyReq implements Serializable {
     public String size;
     public int quantily;
     public String price;

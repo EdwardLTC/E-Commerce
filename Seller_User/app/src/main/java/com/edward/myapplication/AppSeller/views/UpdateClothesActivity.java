@@ -4,7 +4,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.lifecycle.LifecycleOwner;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -18,26 +17,23 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
-import com.edward.myapplication.helper.MyHelper;
 import com.edward.myapplication.model.modelrequest.ClothesPropertyReq;
 import com.edward.myapplication.model.modelrequest.ClothesReq;
 import com.edward.myapplication.model.modelrespon.CategoryRes;
 import com.edward.myapplication.model.modelrespon.ClothesPropertiesRes;
+import com.edward.myapplication.model.modelrespon.ClothesRes;
+import com.edward.myapplication.model.modelrespon.ResGetCategory;
 import com.edward.myapplication.model.modelrespon.ResGetListCategory;
 import com.edward.myapplication.model.modelrespon.Respon;
-import com.github.guilhe.recyclerpickerdialog.RecyclerPickerDialogFragment;
-import com.github.guilhe.recyclerpickerdialog.SelectionType;
-import com.github.guilhe.recyclerpickerdialog.SelectorType;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.mcdev.quantitizerlibrary.AnimationStyle;
 import com.mcdev.quantitizerlibrary.HorizontalQuantitizer;
@@ -48,20 +44,18 @@ import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class AddClothesActivity extends AppCompatActivity implements View.OnClickListener {
-
-    HorizontalQuantitizer hqAddClothes;
-    Button btSizeS, btSizeM, btSizeL, btSizeXL, btAddCategoryClothes, btAddClothes;
-    ImageButton ibAddCloth1, ibAddCloth2, ibAddCloth3;
-    ImageView ivBackFromAddClothesToClothesActivity;
-    EditText edtAddDescriptionClothes, edtAddNameClothes, edtAddPriceClothes;
+public class UpdateClothesActivity extends AppCompatActivity implements View.OnClickListener {
+    HorizontalQuantitizer hqUpdateClothes;
+    Button btSizeS, btSizeM, btSizeL, btSizeXL, btUpdateCategoryClothes, btUpdateClothes;
+    ImageButton ibUpdateCloth1, ibUpdateCloth2, ibUpdateCloth3;
+    ImageView ivBackFromUpdateClothesToClothesActivity;
+    EditText edtUpdateDescriptionClothes, edtUpdateNameClothes, edtUpdatePriceClothes;
     private int quantity = 0;
     private int sizeCheck = 0;
     private int chooseImageCheck = 0;
@@ -81,11 +75,19 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
     String sizeS = "", sizeM = "", sizeL = "", sizeXL = "";
     List<String> lsSize;
 
+    private ClothesRes clothesUpdate;
+    private List<ClothesPropertiesRes> lsClothesPropertiesUpdate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_clothes);
+        setContentView(R.layout.activity_update_clothes);
         initViews();
+        // fill value to update
+        clothesUpdate = (ClothesRes)getIntent().getSerializableExtra("clothesUpdate");
+        lsClothesPropertiesUpdate = (List<ClothesPropertiesRes>) getIntent().getSerializableExtra("lsClothesPropertiesUpdate");
+        fillValueUpdate(clothesUpdate);
+        // end fill value
         lsSize = new ArrayList<>();
         lsCategories = new ArrayList<>();
         lsIdCategories = new ArrayList<>();
@@ -98,38 +100,93 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
         btSizeM.setOnClickListener(this);
         btSizeL.setOnClickListener(this);
         btSizeXL.setOnClickListener(this);
-        ibAddCloth1.setOnClickListener(this);
-        ibAddCloth2.setOnClickListener(this);
-        ibAddCloth3.setOnClickListener(this);
-        ivBackFromAddClothesToClothesActivity.setOnClickListener(this);
-        btAddCategoryClothes.setOnClickListener(this);
-        btAddClothes.setOnClickListener(this);
+        ibUpdateCloth1.setOnClickListener(this);
+        ibUpdateCloth2.setOnClickListener(this);
+        ibUpdateCloth3.setOnClickListener(this);
+        ivBackFromUpdateClothesToClothesActivity.setOnClickListener(this);
+        btUpdateCategoryClothes.setOnClickListener(this);
+        btUpdateClothes.setOnClickListener(this);
 
 
-//        String[] a = lsCategories.toArray(new String[0]);
-//        System.out.println(a.length);
+    }
+
+    private void fillValueUpdate(ClothesRes clothesUpdate) {
+        edtUpdateNameClothes.setText(clothesUpdate.getName());
+        edtUpdateDescriptionClothes.setText(clothesUpdate.getDes());
+        edtUpdatePriceClothes.setText(getIntent().getStringExtra("priceClothesUpdate").substring(1));
+
+        Log.d(">>>>>>", clothesUpdate.getIdCategory()+"");
+        ServiceAPI.serviceApi.GetCategoryWhere(clothesUpdate.getIdCategory())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetCategory>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        ProgressDialogCustom.showProgressDialog(UpdateClothesActivity.this, "Please wait");
+                    }
+
+                    @Override
+                    public void onNext(ResGetCategory resGetCategory) {
+                        if (resGetCategory.get_Respon().getRespone_code() == 200) {
+                            btUpdateCategoryClothes.setText(resGetCategory.get_CategoryRes().getName());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("Loi", "err");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        ProgressDialogCustom.dismissProgressDialog();
+                    }
+                });
+
+        btSizeS.setBackgroundResource(getBackgroundResource(btSizeS));
+        btSizeM.setBackgroundResource(getBackgroundResource(btSizeM));
+        btSizeL.setBackgroundResource(getBackgroundResource(btSizeL));
+        btSizeXL.setBackgroundResource(getBackgroundResource(btSizeXL));
+
+        Glide.with(this).load(clothesUpdate.getImgsUrl().get(0)).into(ibUpdateCloth1);
+        Glide.with(this).load(clothesUpdate.getImgsUrl().get(1)).into(ibUpdateCloth2);
+
+        if (clothesUpdate.getImgsUrl().size() > 2) {
+            Glide.with(this).load(clothesUpdate.getImgsUrl().get(2)).into(ibUpdateCloth3);
+        }
+
+    }
+
+    private int getBackgroundResource(Button bt) {
+        for (ClothesPropertiesRes cloth : lsClothesPropertiesUpdate) {
+            if (bt.getText().toString().equals(cloth.getSize()))
+                return R.drawable.background_size_clothes_selected;
+        }
+        return R.drawable.background_size_clothes;
     }
 
     private void initViews() {
-        hqAddClothes = findViewById(R.id.hqAddClothes);
-        btSizeS = findViewById(R.id.btSizeS);
-        btSizeM = findViewById(R.id.btSizeM);
-        btSizeL = findViewById(R.id.btSizeL);
-        btSizeXL = findViewById(R.id.btSizeXL);
-        ibAddCloth1 = findViewById(R.id.ibAddImageClothes1);
-        ibAddCloth2 = findViewById(R.id.ibAddImageClothes2);
-        ibAddCloth3 = findViewById(R.id.ibAddImageClothes3);
-        ivBackFromAddClothesToClothesActivity = findViewById(R.id.ivBackFromAddClothesToClothesActivity);
-        btAddCategoryClothes = findViewById(R.id.btAddCategoryClothes);
-        btAddClothes = findViewById(R.id.btAddClothes);
-        edtAddDescriptionClothes = findViewById(R.id.edtAddDescriptionClothes);
-        edtAddNameClothes = findViewById(R.id.edtAddNameClothes);
-        edtAddPriceClothes = findViewById(R.id.edtAddPriceClothes);
+        hqUpdateClothes = findViewById(R.id.hqUpdateClothes);
+        btSizeS = findViewById(R.id.btSizeSUpdate);
+        btSizeM = findViewById(R.id.btSizeMUpdate);
+        btSizeL = findViewById(R.id.btSizeLUpdate);
+        btSizeXL = findViewById(R.id.btSizeXLUpdate);
+        ibUpdateCloth1 = findViewById(R.id.ibUpdateImageClothes1);
+        ibUpdateCloth2 = findViewById(R.id.ibUpdateImageClothes2);
+        ibUpdateCloth3 = findViewById(R.id.ibUpdateImageClothes3);
+        ivBackFromUpdateClothesToClothesActivity = findViewById(R.id.ivBackFromUpdateClothesToClothesInformationActivity);
+        btUpdateCategoryClothes = findViewById(R.id.btUpdateCategoryClothes);
+        btUpdateClothes = findViewById(R.id.btUpdateClothes);
+        edtUpdateDescriptionClothes = findViewById(R.id.edtUpdateDescriptionClothes);
+        edtUpdateNameClothes = findViewById(R.id.edtUpdateNameClothes);
+        edtUpdatePriceClothes = findViewById(R.id.edtUpdatePriceClothes);
     }
 
     private void loadHorizontalQuantitizer() {
-        hqAddClothes.setTextAnimationStyle(AnimationStyle.FALL_IN);
-        hqAddClothes.setQuantitizerListener(new QuantitizerListener() {
+
+        hqUpdateClothes.setValue(getQuantityClothes());
+        hqUpdateClothes.setTextAnimationStyle(AnimationStyle.FALL_IN);
+        hqUpdateClothes.setQuantitizerListener(new QuantitizerListener() {
             @Override
             public void onIncrease() {
 
@@ -144,6 +201,18 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
                 quantity = i;
             }
         });
+    }
+
+    private int getQuantityClothes() {
+        int size = lsClothesPropertiesUpdate.size();
+        if (size == 4)
+            return clothesUpdate.getQuantily() / 4;
+        else if (size == 3)
+            return clothesUpdate.getQuantily() / 3;
+        else if (size == 2)
+            return clothesUpdate.getQuantily() / 2;
+        return clothesUpdate.getQuantily();
+
     }
 
     private void showBottomSheetDialog() {
@@ -178,7 +247,7 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
                     sizeS = "";
                     btSizeS.setBackgroundResource(R.drawable.background_size_clothes);
                 }
-               break;
+                break;
             case R.id.btSizeM:
                 if (!sizeM.equals("M")) {
                     sizeM = "M";
@@ -212,15 +281,15 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
                     btSizeXL.setBackgroundResource(R.drawable.background_size_clothes);
                 }
                 break;
-            case R.id.ibAddImageClothes1:
+            case R.id.ibUpdateImageClothes1:
                 chooseImageCheck = 1;
                 showBottomSheetDialog();
                 break;
-            case R.id.ibAddImageClothes2:
+            case R.id.ibUpdateImageClothes2:
                 chooseImageCheck = 2;
                 showBottomSheetDialog();
                 break;
-            case R.id.ibAddImageClothes3:
+            case R.id.ibUpdateImageClothes3:
                 chooseImageCheck = 3;
                 showBottomSheetDialog();
                 break;
@@ -235,14 +304,14 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
                 openGallery();
                 bottomSheetDialog.dismiss();
                 break;
-            case R.id.ivBackFromAddClothesToClothesActivity:
-                startActivity(new Intent(this, ClothesManagementActivity.class));
+            case R.id.ivBackFromUpdateClothesToClothesInformationActivity:
+                startActivity(new Intent(this, SellerClothesInformationActivity.class));
                 break;
-            case R.id.btAddCategoryClothes:
+            case R.id.btUpdateCategoryClothes:
                 showDialogSelectCategories();
                 break;
-            case R.id.btAddClothes:
-                addClothes();
+            case R.id.btUpdateClothes:
+                updateClothes();
                 break;
         }
     }
@@ -255,34 +324,34 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
         return lsClothesProperty;
     };
 
-    private void addClothes() {
-        String des = edtAddDescriptionClothes.getText().toString();
-        String name = edtAddNameClothes.getText().toString();
-        String price = edtAddPriceClothes.getText().toString();
+    private void updateClothes() {
+        String des = edtUpdateDescriptionClothes.getText().toString();
+        String name = edtUpdateNameClothes.getText().toString();
+        String price = edtUpdatePriceClothes.getText().toString();
         List<ClothesPropertyReq> lsClothesProperty = getListClothesProperties(quantity, price);
         List<String> lsImageUrl = new ArrayList<>();
         lsImageUrl.add("https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80");
         lsImageUrl.add("https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80");
         lsImageUrl.add("https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1072&q=80");
 
-        ClothesReq clothesReq = new ClothesReq(1, idSeller, idCategorySelected, des, name,lsImageUrl, lsClothesProperty);
-        ServiceAPI.serviceApi.CreateClothes(clothesReq)
+        ClothesReq clothesReq = new ClothesReq(clothesUpdate.getId(), idSeller, idCategorySelected, des, name,lsImageUrl, lsClothesProperty);
+        ServiceAPI.serviceApi.UpdateClothes(clothesReq)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Respon>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        ProgressDialogCustom.showProgressDialog(AddClothesActivity.this, "Please wait");
+                        ProgressDialogCustom.showProgressDialog(UpdateClothesActivity.this, "Please wait");
                     }
 
                     @Override
                     public void onNext(Respon respon) {
                         if (respon.getRespone_code() == 200) {
-                            PopupDialog.getInstance(AddClothesActivity.this)
+                            PopupDialog.getInstance(UpdateClothesActivity.this)
                                     .setStyle(Styles.SUCCESS)
                                     .setHeading("Well Done")
                                     .setHeading("You have successfully" +
-                                            " added")
+                                            " Updateed")
                                     .setCancelable(false)
                                     .showDialog(new OnDialogButtonClickListener() {
                                         @Override
@@ -295,7 +364,7 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("add clothe ne: ", "err");
+                        Log.d("Update clothe ne: ", "err");
 
                     }
 
@@ -315,7 +384,7 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
                 .subscribe(new Observer<ResGetListCategory>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        ProgressDialogCustom.showProgressDialog(AddClothesActivity.this, "Please wait");
+                        ProgressDialogCustom.showProgressDialog(UpdateClothesActivity.this, "Please wait");
                     }
 
                     @Override
@@ -361,7 +430,7 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String name = arrCategories[posDialogCategories];
-                btAddCategoryClothes.setText(name);
+                btUpdateCategoryClothes.setText(name);
             }
         });
         builder.create();
@@ -387,13 +456,13 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
                     imageUri = data.getData();
                     switch (chooseImageCheck) {
                         case 1:
-                            fillImage(imageUri, ibAddCloth1);
+                            fillImage(imageUri, ibUpdateCloth1);
                             break;
                         case 2:
-                            fillImage(imageUri, ibAddCloth2);
+                            fillImage(imageUri, ibUpdateCloth2);
                             break;
                         case 3:
-                            fillImage(imageUri, ibAddCloth3);
+                            fillImage(imageUri, ibUpdateCloth3);
                             break;
                     }
                 }
@@ -403,13 +472,13 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
                     Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                     switch (chooseImageCheck) {
                         case 1:
-                            fillImageBitmap(bitmap, ibAddCloth1);
+                            fillImageBitmap(bitmap, ibUpdateCloth1);
                             break;
                         case 2:
-                            fillImageBitmap(bitmap, ibAddCloth2);
+                            fillImageBitmap(bitmap, ibUpdateCloth2);
                             break;
                         case 3:
-                            fillImageBitmap(bitmap, ibAddCloth3);
+                            fillImageBitmap(bitmap, ibUpdateCloth3);
                             break;
                     }
                 }
@@ -429,11 +498,11 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
     }
 
     public void enableRuntimePermission(){
-        if (ContextCompat.checkSelfPermission(AddClothesActivity.this, Manifest.permission.CAMERA) ==
+        if (ContextCompat.checkSelfPermission(UpdateClothesActivity.this, Manifest.permission.CAMERA) ==
                 PackageManager.PERMISSION_GRANTED) {
             openCamera();
         } else {
-            ActivityCompat.requestPermissions(AddClothesActivity.this,new String[]{
+            ActivityCompat.requestPermissions(UpdateClothesActivity.this,new String[]{
                     Manifest.permission.CAMERA}, 102);
         }
     }
@@ -448,6 +517,4 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
                 break;
         }
     }
-
-
 }

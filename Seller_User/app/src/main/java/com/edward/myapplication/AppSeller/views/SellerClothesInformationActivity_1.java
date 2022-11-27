@@ -88,9 +88,7 @@ public class SellerClothesInformationActivity_1 extends AppCompatActivity implem
                     case R.id.menuUpdateCloth:
                         updateCloth();
                         break;
-                    case R.id.menuDeleteCloth:
-                        deleteCloth();
-                        break;
+
                 }
                 return true;
             }
@@ -102,6 +100,4 @@ public class SellerClothesInformationActivity_1 extends AppCompatActivity implem
     private void updateCloth() {
     }
 
-    private void deleteCloth() {
-    }
 }
