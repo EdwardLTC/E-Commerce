@@ -8,6 +8,8 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -51,6 +53,9 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class UpdateClothesActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static ProgressDialog mProgressDialog;
+
     HorizontalQuantitizer hqUpdateClothes;
     Button btSizeS, btSizeM, btSizeL, btSizeXL, btUpdateCategoryClothes, btUpdateClothes;
     ImageButton ibUpdateCloth1, ibUpdateCloth2, ibUpdateCloth3;
@@ -83,6 +88,10 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_clothes);
         initViews();
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setIndeterminate(true);
+        mProgressDialog.setMessage("Wait");
+        mProgressDialog.setCanceledOnTouchOutside(false);
         // fill value to update
         clothesUpdate = (ClothesRes)getIntent().getSerializableExtra("clothesUpdate");
         lsClothesPropertiesUpdate = (List<ClothesPropertiesRes>) getIntent().getSerializableExtra("lsClothesPropertiesUpdate");
@@ -106,9 +115,8 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
         ivBackFromUpdateClothesToClothesActivity.setOnClickListener(this);
         btUpdateCategoryClothes.setOnClickListener(this);
         btUpdateClothes.setOnClickListener(this);
-
-
     }
+
 
     private void fillValueUpdate(ClothesRes clothesUpdate) {
         edtUpdateNameClothes.setText(clothesUpdate.getName());
@@ -122,7 +130,7 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
                 .subscribe(new Observer<ResGetCategory>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        ProgressDialogCustom.showProgressDialog(UpdateClothesActivity.this, "Please wait");
+                      mProgressDialog.show();
                     }
 
                     @Override
@@ -130,16 +138,18 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
                         if (resGetCategory.get_Respon().getRespone_code() == 200) {
                             btUpdateCategoryClothes.setText(resGetCategory.get_CategoryRes().getName());
                         }
+                        Log.e(resGetCategory.get_Respon().getRespone_code()+"","");
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        mProgressDialog.dismiss();
                         Log.d("Loi", "err");
                     }
 
                     @Override
                     public void onComplete() {
-                        ProgressDialogCustom.dismissProgressDialog();
+                        mProgressDialog.dismiss();
                     }
                 });
 
