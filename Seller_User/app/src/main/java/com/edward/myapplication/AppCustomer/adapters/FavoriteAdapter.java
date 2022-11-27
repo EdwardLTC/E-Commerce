@@ -1,4 +1,4 @@
-package com.edward.myapplication.Customer.Adapter;
+package com.edward.myapplication.AppCustomer.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,22 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.airbnb.lottie.L;
 import com.bumptech.glide.Glide;
 import com.edward.myapplication.R;
-import com.edward.myapplication.api.ServiceAPI;
-import com.edward.myapplication.model.Clothes;
 import com.edward.myapplication.model.ClothesImage;
-import com.edward.myapplication.model.modelrequest.FavoriteReq;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 
 import java.util.ArrayList;
-
-import io.reactivex.Observer;
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
 
