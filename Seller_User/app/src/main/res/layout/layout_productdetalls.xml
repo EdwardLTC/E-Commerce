@@ -9,17 +9,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp">
 
         <Button
+            android:id="@+id/btnbackproduct"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="314dp"
             android:background="@drawable/ic_back" />
 
         <Button
-            android:id="@+id/btn_favorite"
+            android:id="@+id/btnfavoriteproduct"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentEnd="true"
@@ -81,10 +82,11 @@
             android:textSize="16dp" />
 
         <Button
+            android:id="@+id/btncheckoutproduct"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/button_add"
             android:text="Add to Cart"
             android:textColor="#FFFFFF" />

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Seller.views.SellerDashboardActivity"
+    tools:context=".AppSeller.views.SellerDashboardActivity"
     android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,15 +12,15 @@
         android:layout_height="match_parent"
         android:paddingBottom="24dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivAvatarSeller"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="24dp"
             android:layout_marginTop="24dp"
+            android:src="@drawable/img_avatar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/img_avatar" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/tvNameSellerDashboard"
@@ -71,7 +71,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="140dp"
                 android:orientation="horizontal"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp">
@@ -87,10 +87,10 @@
 
                     <ImageView
                         android:id="@+id/imageView2"
-                        android:layout_marginLeft="24dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_marginTop="16dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_clothes" />
@@ -99,13 +99,13 @@
                         android:id="@+id/tvQuantityClothes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="100"
-                        android:layout_marginTop="12dp"
-                        android:textSize="18sp"
-                        android:textColor="@color/white"
                         android:fontFamily="@font/gordita_medium"
-                        app:layout_constraintStart_toStartOf="@+id/imageView2"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                        android:text=""
+                        android:layout_marginLeft="12dp"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toEndOf="@+id/imageView2"
+                        app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
                     <TextView
                         android:id="@+id/textView3"
@@ -113,23 +113,24 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gordita_medium"
                         android:text="Clothes"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginLeft="12dp"
                         android:textColor="@color/white"
                         android:textSize="20sp"
-                        app:layout_constraintStart_toStartOf="@+id/tvQuantityClothes"
+                        app:layout_constraintStart_toEndOf="@+id/imageView2"
                         app:layout_constraintTop_toBottomOf="@+id/tvQuantityClothes" />
 
                     <TextView
                         android:id="@+id/tvMoreDetailsClothes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
                         android:fontFamily="@font/gordita_regular"
                         android:text="More details"
-                        android:layout_marginTop="4dp"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="@+id/textView3"
-                        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                        android:textSize="14sp"
+                        android:layout_margin="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -140,12 +141,13 @@
                     android:layout_marginLeft="4dp"
                     android:layout_marginRight="4dp"
                     android:background="@drawable/background_orange_vertical">
+
                     <ImageView
                         android:id="@+id/imageView3"
-                        android:layout_marginLeft="24dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_marginTop="16dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_voucher" />
@@ -154,13 +156,13 @@
                         android:id="@+id/tvQuantityVouchers"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="100"
-                        android:layout_marginTop="12dp"
-                        android:textSize="18sp"
-                        android:textColor="@color/white"
                         android:fontFamily="@font/gordita_medium"
-                        app:layout_constraintStart_toStartOf="@+id/imageView3"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                        android:text=""
+                        android:layout_marginLeft="12dp"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toEndOf="@+id/imageView3"
+                        app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
                     <TextView
                         android:id="@+id/textView6"
@@ -168,23 +170,23 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gordita_medium"
                         android:text="Vouchers"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginLeft="12dp"
                         android:textColor="@color/white"
                         android:textSize="20sp"
-                        app:layout_constraintStart_toStartOf="@+id/tvQuantityVouchers"
+                        app:layout_constraintStart_toEndOf="@+id/imageView3"
                         app:layout_constraintTop_toBottomOf="@+id/tvQuantityVouchers" />
 
                     <TextView
                         android:id="@+id/tvMoreDetailsVouchers"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
                         android:fontFamily="@font/gordita_regular"
                         android:text="More details"
-                        android:layout_marginTop="4dp"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="@+id/textView6"
-                        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
@@ -231,7 +233,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView4"
                     app:layout_constraintStart_toEndOf="@+id/imageView4" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -277,7 +279,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView5"
                     app:layout_constraintStart_toEndOf="@+id/imageView5" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -323,7 +325,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView6"
                     app:layout_constraintStart_toEndOf="@+id/imageView6" />
             </androidx.constraintlayout.widget.ConstraintLayout>

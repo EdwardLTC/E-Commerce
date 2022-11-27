@@ -9,5 +9,5 @@ public class ClothesReq {
     public String des;
     public String name;
     public ArrayList<String> imgUrls;
-    public ArrayList<ClothesProperty> clothesProperties;
+    public ArrayList<ClothesPropertyReq> clothesProperties;
 }

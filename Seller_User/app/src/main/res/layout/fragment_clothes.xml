@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Seller.fragments.ClothesFragment"
+    tools:context=".AppSeller.fragments.ClothesFragment"
     android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,6 +45,36 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edtSearchClothes" />
+
+        <TextView
+            android:id="@+id/tvCantFindClothesManagement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gordita_bold"
+            android:text="Can't not find any result"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:visibility="invisible"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rcvClothesManagement" />
+
+        <TextView
+            android:id="@+id/tvTryAgainClothesManagement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gordita_regular"
+            android:text="Please try again"
+            android:textAlignment="center"
+            android:textColor="@color/text_blur"
+            android:textSize="18dp"
+            android:visibility="invisible"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCantFindClothesManagement" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
