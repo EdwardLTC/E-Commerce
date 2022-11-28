@@ -18,21 +18,25 @@ import com.edward.myapplication.R;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 
 public class MyHelper {
 
-    // thêm hiệu ứng khi click
-
-
-    public static String getHashPassword(String password) {
-        return BCrypt.withDefaults().hashToString(12, password.toCharArray());
-    }
-
-    public static Boolean isVerifiedHash(String password, String passwordHash) {
-        BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), passwordHash);
-        return result.verified;
+    public static String MD5(String md5) {
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+            byte[] array = md.digest(md5.getBytes("UTF-8"));
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < array.length; ++i) {
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+            }
+            return sb.toString();
+        } catch (java.security.NoSuchAlgorithmException e) {
+        } catch(UnsupportedEncodingException ex){
+        }
+        return null;
     }
     // thêm hiệu ứng khi click
     public static void addClickEffect(View view)
