@@ -1,14 +1,16 @@
 package com.edward.myapplication.model.modelrespon;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ClothesRes {
+public class ClothesRes implements Serializable {
     public int id;
     public int idseller;
     public int idCategory;
     public String des;
     public String name;
     public ArrayList<String> imgsUrl;
+    public int quantily;
 
     public ClothesRes() {
     }
@@ -68,6 +70,14 @@ public class ClothesRes {
 
     public void setImgsUrl(ArrayList<String> imgsUrl) {
         this.imgsUrl = imgsUrl;
+    }
+
+    public int getQuantily() {
+        return quantily;
+    }
+
+    public void setQuantily(int quantily) {
+        this.quantily = quantily;
     }
 
     @Override

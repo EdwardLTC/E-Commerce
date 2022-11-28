@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="4dp"
-    android:background="@drawable/style_white">
+    android:background="@color/background">
 
     <FrameLayout
         android:id="@+id/content_frame_home"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#D7F5F5F8"
+        android:background="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -53,6 +53,7 @@
                 android:layout_marginTop="20dp">
 
                 <ImageView
+                    android:id="@+id/ImgFind"
                     android:layout_width="30dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_search"
@@ -60,15 +61,17 @@
                     android:layout_marginLeft="20dp">
                 </ImageView>
 
-                <TextView
+                <EditText
+                    android:id="@+id/txtFind"
                     android:layout_width="270dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:text="Search Items">
-                </TextView>
+                    android:text="Search Items"
+                    android:textSize="15dp">
+                </EditText>
 
                 <ImageView
-                    android:id="@+id/filter"
+                    android:id="@+id/btnfilter"
                     android:layout_width="45dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
@@ -85,6 +88,7 @@
                 android:layout_marginLeft="23dp">
 
                 <ImageView
+                    android:id="@+id/ImgDress"
                     android:layout_width="68dp"
                     android:layout_height="65dp"
                     android:src="@drawable/dress"
@@ -92,6 +96,7 @@
                 </ImageView>
 
                 <ImageView
+                    android:id="@+id/ImgShirts"
                     android:layout_width="68dp"
                     android:layout_height="65dp"
                     android:src="@drawable/shirt"
@@ -100,6 +105,7 @@
                 </ImageView>
 
                 <ImageView
+                    android:id="@+id/ImgPants"
                     android:layout_width="68dp"
                     android:layout_height="65dp"
                     android:src="@drawable/pants"
@@ -108,6 +114,7 @@
                 </ImageView>
 
                 <ImageView
+                    android:id="@+id/ImgTshirts"
                     android:layout_width="68dp"
                     android:layout_height="65dp"
                     android:src="@drawable/tshirt"
@@ -167,6 +174,7 @@
                     android:textSize="23dp">
                 </TextView>
                 <TextView
+                    android:id="@+id/txtSeeAll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="See all"
@@ -176,102 +184,15 @@
             </LinearLayout>
 
 <!--            products-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RecyclerViewInHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="20dp">
 
-                <LinearLayout
-                    android:layout_width="157dp"
-                    android:layout_height="242dp"
-                    android:background="@drawable/style_white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.117"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0"
-                    tools:ignore="MissingConstraints"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="140dp"
-                        android:layout_height="180dp"
-                        android:src="@drawable/product_1"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginBottom="10dp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="60dp"
-                            android:text="Long sleeve shirt"
-                            android:textColor="@color/black"
-                            android:layout_marginLeft="10dp">
-                        </TextView>
-                        <TextView
-                            android:layout_width="40dp"
-                            android:layout_height="60dp"
-                            android:text="160$"
-                            android:textStyle="bold"
-                            android:textColor="@color/black">
-                        </TextView>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="157dp"
-                    android:layout_height="243dp"
-                    android:background="@drawable/style_white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.89"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:ignore="MissingConstraints"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
-                        android:layout_marginLeft="10dp"
-                        android:src="@drawable/product_2"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="40dp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="60dp"
-                            android:text="Henley shirt"
-                            android:textColor="@color/black"
-                            android:layout_marginLeft="10dp">
-                        </TextView>
-                        <TextView
-                            android:layout_width="40dp"
-                            android:layout_height="60dp"
-                            android:text="160$"
-                            android:textColor="@color/black"
-                            android:textStyle="bold">
-                        </TextView>
-                    </LinearLayout>
-                </LinearLayout>
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </LinearLayout>
-
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
 
     </FrameLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -281,7 +202,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="12dp"
-        android:background="@drawable/style_white"
+        android:background="@drawable/background_bottom_nav"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
