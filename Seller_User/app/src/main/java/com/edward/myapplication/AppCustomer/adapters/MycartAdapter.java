@@ -51,36 +51,37 @@ public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.MyViewHold
         list.get(position).getImgsUrl().get(0);
 
         holder.name.setText(list.get(position).getName());
-        ServiceAPI.serviceApi.GetAllClothesProperties(list.get(position).id).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResGetListProperties>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(ResGetListProperties resGetListProperties) {
-                        holder.price.setText(resGetListProperties.get_ClothesPropertiesRes().get(0).price);
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-
-        holder.cong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+        holder.price.setText(list.get(position).getMaxPrice());
+//        ServiceAPI.serviceApi.GetAllClothesProperties(list.get(position).id).subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<ResGetListProperties>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(ResGetListProperties resGetListProperties) {
+//                        holder.price.setText(resGetListProperties.get_ClothesPropertiesRes().get(0).price);
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//
+//                    }
+//                });
+//
+//        holder.cong.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//            }
+//        });
     }
 
     @Override
