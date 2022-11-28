@@ -8,6 +8,7 @@ import java.util.List;
 
 public class BillReq implements Serializable {
     public int iduser;
+    public int idseller;
     public int idvoucher;
     public String status;
     public List<BillDetailReq> listBillDetailReq;
