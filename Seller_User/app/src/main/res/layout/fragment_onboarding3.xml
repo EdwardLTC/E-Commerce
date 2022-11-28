@@ -42,12 +42,12 @@
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
-        android:text="Get started"
+
         android:layout_gravity="center"
         android:textAllCaps="false"
         android:fontFamily="@font/gordita_medium"
         android:textSize="16sp"
-        android:background="@drawable/orange2"
+        android:background="@drawable/group_224"
         android:textColor="@color/white" />
 
 

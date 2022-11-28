@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btLogin;
     private EditText edtEmailLogin;
     private EditText edtPassword;
-    private TextView loi1 ,loi2;
+    private TextView loi1 ,loi2, txtsignup;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -46,6 +46,14 @@ public class LoginActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         loi1=findViewById(R.id.textView16);
         loi2=findViewById(R.id.textView17);
+        txtsignup=findViewById(R.id.txtsignup);
+        txtsignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(),SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
