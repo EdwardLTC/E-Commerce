@@ -18,28 +18,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".AppCustomer.views.MainMycart"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
-        <activity
-            android:name=".AppSeller.views.BillsManagementActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-
-        <activity
-            android:name=".AppSeller.views.UpdateClothesActivity"
-            android:exported="false" />
         <activity
             android:name=".AppSeller.views.AddClothesActivity"
             android:exported="true">
@@ -49,6 +33,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AppCustomer.views.CustomerAllClothesActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
+        <activity
+            android:name=".OnboardingActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+
 
         <activity
             android:name=".LoginActivity"
@@ -61,10 +72,22 @@
             android:exported="false" />
         <activity
             android:name=".AppSeller.views.ClothesManagementActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AppCustomer.views.CustomerAllClothesActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+
+
+
+
         <activity
             android:name=".AppCustomer.views.MainActivity"
             android:exported="false" />
@@ -73,13 +96,12 @@
             android:exported="false" />
         <activity
             android:name=".AppCustomer.views.MainCheckout"
-            android:exported="false"/>
-        <activity
-            android:name=".AppCustomer.views.MainMycart"
-            android:exported="false" />
-        <activity
-            android:name=".AppCustomer.views.MainProductdetalls"
-            android:exported="false" />
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
         <activity
             android:name=".AppSeller.views.ClothesListOfCategoryActivity"
             android:exported="false" />
