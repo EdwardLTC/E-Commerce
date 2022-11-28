@@ -59,6 +59,7 @@ public class HomeFragment extends Fragment {
                 return true;
             }
         });
+        loadFragment(new InHomeFragment());
 
 
     }
