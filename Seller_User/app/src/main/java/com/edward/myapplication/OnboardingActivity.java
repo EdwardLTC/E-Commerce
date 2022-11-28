@@ -7,6 +7,7 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -34,7 +35,9 @@ public class OnboardingActivity extends AppCompatActivity {
         tvSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewPager.setCurrentItem(2);
+
+                Intent intent = new Intent(getBaseContext(),LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
