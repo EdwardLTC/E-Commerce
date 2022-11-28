@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.edward.myapplication.AppCustomer.views.MainActivity;
 
@@ -46,29 +47,36 @@ public class SignUpActivity extends AppCompatActivity {
                 String name = edtname.getText().toString();
 
                 if (name.trim().equals("")) {
-                    loi3.setError("");
-                    loi3.setText("UserName cannot be blank!");
+//                    loi3.setError("");
+//                    loi3.setText("UserName cannot be blank!");
+                    Toast.makeText(SignUpActivity.this, "UserName cannot be blank!", Toast.LENGTH_SHORT).show();
+
                 } else {
-                    loi3.setText("");
-                }
-                if (password.trim().equals("")) {
-                    loi5.setError("");
-                    loi5.setText("PassWord cannot be blank!");
-                } else {
-                    loi5.setText("");
+                    Toast.makeText(SignUpActivity.this, "", Toast.LENGTH_SHORT).show();
+
                 }
 
+
                 if (emaill.trim().equals("")) {
-                    loi4.setError("");
-                    loi4.setText("Email cannot be blank!");
+//                    loi4.setError("");
+//                    loi4.setText("Email cannot be blank!");
+                    Toast.makeText(SignUpActivity.this, "Email cannot be blank!", Toast.LENGTH_SHORT).show();
                 } else if (!isValidEmail(emaill)) {
-                    loi4.setText("Wrong data format");
+                    Toast.makeText(SignUpActivity.this, "", Toast.LENGTH_SHORT).show();
 
                 } else {
                     User user = new User();
                     user.setEmail(edtEmailsignup.getText().toString());
                     user.setName(edtname.getText().toString());
                     user.setPass(edtPassword.getText().toString());
+                }
+                if (password.trim().equals("")) {
+//                    loi5.setError("");
+//                    loi5.setText("PassWord cannot be blank!");
+                    Toast.makeText(SignUpActivity.this, "PassWord cannot be blank!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SignUpActivity.this, "", Toast.LENGTH_SHORT).show();
+
                 }
 
             }
