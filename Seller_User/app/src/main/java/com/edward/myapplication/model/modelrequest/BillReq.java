@@ -4,10 +4,53 @@ import com.edward.myapplication.model.modelrequest.BillDetailReq;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BillReq implements Serializable {
     public int iduser;
     public int idvoucher;
     public String status;
-    public ArrayList<BillDetailReq> listBillDetailReq;
+    public List<BillDetailReq> listBillDetailReq;
+
+    public BillReq() {
+    }
+
+    public BillReq(int iduser, int idvoucher, String status, List<BillDetailReq> listBillDetailReq) {
+        this.iduser = iduser;
+        this.idvoucher = idvoucher;
+        this.status = status;
+        this.listBillDetailReq = listBillDetailReq;
+    }
+
+    public int getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(int iduser) {
+        this.iduser = iduser;
+    }
+
+    public int getIdvoucher() {
+        return idvoucher;
+    }
+
+    public void setIdvoucher(int idvoucher) {
+        this.idvoucher = idvoucher;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public List<BillDetailReq> getListBillDetailReq() {
+        return listBillDetailReq;
+    }
+
+    public void setListBillDetailReq(List<BillDetailReq> listBillDetailReq) {
+        this.listBillDetailReq = listBillDetailReq;
+    }
 }
