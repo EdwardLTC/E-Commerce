@@ -22,13 +22,13 @@ import java.util.ArrayList;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<ClothesRes> list;
-    private ArrayList<ClothesImage> ListImg;
 
     public FavoriteAdapter(Context context, ArrayList<ClothesRes> list){
         this.context= context;

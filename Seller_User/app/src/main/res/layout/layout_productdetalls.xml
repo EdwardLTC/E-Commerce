@@ -34,62 +34,160 @@
         android:layout_height="400dp"
         android:src="@mipmap/img" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:background="@drawable/style_white"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="280dp"
+            android:background="@drawable/style_white"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/tv_price"
+                    android:text="Casual Henley Shirts"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="$175"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/tv_price"
-                android:text="Casual Henley Shirts"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:layout_marginTop="16dp"
+                android:text="A Henley shirt is a collarless pullover shirt, by a round neckline and a placket about 3 to 5 inches (8 to 13 cm) long and usually having 2–5 buttons." />
 
-            <TextView
-                android:id="@+id/tv_price"
-                android:layout_width="wrap_content"
+
+<!--            // size-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:text="$175"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
+                android:orientation="horizontal"
+                android:layout_marginRight="16dp">
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/gordita_regular"
+                    android:text="Size:"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="A Henley shirt is a collarless pullover shirt, by a round neckline and a placket about 3 to 5 inches (8 to 13 cm) long and usually having 2–5 buttons." />
+                <Button
+                    android:id="@+id/btnSizeS"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/background_size_clothes"
+                    android:fontFamily="@font/gordita_regular"
+                    android:text="S"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+                <Button
+                    android:id="@+id/btnSizeM"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/background_size_clothes"
+                    android:fontFamily="@font/gordita_regular"
+                    android:text="M"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Size"
-            android:textColor="@color/black"
-            android:textSize="16dp" />
+                <Button
+                    android:id="@+id/btnSizeL"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/background_size_clothes"
+                    android:fontFamily="@font/gordita_regular"
+                    android:text="L"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
 
-        <Button
-            android:id="@+id/btncheckoutproduct"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/button_add"
-            android:text="Add to Cart"
-            android:textColor="#FFFFFF" />
-    </LinearLayout>
+                <Button
+                    android:id="@+id/btnSizeXL"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/background_size_clothes"
+                    android:fontFamily="@font/gordita_regular"
+                    android:text="XL"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/gordita_regular"
+                    android:text="Quantity:"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+
+                <com.mcdev.quantitizerlibrary.HorizontalQuantitizer
+                    android:id="@+id/HqAddClothes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="100dp"/>
+
+
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btncheckoutproduct"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_add"
+                android:text="Add to Cart"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

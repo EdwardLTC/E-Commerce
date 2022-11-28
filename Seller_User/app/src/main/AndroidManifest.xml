@@ -62,6 +62,9 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".AppSeller.views.SellerDashboardActivity"
             android:exported="false" />
         <activity
