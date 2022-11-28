@@ -12,8 +12,6 @@ public class ClothesRes implements Serializable {
     public ArrayList<String> imgsUrl;
     public int quantily;
 
-    public ClothesRes() {
-    }
 
     public ClothesRes(int id, int idseller, int idCategory, String des, String name, ArrayList<String> imgsUrl) {
         this.id = id;
@@ -23,6 +21,9 @@ public class ClothesRes implements Serializable {
         this.name = name;
         this.imgsUrl = imgsUrl;
     }
+
+//    public ClothesRes(int id, int idseller, int idCategory, String des, String name, String imgUrl, int quantily) {
+//    }
 
     public int getId() {
         return id;

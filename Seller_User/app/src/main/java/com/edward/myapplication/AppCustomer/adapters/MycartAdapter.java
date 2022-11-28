@@ -25,10 +25,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.ViewHolder> {
+public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.MyViewHolder> {
     private Context context;
     private ArrayList<ClothesRes> list;
-
 
     public MycartAdapter(Context context, ArrayList<ClothesRes> list) {
         this.context = context;
@@ -37,15 +36,14 @@ public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.ViewHolder
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View view = inflater.inflate(R.layout.one_item_cart, parent, false);
-        return new ViewHolder(view);
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         if (list.get(position).getImgsUrl().size() != 0) {
             Glide.with(context).load(list.get(position).getImgsUrl().get(0)).into(holder.Img);
@@ -53,10 +51,7 @@ public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.ViewHolder
         list.get(position).getImgsUrl().get(0);
 
         holder.name.setText(list.get(position).getName());
-        holder.values.setText(list.get(position).getQuantily());
-
-        ServiceAPI.serviceApi.GetAllClothesProperties(list.get(position).getId())
-                .subscribeOn(Schedulers.io())
+        ServiceAPI.serviceApi.GetAllClothesProperties(list.get(position).id).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResGetListProperties>() {
                     @Override
@@ -65,7 +60,9 @@ public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.ViewHolder
                     }
 
                     @Override
-                    public void onNext(ResGetListProperties resGetProperties) {
+                    public void onNext(ResGetListProperties resGetListProperties) {
+                        holder.price.setText(resGetListProperties.get_ClothesPropertiesRes().get(0).price);
+
                     }
 
                     @Override
@@ -78,6 +75,12 @@ public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.ViewHolder
 
                     }
                 });
+
+        holder.cong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
     }
 
     @Override
@@ -85,18 +88,18 @@ public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.ViewHolder
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView Img;
         TextView name, price, values;
-        Button add, tru;
+        Button cong, tru;
 
-        public ViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             Img = itemView.findViewById(R.id.imgmycart);
             values = itemView.findViewById(R.id.tvvalue);
             name = itemView.findViewById(R.id.tvname);
             price = itemView.findViewById(R.id.tvprice);
-            add = itemView.findViewById(R.id.btncong);
+            cong = itemView.findViewById(R.id.btncong);
             tru = itemView.findViewById(R.id.btntru);
         }
     }
