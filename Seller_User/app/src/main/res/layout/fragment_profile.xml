@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/ic_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -30,6 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/iv_profile"
         android:layout_width="104dp"
         android:layout_height="107dp"
         android:layout_marginTop="68dp"
@@ -40,6 +42,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/txtProfileName"
         android:layout_width="198dp"
         android:layout_height="42dp"
         android:layout_marginTop="196dp"
@@ -52,6 +55,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/txtProfileEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="248dp"
@@ -82,6 +86,7 @@
         app:layout_constraintTop_toTopOf="@id/round_white" />
 
     <ImageView
+        android:id="@+id/ic_profile_bag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="57dp"
@@ -104,6 +109,7 @@
         app:layout_constraintTop_toTopOf="@id/round_white" />
 
     <TextView
+        android:id="@+id/txtProfileProcessOrderNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="64dp"
@@ -135,6 +141,7 @@
         app:layout_constraintTop_toTopOf="@id/round_white2" />
 
     <ImageView
+        android:id="@+id/ic_ticket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
@@ -157,6 +164,7 @@
         app:layout_constraintTop_toTopOf="@id/round_white2" />
 
     <TextView
+        android:id="@+id/txtProfilePromocodesNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="64dp"
@@ -188,6 +196,7 @@
         app:layout_constraintTop_toTopOf="@id/round_white3" />
 
     <ImageView
+        android:id="@+id/ic_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="57dp"
@@ -210,6 +219,7 @@
         app:layout_constraintTop_toTopOf="@id/round_white3" />
 
     <TextView
+        android:id="@+id/txtProfileReviewesNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="64dp"
@@ -252,6 +262,7 @@
                 android:fontFamily="@font/gordita_light"
                 android:layout_marginLeft="26dp"/>
             <TextView
+                android:id="@+id/txtPIName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chris Harison"
@@ -271,6 +282,7 @@
                 android:fontFamily="@font/gordita_light"
                 android:layout_marginLeft="26dp"/>
             <TextView
+                android:id="@+id/txtPIMail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chris@gmail.com"
@@ -290,6 +302,7 @@
                 android:fontFamily="@font/gordita_light"
                 android:layout_marginLeft="26dp"/>
             <TextView
+                android:id="@+id/txtPIAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="San Diego"
@@ -310,6 +323,7 @@
                 android:fontFamily="@font/gordita_light"
                 android:layout_marginLeft="26dp"/>
             <TextView
+                android:id="@+id/txtPIPhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="012345678"
