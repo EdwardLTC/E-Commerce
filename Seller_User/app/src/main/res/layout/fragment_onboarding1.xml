@@ -40,7 +40,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/orange2"
-        android:text="Next"
+        android:text="Next >"
         android:layout_gravity="center"
         android:textAllCaps="false"
         android:fontFamily="@font/gordita_medium"

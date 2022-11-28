@@ -219,11 +219,21 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="116dp"
         android:layout_marginTop="48dp"
-        android:text="TextView"
+        android:text="Don't have an account?"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cvLoginFacebook" />
+
+    <TextView
+        android:id="@+id/txtsignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Sign Up"
+        app:layout_constraintStart_toEndOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/cvLoginFacebook"
+        android:textStyle="bold" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

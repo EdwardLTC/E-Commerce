@@ -16,7 +16,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText edtname;
     private EditText edtEmailsignup;
     private EditText edtPassword;
-    private TextView loi3 ,loi4,loi5;
+    private TextView loi3 ,loi4,loi5,txtlogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +28,15 @@ public class SignUpActivity extends AppCompatActivity {
         loi3=findViewById(R.id.textView18);
         loi4=findViewById(R.id.textView19);
         loi5=findViewById(R.id.textView20);
+        txtlogin=findViewById(R.id.txtlogin);
+
+        txtlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(),LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btSignup.setOnClickListener(new View.OnClickListener() {
             @Override
