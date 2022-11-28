@@ -121,4 +121,13 @@ public interface ServiceAPI {
     @POST("CreateBill")
     Observable<BillReq> CreateBill (@Body BillReq billReq);
 
+    @GET("GetClothesFromFromBill")
+    Observable<ResGetListClothes> GetClothesFromFromBill(@Query("billId") int billId);
+
+    @GET("GetBillWhereCompleted")
+    Observable<ResGetListBill> GetBillWhereCompleted();
+
+    @GET("GetBillWhereNotCompleted")
+    Observable<ResGetListBill> GetBillWhereNotCompleted();
+
 }
