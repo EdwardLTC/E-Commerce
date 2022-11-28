@@ -1,15 +1,16 @@
 package com.edward.myapplication.model.modelrespon;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ResGetListBill {
     public Respon _Respon;
-    public ArrayList<BillRes> _BillRes;
+    public List<BillRes> _BillRes;
 
     public ResGetListBill() {
     }
 
-    public ResGetListBill(Respon _Respon, ArrayList<BillRes> _BillRes) {
+    public ResGetListBill(Respon _Respon, List<BillRes> _BillRes) {
         this._Respon = _Respon;
         this._BillRes = _BillRes;
     }
@@ -22,11 +23,11 @@ public class ResGetListBill {
         this._Respon = _Respon;
     }
 
-    public ArrayList<BillRes> get_BillRes() {
+    public List<BillRes> get_BillRes() {
         return _BillRes;
     }
 
-    public void set_BillRes(ArrayList<BillRes> _BillRes) {
+    public void set_BillRes(List<BillRes> _BillRes) {
         this._BillRes = _BillRes;
     }
 }
