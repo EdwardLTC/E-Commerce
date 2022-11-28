@@ -13,16 +13,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.edward.myapplication.R;
+import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.model.ClothesImage;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
+import com.edward.myapplication.model.modelrespon.ResGetListProperties;
 
 import java.util.ArrayList;
+
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<ClothesRes> list;
-    private ArrayList<ClothesImage> ListImg;
 
     public FavoriteAdapter(Context context, ArrayList<ClothesRes> list){
         this.context= context;
@@ -48,29 +54,30 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
         holder.name.setText(list.get(position).getName());
 
-//        ServiceAPI.serviceApi.GetClothesProperties(list.get(position).getId())
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Observer<ResGetProperties>() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onNext(ResGetProperties resGetProperties) {
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//
-//                    }
-//                });
+        ServiceAPI.serviceApi.GetAllClothesProperties(list.get(position).id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListProperties>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResGetListProperties resGetProperties) {
+                        holder.price.setText(resGetProperties.get_ClothesPropertiesRes().get(0).price);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
 
 
 
