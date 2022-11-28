@@ -47,13 +47,14 @@ public class HomeFragment extends Fragment {
                     case R.id.bottom_home:
                         loadFragment(new InHomeFragment());
                         break;
-                    case R.id.bottom_settings:
-                        break;
                     case R.id.bottom_heart:
                         loadFragment(new FavotiteFragment());
                         break;
                     case R.id.bottom_profile:
                         loadFragment(new ProfileFragment());
+                        break;
+
+                    case R.id.bottom_settings:
                         break;
                 }
                 return true;
