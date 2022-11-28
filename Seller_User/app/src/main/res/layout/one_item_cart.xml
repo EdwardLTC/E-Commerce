@@ -14,6 +14,7 @@
         android:padding="10dp">
 
     <ImageView
+        android:id="@+id/imgmycart"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="#CACACA"
@@ -26,11 +27,13 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvname"
             android:layout_width="150dp"
             android:layout_height="20dp"
             android:text="Henley Shirts" />
 
         <TextView
+            android:id="@+id/tvprice"
             android:layout_width="150dp"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
@@ -44,6 +47,8 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btncong"
+                android:focusable="false"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="10dp"
@@ -55,6 +60,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvvalue"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="10dp"
@@ -65,6 +71,8 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/btntru"
+                android:focusable="false"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="10dp"
@@ -74,8 +82,8 @@
                 android:textColor="#FF0000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
         </LinearLayout>
 
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>
