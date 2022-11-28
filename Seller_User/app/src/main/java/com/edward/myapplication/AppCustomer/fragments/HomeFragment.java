@@ -17,24 +17,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.myapplication.AppCustomer.views.Filtering;
-import com.edward.myapplication.Customer.fragments.FavotiteFragment;
 import com.edward.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class HomeFragment extends Fragment {
     BottomNavigationView bottomNavigationView;
-    ImageView filter, find, dress, shirts, pants, tshirts;
-    TextView seeAll;
-    EditText edtFind;
-    RecyclerView recyclerView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
-        LinearLayoutManager linearLayoutManager  = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
 
         return view;
     }
@@ -44,23 +38,6 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setItemIconTintList(null);
-        filter = view.findViewById(R.id.btnfilter);
-        find = view.findViewById(R.id.ImgFind);
-        edtFind = view.findViewById(R.id.txtFind);
-        dress = view.findViewById(R.id.ImgDress);
-        shirts = view.findViewById(R.id.ImgShirts);
-        pants = view.findViewById(R.id.ImgPants);
-        tshirts = view.findViewById(R.id.ImgTshirts);
-        seeAll = view.findViewById(R.id.txtSeeAll);
-        recyclerView = view.findViewById(R.id.RecyclerViewInHome);
-
-        filter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Filtering filtering = new Filtering();
-                filtering.show(getActivity().getSupportFragmentManager(), "TAG");
-            }
-        });
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
