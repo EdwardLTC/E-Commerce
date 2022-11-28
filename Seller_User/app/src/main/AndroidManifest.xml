@@ -40,6 +40,9 @@
             android:name=".AppSeller.views.AddClothesActivity"
             android:exported="false"/>
 
+        <activity
+            android:name=".AppCustomer.views.MainProductdetalls"
+            android:exported="false"/>
 
 
         <activity
@@ -58,9 +61,6 @@
 
 
 
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
