@@ -13,11 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.edward.myapplication.R;
+import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.model.ClothesImage;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.ResGetListProperties;
 
 import java.util.ArrayList;
+
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
 
@@ -41,38 +46,6 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-
-        if (list.get(position).getImgsUrl().size() != 0 ){
-            Glide.with(context).load( list.get(position).getImgsUrl().get(0)).into(holder.products);
-        }
-        list.get(position).getImgsUrl().get(0);
-
-        holder.name.setText(list.get(position).getName());
-
-
-        ServiceAPI.serviceApi.GetAllClothesProperties(list.get(position).getId())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResGetListProperties>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(ResGetListProperties resGetProperties) {
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
 
 
 

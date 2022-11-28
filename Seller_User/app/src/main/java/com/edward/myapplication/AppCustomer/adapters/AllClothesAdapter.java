@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
+import com.edward.myapplication.AppCustomer.views.MainProductdetalls;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.model.modelrespon.ClothesPropertiesRes;
@@ -52,6 +54,8 @@ public class AllClothesAdapter extends RecyclerView.Adapter<AllClothesAdapter.Vi
         holder.tvNameAllClothesItem.setText(clothesRes.getName());
 //        holder.tvPriceAllClothesItem.setText(price);
 
+        Glide.with(c).load(clothesRes.getImgsUrl().get(0)).into(holder.ivAllClothesItem);
+
         ServiceAPI.serviceApi.GetAllClothesProperties(clothesRes.getId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -65,8 +69,7 @@ public class AllClothesAdapter extends RecyclerView.Adapter<AllClothesAdapter.Vi
                     public void onNext(ResGetListProperties resGetListProperties) {
                         Log.d(">>>>>>>>>>>.. ", resGetListProperties.get_Respon().getRespone_code()+"");
                         if (resGetListProperties.get_Respon().getRespone_code() == 200) {
-                            List<ClothesPropertiesRes> ls = new ArrayList<>();
-                            ls = resGetListProperties.get_ClothesPropertiesRes();
+                            List<ClothesPropertiesRes> ls = resGetListProperties.get_ClothesPropertiesRes();
 
                             if (ls.size() == 0) {
                                 price = "0.0";
@@ -88,22 +91,16 @@ public class AllClothesAdapter extends RecyclerView.Adapter<AllClothesAdapter.Vi
 
                     }
                 });
-//        holder.tvPriceAllClothesItem.setText();
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent()
-//            }
-//        });
-//
-//        holder.ivCategoriesItem.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(c, ClothesListOfCategoryActivity.class);
-//                intent.putExtra("idCategory", category.getId());
-//                c.startActivity(intent);
-//            }
-//        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(c, MainProductdetalls.class);
+                intent.putExtra("clothesRes", clothesRes);
+                c.startActivity(intent);
+            }
+        });
+
 
     }
 

@@ -16,7 +16,7 @@ public class BillReq implements Serializable {
     public BillReq() {
     }
 
-    public BillReq(int iduser, int seller, int idvoucher, String status, List<BillDetailReq> listBillDetailReq) {
+    public BillReq(int iduser, int idseller, int idvoucher, String status, List<BillDetailReq> listBillDetailReq) {
         this.iduser = iduser;
         this.idseller = idseller;
         this.idvoucher = idvoucher;
