@@ -69,4 +69,16 @@ public class BillRes implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "BillRes{" +
+                "id=" + id +
+                ", iduser=" + iduser +
+                ", idseller=" + idseller +
+                ", idvoucher=" + idvoucher +
+                ", dateCreate='" + dateCreate + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

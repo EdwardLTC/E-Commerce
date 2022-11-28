@@ -2,6 +2,7 @@ package com.edward.myapplication.AppSeller.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,10 +90,13 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
             }
         });
 
+        Log.d("Status: ", billRes.getStatus());
         if (billRes.getStatus().equals("Completed")) {
             holder.btConfirmStatusBill.setVisibility(View.INVISIBLE);
             holder.btConfirmStatusBill.setEnabled(false);
         } else {
+            holder.btConfirmStatusBill.setVisibility(View.VISIBLE);
+            holder.btConfirmStatusBill.setEnabled(true);
             holder.btConfirmStatusBill.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -76,36 +76,11 @@ public class LoginActivity extends AppCompatActivity {
 
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 } else {
-                    User user = new User();
-                    user.setEmail(edtEmailLogin.getText().toString());
-                    user.setPass(edtPassword.getText().toString());
+                   login();
                 }
             }
         });
-        ServiceAPI.serviceApi.CreatePerson(new PersonReq(1, "Linh", "linh@gmail.com", "123", "", 1, "", ""))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Respon>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
 
-                    }
-
-                    @Override
-                    public void onNext(Respon respon) {
-                        Log.d(">>>>>>>>", "successs");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
 
         // create person
 //        String pass = MyHelpers.getHashPassword("abc");
