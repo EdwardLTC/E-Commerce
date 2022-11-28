@@ -11,18 +11,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.edward.myapplication.R;
 
 public class MainMycart extends AppCompatActivity {
-    Button btncheckoutmycart, btnbackmycart;
+    Button btnback, btncheckout;
     RecyclerView recyclerView;
-    TextView tvpireprice2;
+    TextView tvprice;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_mycart);
-        btncheckoutmycart = findViewById(R.id.btncheckoutmycart);
-        btnbackmycart = findViewById(R.id.btnbackmycart);
-        tvpireprice2 = findViewById(R.id.tv_price2);
-        recyclerView = findViewById(R.id.RecyclerViewMyCart);
+        anhxa();
     }
+
+    private void anhxa() {
+        btncheckout = findViewById(R.id.btncheckout);
+        btnback = findViewById(R.id.btnback);
+        tvprice = findViewById(R.id.tvprice);
+        recyclerView = findViewById(R.id.recyclerView);
+    }
+
 }
