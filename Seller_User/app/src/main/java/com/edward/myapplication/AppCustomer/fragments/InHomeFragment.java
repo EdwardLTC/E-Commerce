@@ -7,12 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.myapplication.AppCustomer.views.Filtering;
@@ -20,18 +21,19 @@ import com.edward.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class SearchFragment extends Fragment {
-    ImageView Imgfilter, ImgFind, ImgHistory;
+public class InHomeFragment extends Fragment {
+    ImageView filter, find;
+    TextView seeAllNew, seeAllCategory;
     EditText edtFind;
-    RecyclerView recyclerView;
-
+    RecyclerView recyclerViewNew, recyclerViewCategory;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        View view =  inflater.inflate(R.layout.fragment_inhome, container, false);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        LinearLayoutManager linearLayoutManager  = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
+        recyclerViewCategory.setLayoutManager(linearLayoutManager);
+        recyclerViewNew.setLayoutManager(linearLayoutManager);
 
         return view;
     }
@@ -39,19 +41,22 @@ public class SearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Imgfilter = view.findViewById(R.id.filter);
-        ImgFind = view.findViewById(R.id.ImgFind);
-        edtFind = view.findViewById(R.id.edtFind);
-        ImgHistory = view.findViewById(R.id.ImgHistory);
-        recyclerView = view.findViewById(R.id.RecyclerViewSearch);
+        filter = view.findViewById(R.id.btnfilter);
+        find = view.findViewById(R.id.ImgFind);
+        edtFind = view.findViewById(R.id.txtFind);
+        seeAllNew = view.findViewById(R.id.SeeAllNew);
+        seeAllCategory = view.findViewById(R.id.SeeAllCategory);
+        recyclerViewNew = view.findViewById(R.id.RecyclerViewNew);
+        recyclerViewCategory = view.findViewById(R.id.RecyclerViewCategory);
 
-        Imgfilter.setOnClickListener(new View.OnClickListener() {
+        filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Filtering filtering = new Filtering();
                 filtering.show(getActivity().getSupportFragmentManager(), "TAG");
             }
         });
+
 
 
     }
