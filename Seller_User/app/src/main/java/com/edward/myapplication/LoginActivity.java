@@ -1,6 +1,7 @@
 package com.edward.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,24 +62,34 @@ public class LoginActivity extends AppCompatActivity {
                 login();
                 String emaill = edtEmailLogin.getText().toString();
                 String password = edtPassword.getText().toString();
-                if (password.trim().equals("")) {
-                    loi2.setError("");
-                    loi2.setText("PassWord cannot be blank!");
-                } else {
-                    loi2.setText("");
-                }
+
 
                 if (emaill.trim().equals("")) {
-                    loi1.setError("");
-                    loi1.setText("Email cannot be blank!");
-                } else if (!isValidEmail(emaill)) {
-                    loi1.setText("Wrong data format");
+//                    loi1.setError("");
+//                    loi1.setText("Email cannot be blank!");
+                    Toast.makeText(LoginActivity.this, "Email cannot be blank!", Toast.LENGTH_SHORT).show();
 
+                } else if (!isValidEmail(emaill)) {
+//                    loi1.setText("Wrong data format");
+                    Toast.makeText(LoginActivity.this, "Wrong data format", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 } else {
                    login();
                 }
+
+                if (password.trim().equals("")) {
+//                    loi2.setError("");
+//                    loi2.setText("PassWord cannot be blank!");
+                    Toast.makeText(LoginActivity.this, "PassWord cannot be blank!", Toast.LENGTH_SHORT).show();
+                } else {
+//                    loi2.setText("");
+                    Toast.makeText(LoginActivity.this, "", Toast.LENGTH_SHORT).show();
+
+                }
             }
+
+
+
         });
 
 
