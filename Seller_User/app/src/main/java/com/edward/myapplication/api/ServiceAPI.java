@@ -5,6 +5,7 @@ import com.edward.myapplication.model.modelrequest.FavoriteReq;
 import com.edward.myapplication.model.modelrequest.PersonReq;
 import com.edward.myapplication.model.modelrequest.VoucherReq;
 import com.edward.myapplication.model.modelrequest.BillReq;
+import com.edward.myapplication.model.modelrespon.ResGetBillPayment;
 import com.edward.myapplication.model.modelrespon.ResGetCategory;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListBill;
@@ -130,4 +131,6 @@ public interface ServiceAPI {
     @GET("GetBillWhereNotCompleted")
     Observable<ResGetListBill> GetBillWhereNotCompleted();
 
+    @GET("GetBillPayment")
+    Observable<ResGetBillPayment> GetBillPayment();
 }
