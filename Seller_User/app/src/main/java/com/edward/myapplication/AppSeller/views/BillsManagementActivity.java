@@ -38,7 +38,7 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
     private SellerBillsAdapter sellerBillsAdapter;
     private List<BillRes> ls;
 
-    private int idSeller = 5;
+    private int idSeller = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +84,7 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
                             Toast.makeText(BillsManagementActivity.this, ls.size()+"", Toast.LENGTH_SHORT).show();
                             sellerBillsAdapter = new SellerBillsAdapter(BillsManagementActivity.this, ls);
                             rcvBillsManagement.setAdapter(sellerBillsAdapter);
+                            Log.d("Bill: ", ls.get(ls.size()-1).toString());
                         }
                     }
 

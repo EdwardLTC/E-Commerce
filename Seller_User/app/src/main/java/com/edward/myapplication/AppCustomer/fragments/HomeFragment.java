@@ -45,8 +45,9 @@ public class HomeFragment extends Fragment {
                 int id = item.getItemId();
                 switch (id) {
                     case R.id.bottom_home:
+                        loadFragment(new InHomeFragment());
                         break;
-                    case R.id.bottom_shop:
+                    case R.id.bottom_settings:
                         break;
                     case R.id.bottom_heart:
                         loadFragment(new FavotiteFragment());
@@ -58,6 +59,7 @@ public class HomeFragment extends Fragment {
                 return true;
             }
         });
+        loadFragment(new InHomeFragment());
 
 
     }

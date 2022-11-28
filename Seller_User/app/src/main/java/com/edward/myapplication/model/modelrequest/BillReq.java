@@ -16,11 +16,20 @@ public class BillReq implements Serializable {
     public BillReq() {
     }
 
-    public BillReq(int iduser, int idvoucher, String status, List<BillDetailReq> listBillDetailReq) {
+    public BillReq(int iduser, int seller, int idvoucher, String status, List<BillDetailReq> listBillDetailReq) {
         this.iduser = iduser;
+        this.idseller = idseller;
         this.idvoucher = idvoucher;
         this.status = status;
         this.listBillDetailReq = listBillDetailReq;
+    }
+
+    public int getIdseller() {
+        return idseller;
+    }
+
+    public void setIdseller(int idseller) {
+        this.idseller = idseller;
     }
 
     public int getIduser() {

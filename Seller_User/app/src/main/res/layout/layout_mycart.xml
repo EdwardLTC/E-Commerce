@@ -11,7 +11,7 @@
         android:paddingTop="16dp">
 
         <Button
-            android:id="@+id/btnbackmycart"
+            android:id="@+id/btnback"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/ic_back" />
@@ -27,7 +27,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerViewMyCart"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -51,13 +51,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/tv_price2"
+                android:layout_toStartOf="@id/tvprice"
                 android:text="Subtotal :"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/tv_price2"
+                android:id="@+id/tvprice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -69,7 +69,7 @@
         </RelativeLayout>
 
         <Button
-            android:id="@+id/btncheckoutmycart"
+            android:id="@+id/btncheckout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="60dp"

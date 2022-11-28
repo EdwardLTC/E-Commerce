@@ -1,0 +1,103 @@
+package com.edward.myapplication.AppCustomer.adapters;
+
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.edward.myapplication.R;
+import com.edward.myapplication.api.ServiceAPI;
+import com.edward.myapplication.model.modelrespon.ClothesRes;
+import com.edward.myapplication.model.modelrespon.ResGetListProperties;
+
+import java.util.ArrayList;
+
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
+public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.ViewHolder> {
+    private Context context;
+    private ArrayList<ClothesRes> list;
+
+
+    public MycartAdapter(Context context, ArrayList<ClothesRes> list) {
+        this.context = context;
+        this.list = list;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+        View view = inflater.inflate(R.layout.one_item_cart, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+
+        if (list.get(position).getImgsUrl().size() != 0) {
+            Glide.with(context).load(list.get(position).getImgsUrl().get(0)).into(holder.Img);
+        }
+        list.get(position).getImgsUrl().get(0);
+
+        holder.name.setText(list.get(position).getName());
+        holder.values.setText(list.get(position).getQuantily());
+
+        ServiceAPI.serviceApi.GetAllClothesProperties(list.get(position).getId())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListProperties>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResGetListProperties resGetProperties) {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView Img;
+        TextView name, price, values;
+        Button add, tru;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            Img = itemView.findViewById(R.id.imgmycart);
+            values = itemView.findViewById(R.id.tvvalue);
+            name = itemView.findViewById(R.id.tvname);
+            price = itemView.findViewById(R.id.tvprice);
+            add = itemView.findViewById(R.id.btncong);
+            tru = itemView.findViewById(R.id.btntru);
+        }
+    }
+}
