@@ -11,22 +11,29 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.edward.myapplication.R;
+import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.model.Clothes;
 import com.edward.myapplication.model.ClothesImage;
+import com.edward.myapplication.model.modelrespon.ClothesRes;
+import com.edward.myapplication.model.modelrespon.ResGetListProperties;
 
 import java.util.ArrayList;
+
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<Clothes> list;
-    private ArrayList<ClothesImage> ListImg;
+    private ArrayList<ClothesRes> list;
 
-    public SearchAdapter(Context context, ArrayList<Clothes> list, ArrayList<ClothesImage> ListImg){
+    public SearchAdapter(Context context, ArrayList<ClothesRes> list, ArrayList<ClothesImage> ListImg){
         this.context= context;
         this.list= list;
-        this.ListImg = ListImg;
     }
 
     @NonNull
@@ -39,16 +46,36 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//        ClothesImage clothesImage = ListImg.get(position);
-//        if(clothesImage == null){
-//            return;
-//        }
-//        holder.products.setImageResource(clothesImage.getImage());
-
-
+        if (list.get(position).getImgsUrl().size() != 0 ){
+            Glide.with(context).load( list.get(position).getImgsUrl().get(0)).into(holder.products);
+        }
+        list.get(position).getImgsUrl().get(0);
         holder.name.setText(list.get(position).getName());
-        holder.price.setText(list.get(position).getPrice());
-
+        holder.price.setText(list.get(position).getMaxPrice());
+//        ServiceAPI.serviceApi.GetAllClothesProperties(list.get(position).id)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<ResGetListProperties>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(ResGetListProperties resGetProperties) {
+//                        holder.price.setText(resGetProperties.get_ClothesPropertiesRes().get(0).price);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//
+//                    }
+//                });
 
     }
 

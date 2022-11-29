@@ -12,9 +12,28 @@ public class ClothesRes implements Serializable {
     public String name;
     public List<String> imgsUrl;
     public int quantily;
+    public String maxPrice;
+    public String categoryName;
 
-    public ClothesRes() {
+    public String getCategoryName() {
+        return categoryName;
     }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+
+
+    public String getMaxPrice() {
+        return maxPrice;
+    }
+
+    public void setMaxPrice(String maxPrice) {
+        this.maxPrice = maxPrice;
+    }
+
+
 
     public ClothesRes(int id, int idseller, int idCategory, String des, String name, List<String> imgsUrl) {
         this.id = id;
@@ -24,6 +43,9 @@ public class ClothesRes implements Serializable {
         this.name = name;
         this.imgsUrl = imgsUrl;
     }
+
+//    public ClothesRes(int id, int idseller, int idCategory, String des, String name, String imgUrl, int quantily) {
+//    }
 
     public int getId() {
         return id;
