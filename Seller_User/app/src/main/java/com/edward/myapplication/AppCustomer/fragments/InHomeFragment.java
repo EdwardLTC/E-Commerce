@@ -1,5 +1,7 @@
 package com.edward.myapplication.AppCustomer.fragments;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -20,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.myapplication.AppCustomer.adapters.CategoryInHomeAdapter;
 import com.edward.myapplication.AppCustomer.adapters.ProductsInHomeAdapter;
+import com.edward.myapplication.AppCustomer.views.CustomerAllClothesActivity;
 import com.edward.myapplication.AppCustomer.views.Filtering;
 import com.edward.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -44,11 +47,7 @@ public class InHomeFragment extends Fragment implements View.OnClickListener {
         initViews(view);
         initRecycleViewClothes();
 
-
-//        LinearLayoutManager linearLayoutManager  = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
-//        recyclerViewCategory.setLayoutManager(linearLayoutManager);
-//        recyclerViewNew.setLayoutManager(linearLayoutManager);
-
+        seeAllNew.setOnClickListener(this);
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,17 +86,14 @@ public class InHomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.SeeAllCategory:
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content_frame_home, new CustomerAllCategoriesFragment())
-                        .addToBackStack(null)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .commit();
                 break;
             case R.id.SeeAllNew:
+                startActivity(new Intent(requireContext(), CustomerAllClothesActivity.class));
                 break;
         }
 

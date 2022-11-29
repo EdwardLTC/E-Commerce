@@ -46,7 +46,7 @@ public class BillDao {
     public List<BillDetail> getListBillDetail(String ...args) {
         sqLiteDatabase = database.getReadableDatabase();
         List<BillDetail> ls = new ArrayList<>();
-        String sql = "SELECT nameClothes, imgUrl, size, quantity, price FROM BILL WHERE idCustomer = ? group by idClothes";
+        String sql = "SELECT nameClothes, imgUrl, size, quantity, price FROM BILL WHERE idCustomer = ?";
         Cursor cursor = sqLiteDatabase.rawQuery(sql, args);
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
@@ -78,5 +78,6 @@ public class BillDao {
         sqLiteDatabase.insert("BILL", null, values);
     }
 
+//    public void delete()
 
 }

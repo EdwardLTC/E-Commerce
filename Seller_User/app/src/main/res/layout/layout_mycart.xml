@@ -47,8 +47,7 @@
             android:layout_marginLeft="16sp"
             android:fontFamily="@font/gordita_medium"
             android:textColor="@color/black"
-            android:textSize="20dp"
-            android:layout_marginTop="24dp"/>
+            android:textSize="20dp"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvVoucherInBill"
             android:layout_width="match_parent"

@@ -21,7 +21,22 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tv_skip" />
+        android:layout_below="@+id/tv_skip" >
+
+
+       </androidx.viewpager2.widget.ViewPager2>
+
+    <ImageButton
+        android:id="@+id/ibNext"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/btn_default"
+        android:padding="12dp"
+        android:layout_margin="16sp"
+        android:layout_alignParentRight="true"
+        app:srcCompat="@drawable/ic_right_once"
+        app:tint="@color/white" />
 
 
 </RelativeLayout>

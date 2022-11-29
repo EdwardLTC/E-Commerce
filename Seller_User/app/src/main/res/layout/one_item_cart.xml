@@ -27,6 +27,7 @@
             <ImageView
                 android:id="@+id/imgmycart"
                 android:layout_width="110dp"
+                android:scaleType="centerCrop"
                 android:layout_height="match_parent"
                 android:background="#CACACA"
                 android:src="@mipmap/img_1" />
