@@ -23,6 +23,7 @@ import com.edward.myapplication.model.BillDetail;
 import com.edward.myapplication.model.NewBill;
 import com.edward.myapplication.model.modelrequest.BillDetailReq;
 import com.edward.myapplication.model.modelrequest.BillReq;
+import com.edward.myapplication.model.modelrespon.BillRes;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.VoucherRes;
 import com.saadahmedsoft.popupdialog.PopupDialog;
@@ -76,19 +77,18 @@ public class MainMycart extends AppCompatActivity {
                 ServiceAPI.serviceApi.CreateBill(new BillReq(idUser, idSeller, idVoucher, "In processing", listBillDetailReq))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Observer<BillReq>() {
+                        .subscribe(new Observer<BillRes>() {
                             @Override
                             public void onSubscribe(Disposable d) {
                                 ProgressDialogCustom.showProgressDialog(MainMycart.this, "Please wait");
                             }
 
                             @Override
-                            public void onNext(BillReq billReq) {
+                            public void onNext(BillRes billRes) {
                                 PopupDialog.getInstance(MainMycart.this)
                                         .setStyle(Styles.SUCCESS)
                                         .setHeading("Well Done")
-                                        .setHeading("You have successfully"+
-                                                " payed")
+                                        .setHeading("You have successfully"+ " payed")
                                         .setCancelable(false)
                                         .showDialog(new OnDialogButtonClickListener() {
                                             @Override
