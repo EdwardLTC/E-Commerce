@@ -50,34 +50,32 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
             Glide.with(context).load( list.get(position).getImgsUrl().get(0)).into(holder.products);
         }
         list.get(position).getImgsUrl().get(0);
-
-
         holder.name.setText(list.get(position).getName());
-
-        ServiceAPI.serviceApi.GetAllClothesProperties(list.get(position).id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResGetListProperties>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(ResGetListProperties resGetProperties) {
-                        holder.price.setText(resGetProperties.get_ClothesPropertiesRes().get(0).price);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+        holder.price.setText(list.get(position).getMaxPrice());
+//        ServiceAPI.serviceApi.GetAllClothesProperties(list.get(position).id)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<ResGetListProperties>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(ResGetListProperties resGetProperties) {
+//                        holder.price.setText(resGetProperties.get_ClothesPropertiesRes().get(0).price);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//
+//                    }
+//                });
 
     }
 
