@@ -31,7 +31,7 @@ public class ProductsInHomeAdapter extends RecyclerView.Adapter<ProductsInHomeAd
     private Context context;
     private ArrayList<ClothesRes> list;
 
-    public ProductsInHomeAdapter(Context context, ArrayList<ClothesRes> list, ArrayList<ClothesImage> ListImg){
+    public ProductsInHomeAdapter(Context context, ArrayList<ClothesRes> list){
         this.context= context;
         this.list= list;
     }

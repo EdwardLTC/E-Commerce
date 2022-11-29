@@ -64,6 +64,7 @@ public class InHomeFragment extends Fragment implements View.OnClickListener {
 //        recyclerViewCategory.setLayoutManager(linearLayoutManager);
 //        recyclerViewNew.setLayoutManager(linearLayoutManager);
         loadListCategoriesInHome();
+        loadListProductsInHome();
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +101,6 @@ public class InHomeFragment extends Fragment implements View.OnClickListener {
                 .subscribe(new Observer<ResGetListCategory>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        ProgressDialogCustom.showProgressDialog(requireContext(), "Please wait");
                     }
 
                     @Override
@@ -115,13 +115,35 @@ public class InHomeFragment extends Fragment implements View.OnClickListener {
 
                     @Override
                     public void onComplete() {
-                        ProgressDialogCustom.dismissProgressDialog();
                     }
                 });
     }
 
     private void loadListProductsInHome() {
+        ServiceAPI.serviceApi.GetAllClothes().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListClothes>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        ProgressDialogCustom.showProgressDialog(requireContext(), "Please wait");
+                    }
 
+                    @Override
+                    public void onNext(ResGetListClothes resGetListClothes) {
+                        productsInHomeAdapter = new ProductsInHomeAdapter(requireContext(), resGetListClothes.get_ClothesRes());
+                        recyclerViewNew.setAdapter(productsInHomeAdapter);
+                    }
+
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        ProgressDialogCustom.dismissProgressDialog();
+                    }
+                });
     }
 
     @SuppressLint("NonConstantResourceId")
