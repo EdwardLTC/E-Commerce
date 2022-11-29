@@ -38,7 +38,7 @@
                 android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:elevation="4dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/background_edt_search"
                 android:layout_marginTop="20dp">
@@ -89,18 +89,20 @@
                 </TextView>
                 <TextView
                     android:id="@+id/SeeAllCategory"
+                    android:gravity="right"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="See all"
+                    android:layout_marginRight="20dp"
                     android:layout_marginLeft="80dp"
-                    android:textSize="23dp">
+                    android:textSize="18dp">
                 </TextView>
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/RecyclerViewCategory"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp">
 
@@ -116,7 +118,7 @@
                 <TextView
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="New Arrival"
+                    android:text="Clothes"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_marginLeft="20dp"
@@ -127,8 +129,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="See all"
-                    android:layout_marginLeft="80dp"
-                    android:textSize="23dp">
+                    android:gravity="right"
+                    android:layout_marginRight="20dp"
+                    android:textSize="18dp">
                 </TextView>
             </LinearLayout>
 
@@ -136,9 +139,10 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/RecyclerViewNew"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="20dp">
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_height="wrap_content">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
