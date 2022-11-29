@@ -49,7 +49,7 @@ public class ClothesPropertiesAdapter extends RecyclerView.Adapter<ClothesProper
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ClothesPropertiesRes clothesProperties = ls.get(position);
-        holder.tvPriceSellersClothesInfoItem.setText("Price: " + clothesProperties.getPrice());
+//        holder.tvPriceSellersClothesInfoItem.setText("Price: " + clothesProperties.getPrice());
         holder.tvQuantitySellersClothesInfoItem.setText("Quantity: " + clothesProperties.getQuantily());
         holder.tvSizeSellersClothesInfoItem.setText("Size: " +clothesProperties.getSize().trim());
     }
@@ -65,7 +65,7 @@ public class ClothesPropertiesAdapter extends RecyclerView.Adapter<ClothesProper
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvPriceSellersClothesInfoItem = itemView.findViewById(R.id.tvPriceSellersClothesInfoItem);
+//            tvPriceSellersClothesInfoItem = itemView.findViewById(R.id.tvPriceSellersClothesInfoItem);
             tvSizeSellersClothesInfoItem = itemView.findViewById(R.id.tvSizeSellersClothesInfoItem);
             tvQuantitySellersClothesInfoItem = itemView.findViewById(R.id.tvQuantitySellersClothesInfoItem);
 

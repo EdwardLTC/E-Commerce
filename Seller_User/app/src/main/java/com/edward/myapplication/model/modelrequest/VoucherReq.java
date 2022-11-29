@@ -1,6 +1,8 @@
 package com.edward.myapplication.model.modelrequest;
 
-public class VoucherReq {
+import java.io.Serializable;
+
+public class VoucherReq implements Serializable {
     public int id;
     public int idseller;
     public int ratio;

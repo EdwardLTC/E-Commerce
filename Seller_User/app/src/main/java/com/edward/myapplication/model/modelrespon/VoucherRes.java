@@ -1,6 +1,8 @@
 package com.edward.myapplication.model.modelrespon;
 
-public class VoucherRes {
+import java.io.Serializable;
+
+public class VoucherRes implements Serializable {
     private int id;
     private int idseller;
     private int ratio;

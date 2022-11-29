@@ -6,10 +6,13 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.edward.myapplication.interfaces.LoadFragment;
+
 public class ViewPagerAdapter extends FragmentStateAdapter {
     public ViewPagerAdapter(@NonNull FragmentActivity fragment) {
         super(fragment);
     }
+
 
     @NonNull
     @Override

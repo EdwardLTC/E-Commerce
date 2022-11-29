@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-    <item android:id="@+id/bottom_home"
-        android:icon="@drawable/bottom_nav_home"
-        android:title="" />
+        <item android:id="@+id/bottom_home"
+            android:icon="@drawable/bottom_nav_home"
+            android:title="" />
 
-    <item android:id="@+id/bottom_shop"
-        android:icon="@drawable/bottom_nav_shop"
-        android:title="" />
+        <item android:id="@+id/bottom_heart"
+            android:icon="@drawable/bottom_nav_heart"
+            android:title="" />
 
-    <item android:id="@+id/bottom_heart"
-        android:icon="@drawable/bottom_nav_heart"
-        android:title="" />
+        <item android:id="@+id/bottom_profile"
+            android:icon="@drawable/bottom_nav_profile"
+            android:title=""/>
 
-    <item android:id="@+id/bottom_profile"
-        android:icon="@drawable/bottom_nav_profile"
-        android:title=""/>
+        <item android:id="@+id/bottom_settings"
+            android:icon="@drawable/bottom_nav_settings"
+            android:title="" />
     </group>
 </menu>

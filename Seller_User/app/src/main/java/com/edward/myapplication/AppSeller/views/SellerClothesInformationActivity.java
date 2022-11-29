@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.edward.myapplication.AppSeller.adapters.ClothesPropertiesAdapter;
 import com.edward.myapplication.R;
@@ -25,6 +26,7 @@ import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.ResGetCategory;
 import com.edward.myapplication.model.modelrespon.ResGetListProperties;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +49,8 @@ public class SellerClothesInformationActivity extends AppCompatActivity implemen
     private List<ClothesPropertiesRes> lsClothesProperties;
     private ClothesPropertiesAdapter clothesPropertiesAdapter;
 
+    private ClothesRes clothesRes = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +61,8 @@ public class SellerClothesInformationActivity extends AppCompatActivity implemen
         lsClothesProperties = new ArrayList<>();
         initRecyclerViewClothesProperties();
 
-        ClothesRes clothesRes = (ClothesRes) getIntent().getSerializableExtra("clothes");
+        clothesRes = (ClothesRes) getIntent().getSerializableExtra("clothes");
         fillValue(clothesRes);
-//        loadViewPagerClothesImage();
 
         ivMoreOptionsClothes.setOnClickListener(this);
         ivBackToClothesActivity.setOnClickListener(this);
@@ -81,17 +84,6 @@ public class SellerClothesInformationActivity extends AppCompatActivity implemen
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rcvSellerClothesPropertiesInfo.setLayoutManager(layoutManager);
     }
-
-
-//    private void loadViewPagerClothesImage() {
-//        ls.add(new ClothesImage("https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"));
-//        ls.add(new ClothesImage("https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=415&q=80"));
-//        ls.add(new ClothesImage("https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"));
-//        clothesImageAdapter = new ClothesImageAdapter(this, ls);
-//        viewPagerClothesImage.setAdapter(clothesImageAdapter);
-//        indicator.setViewPager(viewPagerClothesImage);
-//
-//    }
 
     private void fillValue(ClothesRes clothesRes) {
         tvSellerNameClothesInfo.setText(clothesRes.getName());
@@ -173,9 +165,7 @@ public class SellerClothesInformationActivity extends AppCompatActivity implemen
                     case R.id.menuUpdateCloth:
                         updateCloth();
                         break;
-                    case R.id.menuDeleteCloth:
-                        deleteCloth();
-                        break;
+
                 }
                 return true;
             }
@@ -185,8 +175,11 @@ public class SellerClothesInformationActivity extends AppCompatActivity implemen
     }
 
     private void updateCloth() {
-    }
+        Intent intent = new Intent(SellerClothesInformationActivity.this, UpdateClothesActivity.class);
+        intent.putExtra("clothesUpdate", clothesRes);
+        intent.putExtra("priceClothesUpdate", tvSellerPriceClothesInfo.getText().toString());
+        intent.putExtra("lsClothesPropertiesUpdate", (Serializable) lsClothesProperties);
+        startActivity(intent);
 
-    private void deleteCloth() {
     }
 }

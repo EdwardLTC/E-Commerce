@@ -68,4 +68,6 @@ dependencies {
 
     // dialog select item link https://github.com/GuilhE/RecyclerPickerDialog
     implementation 'com.github.guilhe:recycler-picker-dialog:1.0.4'
+
+    implementation 'com.cloudinary:cloudinary-android:2.2.0'
 }
