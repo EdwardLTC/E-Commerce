@@ -1,6 +1,7 @@
 package com.edward.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,9 +19,11 @@ import androidx.appcompat.app.AppCompatActivity;
 //import com.edward.adminapp.model.modelrespon.ResGetPerson;
 //import com.edward.adminapp.model.modelrespon.Respon;
 import com.edward.myapplication.AppCustomer.views.MainActivity;
+import com.edward.myapplication.AppSeller.views.SellerDashboardActivity;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.helper.MyHelper;
 import com.edward.myapplication.model.modelrequest.PersonReq;
+import com.edward.myapplication.model.modelrespon.PersonRes;
 import com.edward.myapplication.model.modelrespon.ResGetPerson;
 import com.edward.myapplication.model.modelrespon.Respon;
 
@@ -34,7 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button btLogin;
     private EditText edtEmailLogin;
     private EditText edtPassword;
-    private TextView loi1 ,loi2;
+    private TextView loi1 ,loi2, txtsignup;
+    public static PersonRes PERSONRES = null;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -46,69 +50,34 @@ public class LoginActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         loi1=findViewById(R.id.textView16);
         loi2=findViewById(R.id.textView17);
+        txtsignup=findViewById(R.id.txtsignup);
+        txtsignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(),SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MyHelper.addClickEffect(view);
-                login();
                 String emaill = edtEmailLogin.getText().toString();
                 String password = edtPassword.getText().toString();
-                if (password.trim().equals("")) {
-                    loi2.setError("");
-                    loi2.setText("PassWord cannot be blank!");
-                } else {
-                    loi2.setText("");
-                }
 
-                if (emaill.trim().equals("")) {
-                    loi1.setError("");
-                    loi1.setText("Email cannot be blank!");
-                } else if (!isValidEmail(emaill)) {
-                    loi1.setText("Wrong data format");
 
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                } else {
-                    User user = new User();
-                    user.setEmail(edtEmailLogin.getText().toString());
-                    user.setPass(edtPassword.getText().toString());
-                }
+                if (emaill.trim().equals("") && password.trim().equals("")) {
+                    Toast.makeText(LoginActivity.this, "Please fill in the blank!", Toast.LENGTH_SHORT).show();
+                } else
+                   login();
+
             }
         });
-        ServiceAPI.serviceApi.CreatePerson(new PersonReq(1, "Linh", "linh@gmail.com", "123", "", 1, "", ""))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Respon>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Respon respon) {
-                        Log.d(">>>>>>>>", "successs");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-
-        // create person
-//        String pass = MyHelpers.getHashPassword("abc");
-//        Log.d("pass ", pass);
-//        boolean verified = MyHelpers.isVerifiedHash("abc", pass);
-//        Log.d("pass ", verified+"");
     }
 
 
     private void login() {
-        ServiceAPI.serviceApi.Login(edtEmailLogin.getText().toString(), edtPassword.getText().toString())
+        ServiceAPI.serviceApi.Login(edtEmailLogin.getText().toString(), MyHelper.MD5(edtPassword.getText().toString()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResGetPerson>() {
@@ -122,7 +91,13 @@ public class LoginActivity extends AppCompatActivity {
                         if (resGetPerson._Respon.getRespone_code() != 200) {
                             Toast.makeText(LoginActivity.this, "Check username, Psw pls", Toast.LENGTH_SHORT).show();
                         } else {
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            PERSONRES = resGetPerson.get_PersonRes();
+                            if (resGetPerson.get_PersonRes().getRole() == 2)
+                                startActivity(new Intent(LoginActivity.this, SellerDashboardActivity.class));
+
+                            else if (resGetPerson.get_PersonRes().getRole() == 3)
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
                         }
                     }
 

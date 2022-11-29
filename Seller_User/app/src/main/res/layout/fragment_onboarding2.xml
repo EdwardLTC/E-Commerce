@@ -10,7 +10,6 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="32dp"
         android:layout_height="wrap_content"
         android:src="@drawable/splash2"/>
     <TextView
@@ -20,8 +19,7 @@
         android:textSize="22dp"
         android:layout_gravity="center"
         android:fontFamily="@font/gordita_medium"
-        android:textColor="@color/black"
-        android:layout_marginTop="16dp"/>
+        android:textColor="@color/black"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,12 +36,11 @@
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
-        android:text="Next"
         android:layout_gravity="center"
         android:textAllCaps="false"
         android:fontFamily="@font/gordita_medium"
         android:textSize="16sp"
-        android:background="@drawable/orange2"
+        android:background="@drawable/group_218__1_"
         android:textColor="@color/white"
         />
 
