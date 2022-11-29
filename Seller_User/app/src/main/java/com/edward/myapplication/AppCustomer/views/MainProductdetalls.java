@@ -17,8 +17,10 @@ import com.edward.myapplication.AppSeller.adapters.ClothesPropertiesAdapter;
 import com.edward.myapplication.AppSeller.views.SellerClothesInformationActivity;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
+import com.edward.myapplication.dao.BillDao;
 import com.edward.myapplication.helper.MyHelper;
 import com.edward.myapplication.model.ClothesImage;
+import com.edward.myapplication.model.NewBill;
 import com.edward.myapplication.model.modelrequest.FavoriteReq;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.ResGetListProperties;
@@ -54,6 +56,8 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
 
     private int sizeCheck = 0;
 
+    private BillDao billDao;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -61,6 +65,7 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_productdetalls);
         initViews();
+        billDao = new BillDao(this);
         ls = new ArrayList<>();
         loadHorizontalQuantitizer();
 
@@ -193,7 +198,14 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
                     deleteFavorite();
                 }
                 break;
+            case R.id.btncheckoutproduct:
+                addToCart();
+                break;
         }
+    }
+
+    private void addToCart() {
+        billDao.add(new NewBill(idUser, clothesRes.getId(), clothesRes.getName(), clothesRes.getImgsUrl().get(0), MyHelper.getSizeClothes(sizeCheck), quantity, ));
     }
 
     private void addFavorite() {

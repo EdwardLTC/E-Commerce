@@ -13,10 +13,13 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(android.database.sqlite.SQLiteDatabase sqLiteDatabase) {
         String sql = "CREATE TABLE BILL (" +
-                "idCustomer int, " +
-                "idClothes int," +
+                "idCustomer integer, " +
+                "nameClothes text, " +
+                "price text," +
+                "imgUrl text," +
+                "idClothes integer," +
                 "size text," +
-                "quantity int)";
+                "quantity integer)";
         sqLiteDatabase.execSQL(sql);
     }
 
