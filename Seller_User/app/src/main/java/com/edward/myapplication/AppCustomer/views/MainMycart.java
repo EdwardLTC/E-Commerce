@@ -25,6 +25,7 @@ import com.edward.myapplication.model.modelrequest.BillDetailReq;
 import com.edward.myapplication.model.modelrequest.BillReq;
 import com.edward.myapplication.model.modelrespon.BillRes;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
+import com.edward.myapplication.model.modelrespon.ResBill;
 import com.edward.myapplication.model.modelrespon.VoucherRes;
 import com.saadahmedsoft.popupdialog.PopupDialog;
 import com.saadahmedsoft.popupdialog.Styles;
@@ -73,43 +74,46 @@ public class MainMycart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 listBillDetailReq = billDao.getListBillDetailReg(idUser+"");
-                Toast.makeText(MainMycart.this, listBillDetailReq.size()+"", Toast.LENGTH_SHORT).show();
                 ServiceAPI.serviceApi.CreateBill(new BillReq(idUser, idSeller, idVoucher, "In processing", listBillDetailReq))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Observer<BillRes>() {
+                        .subscribe(new Observer<ResBill>() {
                             @Override
                             public void onSubscribe(Disposable d) {
-                                ProgressDialogCustom.showProgressDialog(MainMycart.this, "Please wait");
+
                             }
 
                             @Override
-                            public void onNext(BillRes billRes) {
-                                PopupDialog.getInstance(MainMycart.this)
-                                        .setStyle(Styles.SUCCESS)
-                                        .setHeading("Well Done")
-                                        .setHeading("You have successfully"+ " payed")
-                                        .setCancelable(false)
-                                        .showDialog(new OnDialogButtonClickListener() {
-                                            @Override
-                                            public void onDismissClicked(Dialog dialog1) {
-                                                super.onDismissClicked(dialog1);
-                                            }
-                                        });
+                            public void onNext(ResBill resBill) {
+                                Log.d(">>>>>>>: ", resBill.get_Respon().getRespone_code()+"");
+                                if (resBill.get_Respon().getRespone_code() == 200) {
+//                                    tvAllPriceClothes.setText("$"+resBill._TotolPrice);
+                                    PopupDialog.getInstance(MainMycart.this)
+                                            .setStyle(Styles.SUCCESS)
+                                            .setHeading("Well Done")
+                                            .setHeading("You have successfully"+ " payed")
+                                            .setCancelable(false)
+                                            .showDialog(new OnDialogButtonClickListener() {
+                                                @Override
+                                                public void onDismissClicked(Dialog dialog1) {
+                                                    super.onDismissClicked(dialog1);
+                                                }
+                                            });
+                                }
+
                             }
 
                             @Override
                             public void onError(Throwable e) {
-                                Log.d("Loi thanh toan:", "errr");
-                                ProgressDialogCustom.dismissProgressDialog();
+
                             }
 
                             @Override
                             public void onComplete() {
-                                ProgressDialogCustom.dismissProgressDialog();
 
                             }
                         });
+
             }
         });
     }

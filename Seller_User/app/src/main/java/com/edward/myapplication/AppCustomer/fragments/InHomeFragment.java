@@ -1,5 +1,7 @@
 package com.edward.myapplication.AppCustomer.fragments;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.app.Service;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -56,6 +58,7 @@ public class InHomeFragment extends Fragment implements View.OnClickListener {
         initViews(view);
         initRecycleViewClothes();
 
+        seeAllNew.setOnClickListener(this);
 
 //        LinearLayoutManager linearLayoutManager  = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
 //        recyclerViewCategory.setLayoutManager(linearLayoutManager);
@@ -143,17 +146,14 @@ public class InHomeFragment extends Fragment implements View.OnClickListener {
                 });
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.SeeAllCategory:
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content_frame_home, new CustomerAllCategoriesFragment())
-                        .addToBackStack(null)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .commit();
                 break;
             case R.id.SeeAllNew:
+                startActivity(new Intent(requireContext(), CustomerAllClothesActivity.class));
                 break;
         }
 

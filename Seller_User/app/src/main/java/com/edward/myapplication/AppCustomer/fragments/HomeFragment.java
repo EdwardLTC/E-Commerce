@@ -55,6 +55,7 @@ public class HomeFragment extends Fragment {
                         break;
 
                     case R.id.bottom_settings:
+                        loadFragment(new SettingFragment());
                         break;
                 }
                 return true;

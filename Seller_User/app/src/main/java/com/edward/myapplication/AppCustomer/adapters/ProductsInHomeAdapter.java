@@ -53,7 +53,7 @@ public class ProductsInHomeAdapter extends RecyclerView.Adapter<ProductsInHomeAd
         list.get(position).getImgsUrl().get(0);
 
         holder.name.setText(list.get(position).getName());
-        holder.price.setText(list.get(position).getMaxPrice());
+        holder.price.setText("$" + list.get(position).getMaxPrice());
 //        ServiceAPI.serviceApi.GetAllClothesProperties(list.get(position).id)
 //                .subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
