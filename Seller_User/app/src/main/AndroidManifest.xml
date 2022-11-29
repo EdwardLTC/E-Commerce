@@ -28,7 +28,7 @@
         </activity>
 
         <activity
-            android:name=".AppCustomer.views.MainMycart"
+            android:name=".AppCustomer.views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -87,7 +87,7 @@
 
 
         <activity
-            android:name=".AppCustomer.views.MainActivity"
+            android:name=".AppCustomer.views.MainMycart"
             android:exported="false" />
         <activity
             android:name=".AppCustomer.fragments.MainPayment"
