@@ -1,5 +1,6 @@
 package com.edward.myapplication.dao;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -23,38 +24,38 @@ public class BillDao {
         database = new Database(context);
         sqLiteDatabase = database.getReadableDatabase();
     }
-
+    @SuppressLint("Range")
     public List<BillDetailReq> getListBillDetailReg(String ...args) {
         sqLiteDatabase = database.getReadableDatabase();
         List<BillDetailReq> ls = new ArrayList<>();
-        String sql = "SELECT idclothes, size, quantity WHERE idCustomer = ?";
+        String sql = "SELECT idclothes, size, quantity FROM BILL WHERE idCustomer = ?";
         Cursor cursor = sqLiteDatabase.rawQuery(sql, args);
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 do {
-                    int idClothes = cursor.getInt(3);
-                    String size = cursor.getString(4);
-                    int quantity = cursor.getInt(5);
+                    int idClothes = cursor.getInt(cursor.getColumnIndex("idClothes"));
+                    String size = cursor.getString(cursor.getColumnIndex("size"));
+                    int quantity = cursor.getInt(cursor.getColumnIndex("quantity"));
                     ls.add(new BillDetailReq(idClothes, size, quantity));
                 } while (cursor.moveToNext());
             }
         }
         return ls;
     }
-
+    @SuppressLint("Range")
     public List<BillDetail> getListBillDetail(String ...args) {
         sqLiteDatabase = database.getReadableDatabase();
         List<BillDetail> ls = new ArrayList<>();
-        String sql = "SELECT nameClothes, imgUrl, size, quantity, price WHERE idCustomer = ?";
+        String sql = "SELECT nameClothes, imgUrl, size, quantity, price FROM BILL WHERE idCustomer = ?";
         Cursor cursor = sqLiteDatabase.rawQuery(sql, args);
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 do {
-                    String name = cursor.getString(1);
-                    String price = cursor.getString(2);
-                    String imgUrl = cursor.getString(3);
-                    String size = cursor.getString(4);
-                    int quantity = cursor.getInt(5);
+                    String name = cursor.getString(cursor.getColumnIndex("nameClothes"));
+                    String price = cursor.getString(cursor.getColumnIndex("price"));
+                    String imgUrl = cursor.getString(cursor.getColumnIndex("imgUrl"));
+                    String size = cursor.getString(cursor.getColumnIndex("size"));
+                    int quantity = cursor.getInt(cursor.getColumnIndex("quantity"));
                     ls.add(new BillDetail(name, imgUrl, size, quantity, price));
                 } while (cursor.moveToNext());
             }

@@ -205,7 +205,11 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
     }
 
     private void addToCart() {
-        billDao.add(new NewBill(idUser, clothesRes.getId(), clothesRes.getName(), clothesRes.getImgsUrl().get(0), MyHelper.getSizeClothes(sizeCheck), quantity, ));
+//        billDao.add(new NewBill(idUser, clothesRes.getId(),
+//                clothesRes.getName(), clothesRes.getImgsUrl().get(0),
+//                MyHelper.getSizeClothes(sizeCheck),
+//                quantity, clothesRes.getMaxPrice()));
+        startActivity(new Intent(this, MainMycart.class));
     }
 
     private void addFavorite() {

@@ -1,5 +1,6 @@
 package com.edward.myapplication.AppCustomer.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,10 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
+import com.edward.myapplication.model.BillDetail;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.ResGetListProperties;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -27,11 +30,11 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.MyViewHolder> {
     private Context context;
-    private ArrayList<ClothesRes> list;
+    private List<BillDetail> ls;
 
-    public MycartAdapter(Context context, ArrayList<ClothesRes> list) {
+    public MycartAdapter(Context context, List<BillDetail> ls) {
         this.context = context;
-        this.list = list;
+        this.ls = ls;
     }
 
     @NonNull
@@ -42,16 +45,17 @@ public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.MyViewHold
         return new MyViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        BillDetail billDetail = ls.get(position);
+        holder.name.setText(billDetail.getNameClothes());
+        holder.quantity.setText("Quantity: " + billDetail.getQuantity());
+        holder.size.setText("Size: " + billDetail.getSize());
+        holder.price.setText("$" + billDetail.getPrice());
+        Glide.with(context).load(billDetail.getImgUrl()).into(holder.Img);
 
-        if (list.get(position).getImgsUrl().size() != 0) {
-            Glide.with(context).load(list.get(position).getImgsUrl().get(0)).into(holder.Img);
-        }
-        list.get(position).getImgsUrl().get(0);
 
-        holder.name.setText(list.get(position).getName());
-        holder.price.setText(list.get(position).getMaxPrice());
 //        ServiceAPI.serviceApi.GetAllClothesProperties(list.get(position).id).subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe(new Observer<ResGetListProperties>() {
@@ -86,22 +90,20 @@ public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.MyViewHold
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return ls.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView Img;
-        TextView name, price, values;
-        Button cong, tru;
+        TextView name, price, size, quantity;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             Img = itemView.findViewById(R.id.imgmycart);
-            values = itemView.findViewById(R.id.tvvalue);
             name = itemView.findViewById(R.id.tvname);
             price = itemView.findViewById(R.id.tvprice);
-            cong = itemView.findViewById(R.id.btncong);
-            tru = itemView.findViewById(R.id.btntru);
+            size = itemView.findViewById(R.id.tvsize);
+            quantity = itemView.findViewById(R.id.tvQuantity);
         }
     }
 }

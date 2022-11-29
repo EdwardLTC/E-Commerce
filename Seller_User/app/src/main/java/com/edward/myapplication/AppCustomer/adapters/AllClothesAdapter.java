@@ -1,5 +1,6 @@
 package com.edward.myapplication.AppCustomer.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -47,58 +48,23 @@ public class AllClothesAdapter extends RecyclerView.Adapter<AllClothesAdapter.Vi
         return new ViewHolder(v);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ClothesRes clothesRes = ls.get(position);
         holder.tvNameAllClothesItem.setText(clothesRes.getName());
-        holder.tvPriceAllClothesItem.setText(clothesRes.getMaxPrice());
+        holder.tvPriceAllClothesItem.setText("$" + clothesRes.getMaxPrice());
 
         Glide.with(c).load(clothesRes.getImgsUrl().get(0)).into(holder.ivAllClothesItem);
 
-//        ServiceAPI.serviceApi.GetAllClothesProperties(clothesRes.getId())
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Observer<ResGetListProperties>() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onNext(ResGetListProperties resGetListProperties) {
-//                        Log.d(">>>>>>>>>>>.. ", resGetListProperties.get_Respon().getRespone_code()+"");
-//                        if (resGetListProperties.get_Respon().getRespone_code() == 200) {
-//                            List<ClothesPropertiesRes> ls = resGetListProperties.get_ClothesPropertiesRes();
-//
-//                            if (ls.size() == 0) {
-//                                price = "0.0";
-//                            } else
-//                                price = "$" + resGetListProperties.get_ClothesPropertiesRes().get(0).getPrice();
-//                            holder.tvPriceAllClothesItem.setText(price);
-//                        }
-//
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        Log.d(">>>>>>>>>>>.. ", "errr");
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//
-//                    }
-//                });
-//
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(c, MainProductdetalls.class);
-//                intent.putExtra("clothesRes", clothesRes);
-//                c.startActivity(intent);
-//            }
-//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(c, MainProductdetalls.class);
+                intent.putExtra("clothesRes", clothesRes);
+                c.startActivity(intent);
+            }
+        });
 
 
     }
