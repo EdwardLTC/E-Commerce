@@ -1,6 +1,8 @@
 package com.edward.myapplication.model.modelrequest;
 
-public class FavoriteReq {
+import java.io.Serializable;
+
+public class FavoriteReq implements Serializable {
     private int idclothes;
     private int iduser;
 

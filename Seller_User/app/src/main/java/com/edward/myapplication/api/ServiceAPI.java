@@ -2,9 +2,15 @@ package com.edward.myapplication.api;
 
 import com.edward.myapplication.model.modelrequest.ClothesReq;
 import com.edward.myapplication.model.modelrequest.FavoriteReq;
+import com.edward.myapplication.model.modelrequest.PersonReq;
 import com.edward.myapplication.model.modelrequest.VoucherReq;
+import com.edward.myapplication.model.modelrequest.BillReq;
+import com.edward.myapplication.model.modelrespon.BillRes;
+import com.edward.myapplication.model.modelrespon.ResBill;
+import com.edward.myapplication.model.modelrespon.ResGetBillPayment;
 import com.edward.myapplication.model.modelrespon.ResGetCategory;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
+import com.edward.myapplication.model.modelrespon.ResGetListBill;
 import com.edward.myapplication.model.modelrespon.ResGetListCategory;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListProperties;
@@ -99,6 +105,33 @@ public interface ServiceAPI {
 
     @POST("DeletePerson")
     Observable<Respon> DeletePerson(@Query("id") int id);
+    @POST("CreatePerson")
+    Observable<Respon> CreatePerson(@Body PersonReq personReq); // id tu tanwg neen la cu set mac dinh la 1
 
+    @GET("UpdateStatusBill")
+    Observable<Respon> UpdateStatusBill (@Query("status") String status, @Query("idBill") int idBill);
 
+    @GET("GetBillOfUser")
+    Observable<ResGetListBill> GetBillOfUser (@Query("idUser") int idUser);
+
+    @GET("GetBillOfSeller")
+    Observable<ResGetListBill> GetBillOfSeller (@Query("idSeller") int idSeller);
+
+    @GET("MarkBillComplete")
+    Observable<Respon> MarkBillComplete (@Query("idBill") int idBill);
+
+    @POST("CreateBill")
+    Observable<ResBill> CreateBill (@Body BillReq billReq);
+
+    @GET("GetClothesFromFromBill")
+    Observable<ResGetListClothes> GetClothesFromFromBill(@Query("billId") int billId);
+
+    @GET("GetBillWhereCompleted")
+    Observable<ResGetListBill> GetBillWhereCompleted();
+
+    @GET("GetBillWhereNotCompleted")
+    Observable<ResGetListBill> GetBillWhereNotCompleted();
+
+    @GET("GetBillPayment")
+    Observable<ResGetBillPayment> GetBillPayment();
 }

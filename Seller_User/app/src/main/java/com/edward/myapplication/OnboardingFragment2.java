@@ -72,7 +72,7 @@ public class OnboardingFragment2 extends Fragment {
         btn_obf2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),OnboardingFragment2.class);
+                Intent intent = new Intent(getActivity(),OnboardingFragment3.class);
                 getActivity().startActivity(intent);
             }
         });

@@ -2,6 +2,7 @@ package com.edward.myapplication.model.modelrespon;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ClothesRes implements Serializable {
     public int id;
@@ -9,11 +10,32 @@ public class ClothesRes implements Serializable {
     public int idCategory;
     public String des;
     public String name;
-    public ArrayList<String> imgsUrl;
+    public List<String> imgsUrl;
     public int quantily;
+    public String maxPrice;
+    public String categoryName;
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
 
-    public ClothesRes(int id, int idseller, int idCategory, String des, String name, ArrayList<String> imgsUrl) {
+
+    public String getMaxPrice() {
+        return maxPrice;
+    }
+
+    public void setMaxPrice(String maxPrice) {
+        this.maxPrice = maxPrice;
+    }
+
+
+
+    public ClothesRes(int id, int idseller, int idCategory, String des, String name, List<String> imgsUrl) {
         this.id = id;
         this.idseller = idseller;
         this.idCategory = idCategory;
@@ -65,11 +87,11 @@ public class ClothesRes implements Serializable {
         this.name = name;
     }
 
-    public ArrayList<String> getImgsUrl() {
+    public List<String> getImgsUrl() {
         return imgsUrl;
     }
 
-    public void setImgsUrl(ArrayList<String> imgsUrl) {
+    public void setImgsUrl(List<String> imgsUrl) {
         this.imgsUrl = imgsUrl;
     }
 
