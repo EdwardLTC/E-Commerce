@@ -103,7 +103,6 @@ public interface ServiceAPI {
     @GET("GetPersonWhere")
     Observable<ResGetPerson> GetPersonWhere(@Query("Id") int id);
 
-
     @POST("DeletePerson")
     Observable<Respon> DeletePerson(@Query("id") int id);
     @POST("CreatePerson")

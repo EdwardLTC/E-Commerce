@@ -2,6 +2,7 @@ package com.edward.myapplication.AppCustomer.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.app.Service;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -20,13 +21,23 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.edward.myapplication.AppCustomer.adapters.AllClothesAdapter;
 import com.edward.myapplication.AppCustomer.adapters.CategoryInHomeAdapter;
 import com.edward.myapplication.AppCustomer.adapters.ProductsInHomeAdapter;
 import com.edward.myapplication.AppCustomer.views.CustomerAllClothesActivity;
 import com.edward.myapplication.AppCustomer.views.Filtering;
+import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
+import com.edward.myapplication.api.ServiceAPI;
+import com.edward.myapplication.model.modelrespon.ResGetListCategory;
+import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class InHomeFragment extends Fragment implements View.OnClickListener {
     ImageView filter, find;
@@ -48,6 +59,11 @@ public class InHomeFragment extends Fragment implements View.OnClickListener {
         initRecycleViewClothes();
 
         seeAllNew.setOnClickListener(this);
+
+//        LinearLayoutManager linearLayoutManager  = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
+//        recyclerViewCategory.setLayoutManager(linearLayoutManager);
+//        recyclerViewNew.setLayoutManager(linearLayoutManager);
+        loadListCategoriesInHome();
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +95,29 @@ public class InHomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void loadListCategoriesInHome() {
+        ServiceAPI.serviceApi.GetAllCategory().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListCategory>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        ProgressDialogCustom.showProgressDialog(requireContext(), "Please wait");
+                    }
 
+                    @Override
+                    public void onNext(ResGetListCategory resGetListCategory) {
+                        categoryInHomeAdapter= new CategoryInHomeAdapter(requireContext(),resGetListCategory.get_CategoryRes());
+                        recyclerViewCategory.setAdapter(categoryInHomeAdapter);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        ProgressDialogCustom.dismissProgressDialog();
+                    }
+                });
     }
 
     private void loadListProductsInHome() {
