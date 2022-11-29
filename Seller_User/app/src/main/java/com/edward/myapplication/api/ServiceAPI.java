@@ -6,6 +6,7 @@ import com.edward.myapplication.model.modelrequest.PersonReq;
 import com.edward.myapplication.model.modelrequest.VoucherReq;
 import com.edward.myapplication.model.modelrequest.BillReq;
 import com.edward.myapplication.model.modelrespon.BillRes;
+import com.edward.myapplication.model.modelrespon.ResBill;
 import com.edward.myapplication.model.modelrespon.ResGetBillPayment;
 import com.edward.myapplication.model.modelrespon.ResGetCategory;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
@@ -121,7 +122,7 @@ public interface ServiceAPI {
     Observable<Respon> MarkBillComplete (@Query("idBill") int idBill);
 
     @POST("CreateBill")
-    Observable<BillRes> CreateBill (@Body BillReq billReq);
+    Observable<ResBill> CreateBill (@Body BillReq billReq);
 
     @GET("GetClothesFromFromBill")
     Observable<ResGetListClothes> GetClothesFromFromBill(@Query("billId") int billId);

@@ -53,7 +53,7 @@ public class MainMycart extends AppCompatActivity {
     private int idUser = 21;
     private int idSeller = 20;
     private int idVoucher = 3;
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
