@@ -60,6 +60,7 @@ public class BillDao {
                 } while (cursor.moveToNext());
             }
         }
+        cursor.close();
         return ls;
     }
 
@@ -78,6 +79,10 @@ public class BillDao {
         sqLiteDatabase.insert("BILL", null, values);
     }
 
-//    public void delete()
+    public void delete(int idCustomer) {
+        sqLiteDatabase = database.getWritableDatabase();
+
+        sqLiteDatabase.delete("BILL", "idCustomer = ?", new String[]{idCustomer+""});
+    }
 
 }
