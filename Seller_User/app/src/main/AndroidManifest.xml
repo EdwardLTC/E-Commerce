@@ -30,7 +30,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AppCustomer.views.CustomerAllClothesActivity"
+            android:name=".AppSeller.views.BillsManagementActivity"
             android:exported="true">
 
         </activity>
@@ -42,15 +42,10 @@
 
 
 
-        <activity
-            android:name=".AppCustomer.views.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity
+            android:name=".AppSeller.views.UpdateClothesActivity"
+            android:exported="false" />
         <activity
             android:name=".AppSeller.views.AddClothesActivity"
             android:exported="false" />

@@ -16,7 +16,6 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.edward.myapplication.AppSeller.adapters.SellerBillsAdapter;
-import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
@@ -39,8 +38,7 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
     private SellerBillsAdapter sellerBillsAdapter;
     private List<BillRes> ls;
 
-    private int idSeller = LoginActivity.PERSONRES.getId();
-
+    private int idSeller = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

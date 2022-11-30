@@ -36,8 +36,10 @@ public class CategoryInHomeAdapter extends RecyclerView.Adapter<CategoryInHomeAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CategoryRes categoryRes = list.get(position);
-        holder.name.setText(categoryRes.getName());
+
+
+
+        holder.name.setText(list.get(position).getName());
 
 
     }

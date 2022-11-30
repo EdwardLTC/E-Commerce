@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="160dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="8dp"
+    android:layout_margin="15dp"
     app:cardCornerRadius="15dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="157dp"
         android:layout_height="242dp"
         android:background="@drawable/style_white"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/producthome"
-            android:layout_width="match_parent"
+            android:layout_width="140dp"
             android:layout_height="180dp"
-            android:scaleType="centerCrop"
             android:src="@drawable/product_1"
+            android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"/>
 
         <LinearLayout
@@ -34,11 +34,9 @@
             </TextView>
             <TextView
                 android:id="@+id/PriceProducthome"
-                android:layout_width="match_parent"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
                 android:text="160$"
-                android:layout_marginRight="10dp"
-                android:gravity="right"
                 android:textStyle="bold"
                 android:textColor="@color/black">
             </TextView>

@@ -20,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.edward.myapplication.AppSeller.views.VouchersManagementActivity;
-import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.AppSeller.adapters.ClothesAdapter;
@@ -51,7 +50,7 @@ public class ClothesFragment extends Fragment implements OnItem {
     private ClothesAdapter clothesAdapter;
     private EditText edtSearchClothes;
 
-    private int idSeller = LoginActivity.PERSONRES.getId();
+    private int idSeller = 11;
 
 
     // TODO: Rename parameter arguments, choose names that match

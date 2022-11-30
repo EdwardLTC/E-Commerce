@@ -31,7 +31,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ClothesAdapter_1 extends RecyclerView.Adapter<ClothesAdapter_1.ViewHolder> {
     String linkUrlTest = "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80";
-/// cai gi day troi sao duplicate leen vay
+
     List<ClothesRes> ls;
     Context c;
     OnItem onItem;

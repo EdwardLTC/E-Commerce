@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="4dp"
     android:background="@color/background">
 
 
@@ -37,10 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
-                android:elevation="4dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/background_edt_search"
+                android:background="@drawable/style_white"
                 android:layout_marginTop="20dp">
 
                 <ImageView
@@ -49,7 +47,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_search"
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="10dp">
+                    android:layout_marginLeft="20dp">
                 </ImageView>
 
                 <EditText
@@ -64,7 +62,7 @@
 
                 <ImageView
                     android:id="@+id/btnfilter"
-                    android:layout_width="40dp"
+                    android:layout_width="45dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
                     android:src="@drawable/ic_filter"
@@ -89,20 +87,18 @@
                 </TextView>
                 <TextView
                     android:id="@+id/SeeAllCategory"
-                    android:gravity="right"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="See all"
-                    android:layout_marginRight="20dp"
                     android:layout_marginLeft="80dp"
-                    android:textSize="18dp">
+                    android:textSize="23dp">
                 </TextView>
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/RecyclerViewCategory"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="65dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp">
 
@@ -118,7 +114,7 @@
                 <TextView
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Clothes"
+                    android:text="New Arrival"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_marginLeft="20dp"
@@ -129,9 +125,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="See all"
-                    android:gravity="right"
-                    android:layout_marginRight="20dp"
-                    android:textSize="18dp">
+                    android:layout_marginLeft="80dp"
+                    android:textSize="23dp">
                 </TextView>
             </LinearLayout>
 
@@ -139,10 +134,9 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/RecyclerViewNew"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="20dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>

@@ -30,7 +30,6 @@ import android.widget.Toast;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
-import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
@@ -81,8 +80,7 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
     Uri imageUri;
     List<Uri> lsImageUri;
 
-    private int idSeller = LoginActivity.PERSONRES.getId();
-
+    private int idSeller = 11;
     // picker dialog
     List<String> lsCategories;
     List<Integer> lsIdCategories;

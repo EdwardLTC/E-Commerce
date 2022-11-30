@@ -29,7 +29,6 @@ import com.bumptech.glide.Glide;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
-import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
@@ -78,8 +77,7 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
     private BottomSheetDialog bottomSheetDialog;
     Uri imageUri;
 
-    private int idSeller = LoginActivity.PERSONRES.getId();
-
+    private int idSeller = 11;
     // picker dialog
     List<String> lsCategories;
     List<Integer> lsIdCategories;

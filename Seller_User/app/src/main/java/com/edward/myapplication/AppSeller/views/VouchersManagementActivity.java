@@ -24,7 +24,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.edward.myapplication.AppSeller.adapters.VouchersAdapter;
-import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.R;
 import com.edward.myapplication.ProgressDialogCustom;
@@ -56,8 +55,7 @@ public class VouchersManagementActivity extends AppCompatActivity implements Vie
     VouchersAdapter vouchersAdapter;
     List<VoucherRes> ls;
 
-    private int idSeller = LoginActivity.PERSONRES.getId();
-
+    private int idSeller = 11;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -43,7 +43,6 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="9dp"/>
             <ImageView
-                android:id="@+id/ic_moreif"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/arrow___right_2"
@@ -70,7 +69,6 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="9dp"/>
             <ImageView
-                android:id="@+id/ic_moreif2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/arrow___right_2"
@@ -97,7 +95,6 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="9dp"/>
             <ImageView
-                android:id="@+id/ic_moreif3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/arrow___right_2"
@@ -124,7 +121,6 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="9dp"/>
             <Switch
-                android:id="@+id/switch1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="120dp"/>
@@ -149,7 +145,6 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="9dp"/>
             <Switch
-                android:id="@+id/switch2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"/>

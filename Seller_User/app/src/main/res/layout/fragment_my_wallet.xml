@@ -8,7 +8,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
-            android:id="@+id/ic_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -24,7 +23,6 @@
             android:textSize="20dp"
             />
         <ImageView
-            android:id="@+id/ic_mywallet_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="130dp"
@@ -41,8 +39,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_wallet"
+    <ListView
+        android:id="@+id/lv_wallet"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"/>

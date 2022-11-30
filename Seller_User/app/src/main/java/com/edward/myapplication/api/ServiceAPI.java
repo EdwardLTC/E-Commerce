@@ -5,9 +5,6 @@ import com.edward.myapplication.model.modelrequest.FavoriteReq;
 import com.edward.myapplication.model.modelrequest.PersonReq;
 import com.edward.myapplication.model.modelrequest.VoucherReq;
 import com.edward.myapplication.model.modelrequest.BillReq;
-import com.edward.myapplication.model.modelrespon.BillRes;
-import com.edward.myapplication.model.modelrespon.ResBill;
-import com.edward.myapplication.model.modelrespon.ResGetBillPayment;
 import com.edward.myapplication.model.modelrespon.ResGetCategory;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListBill;
@@ -103,6 +100,7 @@ public interface ServiceAPI {
     @GET("GetPersonWhere")
     Observable<ResGetPerson> GetPersonWhere(@Query("Id") int id);
 
+
     @POST("DeletePerson")
     Observable<Respon> DeletePerson(@Query("id") int id);
     @POST("CreatePerson")
@@ -121,17 +119,6 @@ public interface ServiceAPI {
     Observable<Respon> MarkBillComplete (@Query("idBill") int idBill);
 
     @POST("CreateBill")
-    Observable<ResBill> CreateBill (@Body BillReq billReq);
+    Observable<BillReq> CreateBill (@Body BillReq billReq);
 
-    @GET("GetClothesFromFromBill")
-    Observable<ResGetListClothes> GetClothesFromFromBill(@Query("billId") int billId);
-
-    @GET("GetBillWhereCompleted")
-    Observable<ResGetListBill> GetBillWhereCompleted();
-
-    @GET("GetBillWhereNotCompleted")
-    Observable<ResGetListBill> GetBillWhereNotCompleted();
-
-    @GET("GetBillPayment")
-    Observable<ResGetBillPayment> GetBillPayment();
 }

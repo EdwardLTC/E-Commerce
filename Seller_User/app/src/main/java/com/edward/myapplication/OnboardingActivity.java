@@ -10,18 +10,16 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.edward.myapplication.interfaces.LoadFragment;
 
 
 public class OnboardingActivity extends AppCompatActivity {
     private TextView tvSkip;
     private ViewPager2 viewPager;
-    private ImageButton ibNext;
+    private RelativeLayout layout_button;
+    private LinearLayout layout_next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +27,6 @@ public class OnboardingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_onboarding);
         initUI();
         ViewPagerAdapter  viewPagerAdapter = new ViewPagerAdapter(this);
-
         viewPager.setAdapter(viewPagerAdapter);
 
     }
@@ -37,15 +34,8 @@ public class OnboardingActivity extends AppCompatActivity {
     private void initUI() {
         tvSkip = findViewById(R.id.tv_skip);
         viewPager = findViewById(R.id.view_pager);
-        ibNext = findViewById(R.id.ibNext);
-
-        ibNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                viewPager.setCurrentItem(1);
-            }
-        });
-
+        layout_button=findViewById(R.id.layout_bottom);
+        layout_next=findViewById(R.id.layout_next);
         tvSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +44,13 @@ public class OnboardingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        layout_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (viewPager.getCurrentItem()<2){
+                    viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+                }
+            }
+        });
     }
-
-
 }
