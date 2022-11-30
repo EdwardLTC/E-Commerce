@@ -1,6 +1,7 @@
 package com.edward.myapplication;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 //import com.edward.adminapp.API.ServiceAPI;
@@ -24,6 +29,13 @@ import com.edward.myapplication.helper.MyHelper;
 import com.edward.myapplication.model.modelrequest.PersonReq;
 import com.edward.myapplication.model.modelrespon.ResGetPerson;
 import com.edward.myapplication.model.modelrespon.Respon;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -36,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edtEmailLogin;
     private EditText edtPassword;
     private TextView loi1 ,loi2, txtsignup;
+    GoogleSignInClient mGoogleSignInClient;
+    SignInButton btnSignInButton;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -48,6 +62,55 @@ public class LoginActivity extends AppCompatActivity {
         loi1=findViewById(R.id.textView16);
         loi2=findViewById(R.id.textView17);
         txtsignup=findViewById(R.id.txtsignup);
+
+        btnSignInButton = findViewById(R.id.cvLoginGoogle);
+
+
+
+        //logingoogle
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+
+        ActivityResultLauncher<Intent> checkLogin = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
+                            try {
+                                //đăng nhập thành công
+                                GoogleSignInAccount account = task.getResult(ApiException.class);
+                                String displayName = account.getDisplayName();
+                                String email = account.getEmail();
+                                Toast.makeText(LoginActivity.this, "Đăng nhập thành công - " + displayName + " - " + email, Toast.LENGTH_SHORT).show();
+                                btnSignInButton.setVisibility(View.GONE);
+                            } catch (ApiException e) {
+                                //đăng nhập thất bại
+                                Toast.makeText(LoginActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+        btnSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                checkLogin.launch(signInIntent);
+
+            }
+        });
+
+
+
+
+
+
+//SIGNUP
         txtsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

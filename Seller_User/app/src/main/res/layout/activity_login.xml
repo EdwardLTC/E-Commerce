@@ -180,7 +180,7 @@
         app:layout_constraintTop_toTopOf="@+id/tv7" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvLoginGoogle"
+        android:id="@+id/cvLoginFacebook"
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:cardCornerRadius="100dp"
@@ -197,7 +197,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvLoginFacebook"
+        android:id="@+id/cvLoginGoogle"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -211,8 +211,8 @@
             android:id="@+id/iv9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_google"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_google" />
     </androidx.cardview.widget.CardView>
 
     <TextView
