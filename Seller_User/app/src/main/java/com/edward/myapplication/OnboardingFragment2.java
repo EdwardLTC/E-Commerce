@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment;
  * create an instance of this fragment.
  */
 public class OnboardingFragment2 extends Fragment {
-    private Button btn_obf2;
     private View nview2;
 
 
@@ -67,15 +66,6 @@ public class OnboardingFragment2 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         nview2= inflater.inflate(R.layout.fragment_onboarding2, container, false);
-
-        btn_obf2 = nview2.findViewById(R.id.btn_obd2);
-        btn_obf2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),OnboardingFragment3.class);
-                getActivity().startActivity(intent);
-            }
-        });
         return nview2;
     }
 }
