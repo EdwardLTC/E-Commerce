@@ -48,36 +48,8 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BillRes billRes = ls.get(position);
-
-        ServiceAPI.serviceApi.GetPersonWhere(billRes.getIduser())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResGetPerson>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(ResGetPerson resGetPerson) {
-                        if (resGetPerson.get_Respon().getRespone_code() == 200) {
-                            holder.tvSellerBillNameCustomers.setText("Name: " + resGetPerson.get_PersonRes().getName());
-                            holder.tvSellerBillAddressCustomers.setText("Address: " + resGetPerson.get_PersonRes().getAddress());
-
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-
+        holder.tvSellerBillNameCustomers.setText(billRes.getSellerName());
+        holder.tvSellerBillAddressCustomers.setText(billRes.getUserAddress());
         holder.tvSellerBillStatusCustomers.setText("Status: " + billRes.getStatus());
         holder.tvSellerBillDateCreatedCustomers.setText("Day of payment: " + billRes.getDateCreate());
 
@@ -159,3 +131,10 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
         }
     }
 }
+
+
+
+
+
+        holder.tvSellerBillStatusCustomers.setText("Status: " + billRes.getStatus());
+                holder.tvSellerBillDateCreatedCustomers.setText("Day of payment: " + billRes.getDateCreate());

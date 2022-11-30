@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.edward.myapplication.AppSeller.adapters.ClothesAdapter;
 import com.edward.myapplication.AppSeller.adapters.VouchersAdapter;
 import com.edward.myapplication.AppSeller.fragments.ClothesFragment;
+import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
@@ -148,37 +149,9 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
     }
 
     private void fillValueSeller() {
-        ServiceAPI.serviceApi.GetPersonWhere(idSeller)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResGetPerson>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        ProgressDialogCustom.showProgressDialog(SellerDashboardActivity.this, "Please wait");
-                    }
-
-                    @Override
-                    public void onNext(ResGetPerson resGetPerson) {
-                        Log.d(">>>>>>>>>>",resGetPerson.get_Respon().respone_code+"" );
-                        if (resGetPerson.get_Respon().respone_code== 200) {
-                            tvNameSellerDashboard.setText(resGetPerson.get_PersonRes().getName());
-                            tvEmailSellerDashboard.setText(resGetPerson.get_PersonRes().getMail());
-                            Glide.with(SellerDashboardActivity.this).load(resGetPerson.get_PersonRes().getImgUrl()).into(ivAvatarSeller);
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d(">>>>>>>>>>","err" );
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        ProgressDialogCustom.dismissProgressDialog();
-
-                    }
-                });
+        tvNameSellerDashboard.setText(LoginActivity.PERSONRES.getName());
+        tvEmailSellerDashboard.setText(LoginActivity.PERSONRES.getMail());
+        Glide.with(SellerDashboardActivity.this).load(LoginActivity.PERSONRES.getImgUrl()).into(ivAvatarSeller);
     }
 
     @SuppressLint("NonConstantResourceId")

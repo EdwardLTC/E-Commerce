@@ -77,7 +77,7 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
     private BottomSheetDialog bottomSheetDialog;
     Uri imageUri;
 
-    private int idSeller = 11;
+    private int idSeller = LoginActivity.PERSONRES.getId();
     // picker dialog
     List<String> lsCategories;
     List<Integer> lsIdCategories;
