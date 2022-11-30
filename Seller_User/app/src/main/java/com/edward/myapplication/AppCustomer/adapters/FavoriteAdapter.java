@@ -46,7 +46,13 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        if (list.get(position).getImgsUrl().size() != 0 ){
+            Glide.with(context).load( list.get(position).getImgsUrl().get(0)).into(holder.products);
+        }
+        list.get(position).getImgsUrl().get(0);
 
+        holder.name.setText(list.get(position).getName());
+        holder.price.setText("$" + list.get(position).getMaxPrice());
 
 
     }
