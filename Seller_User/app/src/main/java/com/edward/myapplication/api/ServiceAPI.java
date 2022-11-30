@@ -132,7 +132,6 @@ public interface ServiceAPI {
 
     @GET("GetBillWhereNotCompleted")
     Observable<ResGetListBill> GetBillWhereNotCompleted();
-    Observable<BillReq> CreateBill (@Body BillReq billReq);
 
     @GET("GetBillPayment")
     Observable<ResGetBillPayment> GetBillPayment();

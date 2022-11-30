@@ -131,10 +131,3 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
         }
     }
 }
-
-
-
-
-
-        holder.tvSellerBillStatusCustomers.setText("Status: " + billRes.getStatus());
-                holder.tvSellerBillDateCreatedCustomers.setText("Day of payment: " + billRes.getDateCreate());

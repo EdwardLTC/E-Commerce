@@ -51,10 +51,10 @@ public class MainMycart extends AppCompatActivity implements ChooseVoucher, View
     Button btnback, btncheckout;
     RecyclerView rcvClothesInBill, rcvVouchersInBill ;
     TextView tvAllPriceClothes;
+    ArrayList<ClothesRes> list;
     private CardView cvPayMomo;
     private LinearLayout llPayByDelivery;
     private RadioButton rdoIsMomoChecked, rdoIsDeliveryChecked;
-    private ArrayList<ClothesRes> list;
     private List<BillDetailReq> listBillDetailReq;
     private List<NewBill> lsNewBill;
     private List<BillDetail> lsBillDetail;
@@ -94,6 +94,7 @@ public class MainMycart extends AppCompatActivity implements ChooseVoucher, View
             @Override
             public void onClick(View view) {
                 listBillDetailReq = billDao.getListBillDetailReg(idUser+"");
+
                 if (rdoIsDeliveryChecked.isChecked()) {
                     ServiceAPI.serviceApi.CreateBill(new BillReq(idUser, idSeller, idVoucher, "In processing", listBillDetailReq))
                             .subscribeOn(Schedulers.io())
@@ -130,7 +131,6 @@ public class MainMycart extends AppCompatActivity implements ChooseVoucher, View
 
                                 @Override
                                 public void onError(Throwable e) {
-
                                 }
 
                                 @Override

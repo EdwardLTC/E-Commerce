@@ -115,3 +115,18 @@ public class MainActivity extends AppCompatActivity {
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
+            }
+        });
+
+        navigationView.setCheckedItem(R.id.home_page);
+        loadFragment(new HomeFragment());
+
+    }
+
+    private void loadFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_frame, fragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
+    }
+}

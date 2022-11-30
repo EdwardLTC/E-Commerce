@@ -40,9 +40,6 @@
 
         </activity>
 
-
-
-
         <activity
             android:name=".AppSeller.views.UpdateClothesActivity"
             android:exported="false" />
