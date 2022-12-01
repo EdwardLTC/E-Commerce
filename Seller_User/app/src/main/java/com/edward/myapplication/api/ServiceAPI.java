@@ -133,11 +133,12 @@ public interface ServiceAPI {
     @GET("GetBillWhereCompleted")
     Observable<ResGetListBill> GetBillWhereCompleted();
 
+
     @GET("GetBillWhereNotCompleted")
     Observable<ResGetListBill> GetBillWhereNotCompleted();
 
     @GET("GetBillPayment")
-    Observable<ResGetBillPayment> GetBillPayment();
+    Observable<ResGetBillPayment> GetBillPayment(@Query("idBill") int idBill);
 
     @GET("GetStatistical")
     Observable<ResGetStatistical> GetStatistical();

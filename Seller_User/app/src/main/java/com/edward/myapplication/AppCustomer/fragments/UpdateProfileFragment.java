@@ -20,6 +20,7 @@ import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.model.modelrequest.PersonReq;
+import com.edward.myapplication.model.modelrespon.PersonRes;
 import com.edward.myapplication.model.modelrespon.Respon;
 import com.saadahmedsoft.popupdialog.PopupDialog;
 import com.saadahmedsoft.popupdialog.Styles;
@@ -98,6 +99,13 @@ public class UpdateProfileFragment extends Fragment {
                                         @Override
                                         public void onDismissClicked(Dialog dialog1) {
                                             super.onDismissClicked(dialog1);
+                                            LoginActivity.PERSONRES = new PersonRes(LoginActivity.PERSONRES.getId(),
+                                                    personReq.getName(),
+                                                    LoginActivity.PERSONRES.getMail(),
+                                                    personReq.getPhoneNum(),
+                                                    LoginActivity.PERSONRES.getRole(),
+                                                    personReq.getImgUrl(),
+                                                    personReq.getAddress());
                                         }
                                     });
                         }
