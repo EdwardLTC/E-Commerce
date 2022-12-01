@@ -3,41 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/style_white">
+    android:background="@color/background">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp">
-
-        <ImageView
-            android:id="@+id/ImgBack"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_left_one"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:textSize="23dp">
-        </ImageView>
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="Favorite"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginLeft="130dp"
-            android:textSize="23dp">
-        </TextView>
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:text="Favorites"
+        android:textSize="35dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:paddingLeft="20dp">
+    </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerViewFavorite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp">
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 

@@ -1,6 +1,7 @@
 package com.edward.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -9,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -19,7 +21,7 @@ public class OnboardingActivity extends AppCompatActivity {
     private TextView tvSkip;
     private ViewPager2 viewPager;
     private RelativeLayout layout_button;
-    private LinearLayout layout_next;
+    private CardView layout_next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,8 @@ public class OnboardingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (viewPager.getCurrentItem()<2){
                     viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
-                }
+                } else
+                    startActivity(new Intent(OnboardingActivity.this, LoginActivity.class));
             }
         });
     }

@@ -17,6 +17,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 //import com.edward.adminapp.API.ServiceAPI;
 //import com.edward.adminapp.helpers.MyHelpers;
@@ -52,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView loi1 ,loi2, txtsignup;
     public static PersonRes PERSONRES = null;
     GoogleSignInClient mGoogleSignInClient;
-    SignInButton btnSignInButton;
+    CardView btnSignInButton;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -108,12 +109,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-//SIGNUP
         txtsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,12 +133,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-        // create person
-//        String pass = MyHelpers.getHashPassword("abc");
-//        Log.d("pass ", pass);
-//        boolean verified = MyHelpers.isVerifiedHash("abc", pass);
-//        Log.d("pass ", verified+"");
     }
 
 
