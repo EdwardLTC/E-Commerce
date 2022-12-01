@@ -14,9 +14,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.edward.myapplication.R;
+import com.edward.myapplication.api.ServiceAPI;
 
 public class UpdateProfileFragment extends Fragment {
-    EditText name, email;
+    EditText name, email, phone, address;
     ImageView avatar;
     Button save;
 
@@ -29,29 +30,40 @@ public class UpdateProfileFragment extends Fragment {
         email = view.findViewById(R.id.Email);
         avatar = view.findViewById(R.id.avatar);
         save = view.findViewById(R.id.save);
+        phone = view.findViewById(R.id.Phone);
+        address = view.findViewById(R.id.Address);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String Name = name.getText().toString();
                 String Email = email.getText().toString();
+                String Phone = phone.getText().toString();
+                String Address = address.getText().toString();
                 String EmailPattern = "/^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$/";
 
-                if (Name.equals("")){
-                    Toast.makeText(getContext(), "Empty name", Toast.LENGTH_SHORT).show();
-                }
-                if (Email.equals("")){
-                    Toast.makeText(getContext(), "Empty email", Toast.LENGTH_SHORT).show();
-                }
-                if (Email.matches(EmailPattern)){
-                    Toast.makeText(getContext(), "valid email address", Toast.LENGTH_SHORT).show();
+                if (Name.equals("") || Email.equals("") || Phone.equals("") || Address.equals("")){
+                    Toast.makeText(getContext(), "Please fill into the blank", Toast.LENGTH_SHORT).show();
+                    return;
+                }else if (!Email.matches(EmailPattern)){
+                    Toast.makeText(getContext(), "Email invalid", Toast.LENGTH_SHORT).show();
+                    return;
                 }else {
-                    Toast.makeText(getContext(), "Invalid email addres", Toast.LENGTH_SHORT).show();
+                    updateProfile();
                 }
 
             }
         });
 
         return view;
+    }
+
+    private void updateProfile() {
+        String Name = name.getText().toString();
+        String Email = email.getText().toString();
+        String Phone = phone.getText().toString();
+        String Address = address.getText().toString();
+
+//        ServiceAPI.serviceApi.Up
     }
 }
