@@ -129,4 +129,9 @@ public class MainActivity extends AppCompatActivity {
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

@@ -50,14 +50,6 @@ public class FavotiteFragment extends Fragment {
         recyclerView.setLayoutManager(gridLayoutManager);
 
         LoadListFavorite();
-
-        recyclerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ProductsDetailActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void LoadListFavorite(){

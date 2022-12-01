@@ -168,7 +168,7 @@ public class ProductsDetailActivity extends AppCompatActivity implements View.On
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnbackproduct2:
-                startActivity(new Intent(this, CustomerAllClothesActivity.class));
+                super.onBackPressed();
                 break;
             case R.id.btnSizeSCustomer2:
                 sizeCheck = 1;
