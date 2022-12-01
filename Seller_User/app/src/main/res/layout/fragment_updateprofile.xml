@@ -41,7 +41,7 @@
                 android:id="@+id/YourName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Your real name"
+                android:hint="name"
                 android:background="@color/white"
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="10dp">
@@ -49,35 +49,7 @@
 
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:text="Email"
-            android:textStyle="bold"
-            android:textColor="#0B1D83"
-            android:textSize="18dp">
-        </TextView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="340dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="10dp">
-
-            <EditText
-                android:id="@+id/Email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="anname@gmail.com"
-                android:background="@color/white"
-                android:layout_marginTop="12dp"
-                android:layout_marginLeft="10dp">
-            </EditText>
-
-        </androidx.cardview.widget.CardView>
 
         <TextView
             android:layout_width="match_parent"
@@ -101,7 +73,7 @@
                 android:id="@+id/Phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="anname@gmail.com"
+                android:hint="phone"
                 android:background="@color/white"
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="10dp">
@@ -131,7 +103,7 @@
                 android:id="@+id/Address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="anname@gmail.com"
+                android:hint="address"
                 android:background="@color/white"
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="10dp">

@@ -37,7 +37,7 @@
         android:fontFamily="@font/gordita_regular"
         android:textSize="14sp"
         android:hint="Email"
-        android:text="customer@gmail.com"
+        android:text="admin@gmail.com"
         android:textColor="@color/black"
         android:paddingLeft="66dp"
         android:background="@drawable/background_edt_log_in"

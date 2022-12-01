@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
 
         btnSignInButton = findViewById(R.id.cvLoginGoogle);
 
-
+        Log.d("Pass hash: ", MyHelper.MD5("123"));
 
         //logingoogle
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
