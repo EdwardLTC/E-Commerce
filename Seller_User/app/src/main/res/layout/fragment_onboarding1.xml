@@ -21,29 +21,17 @@
         android:textStyle="bold"
         android:fontFamily="@font/gordita_medium"
         android:textColor="@color/black"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="A product is the item offered for  sale. \nA product can be a service or an item. It can be\n physical or in virtual or cyber form"
-        android:textSize="14dp"
         android:layout_gravity="center"
-        android:textAlignment="center"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/gordita_regular"
+        android:text="A product is the item offered for  sale. \nA product can be a service or an item. It can be\n physical or in virtual or cyber form"
+        android:textAlignment="center"
         android:textColor="@color/text_blur"
-        android:layout_marginTop="12dp"/>
-
-    <Button
-        android:id="@+id/btn_obd1"
-        android:layout_width="190dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/orange2"
-        android:text="Next >"
-        android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:fontFamily="@font/gordita_medium"
-        android:textSize="16sp"
-        android:textColor="@color/white" />
+        android:textSize="14dp" />
 
 
 </LinearLayout>

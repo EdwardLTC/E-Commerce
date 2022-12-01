@@ -265,3 +265,4 @@ public class ClothesFragment extends Fragment implements OnItem {
     }
 
 }
+

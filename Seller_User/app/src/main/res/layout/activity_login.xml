@@ -37,7 +37,7 @@
         android:fontFamily="@font/gordita_regular"
         android:textSize="14sp"
         android:hint="Email"
-        android:text="customer@gmail.com"
+        android:text="admin@gmail.com"
         android:textColor="@color/black"
         android:paddingLeft="66dp"
         android:background="@drawable/background_edt_log_in"
@@ -183,7 +183,7 @@
         app:layout_constraintTop_toTopOf="@+id/tv7" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvLoginGoogle"
+        android:id="@+id/cvLoginFacebook"
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:cardCornerRadius="100dp"
@@ -200,7 +200,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvLoginFacebook"
+        android:id="@+id/cvLoginGoogle"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -248,6 +248,5 @@
             app:layout_constraintStart_toEndOf="@+id/textView15" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

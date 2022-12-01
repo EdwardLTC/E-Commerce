@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 });
                         break;
+
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -127,5 +128,10 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.content_frame, fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

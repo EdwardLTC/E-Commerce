@@ -59,6 +59,7 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
         holder.tvNameClothesItem.setText(clothes.getName());
         holder.tvQuantityClothesItem.setText("Quantity: " + clothes.getQuantily());
         holder.tvTypeClothesItem.setText("Type: " + clothes.getCategoryName());
+
         // set text for category name
 //        ServiceAPI.serviceApi.GetCategoryWhere(clothes.getIdCategory())
 //                .subscribeOn(Schedulers.io())
@@ -88,10 +89,37 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
 //
 //                    }
 //                });
+        ServiceAPI.serviceApi.GetCategoryWhere(clothes.getIdCategory())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetCategory>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResGetCategory resGetCategory) {
+
+                        if (resGetCategory.get_Respon().getRespone_code() == 200) {
+                            categoryName = resGetCategory.get_CategoryRes().getName();
+                            holder.tvTypeClothesItem.setText("Type: " + categoryName);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(">>>>>>>>>>>..", "errr");
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
 
 //        Glide.with(c).load(linkUrlTest).into(holder.ivClothesItem);
         holder.tVMoreDetailsClothesItem.setPaintFlags(holder.tVMoreDetailsClothesItem.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-
         holder.ivDeleteClothesItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

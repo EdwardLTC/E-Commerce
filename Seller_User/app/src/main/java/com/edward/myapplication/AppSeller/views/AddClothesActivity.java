@@ -227,7 +227,7 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
                     sizeS = "";
                     btSizeS.setBackgroundResource(R.drawable.background_size_clothes);
                 }
-               break;
+                break;
             case R.id.btSizeM:
                 if (!sizeM.equals("M")) {
                     sizeM = "M";

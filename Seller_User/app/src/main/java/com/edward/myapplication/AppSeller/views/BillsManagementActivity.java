@@ -39,8 +39,8 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
     private SellerBillsAdapter sellerBillsAdapter;
     private List<BillRes> ls;
 
-    private int idSeller = LoginActivity.PERSONRES.getId();
 
+    private int idSeller = LoginActivity.PERSONRES.getId();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

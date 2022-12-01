@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:scrollbars="none"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_profile"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_marginRight="16dp"-->
+<!--        android:background="@drawable/ic_more"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_profile"
+        android:layout_width="104dp"
+        android:layout_height="107dp"
+        android:background="@drawable/img_avatar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gordita_medium"
+        android:text="Alex Nikiforov"
+        android:layout_marginTop="12dp"
+        android:textSize="24dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
+
+    <TextView
+        android:id="@+id/txtProfileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gordita_regular"
+        android:text="alex@msn.com"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtProfileName" />
+
+    <ImageView
+        android:id="@+id/round_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="240dp"
+        android:background="@drawable/border_white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtProfileEmail" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/round_orange"
+        app:layout_constraintLeft_toLeftOf="@id/round_white"
+        app:layout_constraintTop_toTopOf="@id/round_white" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="57dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/ic_bag"
+        app:layout_constraintLeft_toLeftOf="@id/round_white"
+        app:layout_constraintTop_toTopOf="@id/round_white" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/gordita_black"
+        android:text="Progress Order"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/round_white"
+        app:layout_constraintTop_toTopOf="@id/round_white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="124dp"
+        android:fontFamily="@font/gordita_medium"
+        android:textStyle="bold"
+        android:text="10+"
+        android:textSize="10dp"
+        app:layout_constraintLeft_toLeftOf="@id/round_white"
+        app:layout_constraintTop_toTopOf="@id/round_white" />
+
+    <ImageView
+        android:id="@+id/round_white2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="100dp"
+        android:background="@drawable/border_white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtProfileEmail" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/round_blue"
+        app:layout_constraintLeft_toLeftOf="@id/round_white2"
+        app:layout_constraintTop_toTopOf="@id/round_white2" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="63dp"
+        android:background="@drawable/ic_ticket"
+        app:layout_constraintLeft_toLeftOf="@id/round_white2"
+        app:layout_constraintTop_toTopOf="@id/round_white2" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/gordita_black"
+        android:text="Promocodes"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/round_white2"
+        app:layout_constraintTop_toTopOf="@id/round_white2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="124dp"
+        android:fontFamily="@font/gordita_medium"
+        android:textStyle="bold"
+        android:text="5"
+        android:textSize="10dp"
+        app:layout_constraintLeft_toLeftOf="@id/round_white2"
+        app:layout_constraintTop_toTopOf="@id/round_white2" />
+
+    <ImageView
+        android:id="@+id/round_white3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="256dp"
+        android:background="@drawable/border_white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtProfileEmail" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/round_yellow"
+        app:layout_constraintLeft_toLeftOf="@id/round_white3"
+        app:layout_constraintTop_toTopOf="@id/round_white3" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="57dp"
+        android:layout_marginTop="58dp"
+        android:background="@drawable/ic_star"
+        app:layout_constraintLeft_toLeftOf="@id/round_white3"
+        app:layout_constraintTop_toTopOf="@id/round_white3" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/gordita_black"
+        android:text="Reviewes"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/round_white3"
+        app:layout_constraintTop_toTopOf="@id/round_white3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="124dp"
+        android:fontFamily="@font/gordita_medium"
+        android:textStyle="bold"
+        android:text="4.5K"
+        android:textSize="10dp"
+        app:layout_constraintLeft_toLeftOf="@id/round_white3"
+        app:layout_constraintTop_toTopOf="@id/round_white3" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="368dp"
+        android:fontFamily="@font/gordita_medium"
+        android:text="Personal Information"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        android:layout_marginTop="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/gordita_regular"
+                android:text="Name"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvNameCustomer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/gordita_black"
+                android:gravity="right"
+                android:text="Chris Harison" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/gordita_regular"
+                android:text="Email"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvMailCustomer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/gordita_black"
+                android:gravity="right"
+                android:text="Chris@gmail.com" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/gordita_regular"
+                android:text="Location"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvAddressCustomer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/gordita_black"
+                android:gravity="right"
+                android:text="San Diego" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/gordita_regular"
+                android:text="Phone Number"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvPhoneCustomer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/gordita_black"
+                android:gravity="right"
+                android:text="012345678" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvUpdateProfile"
+        android:layout_marginRight="16dp"
+        android:fontFamily="@font/gordita_regular"
+        android:textColor="#01579B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        app:layout_constraintBottom_toBottomOf="@+id/textView20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView20" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>

@@ -14,11 +14,12 @@ import android.widget.Switch;
 
 import com.edward.myapplication.R;
 
-
 public class SettingFragment extends Fragment {
 
-   ImageView ic_mailsp,ic_FAQ,ic_PS;
-   Switch sw_notic,sw_emailsp;
+    ImageView ic_mailsp,ic_FAQ,ic_PS;
+    Switch sw_notic,sw_emailsp;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.edward.myapplication.AppSeller.adapters.ClothesImageAdapter;
 import com.edward.myapplication.AppSeller.adapters.ClothesPropertiesAdapter;
 import com.edward.myapplication.AppSeller.views.SellerClothesInformationActivity;
+import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.dao.BillDao;
@@ -50,7 +51,7 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
     private ClothesImageAdapter clothesImageAdapter;
     private int quantity = 0;
 
-    private int idUser = 21;
+    private int idUser = LoginActivity.PERSONRES.getId();
 
     private int checkFavorite = 0;
 

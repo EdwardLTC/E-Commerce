@@ -46,6 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
         edtPasswordreply =findViewById(R.id.edtPasswordReply);
         edtEmailsignup = findViewById(R.id.edtEmailSignup);
         edtPassword = findViewById(R.id.edtPasswordSignup);
+
         txtlogin=findViewById(R.id.txtlogin);
         rdoCustomer = findViewById(R.id.rdoCustomers);
         rdoSeller = findViewById(R.id.rdoSeller);
@@ -119,14 +120,17 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onError(Throwable e) {
                         ProgressDialogCustom.dismissProgressDialog();
 
+
                     }
 
                     @Override
                     public void onComplete() {
                         ProgressDialogCustom.dismissProgressDialog();
-
                     }
+
+
                 });
+
     }
 
     public boolean isValidEmail(String email) {
