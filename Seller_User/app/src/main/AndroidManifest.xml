@@ -18,6 +18,27 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".PrivacyActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".FAQctivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".EmailSupportActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".OnboardingActivity"
             android:exported="true">
             <intent-filter>
@@ -35,8 +56,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".AppSeller.views.UpdateClothesActivity"
             android:exported="false" />
@@ -49,7 +68,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
@@ -73,7 +91,7 @@
             android:exported="false" />
         <activity
             android:name=".AppCustomer.views.MainCheckout"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".AppCustomer.views.MainMycart"
             android:exported="false" />

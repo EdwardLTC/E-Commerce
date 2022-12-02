@@ -1,5 +1,6 @@
 package com.edward.myapplication.AppCustomer.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,7 +8,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.R;
 
 /**
@@ -16,6 +19,8 @@ import com.edward.myapplication.R;
  * create an instance of this fragment.
  */
 public class SettingFragment extends Fragment {
+
+    private LinearLayout Emailsupport, FAQ,Privacy;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +66,36 @@ public class SettingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting, container, false);
+        View nview4 = inflater.inflate(R.layout.fragment_setting, container, false);
+        Emailsupport =nview4.findViewById(R.id.Emailsupport);
+        FAQ=nview4.findViewById(R.id.FAQ);
+        Privacy=nview4.findViewById(R.id.Privacy);
+
+
+        Emailsupport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), EmailSupportActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+
+        FAQ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), FAQctivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+        Privacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), PrivacyActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+        return nview4;
     }
 }
