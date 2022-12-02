@@ -261,7 +261,11 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
 
                     @Override
                     public void onNext(Respon respon) {
-                        btnfavoriteproduct.setBackgroundResource(R.drawable.ic_favorite);
+                        Log.d("Delete:", respon.respone_code+"");
+                        if (respon.respone_code == 200) {
+                            btnfavoriteproduct.setBackgroundResource(R.drawable.ic_favorite);
+
+                        }
                     }
 
                     @Override

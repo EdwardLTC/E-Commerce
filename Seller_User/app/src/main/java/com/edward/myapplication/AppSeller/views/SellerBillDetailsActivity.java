@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,6 +43,13 @@ public class SellerBillDetailsActivity extends AppCompatActivity {
         loadListClothesInBill();
         fillValueCustomer();
         fillTotalPriceInClothes();
+
+        ivBackFromSellerBillDetailToBillManagement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SellerBillDetailsActivity.super.onBackPressed();
+            }
+        });
 
     }
 
@@ -135,10 +144,11 @@ public class SellerBillDetailsActivity extends AppCompatActivity {
 
                     }
 
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onNext(ResGetBillPayment resGetBillPayment) {
                         if (resGetBillPayment._Respon.getRespone_code() == 200) {
-                            tvTotalSellerBill.setText(resGetBillPayment._Payment);
+                            tvTotalSellerBill.setText("$" + resGetBillPayment._Payment);
                         }
                     }
 

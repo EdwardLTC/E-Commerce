@@ -122,24 +122,19 @@
             android:textSize="18dp">
         </TextView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="340dp"
-            android:layout_height="270dp"
-            android:layout_marginLeft="20dp"
+
+        <ImageButton
+            android:id="@+id/ibAvatar1"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
             android:layout_marginTop="10dp"
-            app:cardCornerRadius="10dp">
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_edt_search"
+            android:elevation="2dp"
+            app:srcCompat="@drawable/ic_add_image_clothes" />
 
-            <ImageView
-                android:id="@+id/avatar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_camera"
-                android:layout_marginTop="120dp"
-                android:layout_marginLeft="160dp">
-
-            </ImageView>
-
-        </androidx.cardview.widget.CardView>
 
 
         <Button
@@ -154,11 +149,6 @@
             android:text="save">
         </Button>
 
-        <TextView
-            android:id="@+id/txtlink"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
 
     </LinearLayout>
 </ScrollView>

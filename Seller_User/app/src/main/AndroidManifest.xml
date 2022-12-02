@@ -23,21 +23,22 @@
         <activity
             android:name=".AppSeller.views.SellerBillDetailsActivity"
             android:exported="false" />
-            android:name=".PrivacyActivity"
+        <activity
+            android:name=".AppCustomer.fragments.PrivacyActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".FAQctivity"
+            android:name=".AppCustomer.fragments.FAQctivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".EmailSupportActivity"
+            android:name=".AppCustomer.fragments.EmailSupportActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
