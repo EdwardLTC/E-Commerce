@@ -38,6 +38,8 @@ public class CustomerAllClothesActivity extends AppCompatActivity implements Vie
     ImageView ivBackToMainActivityFromAllClothes;
     EditText edtSearchAllClothes;
     TextView tvRefreshAllClothes, tvCantFindAllClothes, tvTryAgainAllClothes;
+
+    public static ClothesRes CLOTHEsRES = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

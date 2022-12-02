@@ -39,6 +39,9 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
     private SellerBillsAdapter sellerBillsAdapter;
     private List<BillRes> ls;
 
+    public static BillRes BILL= null;
+//    public static int ID_BILL= -1;
+
 
     private int idSeller = LoginActivity.PERSONRES.getId();
     @Override
@@ -104,6 +107,76 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
                 });
     }
 
+
+    private void loadListBillCompleted() {
+        ServiceAPI.serviceApi.GetBillWhereCompleted()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListBill>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        ProgressDialogCustom.showProgressDialog(BillsManagementActivity.this, "Please wait");
+                    }
+
+                    @Override
+                    public void onNext(ResGetListBill resGetListBill) {
+                        Log.d(">>>>>>>: ", resGetListBill.get_Respon().getRespone_code()+"" );
+
+                        if (resGetListBill.get_Respon().getRespone_code() == 200) {
+                            ls = resGetListBill.get_BillRes();
+                            sellerBillsAdapter = new SellerBillsAdapter(BillsManagementActivity.this, ls);
+                            rcvBillsManagement.setAdapter(sellerBillsAdapter);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(">>>>>>>: ", "err" );
+                        ProgressDialogCustom.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        ProgressDialogCustom.dismissProgressDialog();
+                    }
+                });
+    }
+    private void loadListBillNotCompleted() {
+        ServiceAPI.serviceApi.GetBillWhereNotCompleted()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListBill>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        ProgressDialogCustom.showProgressDialog(BillsManagementActivity.this, "Please wait");
+                    }
+
+                    @Override
+                    public void onNext(ResGetListBill resGetListBill) {
+                        Log.d(">>>>>>>: ", resGetListBill.get_Respon().getRespone_code()+"" );
+
+                        if (resGetListBill.get_Respon().getRespone_code() == 200) {
+                            ls = resGetListBill.get_BillRes();
+                            sellerBillsAdapter = new SellerBillsAdapter(BillsManagementActivity.this, ls);
+                            rcvBillsManagement.setAdapter(sellerBillsAdapter);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(">>>>>>>: ", "err" );
+                        ProgressDialogCustom.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        ProgressDialogCustom.dismissProgressDialog();
+                    }
+                });
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -130,10 +203,11 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
                         loadListBill();
                         break;
                     case R.id.menuSellerStatusCompleted:
-                        loadListBill();
+                        loadListBillCompleted();
                         break;
                     case R.id.menuSellerStatusNotCompleted:
-                        loadListBill();
+                        loadListBillNotCompleted();
+
                         break;
 
                 }

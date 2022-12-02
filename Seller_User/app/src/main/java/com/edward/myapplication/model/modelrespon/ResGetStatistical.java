@@ -1,8 +1,8 @@
 package com.edward.myapplication.model.modelrespon;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ResGetStatistical {
     public Respon _Respon;
-    public ArrayList<ClothesStatisticalRes> clothesStatisticalRes;
+    public List<ClothesStatisticalRes> clothesStatisticalRes;
 }

@@ -44,7 +44,7 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
     HorizontalQuantitizer hqAddClothesCustomer;
     Button btnSizeS, btnSizeM, btnSizeL, btnSizeXL;
     ViewPager2 viewPagerClothesImageCustomer;
-    TextView tvNameClotheInfoCustomer, tvPriceClotheInfoCustomer, tvDesClotheInfoCustomer;
+    TextView tvNameClotheInfoCustomer, tvPriceClotheInfoCustomer, tvDesClotheInfoCustomer, tvSizeClotheDetails;
     CircleIndicator3 indicatorCustomer;
     private ClothesRes clothesRes;
     private List<ClothesImage> ls;
@@ -71,6 +71,11 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
         loadHorizontalQuantitizer();
 
         clothesRes = (ClothesRes) getIntent().getSerializableExtra("clothesRes");
+
+        if (clothesRes == null) {
+            clothesRes = CustomerAllClothesActivity.CLOTHEsRES;
+        }
+
         fillValue(clothesRes);
 
         btnbackproduct.setOnClickListener(this);
@@ -82,6 +87,7 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
         btnSizeXL.setOnClickListener(this);
     }
 
+    @SuppressLint("SetTextI18n")
     private void initViews() {
         btnbackproduct = findViewById(R.id.btnbackproduct);
         btnfavoriteproduct = findViewById(R.id.btnfavoriteproduct);
@@ -96,11 +102,13 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
         tvPriceClotheInfoCustomer = findViewById(R.id.tvPriceClotheInfoCustomer);
         tvDesClotheInfoCustomer = findViewById(R.id.tvDesClotheInfoCustomer);
         indicatorCustomer = findViewById(R.id.indicatorCustomer);
+        tvSizeClotheDetails = findViewById(R.id.tvSizeClotheDetails);
     }
 
     private void fillValue(ClothesRes clothesRes) {
         tvDesClotheInfoCustomer.setText(clothesRes.getDes());
         tvNameClotheInfoCustomer.setText(clothesRes.getName());
+        tvSizeClotheDetails.setText("Size("+clothesRes.getQuantily()+"):");
 
         List<String> lsUrl = clothesRes.getImgsUrl();
 

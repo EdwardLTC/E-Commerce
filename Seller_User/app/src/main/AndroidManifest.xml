@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".AppSeller.views.StatisticActivity"
+            android:exported="false" />
+        <activity
             android:name=".AppSeller.views.SellerBillDetailsActivity"
             android:exported="false" />
         <activity
@@ -35,19 +38,19 @@
         </activity>
         <activity
             android:name=".AppCustomer.views.MainMycart"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".AppCustomer.views.ProductsDetailActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".AppCustomer.views.CustomerAllClothesActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".AppCustomer.views.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".AppSeller.views.BillsManagementActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".AppSeller.views.UpdateClothesActivity"
             android:exported="false" />
@@ -68,7 +71,7 @@
             android:exported="false" />
         <activity
             android:name=".AppSeller.views.ClothesManagementActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".AppCustomer.fragments.MainPayment"
             android:exported="false" />

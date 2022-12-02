@@ -91,7 +91,7 @@
         android:layout_marginTop="100dp"
         android:fontFamily="@font/gordita_black"
         android:text="Progress Order"
-        android:textSize="10dp"
+        android:textSize="12dp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@id/round_white"
         app:layout_constraintTop_toTopOf="@id/round_white" />
@@ -104,7 +104,7 @@
         android:fontFamily="@font/gordita_medium"
         android:textStyle="bold"
         android:text="10+"
-        android:textSize="10dp"
+        android:textSize="12dp"
         app:layout_constraintLeft_toLeftOf="@id/round_white"
         app:layout_constraintTop_toTopOf="@id/round_white" />
 
@@ -143,7 +143,7 @@
         android:layout_marginTop="100dp"
         android:fontFamily="@font/gordita_black"
         android:text="Promocodes"
-        android:textSize="10dp"
+        android:textSize="12dp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@id/round_white2"
         app:layout_constraintTop_toTopOf="@id/round_white2" />
@@ -156,7 +156,7 @@
         android:fontFamily="@font/gordita_medium"
         android:textStyle="bold"
         android:text="5"
-        android:textSize="10dp"
+        android:textSize="12dp"
         app:layout_constraintLeft_toLeftOf="@id/round_white2"
         app:layout_constraintTop_toTopOf="@id/round_white2" />
 
@@ -195,7 +195,7 @@
         android:layout_marginTop="100dp"
         android:fontFamily="@font/gordita_black"
         android:text="Reviewes"
-        android:textSize="10dp"
+        android:textSize="12dp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@id/round_white3"
         app:layout_constraintTop_toTopOf="@id/round_white3" />
@@ -208,7 +208,7 @@
         android:fontFamily="@font/gordita_medium"
         android:textStyle="bold"
         android:text="4.5K"
-        android:textSize="10dp"
+        android:textSize="12dp"
         app:layout_constraintLeft_toLeftOf="@id/round_white3"
         app:layout_constraintTop_toTopOf="@id/round_white3" />
 

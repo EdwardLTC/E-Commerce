@@ -2,6 +2,7 @@ package com.edward.myapplication.AppSeller.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.edward.myapplication.AppSeller.views.BillsManagementActivity;
+import com.edward.myapplication.AppSeller.views.SellerBillDetailsActivity;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.model.modelrespon.BillRes;
@@ -58,12 +61,13 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
         holder.clItemBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                BillsManagementActivity.BILL = billRes;
+                c.startActivity(new Intent(c, SellerBillDetailsActivity.class));
             }
         });
 
         Log.d("Status: ", billRes.getStatus());
-        if (billRes.getStatus().equals("Completed")) {
+        if (billRes.getStatus().equals("Bll Completed")) {
             holder.btConfirmStatusBill.setVisibility(View.INVISIBLE);
             holder.btConfirmStatusBill.setEnabled(false);
         } else {
@@ -72,7 +76,7 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
             holder.btConfirmStatusBill.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ServiceAPI.serviceApi.UpdateStatusBill("Completed", billRes.getId())
+                    ServiceAPI.serviceApi.UpdateStatusBill("Bill Completed", billRes.getId())
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(new Observer<Respon>() {
@@ -84,7 +88,7 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
                                 @Override
                                 public void onNext(Respon respon) {
                                     if (respon.getRespone_code() == 200) {
-                                        holder.tvSellerBillStatusCustomers.setText("Status: Completed");
+                                        holder.tvSellerBillStatusCustomers.setText("Status:Bill Completed");
                                         holder.btConfirmStatusBill.setVisibility(View.INVISIBLE);
                                         holder.btConfirmStatusBill.setEnabled(false);
                                     }

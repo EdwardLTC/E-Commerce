@@ -46,7 +46,7 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
     ConstraintLayout clClothes, clVouchers, clBills,
             clStatistics, clSupports;
 
-    private int idSeller = 11;
+    private int idSeller = LoginActivity.PERSONRES.getId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,10 +92,13 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
                 .subscribe(new Observer<ResGetListClothes>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+                        Log.d("subcribe", "subrie");
                     }
 
                     @Override
                     public void onNext(ResGetListClothes resGetListClothes) {
+                        Log.d("subcribe", resGetListClothes.get_Respon().respone_code+"");
+
                         if (resGetListClothes.get_Respon().getRespone_code() == 200) {
                             String sizeClothes = resGetListClothes.get_ClothesRes().size() + "";
                             tvQuantityClothes.setText(sizeClothes);
@@ -105,12 +108,12 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
 
                     @Override
                     public void onError(Throwable e) {
+                        Log.d("subcribe", "subrie");
 
                     }
 
                     @Override
                     public void onComplete() {
-                        ProgressDialogCustom.dismissProgressDialog();
                     }
                 });
     }
@@ -118,6 +121,7 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
     private void handleListener() {
         clClothes.setOnClickListener(this);
         clVouchers.setOnClickListener(this);
+        clBills.setOnClickListener(this);
         ibLogoutSellerAccount.setOnClickListener(this);
     }
 
@@ -164,6 +168,10 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
                 break;
             case R.id.clVouchers:
                 startActivity(new Intent(this, VouchersManagementActivity.class));
+                overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
+                break;
+            case R.id.clBills:
+                startActivity(new Intent(this, BillsManagementActivity.class));
                 overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
                 break;
             case R.id.ibLogoutSellerAccount:
