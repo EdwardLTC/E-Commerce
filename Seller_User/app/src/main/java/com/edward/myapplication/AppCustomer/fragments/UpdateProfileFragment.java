@@ -116,7 +116,8 @@ public class UpdateProfileFragment extends Fragment {
         String Phone = phone.getText().toString();
         String Address = address.getText().toString();
         // gán link ở đây nha
-        String link = "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png";
+        String link =txtlink.getText().toString();
+                //"https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png";
         PersonReq personReq = new PersonReq(LoginActivity.PERSONRES.getId(), Name,
                 LoginActivity.PERSONRES.getMail(), Phone, LoginActivity.PERSONRES.getRole(),
                 link, Address);
