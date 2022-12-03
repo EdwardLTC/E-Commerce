@@ -23,6 +23,10 @@ import com.edward.myapplication.model.modelrespon.ResGetListBill;
 import com.edward.myapplication.model.modelrespon.ResGetPerson;
 import com.edward.myapplication.model.modelrespon.Respon;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Observer;
@@ -34,7 +38,8 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
 
     Context c;
     List<BillRes> ls;
-
+    @SuppressLint("SimpleDateFormat")
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");;
     public SellerBillsAdapter(Context c, List<BillRes> ls) {
         this.c = c;
         this.ls = ls;
@@ -54,8 +59,14 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
         holder.tvSellerBillNameCustomers.setText(billRes.getSellerName());
         holder.tvSellerBillAddressCustomers.setText(billRes.getUserAddress());
         holder.tvSellerBillStatusCustomers.setText("Status: " + billRes.getStatus());
-        holder.tvSellerBillDateCreatedCustomers.setText("Day of payment: " + billRes.getDateCreate());
+        try {
+            Date date = sdf.parse(billRes.getDateCreate());
+            holder.tvSellerBillDateCreatedCustomers.setText("Day of payment: " + sdf.format(date));
 
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+//        Date date = new Date(billRes.getDateCreate().substring(0,9) )
 
 
         holder.clItemBill.setOnClickListener(new View.OnClickListener() {

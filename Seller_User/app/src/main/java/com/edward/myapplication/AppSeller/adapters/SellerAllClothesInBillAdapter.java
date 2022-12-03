@@ -38,7 +38,7 @@ public class SellerAllClothesInBillAdapter extends RecyclerView.Adapter<SellerAl
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ClothesRes clothesRes = ls.get(position);
-        holder.tvPrice.setText("$"+clothesRes.getMaxPrice());
+        holder.tvPrice.setText(clothesRes.getMaxPrice());
         holder.tvName.setText(clothesRes.getName());
         holder.tvQuantity.setText("Quantity: " + clothesRes.getQuantily());
         Glide.with(c).load(clothesRes.getImgsUrl().get(0)).into(holder.ivClothes);

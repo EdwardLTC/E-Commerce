@@ -28,6 +28,7 @@ import com.edward.myapplication.model.modelrespon.BillRes;
 import com.edward.myapplication.model.modelrespon.ResGetListBill;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.Observer;
@@ -110,6 +111,7 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
 
                         if (resGetListBill.get_Respon().getRespone_code() == 200) {
                             ls = resGetListBill.get_BillRes();
+                            Collections.reverse(ls);
                             Toast.makeText(BillsManagementActivity.this, ls.size()+"", Toast.LENGTH_SHORT).show();
                             sellerBillsAdapter = new SellerBillsAdapter(BillsManagementActivity.this, ls);
                             rcvBillsManagement.setAdapter(sellerBillsAdapter);
@@ -148,6 +150,8 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
 
                         if (resGetListBill.get_Respon().getRespone_code() == 200) {
                             ls = resGetListBill.get_BillRes();
+                            Collections.reverse(ls);
+
                             sellerBillsAdapter = new SellerBillsAdapter(BillsManagementActivity.this, ls);
                             rcvBillsManagement.setAdapter(sellerBillsAdapter);
                         }
@@ -182,6 +186,7 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
 
                         if (resGetListBill.get_Respon().getRespone_code() == 200) {
                             ls = resGetListBill.get_BillRes();
+                            Collections.reverse(ls);
                             sellerBillsAdapter = new SellerBillsAdapter(BillsManagementActivity.this, ls);
                             rcvBillsManagement.setAdapter(sellerBillsAdapter);
                         }
