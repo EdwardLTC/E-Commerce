@@ -122,6 +122,7 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
         clClothes.setOnClickListener(this);
         clVouchers.setOnClickListener(this);
         clBills.setOnClickListener(this);
+        clStatistics.setOnClickListener(this);
         ibLogoutSellerAccount.setOnClickListener(this);
     }
 
@@ -174,6 +175,10 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
                 startActivity(new Intent(this, BillsManagementActivity.class));
                 overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
                 break;
+            case R.id.clStatistics:
+                startActivity(new Intent(this, StatisticActivity.class));
+                overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
+                break;
             case R.id.ibLogoutSellerAccount:
                 showDialogLout();
                 break;
@@ -203,5 +208,6 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
     }
 
     private void logout() {
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }

@@ -132,30 +132,30 @@ public class AddClothesActivity extends AppCompatActivity implements View.OnClic
 
 //        String[] a = lsCategories.toArray(new String[0]);
 //        System.out.println(a.length);
-        ServiceAPI.serviceApi.GetAllClothesProperties(108)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResGetListProperties>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(ResGetListProperties resGetListProperties) {
-                        Log.d("Size: ", resGetListProperties.get_ClothesPropertiesRes().size()+"");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+//        ServiceAPI.serviceApi.GetAllClothesProperties(108)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<ResGetListProperties>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(ResGetListProperties resGetListProperties) {
+//                        Log.d("Size: ", resGetListProperties.get_ClothesPropertiesRes().size()+"");
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//
+//                    }
+//                });
     }
 
     private void initViews() {

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,8 +40,12 @@ public class SellerStatisicAdapter extends RecyclerView.Adapter<SellerStatisicAd
         ClothesStatisticalRes clothesStatisticalRes = ls.get(position);
         Glide.with(c).load(clothesStatisticalRes.imgsUrl.get(0)).into(holder.ivSellerClothesStatistic);
         holder.tvSellerNameClothesStatistic.setText(clothesStatisticalRes.name);
-        holder.tvSellerQuanityClothesStatistic.setText(clothesStatisticalRes.buyTime+"");
-        holder.tvSellerPriceClothesStatistic.setText(clothesStatisticalRes.maxPrice);
+        holder.tvSellerQuanityClothesStatistic.setText("Quantity: "+clothesStatisticalRes.buyTime);
+        holder.tvSellerPriceClothesStatistic.setText("$" + clothesStatisticalRes.maxPrice);
+
+        if (position == ls.size()-1) {
+            holder.llLineStatistic.setBackgroundResource(R.color.white);
+        }
     }
 
     @Override
@@ -52,12 +57,14 @@ public class SellerStatisicAdapter extends RecyclerView.Adapter<SellerStatisicAd
         ImageView ivSellerClothesStatistic;
         TextView tvSellerNameClothesStatistic,tvSellerQuanityClothesStatistic,
                 tvSellerPriceClothesStatistic;
+        LinearLayout llLineStatistic;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivSellerClothesStatistic = itemView.findViewById(R.id.ivSellerClothesStatistic);
             tvSellerNameClothesStatistic = itemView.findViewById(R.id.tvSellerNameClothesStatistic);
             tvSellerQuanityClothesStatistic = itemView.findViewById(R.id.tvSellerQuanityClothesStatistic);
             tvSellerPriceClothesStatistic = itemView.findViewById(R.id.tvSellerPriceClothesStatistic);
+            llLineStatistic = itemView.findViewById(R.id.llLineStatistic);
         }
     }
 }

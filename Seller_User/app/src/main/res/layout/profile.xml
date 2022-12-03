@@ -160,57 +160,7 @@
         app:layout_constraintLeft_toLeftOf="@id/round_white2"
         app:layout_constraintTop_toTopOf="@id/round_white2" />
 
-    <ImageView
-        android:id="@+id/round_white3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="256dp"
-        android:background="@drawable/border_white"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtProfileEmail" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/round_yellow"
-        app:layout_constraintLeft_toLeftOf="@id/round_white3"
-        app:layout_constraintTop_toTopOf="@id/round_white3" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="57dp"
-        android:layout_marginTop="58dp"
-        android:background="@drawable/ic_star"
-        app:layout_constraintLeft_toLeftOf="@id/round_white3"
-        app:layout_constraintTop_toTopOf="@id/round_white3" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="100dp"
-        android:fontFamily="@font/gordita_black"
-        android:text="Reviewes"
-        android:textSize="12dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/round_white3"
-        app:layout_constraintTop_toTopOf="@id/round_white3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="124dp"
-        android:fontFamily="@font/gordita_medium"
-        android:textStyle="bold"
-        android:text="4.5K"
-        android:textSize="12dp"
-        app:layout_constraintLeft_toLeftOf="@id/round_white3"
-        app:layout_constraintTop_toTopOf="@id/round_white3" />
 
     <TextView
         android:id="@+id/textView20"
