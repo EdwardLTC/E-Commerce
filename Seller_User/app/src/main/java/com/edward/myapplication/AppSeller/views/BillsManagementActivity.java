@@ -8,11 +8,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edward.myapplication.AppSeller.adapters.SellerBillsAdapter;
@@ -20,6 +23,7 @@ import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
+import com.edward.myapplication.helper.MyHelper;
 import com.edward.myapplication.model.modelrespon.BillRes;
 import com.edward.myapplication.model.modelrespon.ResGetListBill;
 
@@ -55,6 +59,26 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
 
         cvBackToHomeFromBills.setOnClickListener(this);
         ivStatusBills.setOnClickListener(this);
+        edtSearchBills.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_SEARCH) {
+                    String find = textView.getText().toString();
+                    if (!find.isEmpty()) {
+                        searchBills(find);
+//                        searchSellers(find);
+                    }
+                    MyHelper.hideKeyboard(BillsManagementActivity.this);
+                    return true;
+                }
+
+                return false;
+            }
+        });
+
+    }
+
+    private void searchBills(String find) {
     }
 
     private void initViews() {

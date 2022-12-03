@@ -61,7 +61,7 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
 
     private int checkFavorite = 0;
 
-    private int sizeCheck = 0;
+    private String sizeCheck = "";
 
     private BillDao billDao;
 
@@ -242,8 +242,9 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
     private void addToCart() {
         billDao.add(new NewBill(idUser, clothesRes.getId(),
                 clothesRes.getName(), clothesRes.getImgsUrl().get(0),
-                MyHelper.getSizeClothes(sizeCheck),
+                sizeCheck,
                 quantity, clothesRes.getMaxPrice()));
+//        Toast.makeText(this, sizeCheck+"", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, MainMycart.class));
     }
 
@@ -307,7 +308,7 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
     }
 
     @Override
-    public void chooseSize(int position) {
-        sizeCheck = position+1;
+    public void chooseSize(String size) {
+        sizeCheck = size;
     }
 }

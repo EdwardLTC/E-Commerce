@@ -91,6 +91,13 @@ public class MainMycart extends AppCompatActivity implements ChooseVoucher, View
 
         tvAllPriceClothes.setText("$" + getSumOfPriceClothes(lsBillDetail));
 
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainMycart.super.onBackPressed();
+            }
+        });
+
         btncheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -62,7 +62,7 @@ public class ButtonSizeAdapter extends RecyclerView.Adapter<ButtonSizeAdapter.Vi
                 holder.btSize.setBackgroundResource(R.drawable.background_size_clothes_selected);
                 if (checkPosition != position) {
                     checkPosition = position;
-                    chooseSize.chooseSize(position);
+                    chooseSize.chooseSize(size);
                     notifyDataSetChanged();
                 }
             }

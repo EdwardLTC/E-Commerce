@@ -67,7 +67,7 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
         });
 
         Log.d("Status: ", billRes.getStatus());
-        if (billRes.getStatus().equals("Bll Completed")) {
+        if (billRes.getStatus().equals("Bill Completed")) {
             holder.btConfirmStatusBill.setVisibility(View.INVISIBLE);
             holder.btConfirmStatusBill.setEnabled(false);
         } else {
