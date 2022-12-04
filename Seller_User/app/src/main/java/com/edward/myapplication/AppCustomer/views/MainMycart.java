@@ -105,6 +105,7 @@ public class MainMycart extends AppCompatActivity implements ChooseVoucher, View
 
                 if (rdoIsDeliveryChecked.isChecked()) {
 //                    billDao.delete(idUser);
+                    Log.d("Bill: ", new BillReq(idUser, idSeller, idVoucher, "In processing", listBillDetailReq).toString());
                     Toast.makeText(MainMycart.this, idUser+" "+ idSeller+" "+ idVoucher, Toast.LENGTH_SHORT).show();
                     ServiceAPI.serviceApi.CreateBill(new BillReq(idUser, idSeller, idVoucher, "In processing", listBillDetailReq))
                             .subscribeOn(Schedulers.io())
