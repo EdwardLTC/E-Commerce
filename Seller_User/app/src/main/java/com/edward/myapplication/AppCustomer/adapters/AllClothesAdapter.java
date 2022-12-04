@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.bumptech.glide.Glide;
+import com.edward.myapplication.AppCustomer.views.CustomerAllClothesActivity;
 import com.edward.myapplication.AppCustomer.views.MainProductdetalls;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
@@ -54,19 +55,16 @@ public class AllClothesAdapter extends RecyclerView.Adapter<AllClothesAdapter.Vi
         ClothesRes clothesRes = ls.get(position);
         holder.tvNameAllClothesItem.setText(clothesRes.getName());
         holder.tvPriceAllClothesItem.setText("$" + clothesRes.getMaxPrice());
-
         Glide.with(c).load(clothesRes.getImgsUrl().get(0)).into(holder.ivAllClothesItem);
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(c, MainProductdetalls.class);
                 intent.putExtra("clothesRes", clothesRes);
+                CustomerAllClothesActivity.CLOTHEsRES = clothesRes;
                 c.startActivity(intent);
             }
         });
-
-
     }
 
     @Override
@@ -77,50 +75,14 @@ public class AllClothesAdapter extends RecyclerView.Adapter<AllClothesAdapter.Vi
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvNameAllClothesItem, tvPriceAllClothesItem;
         ImageView ivAllClothesItem;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNameAllClothesItem = itemView.findViewById(R.id.tvNameAllClothesItem);
             tvPriceAllClothesItem = itemView.findViewById(R.id.tvPriceAllClothesItem);
             ivAllClothesItem = itemView.findViewById(R.id.ivAllClothesItem);
+
         }
     }
-
-    public void getClothesPrice(int id) {
-
-        ServiceAPI.serviceApi.GetAllClothesProperties(id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResGetListProperties>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(ResGetListProperties resGetListProperties) {
-                        Log.d(">>>>>>>>>>>.. ", resGetListProperties.get_Respon().getRespone_code()+"");
-                        if (resGetListProperties.get_Respon().getRespone_code() == 200) {
-                            List<ClothesPropertiesRes> ls = new ArrayList<>();
-                            ls = resGetListProperties.get_ClothesPropertiesRes();
-
-                            if (ls.size() == 0) {
-                                price = "0.0";
-                            } else
-                                price = "$" + resGetListProperties.get_ClothesPropertiesRes().get(0).getPrice();
-                        }
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d(">>>>>>>>>>>.. ", "errr");
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-    }
 }
+

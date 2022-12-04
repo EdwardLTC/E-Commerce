@@ -79,7 +79,6 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
     Uri imageUri;
 
     private int idSeller = LoginActivity.PERSONRES.getId();
-
     // picker dialog
     List<String> lsCategories;
     List<Integer> lsIdCategories;

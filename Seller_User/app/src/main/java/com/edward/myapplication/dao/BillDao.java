@@ -28,7 +28,8 @@ public class BillDao {
     public List<BillDetailReq> getListBillDetailReg(String ...args) {
         sqLiteDatabase = database.getReadableDatabase();
         List<BillDetailReq> ls = new ArrayList<>();
-        String sql = "SELECT idclothes, size, quantity FROM BILL WHERE idCustomer = ?";
+        String sql = "SELECT idclothes, size, sum(quantity) as quantity FROM BILL WHERE idCustomer = ? group by idClothes, size";
+//        String sql = "SELECT idclothes, size, sum(quantity) FROM BILL WHERE idCustomer = ? group by ?,?";
         Cursor cursor = sqLiteDatabase.rawQuery(sql, args);
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
@@ -46,7 +47,9 @@ public class BillDao {
     public List<BillDetail> getListBillDetail(String ...args) {
         sqLiteDatabase = database.getReadableDatabase();
         List<BillDetail> ls = new ArrayList<>();
-        String sql = "SELECT nameClothes, imgUrl, size, quantity, price FROM BILL WHERE idCustomer = ?";
+        String sql = "SELECT nameClothes, imgUrl, size, sum(quantity) as quantity, price FROM BILL WHERE idCustomer = ? group by idClothes, size";
+
+//        String sql = "SELECT nameClothes, imgUrl, size, quantity, price FROM BILL WHERE idCustomer = ?";
         Cursor cursor = sqLiteDatabase.rawQuery(sql, args);
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
@@ -60,6 +63,7 @@ public class BillDao {
                 } while (cursor.moveToNext());
             }
         }
+        cursor.close();
         return ls;
     }
 
@@ -78,6 +82,10 @@ public class BillDao {
         sqLiteDatabase.insert("BILL", null, values);
     }
 
-//    public void delete()
+    public void delete(int idCustomer) {
+        sqLiteDatabase = database.getWritableDatabase();
+
+        sqLiteDatabase.delete("BILL", "idCustomer = ?", new String[]{idCustomer+""});
+    }
 
 }

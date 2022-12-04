@@ -63,4 +63,15 @@ public class BillReq implements Serializable {
     public void setListBillDetailReq(List<BillDetailReq> listBillDetailReq) {
         this.listBillDetailReq = listBillDetailReq;
     }
+
+    @Override
+    public String toString() {
+        return "BillReq{" +
+                "iduser=" + iduser +
+                ", idseller=" + idseller +
+                ", idvoucher=" + idvoucher +
+                ", status='" + status + '\'' +
+                ", listBillDetailReq=" + listBillDetailReq +
+                '}';
+    }
 }

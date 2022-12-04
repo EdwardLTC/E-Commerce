@@ -57,7 +57,6 @@ public class VouchersManagementActivity extends AppCompatActivity implements Vie
     List<VoucherRes> ls;
 
     private int idSeller = LoginActivity.PERSONRES.getId();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

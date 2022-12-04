@@ -13,6 +13,24 @@ public class PersonReq implements Serializable {
     private String address;
 
 
+//    public PersonReq(int id, String name, String phoneNum, String imgUrl, String address) {
+//        this.id = id;
+//        this.name = name;
+//        this.phoneNum = phoneNum;
+//        this.imgUrl = imgUrl;
+//        this.address = address;
+//    }
+
+    public PersonReq(int id, String name, String mail, String phoneNum, int role, String imgUrl, String address) {
+        this.id = id;
+        this.name = name;
+        this.mail = mail;
+        this.phoneNum = phoneNum;
+        this.role = role;
+        this.imgUrl = imgUrl;
+        this.address = address;
+    }
+
     public PersonReq() {
     }
 

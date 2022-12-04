@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,7 +101,7 @@ public class ClothesFragment extends Fragment implements OnItem {
         initRecycleView();
         ls = new ArrayList<>();
         loadClothesList();
-
+        Log.d(">>>>", LoginActivity.PERSONRES.getId()+"");
         edtSearchClothes.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
@@ -265,3 +266,4 @@ public class ClothesFragment extends Fragment implements OnItem {
     }
 
 }
+

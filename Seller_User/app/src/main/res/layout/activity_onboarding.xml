@@ -21,22 +21,50 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tv_skip" >
+        android:layout_below="@+id/tv_skip"
+        android:layout_above="@+id/layout_bottom"/>
+<RelativeLayout
+    android:id="@+id/layout_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:padding="12dp">
 
 
-       </androidx.viewpager2.widget.ViewPager2>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layout_next"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_vertical"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@color/btn_default"
+        android:background="@color/btn_default">
 
-    <ImageButton
-        android:id="@+id/ibNext"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/btn_default"
-        android:padding="12dp"
-        android:layout_margin="16sp"
-        android:layout_alignParentRight="true"
-        app:srcCompat="@drawable/ic_right_once"
-        app:tint="@color/white" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Next"
+                android:textColor="@color/white"
+                android:fontFamily="@font/gordita_medium"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_right_twice"
+                app:tint="@color/white" />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
 
 </RelativeLayout>

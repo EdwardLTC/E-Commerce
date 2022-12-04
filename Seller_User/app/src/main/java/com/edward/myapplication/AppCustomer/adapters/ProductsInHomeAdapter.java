@@ -31,66 +31,43 @@ public class ProductsInHomeAdapter extends RecyclerView.Adapter<ProductsInHomeAd
     private Context context;
     private ArrayList<ClothesRes> list;
 
-    public ProductsInHomeAdapter(Context context, ArrayList<ClothesRes> list){
+    public ProductsInHomeAdapter(Context context, ArrayList<ClothesRes> list) {
         this.context= context;
         this.list= list;
     }
-
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+    public ViewHolder onCreateViewHolder (@NonNull ViewGroup parent,int viewType){
+        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View view = inflater.inflate(R.layout.one_item_home, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder (@NonNull ViewHolder holder,int position){
 
-        if (list.get(position).getImgsUrl().size() != 0 ){
-            Glide.with(context).load( list.get(position).getImgsUrl().get(0)).into(holder.products);
+        if (list.get(position).getImgsUrl().size() != 0) {
+            Glide.with(context).load(list.get(position).getImgsUrl().get(0)).into(holder.products);
         }
         list.get(position).getImgsUrl().get(0);
 
         holder.name.setText(list.get(position).getName());
         holder.price.setText("$" + list.get(position).getMaxPrice());
-//        ServiceAPI.serviceApi.GetAllClothesProperties(list.get(position).id)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Observer<ResGetListProperties>() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onNext(ResGetListProperties resGetProperties) {
-//                        holder.price.setText(resGetProperties.get_ClothesPropertiesRes().get(0).price);
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//
-//                    }
-//                });
+
 
     }
 
+
     @Override
-    public int getItemCount() {
+    public int getItemCount () {
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView products;
         TextView name, price;
 
-        public ViewHolder(@NonNull View itemView){
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             products = itemView.findViewById(R.id.producthome);
             name = itemView.findViewById(R.id.nameProducthome);
