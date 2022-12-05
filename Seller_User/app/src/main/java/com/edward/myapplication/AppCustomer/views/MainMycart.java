@@ -103,6 +103,9 @@ public class MainMycart extends AppCompatActivity implements ChooseVoucher, View
             public void onClick(View view) {
                 listBillDetailReq = billDao.getListBillDetailReg(idUser+"");
 
+                for (BillDetailReq billDetailReq : listBillDetailReq) {
+                    Log.d("Bill detail: ", billDetailReq.toString());
+                }
                 if (rdoIsDeliveryChecked.isChecked()) {
 //                    billDao.delete(idUser);
                     Log.d("Bill: ", new BillReq(idUser, idSeller, idVoucher, "In processing", listBillDetailReq).toString());
