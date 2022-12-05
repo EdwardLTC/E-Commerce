@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.edward.myapplication.AppCustomer.adapters.CustomerAllClothesInBillAdapter;
 import com.edward.myapplication.AppSeller.adapters.SellerAllClothesInBillAdapter;
 import com.edward.myapplication.AppSeller.views.BillsManagementActivity;
+import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
@@ -71,7 +72,7 @@ public class CustomerBillDetailsActivity extends AppCompatActivity {
     }
 
     private void loadListClothesInBill() {
-        ServiceAPI.serviceApi.GetClothesFromFromBill(BillsManagementActivity.BILL.getId())
+        ServiceAPI.serviceApi.GetClothesFromBillCustomer(LoginActivity.PERSONRES.id, BillsManagementCustomerActivity.BILL.getId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResGetListClothes>() {
@@ -82,6 +83,7 @@ public class CustomerBillDetailsActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(ResGetListClothes resGetListClothes) {
+                        Log.d(">>>> log:", resGetListClothes.get_Respon().respone_code+"");
                         if (resGetListClothes.get_Respon().getRespone_code() == 200) {
                             ls = resGetListClothes.get_ClothesRes();
                             customerAllClothesInBillAdapter = new CustomerAllClothesInBillAdapter(ls, CustomerBillDetailsActivity.this);
@@ -105,7 +107,7 @@ public class CustomerBillDetailsActivity extends AppCompatActivity {
     }
 
     private void fillValueCustomer() {
-        ServiceAPI.serviceApi.GetPersonWhere(BillsManagementActivity.BILL.getIduser())
+        ServiceAPI.serviceApi.GetPersonWhere(BillsManagementCustomerActivity.BILL.getIduser())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResGetPerson>() {
@@ -137,7 +139,7 @@ public class CustomerBillDetailsActivity extends AppCompatActivity {
 
 
     private void fillTotalPriceInClothes() {
-        ServiceAPI.serviceApi.GetBillPayment(BillsManagementActivity.BILL.getId())
+        ServiceAPI.serviceApi.GetBillPayment(BillsManagementCustomerActivity.BILL.getId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResGetBillPayment>() {
