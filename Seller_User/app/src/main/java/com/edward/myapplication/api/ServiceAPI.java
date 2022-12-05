@@ -145,4 +145,7 @@ public interface ServiceAPI {
 
     @GET("SellerIncome")
     Observable<ResSellerIncome> SellerIncome(@Query("idSeller") int idSeller);
+
+    @GET("GetClothesFromBillCustomer")
+    Observable<ResGetListClothes>GetClothesFromBillCustomer(@Query("idCus") int idCus);
 }
