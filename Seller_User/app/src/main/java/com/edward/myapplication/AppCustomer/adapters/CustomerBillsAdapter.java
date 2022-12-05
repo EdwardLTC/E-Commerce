@@ -14,8 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.edward.myapplication.AppSeller.views.BillsManagementActivity;
-import com.edward.myapplication.AppSeller.views.SellerBillDetailsActivity;
+import com.edward.myapplication.AppCustomer.views.BillsManagementCustomerActivity;
+import com.edward.myapplication.AppCustomer.views.CustomerBillDetailsActivity;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.model.modelrespon.BillRes;
@@ -69,8 +69,8 @@ public class CustomerBillsAdapter extends RecyclerView.Adapter<CustomerBillsAdap
         holder.clItemBillCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BillsManagementActivity.BILL = billRes;
-                c.startActivity(new Intent(c, SellerBillDetailsActivity.class));
+                BillsManagementCustomerActivity.BILL = billRes;
+                c.startActivity(new Intent(c, CustomerBillDetailsActivity.class));
             }
         });
 

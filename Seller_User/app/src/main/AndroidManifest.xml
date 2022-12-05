@@ -18,6 +18,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".AppCustomer.views.BillsManagementCustomerActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AppCustomer.views.CustomerBillDetailsActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".AppSeller.views.StatisticActivity"
             android:exported="false" />
         <activity

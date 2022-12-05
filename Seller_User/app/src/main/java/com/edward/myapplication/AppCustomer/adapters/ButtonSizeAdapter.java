@@ -52,9 +52,9 @@ public class ButtonSizeAdapter extends RecyclerView.Adapter<ButtonSizeAdapter.Vi
                 holder.btSize.setBackgroundResource(R.drawable.background_size_clothes_selected);
             else
                 holder.btSize.setBackgroundResource(R.drawable.background_size_clothes);
-
-
         }
+
+        chooseSize.disableButton(holder.btSize);
         holder.btSize.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override

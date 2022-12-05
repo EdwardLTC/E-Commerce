@@ -56,109 +56,123 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtProfileName" />
 
-    <ImageView
-        android:id="@+id/round_white"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="240dp"
-        android:background="@drawable/border_white"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtProfileEmail" />
+        app:layout_constraintTop_toBottomOf="@id/txtProfileEmail"
+        android:layout_marginTop="36dp">
+        <LinearLayout
+            android:id="@+id/llMoveToMyCart"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/round_orange"
-        app:layout_constraintLeft_toLeftOf="@id/round_white"
-        app:layout_constraintTop_toTopOf="@id/round_white" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="57dp"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/ic_bag"
-        app:layout_constraintLeft_toLeftOf="@id/round_white"
-        app:layout_constraintTop_toTopOf="@id/round_white" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_orange"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_shop_selected"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="100dp"
-        android:fontFamily="@font/gordita_black"
-        android:text="Progress Order"
-        android:textSize="12dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/round_white"
-        app:layout_constraintTop_toTopOf="@id/round_white" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="124dp"
-        android:fontFamily="@font/gordita_medium"
-        android:textStyle="bold"
-        android:text="10+"
-        android:textSize="12dp"
-        app:layout_constraintLeft_toLeftOf="@id/round_white"
-        app:layout_constraintTop_toTopOf="@id/round_white" />
-
-    <ImageView
-        android:id="@+id/round_white2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="100dp"
-        android:background="@drawable/border_white"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtProfileEmail" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/round_blue"
-        app:layout_constraintLeft_toLeftOf="@id/round_white2"
-        app:layout_constraintTop_toTopOf="@id/round_white2" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="63dp"
-        android:background="@drawable/ic_ticket"
-        app:layout_constraintLeft_toLeftOf="@id/round_white2"
-        app:layout_constraintTop_toTopOf="@id/round_white2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="42dp"
-        android:layout_marginTop="100dp"
-        android:fontFamily="@font/gordita_black"
-        android:text="Promocodes"
-        android:textSize="12dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/round_white2"
-        app:layout_constraintTop_toTopOf="@id/round_white2" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="124dp"
-        android:fontFamily="@font/gordita_medium"
-        android:textStyle="bold"
-        android:text="5"
-        android:textSize="12dp"
-        app:layout_constraintLeft_toLeftOf="@id/round_white2"
-        app:layout_constraintTop_toTopOf="@id/round_white2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gordita_black"
+                android:text="My cart"
+                android:textSize="12dp"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvCountClothesInBill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gordita_medium"
+                android:textStyle="bold"
+                android:text="10+"
+                android:layout_marginTop="4dp"
+                android:textSize="12dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llProgressOrder"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_orange"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_bag"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gordita_black"
+                android:text="Progress Order"
+                android:textSize="12dp"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gordita_medium"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp"
+                android:text="10+"
+                android:textSize="12dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 
 
 
