@@ -16,7 +16,9 @@ import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListProperties;
 import com.edward.myapplication.model.modelrespon.ResGetListVoucher;
 import com.edward.myapplication.model.modelrespon.ResGetPerson;
+import com.edward.myapplication.model.modelrespon.ResGetStatistical;
 import com.edward.myapplication.model.modelrespon.ResGetVoucher;
+import com.edward.myapplication.model.modelrespon.ResSellerIncome;
 import com.edward.myapplication.model.modelrespon.Respon;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -57,6 +59,9 @@ public interface ServiceAPI {
     @GET("Login")
     Observable<ResGetPerson> Login(@Query(("_email")) String _email, @Query(("_psw")) String _psw);
 
+    @POST("UpdatePerson")
+    Observable<Respon> UpdatePerson (@Body PersonReq personReq);
+
     @GET("GetAllFavoritesOf")
     Observable<ResGetListClothes> GetAllFavoritesOf(@Query(("userID")) int userID);
 
@@ -77,7 +82,6 @@ public interface ServiceAPI {
 
     @GET("GetCategoryWhere")
     Observable<ResGetCategory> GetCategoryWhere(@Query("id") int id);
-
 
     @GET("GetAllVoucher")
     Observable<ResGetListVoucher> GetAllVoucher();
@@ -129,9 +133,16 @@ public interface ServiceAPI {
     @GET("GetBillWhereCompleted")
     Observable<ResGetListBill> GetBillWhereCompleted();
 
+
     @GET("GetBillWhereNotCompleted")
     Observable<ResGetListBill> GetBillWhereNotCompleted();
 
     @GET("GetBillPayment")
-    Observable<ResGetBillPayment> GetBillPayment();
+    Observable<ResGetBillPayment> GetBillPayment(@Query("idBill") int idBill);
+
+    @GET("GetStatistical")
+    Observable<ResGetStatistical> GetStatistical();
+
+    @GET("SellerIncome")
+    Observable<ResSellerIncome> SellerIncome(@Query("idSeller") int idSeller);
 }

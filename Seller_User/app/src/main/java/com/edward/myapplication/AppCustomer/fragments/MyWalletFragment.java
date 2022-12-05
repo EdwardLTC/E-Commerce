@@ -14,9 +14,11 @@ import android.widget.ImageView;
 
 import com.edward.myapplication.R;
 
+
 public class MyWalletFragment extends Fragment {
     ImageView ic_back,ic_mywallet_more;
     RecyclerView rv_wallet;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

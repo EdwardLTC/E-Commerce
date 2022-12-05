@@ -22,7 +22,6 @@ import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
-import com.edward.myapplication.model.modelrespon.PersonRes;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListVoucher;
 import com.edward.myapplication.model.modelrespon.ResGetPerson;
@@ -93,10 +92,13 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
                 .subscribe(new Observer<ResGetListClothes>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+                        Log.d("subcribe", "subrie");
                     }
 
                     @Override
                     public void onNext(ResGetListClothes resGetListClothes) {
+                        Log.d("subcribe", resGetListClothes.get_Respon().respone_code+"");
+
                         if (resGetListClothes.get_Respon().getRespone_code() == 200) {
                             String sizeClothes = resGetListClothes.get_ClothesRes().size() + "";
                             tvQuantityClothes.setText(sizeClothes);
@@ -106,12 +108,12 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
 
                     @Override
                     public void onError(Throwable e) {
+                        Log.d("subcribe", "subrie");
 
                     }
 
                     @Override
                     public void onComplete() {
-                        ProgressDialogCustom.dismissProgressDialog();
                     }
                 });
     }
@@ -119,6 +121,8 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
     private void handleListener() {
         clClothes.setOnClickListener(this);
         clVouchers.setOnClickListener(this);
+        clBills.setOnClickListener(this);
+        clStatistics.setOnClickListener(this);
         ibLogoutSellerAccount.setOnClickListener(this);
     }
 
@@ -153,37 +157,6 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
         tvNameSellerDashboard.setText(LoginActivity.PERSONRES.getName());
         tvEmailSellerDashboard.setText(LoginActivity.PERSONRES.getMail());
         Glide.with(SellerDashboardActivity.this).load(LoginActivity.PERSONRES.getImgUrl()).into(ivAvatarSeller);
-//        ServiceAPI.serviceApi.GetPersonWhere(idSeller)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Observer<ResGetPerson>() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//                        ProgressDialogCustom.showProgressDialog(SellerDashboardActivity.this, "Please wait");
-//                    }
-//
-//                    @Override
-//                    public void onNext(ResGetPerson resGetPerson) {
-//                        Log.d(">>>>>>>>>>",resGetPerson.get_Respon().respone_code+"" );
-//                        if (resGetPerson.get_Respon().respone_code== 200) {
-//                            tvNameSellerDashboard.setText(resGetPerson.get_PersonRes().getName());
-//                            tvEmailSellerDashboard.setText(resGetPerson.get_PersonRes().getMail());
-//                            Glide.with(SellerDashboardActivity.this).load(resGetPerson.get_PersonRes().getImgUrl()).into(ivAvatarSeller);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        Log.d(">>>>>>>>>>","err" );
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//                        ProgressDialogCustom.dismissProgressDialog();
-//
-//                    }
-//                });
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -196,6 +169,14 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
                 break;
             case R.id.clVouchers:
                 startActivity(new Intent(this, VouchersManagementActivity.class));
+                overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
+                break;
+            case R.id.clBills:
+                startActivity(new Intent(this, BillsManagementActivity.class));
+                overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
+                break;
+            case R.id.clStatistics:
+                startActivity(new Intent(this, StatisticActivity.class));
                 overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
                 break;
             case R.id.ibLogoutSellerAccount:

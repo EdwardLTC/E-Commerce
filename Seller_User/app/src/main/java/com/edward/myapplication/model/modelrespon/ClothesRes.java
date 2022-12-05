@@ -19,23 +19,24 @@ public class ClothesRes implements Serializable {
         return categoryName;
     }
 
-    public void setCategoryName(String categoryName) {
+
+    public void setCategoryName (String categoryName){
         this.categoryName = categoryName;
     }
 
 
-
-    public String getMaxPrice() {
+    public String getMaxPrice () {
         return maxPrice;
     }
 
-    public void setMaxPrice(String maxPrice) {
+    public void setMaxPrice (String maxPrice){
         this.maxPrice = maxPrice;
     }
 
 
 
-    public ClothesRes(int id, int idseller, int idCategory, String des, String name, List<String> imgsUrl) {
+    public ClothesRes( int id, int idseller, int idCategory, String des, String
+            name, List < String > imgsUrl){
         this.id = id;
         this.idseller = idseller;
         this.idCategory = idCategory;
@@ -47,64 +48,64 @@ public class ClothesRes implements Serializable {
 //    public ClothesRes(int id, int idseller, int idCategory, String des, String name, String imgUrl, int quantily) {
 //    }
 
-    public int getId() {
+    public int getId () {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId ( int id){
         this.id = id;
     }
 
-    public int getIdseller() {
+    public int getIdseller () {
         return idseller;
     }
 
-    public void setIdseller(int idseller) {
+    public void setIdseller ( int idseller){
         this.idseller = idseller;
     }
 
-    public int getIdCategory() {
+    public int getIdCategory () {
         return idCategory;
     }
 
-    public void setIdCategory(int idCategory) {
+    public void setIdCategory ( int idCategory){
         this.idCategory = idCategory;
     }
 
-    public String getDes() {
+    public String getDes () {
         return des;
     }
 
-    public void setDes(String des) {
+    public void setDes (String des){
         this.des = des;
     }
 
-    public String getName() {
+    public String getName () {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName (String name){
         this.name = name;
     }
 
-    public List<String> getImgsUrl() {
+    public List<String> getImgsUrl () {
         return imgsUrl;
     }
 
-    public void setImgsUrl(List<String> imgsUrl) {
+    public void setImgsUrl (List < String > imgsUrl) {
         this.imgsUrl = imgsUrl;
     }
 
-    public int getQuantily() {
+    public int getQuantily () {
         return quantily;
     }
 
-    public void setQuantily(int quantily) {
+    public void setQuantily ( int quantily){
         this.quantily = quantily;
     }
 
     @Override
-    public String toString() {
+    public String toString () {
         return "ClothesRes{" +
                 "id=" + id +
                 ", idseller=" + idseller +

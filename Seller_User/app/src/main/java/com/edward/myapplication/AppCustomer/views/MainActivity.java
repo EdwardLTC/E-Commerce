@@ -30,13 +30,15 @@ import com.saadahmedsoft.popupdialog.PopupDialog;
 import com.saadahmedsoft.popupdialog.Styles;
 import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity {
 
 
 
     DrawerLayout drawerLayout;
     LinearLayout content;
-    ImageView ivAvatar;
+    CircleImageView ivAvatar;
     TextView tvName, tvEmail;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -111,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 });
                         break;
+
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -127,5 +130,10 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.content_frame, fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

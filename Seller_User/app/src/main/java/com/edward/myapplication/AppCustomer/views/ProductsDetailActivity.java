@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.edward.myapplication.AppSeller.adapters.ClothesImageAdapter;
+import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.dao.BillDao;
@@ -47,7 +48,7 @@ public class ProductsDetailActivity extends AppCompatActivity implements View.On
     private ClothesImageAdapter clothesImageAdapter;
     private int quantity = 0;
 
-    private int idUser = 21;
+    private int idUser = LoginActivity.PERSONRES.getId();
 
     private int checkFavorite = 0;
 
@@ -169,6 +170,7 @@ public class ProductsDetailActivity extends AppCompatActivity implements View.On
         switch (view.getId()) {
             case R.id.btnbackproduct2:
                 startActivity(new Intent(this, CustomerAllClothesActivity.class));
+
                 break;
             case R.id.btnSizeSCustomer2:
                 sizeCheck = 1;
@@ -249,11 +251,13 @@ public class ProductsDetailActivity extends AppCompatActivity implements View.On
 
                     @Override
                     public void onNext(Respon respon) {
+                        Log.d("delete favorite: ", ""+respon.getRespone_code());
                         btnfavoriteproduct2.setBackgroundResource(R.drawable.ic_favorite);
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        Log.d("delete favorite: ", "err");
 
                     }
 
