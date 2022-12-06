@@ -96,7 +96,9 @@ public class CustomerBillsAdapter extends RecyclerView.Adapter<CustomerBillsAdap
                             @Override
                             public void onNext(Respon respon) {
                                 if (respon.getRespone_code() == 200) {
-                                    holder.tvBillStatusCustomers.setText("Status: Bill Completed");
+                                    holder.tvBillStatusCustomers.setText("Status: " +
+                                            "" +
+                                            "Bill Completed");
                                     holder.btConfirmStatusBillCustomer.setVisibility(View.INVISIBLE);
                                     holder.btConfirmStatusBillCustomer.setEnabled(false);
                                     holder.ivCheckBillSuccessCustomer.setVisibility(View.VISIBLE);
