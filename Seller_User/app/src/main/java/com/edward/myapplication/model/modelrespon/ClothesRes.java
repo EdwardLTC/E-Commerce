@@ -14,6 +14,7 @@ public class ClothesRes implements Serializable {
     public int quantily;
     public String maxPrice;
     public String categoryName;
+    public String size;
 
     public String getCategoryName() {
         return categoryName;
@@ -34,15 +35,24 @@ public class ClothesRes implements Serializable {
     }
 
 
-
-    public ClothesRes( int id, int idseller, int idCategory, String des, String
-            name, List < String > imgsUrl){
+    public ClothesRes(int id, int idseller, int idCategory, String des, String name, List<String> imgsUrl) {
         this.id = id;
         this.idseller = idseller;
         this.idCategory = idCategory;
         this.des = des;
         this.name = name;
         this.imgsUrl = imgsUrl;
+    }
+
+    public ClothesRes(int id, int idseller, int idCategory, String des, String
+            name, List < String > imgsUrl, String size){
+        this.id = id;
+        this.idseller = idseller;
+        this.idCategory = idCategory;
+        this.des = des;
+        this.name = name;
+        this.imgsUrl = imgsUrl;
+        this.size = size;
     }
 
 //    public ClothesRes(int id, int idseller, int idCategory, String des, String name, String imgUrl, int quantily) {

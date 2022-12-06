@@ -107,8 +107,6 @@ public interface ServiceAPI {
     @GET("GetPersonWhere")
     Observable<ResGetPerson> GetPersonWhere(@Query("Id") int id);
 
-    @POST("DeletePerson")
-    Observable<Respon> DeletePerson(@Query("id") int id);
     @POST("CreatePerson")
     Observable<Respon> CreatePerson(@Body PersonReq personReq); // id tu tanwg neen la cu set mac dinh la 1
 
@@ -145,4 +143,7 @@ public interface ServiceAPI {
 
     @GET("SellerIncome")
     Observable<ResSellerIncome> SellerIncome(@Query("idSeller") int idSeller);
+
+    @GET("GetClothesFromBillCustomer")
+    Observable<ResGetListClothes>GetClothesFromBillCustomer(@Query("idCus") int idCus, @Query("billId") int billId);
 }

@@ -89,6 +89,7 @@
                 android:layout_margin="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@drawable/checked" />
@@ -101,6 +102,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Confirm"
+            android:visibility="invisible"
+            android:enabled="false"
             android:textColor="@color/white"
             android:background="#1E88E5"
             android:fontFamily="@font/gordita_medium"

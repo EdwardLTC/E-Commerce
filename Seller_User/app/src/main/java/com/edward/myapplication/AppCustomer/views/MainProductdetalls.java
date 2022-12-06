@@ -70,6 +70,9 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
     RecyclerView rcvBtSize;
 
 
+    private static int checkDisabledButton = 0;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +160,8 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
                             lsSize = loadButtonSizeList(lsClothesProperties);
                             buttonSizeAdapter = new ButtonSizeAdapter(MainProductdetalls.this, lsSize, MainProductdetalls.this);
                             rcvBtSize.setAdapter(buttonSizeAdapter);
+
+
                         }
 
                     }
@@ -310,5 +315,17 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
     @Override
     public void chooseSize(String size) {
         sizeCheck = size;
+    }
+
+    @Override
+    public void disableButton(Button button) {
+//        for (ClothesPropertiesRes clothesPropertiesRes : lsClothesProperties) {
+//            if (clothesPropertiesRes.getQuantily() <= 0) {
+//                button.setBackgroundResource(R.drawable.background_size_clothes_disabled);
+//                button.setEnabled(false);
+//            }
+//        }
+//        if (button.getText().toString().equalsIgnoreCase(lsClothesProperties.get(checkDisabledButton).getSize()) &&
+//        )
     }
 }

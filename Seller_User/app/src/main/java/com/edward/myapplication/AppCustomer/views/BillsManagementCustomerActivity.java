@@ -50,7 +50,7 @@ public class BillsManagementCustomerActivity extends AppCompatActivity implement
 //    public static int ID_BILL= -1;
 
 
-    private int idSeller = LoginActivity.PERSONRES.getId();
+    private final int idCustomer = LoginActivity.PERSONRES.getId();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +69,7 @@ public class BillsManagementCustomerActivity extends AppCompatActivity implement
                     String find = textView.getText().toString();
                     if (!find.isEmpty()) {
                         searchBills(find);
-//                        searchSellers(find);
+//                        searchCustomers(find);
                     }
                     MyHelper.hideKeyboard(BillsManagementCustomerActivity.this);
                     return true;
@@ -98,7 +98,7 @@ public class BillsManagementCustomerActivity extends AppCompatActivity implement
     }
 
     private void loadListBill() {
-        ServiceAPI.serviceApi.GetBillOfSeller(idSeller)
+        ServiceAPI.serviceApi.GetBillOfUser(idCustomer)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResGetListBill>() {
@@ -117,7 +117,6 @@ public class BillsManagementCustomerActivity extends AppCompatActivity implement
                             Toast.makeText(BillsManagementCustomerActivity.this, ls.size()+"", Toast.LENGTH_SHORT).show();
                             customerBillsAdapter = new CustomerBillsAdapter(BillsManagementCustomerActivity.this, ls);
                             rcvBillsManagementCustomer.setAdapter(customerBillsAdapter);
-                            Log.d("Bill: ", ls.get(ls.size()-1).toString());
                         }
                     }
 
@@ -133,80 +132,113 @@ public class BillsManagementCustomerActivity extends AppCompatActivity implement
                         ProgressDialogCustom.dismissProgressDialog();
                     }
                 });
+
+//         .subscribe(new Observer<ResGetListBill>() {
+//            @Override
+//            public void onSubscribe(Disposable d) {
+//                ProgressDialogCustom.showProgressDialog(BillsManagementCustomerActivity.this, "Please wait");
+//            }
+//
+//            @Override
+//            public void onNext(ResGetListBill resGetListBill) {
+//                Log.d(">>>>>>>: ", resGetListBill.get_Respon().getRespone_code()+"" );
+//
+//                if (resGetListBill.get_Respon().getRespone_code() == 200) {
+//                    ls = resGetListBill.get_BillRes();
+//                    Collections.reverse(ls);
+//                    Toast.makeText(BillsManagementCustomerActivity.this, ls.size()+"", Toast.LENGTH_SHORT).show();
+//                    customerBillsAdapter = new CustomerBillsAdapter(BillsManagementCustomerActivity.this, ls);
+//                    rcvBillsManagementCustomer.setAdapter(customerBillsAdapter);
+//                    Log.d("Bill: ", ls.get(ls.size()-1).toString());
+//                }
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                Log.d(">>>>>>>: ", "err" );
+//                ProgressDialogCustom.dismissProgressDialog();
+//
+//            }
+//
+//            @Override
+//            public void onComplete() {
+//                ProgressDialogCustom.dismissProgressDialog();
+//            }
+//        });
     }
 
-
-    private void loadListBillCompleted() {
-        ServiceAPI.serviceApi.GetBillWhereCompleted()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResGetListBill>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        ProgressDialogCustom.showProgressDialog(BillsManagementCustomerActivity.this, "Please wait");
-                    }
-
-                    @Override
-                    public void onNext(ResGetListBill resGetListBill) {
-                        Log.d(">>>>>>>: ", resGetListBill.get_Respon().getRespone_code()+"" );
-
-                        if (resGetListBill.get_Respon().getRespone_code() == 200) {
-                            ls = resGetListBill.get_BillRes();
-                            Collections.reverse(ls);
-
-                            customerBillsAdapter = new CustomerBillsAdapter(BillsManagementCustomerActivity.this, ls);
-                            rcvBillsManagementCustomer.setAdapter(customerBillsAdapter);
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d(">>>>>>>: ", "err" );
-                        ProgressDialogCustom.dismissProgressDialog();
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        ProgressDialogCustom.dismissProgressDialog();
-                    }
-                });
-    }
-    private void loadListBillNotCompleted() {
-        ServiceAPI.serviceApi.GetBillWhereNotCompleted()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResGetListBill>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        ProgressDialogCustom.showProgressDialog(BillsManagementCustomerActivity.this, "Please wait");
-                    }
-
-                    @Override
-                    public void onNext(ResGetListBill resGetListBill) {
-                        Log.d(">>>>>>>: ", resGetListBill.get_Respon().getRespone_code()+"" );
-
-                        if (resGetListBill.get_Respon().getRespone_code() == 200) {
-                            ls = resGetListBill.get_BillRes();
-                            Collections.reverse(ls);
-                            customerBillsAdapter = new CustomerBillsAdapter(BillsManagementCustomerActivity.this, ls);
-                            rcvBillsManagementCustomer.setAdapter(customerBillsAdapter);
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d(">>>>>>>: ", "err" );
-                        ProgressDialogCustom.dismissProgressDialog();
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        ProgressDialogCustom.dismissProgressDialog();
-                    }
-                });
-    }
+//
+//    private void loadListBillCompleted() {
+//        ServiceAPI.serviceApi.GetBillWhereCompleted()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<ResGetListBill>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//                        ProgressDialogCustom.showProgressDialog(BillsManagementCustomerActivity.this, "Please wait");
+//                    }
+//
+//                    @Override
+//                    public void onNext(ResGetListBill resGetListBill) {
+//                        Log.d(">>>>>>>: ", resGetListBill.get_Respon().getRespone_code()+"" );
+//
+//                        if (resGetListBill.get_Respon().getRespone_code() == 200) {
+//                            ls = resGetListBill.get_BillRes();
+//                            Collections.reverse(ls);
+//
+//                            customerBillsAdapter = new CustomerBillsAdapter(BillsManagementCustomerActivity.this, ls);
+//                            rcvBillsManagementCustomer.setAdapter(customerBillsAdapter);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d(">>>>>>>: ", "err" );
+//                        ProgressDialogCustom.dismissProgressDialog();
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//                        ProgressDialogCustom.dismissProgressDialog();
+//                    }
+//                });
+//    }
+//    private void loadListBillNotCompleted() {
+//        ServiceAPI.serviceApi.GetBillWhereNotCompleted()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<ResGetListBill>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//                        ProgressDialogCustom.showProgressDialog(BillsManagementCustomerActivity.this, "Please wait");
+//                    }
+//
+//                    @Override
+//                    public void onNext(ResGetListBill resGetListBill) {
+//                        Log.d(">>>>>>>: ", resGetListBill.get_Respon().getRespone_code()+"" );
+//
+//                        if (resGetListBill.get_Respon().getRespone_code() == 200) {
+//                            ls = resGetListBill.get_BillRes();
+//                            Collections.reverse(ls);
+//                            customerBillsAdapter = new CustomerBillsAdapter(BillsManagementCustomerActivity.this, ls);
+//                            rcvBillsManagementCustomer.setAdapter(customerBillsAdapter);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d(">>>>>>>: ", "err" );
+//                        ProgressDialogCustom.dismissProgressDialog();
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//                        ProgressDialogCustom.dismissProgressDialog();
+//                    }
+//                });
+//    }
 
     @Override
     public void onClick(View view) {
@@ -215,7 +247,7 @@ public class BillsManagementCustomerActivity extends AppCompatActivity implement
                 showPopupMenuStatus();
                 break;
             case R.id.cvBackToHomeFromBillsCustomer:
-                startActivity(new Intent(this, SellerDashboardActivity.class));
+                super.onBackPressed();
                 break;
         }
     }
@@ -233,13 +265,13 @@ public class BillsManagementCustomerActivity extends AppCompatActivity implement
                     case R.id.menuSellerStatusDefault:
                         loadListBill();
                         break;
-                    case R.id.menuSellerStatusCompleted:
-                        loadListBillCompleted();
-                        break;
-                    case R.id.menuSellerStatusNotCompleted:
-                        loadListBillNotCompleted();
-
-                        break;
+//                    case R.id.menuSellerStatusCompleted:
+//                        loadListBillCompleted();
+//                        break;
+//                    case R.id.menuSellerStatusNotCompleted:
+//                        loadListBillNotCompleted();
+//
+//                        break;
 
                 }
                 return true;

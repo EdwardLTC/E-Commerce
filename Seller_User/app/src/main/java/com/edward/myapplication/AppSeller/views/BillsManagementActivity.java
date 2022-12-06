@@ -115,7 +115,7 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
                             Toast.makeText(BillsManagementActivity.this, ls.size()+"", Toast.LENGTH_SHORT).show();
                             sellerBillsAdapter = new SellerBillsAdapter(BillsManagementActivity.this, ls);
                             rcvBillsManagement.setAdapter(sellerBillsAdapter);
-                            Log.d("Bill: ", ls.get(ls.size()-1).toString());
+//                            Log.d("Bill: ", ls.get(ls.size()-1).toString());
                         }
                     }
 

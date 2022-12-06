@@ -41,6 +41,7 @@ public class SellerAllClothesInBillAdapter extends RecyclerView.Adapter<SellerAl
         holder.tvPrice.setText("$"+clothesRes.getMaxPrice());
         holder.tvName.setText(clothesRes.getName());
         holder.tvQuantity.setText("Quantity: " + clothesRes.getQuantily());
+        holder.tvSize.setText("Size: " + clothesRes.size);
         Glide.with(c).load(clothesRes.getImgsUrl().get(0)).into(holder.ivClothes);
     }
 
@@ -57,7 +58,7 @@ public class SellerAllClothesInBillAdapter extends RecyclerView.Adapter<SellerAl
             tvPrice = itemView.findViewById(R.id.tvPriceClothesInBill);
             ivClothes = itemView.findViewById(R.id.ivClothesInBill);
             tvName = itemView.findViewById(R.id.tvNameClothesInBill);
-//            tvSize = itemView.findViewById(R.id.tvSizeClothesInBill);
+            tvSize = itemView.findViewById(R.id.tvSizeClothesInBill);
             tvQuantity = itemView.findViewById(R.id.tvQuantityClothesInBill);
         }
     }

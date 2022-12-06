@@ -54,18 +54,18 @@
             app:layout_constraintTop_toBottomOf="@+id/tvNameClothesInBill" />
 
 
-<!--        <TextView-->
-<!--            android:id="@+id/tvSizeClothesInBill"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="TextView"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:fontFamily="@font/gordita_regular"-->
-<!--            android:textSize="14sp"-->
-<!--            android:layout_marginLeft="12dp"-->
-<!--            android:layout_marginTop="4dp"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/cardView3"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/tvNameClothesInBill" />-->
+        <TextView
+            android:id="@+id/tvSizeClothesInBill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:fontFamily="@font/gordita_regular"
+            android:textSize="14sp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toEndOf="@+id/cardView3"
+            app:layout_constraintTop_toBottomOf="@+id/tvQuantityClothesInBill" />
 
         <TextView
             android:id="@+id/tvPriceClothesInBill"
