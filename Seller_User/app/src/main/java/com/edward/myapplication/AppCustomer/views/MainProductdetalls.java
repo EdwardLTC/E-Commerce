@@ -70,6 +70,9 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
     RecyclerView rcvBtSize;
 
 
+    private static int checkDisabledButton = 0;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -322,5 +325,7 @@ public class MainProductdetalls extends AppCompatActivity implements View.OnClic
 //                button.setEnabled(false);
 //            }
 //        }
+//        if (button.getText().toString().equalsIgnoreCase(lsClothesProperties.get(checkDisabledButton).getSize()) &&
+//        )
     }
 }

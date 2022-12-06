@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -63,6 +64,7 @@ public class CustomerBillsAdapter extends RecyclerView.Adapter<CustomerBillsAdap
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
 //        Date date = new Date(billRes.getDateCreate().substring(0,9) )
 
 
@@ -76,45 +78,43 @@ public class CustomerBillsAdapter extends RecyclerView.Adapter<CustomerBillsAdap
 
         Log.d("Status: ", billRes.getStatus());
         if (billRes.getStatus().equals("Bill Completed")) {
-            holder.btConfirmStatusBillCustomer.setVisibility(View.INVISIBLE);
-            holder.btConfirmStatusBillCustomer.setEnabled(false);
-        } else {
             holder.btConfirmStatusBillCustomer.setVisibility(View.VISIBLE);
             holder.btConfirmStatusBillCustomer.setEnabled(true);
-            holder.btConfirmStatusBillCustomer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ServiceAPI.serviceApi.UpdateStatusBill("Bill Completed", billRes.getId())
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(new Observer<Respon>() {
-                                @Override
-                                public void onSubscribe(Disposable d) {
-
-                                }
-
-                                @Override
-                                public void onNext(Respon respon) {
-                                    if (respon.getRespone_code() == 200) {
-                                        holder.tvBillStatusCustomers.setText("Status:Bill Completed");
-                                        holder.btConfirmStatusBillCustomer.setVisibility(View.INVISIBLE);
-                                        holder.btConfirmStatusBillCustomer.setEnabled(false);
-                                    }
-                                }
-
-                                @Override
-                                public void onError(Throwable e) {
-
-                                }
-
-                                @Override
-                                public void onComplete() {
-
-                                }
-                            });
-                }
-            });
         }
+        holder.btConfirmStatusBillCustomer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ServiceAPI.serviceApi.MarkBillComplete(billRes.getId())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Observer<Respon>() {
+                            @Override
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onNext(Respon respon) {
+                                if (respon.getRespone_code() == 200) {
+                                    holder.tvBillStatusCustomers.setText("Status: Bill Completed");
+                                    holder.btConfirmStatusBillCustomer.setVisibility(View.INVISIBLE);
+                                    holder.btConfirmStatusBillCustomer.setEnabled(false);
+                                    holder.ivCheckBillSuccessCustomer.setVisibility(View.VISIBLE);
+                                }
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+                        });
+            }
+        });
 
 
     }
@@ -131,6 +131,7 @@ public class CustomerBillsAdapter extends RecyclerView.Adapter<CustomerBillsAdap
                 tvBillStatusCustomers,
                 tvBillDateCreatedCustomers;
         Button btConfirmStatusBillCustomer;
+        ImageView ivCheckBillSuccessCustomer;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             clItemBillCustomer = itemView.findViewById(R.id.clItemBillCustomer);
@@ -139,7 +140,7 @@ public class CustomerBillsAdapter extends RecyclerView.Adapter<CustomerBillsAdap
             tvBillStatusCustomers = itemView.findViewById(R.id.tvBillStatusCustomers);
             tvBillDateCreatedCustomers = itemView.findViewById(R.id.tvBillDateCreatedCustomers);
             btConfirmStatusBillCustomer = itemView.findViewById(R.id.btConfirmStatusBillCustomer);
-
+            ivCheckBillSuccessCustomer = itemView.findViewById(R.id.ivCheckBillSuccessCustomer);
         }
     }
 }

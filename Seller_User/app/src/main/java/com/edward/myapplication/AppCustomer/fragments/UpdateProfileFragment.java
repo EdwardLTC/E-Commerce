@@ -62,7 +62,6 @@ public class UpdateProfileFragment extends Fragment {
     ImageButton ibAvatar;
     Button save;
     Uri img;
-    HashMap config = new HashMap();
 
     @Nullable
     @Override
@@ -75,7 +74,6 @@ public class UpdateProfileFragment extends Fragment {
         address = view.findViewById(R.id.Address);
         ibAvatar = view.findViewById(R.id.ibAvatar1);
 
-        configCloudinary();
 
         ibAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,6 +130,11 @@ public class UpdateProfileFragment extends Fragment {
         }
     });
     private void upload() {
+        Map<String, String> config = new HashMap<>();
+        config.put("cloud_name", "mrsmci");
+        config.put("api_key", "349364544734878");
+        config.put("api_secret", "3jjrlkK2rWHzy71859iaJ9M1u-4");
+        MediaManager.init(requireContext(), config);
         MediaManager.get().upload(img).callback(new UploadCallback() {
             @Override
             public void onStart(String requestId) {
@@ -221,10 +224,4 @@ public class UpdateProfileFragment extends Fragment {
         }).dispatch();
     }
 
-    private void configCloudinary() {
-        config.put("cloud_name", "mrsmci");
-        config.put("api_key", "349364544734878");
-        config.put("api_secret", "3jjrlkK2rWHzy71859iaJ9M1u-4");
-        MediaManager.init(requireContext(), config);
-    }
 }
