@@ -5,4 +5,7 @@
     <string name="close">Close</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back4app_app_id">kiL0oD6TKV8UFjzMB1qJGoXObKGYqoa2biy35lo6</string>
+    <string name="back4app_client_key">JjNDHYhL7SOPc8j1hceHUi7AFV00BBV4MNp06qUU</string>
+    <string name="back4app_server_url">https://parseapi.back4app.com</string>
 </resources>

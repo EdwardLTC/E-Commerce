@@ -2,6 +2,7 @@ package com.edward.myapplication;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,6 +40,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.parse.ParseUser;
+import com.saadahmedsoft.popupdialog.PopupDialog;
+import com.saadahmedsoft.popupdialog.Styles;
+import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
+
+import java.util.Calendar;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -54,12 +61,13 @@ public class LoginActivity extends AppCompatActivity {
     public static PersonRes PERSONRES = null;
     GoogleSignInClient mGoogleSignInClient;
     CardView btnSignInButton;
-
+    private Calendar calendar;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        calendar = Calendar.getInstance();
         btLogin = findViewById(R.id.btLogin);
         edtEmailLogin = findViewById(R.id.edtEmailLogin);
         edtPassword = findViewById(R.id.edtPassword);
@@ -120,19 +128,33 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MyHelper.addClickEffect(view);
-                String emaill = edtEmailLogin.getText().toString();
+                String email = edtEmailLogin.getText().toString();
                 String password = edtPassword.getText().toString();
 
 
-                if (emaill.trim().equals("") && password.trim().equals("")) {
+                if (email.trim().equals("") && password.trim().equals("")) {
                     Toast.makeText(LoginActivity.this, "Please fill in the blank!", Toast.LENGTH_SHORT).show();
                 } else {
-                    login();
+                    loginUser(edtEmailLogin.getText().toString(), edtPassword.getText().toString());
                 }
 
             }
         });
 
+    }
+
+    private void loginUser(String userName, String password) {
+        // calling a method to login a user.
+        ParseUser.logInInBackground(userName, password, (parseUser, e) -> {
+            // after login checking if the user is null or not.
+            if (parseUser != null) {
+                login();
+            } else {
+                // display an toast message when user logout of the app.
+                ParseUser.logOut();
+                Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 
