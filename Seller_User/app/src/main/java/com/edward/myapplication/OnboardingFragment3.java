@@ -67,14 +67,14 @@ public class OnboardingFragment3 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View nview3 = inflater.inflate(R.layout.fragment_onboarding3, container, false);
-        btn_obf3 = nview3.findViewById(R.id.btn_obd3);
-        btn_obf3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                getActivity().startActivity(intent);
-            }
-        });
+//        btn_obf3 = nview3.findViewById(R.id.btn_obd3);
+//        btn_obf3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), LoginActivity.class);
+//                getActivity().startActivity(intent);
+//            }
+//        });
         return nview3;
 
     }

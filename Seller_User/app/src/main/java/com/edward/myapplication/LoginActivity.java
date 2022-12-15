@@ -135,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (email.trim().equals("") && password.trim().equals("")) {
                     Toast.makeText(LoginActivity.this, "Please fill in the blank!", Toast.LENGTH_SHORT).show();
                 } else {
-                    loginUser(edtEmailLogin.getText().toString(), edtPassword.getText().toString());
+                    login();
                 }
 
             }
@@ -148,7 +148,7 @@ public class LoginActivity extends AppCompatActivity {
         ParseUser.logInInBackground(userName, password, (parseUser, e) -> {
             // after login checking if the user is null or not.
             if (parseUser != null) {
-                login();
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
             } else {
                 // display an toast message when user logout of the app.
                 ParseUser.logOut();
@@ -177,8 +177,9 @@ public class LoginActivity extends AppCompatActivity {
                             if (resGetPerson.get_PersonRes().getRole() == 2)
                                 startActivity(new Intent(LoginActivity.this, SellerDashboardActivity.class));
 
-                            else if (resGetPerson.get_PersonRes().getRole() == 3)
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            else if (resGetPerson.get_PersonRes().getRole() == 3) {
+                                loginUser(edtEmailLogin.getText().toString(), edtPassword.getText().toString());
+                            }
 
                         }
                     }

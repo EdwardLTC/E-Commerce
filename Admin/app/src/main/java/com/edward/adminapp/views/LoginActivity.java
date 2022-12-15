@@ -55,30 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 login();
             }
         });
-        ServiceAPI.serviceApi.CreatePerson(new PersonReq(1, "Linh", "linh@gmail.com", "123", "", 1, "", ""))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Respon>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
 
-                    }
-
-                    @Override
-                    public void onNext(Respon respon) {
-                        Log.d(">>>>>>>>", "successs");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
 
         // create person
 //        String pass = MyHelpers.getHashPassword("abc");
@@ -89,35 +66,36 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void login() {
-        ServiceAPI.serviceApi.Login(edtEmailLogin.getText().toString(), edtPassword.getText().toString())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResGetPerson>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        ProgressDialogCustom.showProgressDialog(LoginActivity.this, "please wait");
-                    }
-
-                    @Override
-                    public void onNext(ResGetPerson resGetPerson) {
-                        if (resGetPerson._Respon.getRespone_code() != 200) {
-                            Toast.makeText(LoginActivity.this, "Check username, Psw pls", Toast.LENGTH_SHORT).show();
-                        } else {
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        ProgressDialogCustom.dismissProgressDialog();
-                        Toast.makeText(LoginActivity.this, "non null field", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        ProgressDialogCustom.dismissProgressDialog();
-                    }
-                });
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+//        ServiceAPI.serviceApi.Login(edtEmailLogin.getText().toString(), edtPassword.getText().toString())
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<ResGetPerson>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//                        ProgressDialogCustom.showProgressDialog(LoginActivity.this, "please wait");
+//                    }
+//
+//                    @Override
+//                    public void onNext(ResGetPerson resGetPerson) {
+//                        if (resGetPerson._Respon.getRespone_code() != 200) {
+//                            Toast.makeText(LoginActivity.this, "Check username, Psw pls", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        ProgressDialogCustom.dismissProgressDialog();
+//                        Toast.makeText(LoginActivity.this, "non null field", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//                        ProgressDialogCustom.dismissProgressDialog();
+//                    }
+//                });
     }
 
 }

@@ -131,7 +131,7 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
         tvMoreDetailsVouchers = findViewById(R.id.tvMoreDetailsVouchers);
         tvMoreDetailsBills = findViewById(R.id.tvMoreDetailsBills);
         tvMoreDetailsStatistics = findViewById(R.id.tvMoreDetailsStatistics);
-        tvMoreDetailsSupports = findViewById(R.id.tvMoreDetailsSupports);
+//        tvMoreDetailsSupports = findViewById(R.id.tvMoreDetailsSupports);
         tvNameSellerDashboard = findViewById(R.id.tvNameSellerDashboard);
         tvEmailSellerDashboard = findViewById(R.id.tvEmailSellerDashboard);
         ibLogoutSellerAccount = findViewById(R.id.ibLogoutSellerAccount);
@@ -140,7 +140,7 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
         clClothes = findViewById(R.id.clClothes);
         clVouchers = findViewById(R.id.clVouchers);
         clStatistics = findViewById(R.id.clStatistics);
-        clSupports = findViewById(R.id.clSupports);
+//        clSupports = findViewById(R.id.clSupports);
         tvQuantityClothes = findViewById(R.id.tvQuantityClothes);
         tvQuantityVouchers = findViewById(R.id.tvQuantityVouchers);
     }
@@ -150,7 +150,7 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
         tvMoreDetailsVouchers.setPaintFlags(tvMoreDetailsVouchers.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         tvMoreDetailsBills.setPaintFlags(tvMoreDetailsBills.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         tvMoreDetailsStatistics.setPaintFlags(tvMoreDetailsStatistics.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        tvMoreDetailsSupports.setPaintFlags(tvMoreDetailsSupports.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+//        tvMoreDetailsSupports.setPaintFlags(tvMoreDetailsSupports.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
     }
 
     private void fillValueSeller() {
