@@ -209,16 +209,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_weight="1"
                 android:fontFamily="@font/gordita_regular"
                 android:text="Name"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tvNameCustomer"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
+                android:layout_marginLeft="24dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/gordita_black"
                 android:gravity="right"
@@ -233,12 +233,11 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_weight="1"
                 android:fontFamily="@font/gordita_regular"
-                android:text="Email"
+                android:text="Email:"
                 android:textColor="@color/black" />
 
             <TextView
@@ -246,6 +245,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
+                android:layout_marginLeft="24dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/gordita_black"
                 android:gravity="right"
@@ -263,16 +263,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_weight="1"
                 android:fontFamily="@font/gordita_regular"
-                android:text="Location"
+                android:text="Location:"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tvAddressCustomer"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
+                android:layout_marginLeft="24dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/gordita_black"
                 android:gravity="right"
@@ -292,15 +292,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/gordita_regular"
-                android:text="Phone Number"
+                android:text="Phone Number:"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tvPhoneCustomer"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="150dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginLeft="24dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/gordita_black"
                 android:gravity="right"

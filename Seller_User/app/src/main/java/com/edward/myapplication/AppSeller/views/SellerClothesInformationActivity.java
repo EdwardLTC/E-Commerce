@@ -62,6 +62,9 @@ public class SellerClothesInformationActivity extends AppCompatActivity implemen
         initRecyclerViewClothesProperties();
 
         clothesRes = (ClothesRes) getIntent().getSerializableExtra("clothes");
+
+        if (clothesRes == null)
+            clothesRes = ClothesManagementActivity.CLOTHES_RES;
         fillValue(clothesRes);
 
         ivMoreOptionsClothes.setOnClickListener(this);
