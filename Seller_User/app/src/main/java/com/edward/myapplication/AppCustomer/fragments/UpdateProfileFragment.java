@@ -74,6 +74,7 @@ public class UpdateProfileFragment extends Fragment {
         address = view.findViewById(R.id.Address);
         ibAvatar = view.findViewById(R.id.ibAvatar1);
 
+        fillValue();
 
         ibAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +106,14 @@ public class UpdateProfileFragment extends Fragment {
         return view;
     }
 
+    private void fillValue() {
+        name.setText(LoginActivity.PERSONRES.getName());
+        phone.setText(LoginActivity.PERSONRES.getPhoneNum());
+        address.setText(LoginActivity.PERSONRES.getAddress());
+        Glide.with(requireActivity()).load(LoginActivity.PERSONRES.getImgUrl()).into(ibAvatar);
+    }
+
+
     private void chooseImage() {
 
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
@@ -130,6 +139,8 @@ public class UpdateProfileFragment extends Fragment {
         }
     });
     private void upload() {
+        ProgressDialogCustom.showProgressDialog(requireContext(), "Please wait");
+
         Map<String, String> config = new HashMap<>();
         config.put("cloud_name", "mrsmci");
         config.put("api_key", "349364544734878");
@@ -145,6 +156,7 @@ public class UpdateProfileFragment extends Fragment {
             @Override
             public void onProgress(String requestId, long bytes, long totalBytes) {
                 Log.d("CHECK", "onProgress");
+
 
             }
 
@@ -168,7 +180,6 @@ public class UpdateProfileFragment extends Fragment {
                         .subscribe(new Observer<Respon>() {
                             @Override
                             public void onSubscribe(Disposable d) {
-                                ProgressDialogCustom.showProgressDialog(requireContext(), "Please wait");
                             }
 
                             @Override

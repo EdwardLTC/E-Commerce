@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@drawable/logo_render"
         android:label="@string/app_name"
@@ -17,6 +18,18 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <!-- Meta data for your file for server url -->
+        <meta-data
+            android:name="com.parse.SERVER_URL"
+            android:value="@string/back4app_server_url" /> <!-- Meta data for your file for application id -->
+        <meta-data
+            android:name="com.parse.APPLICATION_ID"
+            android:value="@string/back4app_app_id" /> <!-- Meta data for your file for client key -->
+        <meta-data
+            android:name="com.parse.CLIENT_KEY"
+            android:value="@string/back4app_client_key" />
+
         <activity
             android:name=".AppCustomer.views.BillsManagementCustomerActivity"
             android:exported="false" />

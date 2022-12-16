@@ -34,7 +34,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
     CircleImageView iv_profile;
-    ImageView ic_more,ic_bag,ic_ticket,ic_star;
     TextView txtProfileName, tvNameCustomer, tvMailCustomer, tvAddressCustomer, tvPhoneCustomer, tvUpdateProfile
             ,txtProfileEmail,tvCountClothesInBill;
 
