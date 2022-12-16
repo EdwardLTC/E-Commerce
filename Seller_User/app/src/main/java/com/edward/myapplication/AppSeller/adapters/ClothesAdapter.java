@@ -15,7 +15,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.edward.myapplication.AppSeller.fragments.ClothesFragment;
+import com.edward.myapplication.AppSeller.views.ClothesManagementActivity;
 import com.edward.myapplication.AppSeller.views.SellerClothesInformationActivity;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
@@ -59,6 +61,7 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
         holder.tvNameClothesItem.setText(clothes.getName());
         holder.tvQuantityClothesItem.setText("Quantity: " + clothes.getQuantily());
         holder.tvTypeClothesItem.setText("Type: " + clothes.getCategoryName());
+        Glide.with(c).load(clothes.getImgsUrl().get(0)).into(holder.ivClothesItem);
 
         // set text for category name
 //        ServiceAPI.serviceApi.GetCategoryWhere(clothes.getIdCategory())
@@ -132,6 +135,7 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
             public void onClick(View view) {
                 Intent intent = new Intent(c, SellerClothesInformationActivity.class);
                 intent.putExtra("clothes", clothes);
+                ClothesManagementActivity.CLOTHES_RES = clothes;
                 c.startActivity(intent);
             }
         });

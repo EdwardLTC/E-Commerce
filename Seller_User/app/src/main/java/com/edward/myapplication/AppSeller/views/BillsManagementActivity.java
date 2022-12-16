@@ -8,11 +8,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edward.myapplication.AppSeller.adapters.SellerBillsAdapter;
@@ -20,10 +23,12 @@ import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
+import com.edward.myapplication.helper.MyHelper;
 import com.edward.myapplication.model.modelrespon.BillRes;
 import com.edward.myapplication.model.modelrespon.ResGetListBill;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.Observer;
@@ -39,6 +44,9 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
     private SellerBillsAdapter sellerBillsAdapter;
     private List<BillRes> ls;
 
+    public static BillRes BILL= null;
+//    public static int ID_BILL= -1;
+
 
     private int idSeller = LoginActivity.PERSONRES.getId();
     @Override
@@ -52,6 +60,26 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
 
         cvBackToHomeFromBills.setOnClickListener(this);
         ivStatusBills.setOnClickListener(this);
+        edtSearchBills.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_SEARCH) {
+                    String find = textView.getText().toString();
+                    if (!find.isEmpty()) {
+                        searchBills(find);
+//                        searchSellers(find);
+                    }
+                    MyHelper.hideKeyboard(BillsManagementActivity.this);
+                    return true;
+                }
+
+                return false;
+            }
+        });
+
+    }
+
+    private void searchBills(String find) {
     }
 
     private void initViews() {
@@ -83,10 +111,84 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
 
                         if (resGetListBill.get_Respon().getRespone_code() == 200) {
                             ls = resGetListBill.get_BillRes();
+                            Collections.reverse(ls);
                             Toast.makeText(BillsManagementActivity.this, ls.size()+"", Toast.LENGTH_SHORT).show();
                             sellerBillsAdapter = new SellerBillsAdapter(BillsManagementActivity.this, ls);
                             rcvBillsManagement.setAdapter(sellerBillsAdapter);
-                            Log.d("Bill: ", ls.get(ls.size()-1).toString());
+//                            Log.d("Bill: ", ls.get(ls.size()-1).toString());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(">>>>>>>: ", "err" );
+                        ProgressDialogCustom.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        ProgressDialogCustom.dismissProgressDialog();
+                    }
+                });
+    }
+
+
+    private void loadListBillCompleted() {
+        ServiceAPI.serviceApi.GetBillWhereCompleted()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListBill>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        ProgressDialogCustom.showProgressDialog(BillsManagementActivity.this, "Please wait");
+                    }
+
+                    @Override
+                    public void onNext(ResGetListBill resGetListBill) {
+                        Log.d(">>>>>>>: ", resGetListBill.get_Respon().getRespone_code()+"" );
+
+                        if (resGetListBill.get_Respon().getRespone_code() == 200) {
+                            ls = resGetListBill.get_BillRes();
+                            Collections.reverse(ls);
+
+                            sellerBillsAdapter = new SellerBillsAdapter(BillsManagementActivity.this, ls);
+                            rcvBillsManagement.setAdapter(sellerBillsAdapter);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(">>>>>>>: ", "err" );
+                        ProgressDialogCustom.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        ProgressDialogCustom.dismissProgressDialog();
+                    }
+                });
+    }
+    private void loadListBillNotCompleted() {
+        ServiceAPI.serviceApi.GetBillWhereNotCompleted()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetListBill>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        ProgressDialogCustom.showProgressDialog(BillsManagementActivity.this, "Please wait");
+                    }
+
+                    @Override
+                    public void onNext(ResGetListBill resGetListBill) {
+                        Log.d(">>>>>>>: ", resGetListBill.get_Respon().getRespone_code()+"" );
+
+                        if (resGetListBill.get_Respon().getRespone_code() == 200) {
+                            ls = resGetListBill.get_BillRes();
+                            Collections.reverse(ls);
+                            sellerBillsAdapter = new SellerBillsAdapter(BillsManagementActivity.this, ls);
+                            rcvBillsManagement.setAdapter(sellerBillsAdapter);
                         }
                     }
 
@@ -130,10 +232,11 @@ public class BillsManagementActivity extends AppCompatActivity implements View.O
                         loadListBill();
                         break;
                     case R.id.menuSellerStatusCompleted:
-                        loadListBill();
+                        loadListBillCompleted();
                         break;
                     case R.id.menuSellerStatusNotCompleted:
-                        loadListBill();
+                        loadListBillNotCompleted();
+
                         break;
 
                 }

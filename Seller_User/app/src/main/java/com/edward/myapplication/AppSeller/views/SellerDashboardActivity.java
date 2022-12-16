@@ -46,7 +46,7 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
     ConstraintLayout clClothes, clVouchers, clBills,
             clStatistics, clSupports;
 
-    private int idSeller = 11;
+    private int idSeller = LoginActivity.PERSONRES.getId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,10 +92,13 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
                 .subscribe(new Observer<ResGetListClothes>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+                        Log.d("subcribe", "subrie");
                     }
 
                     @Override
                     public void onNext(ResGetListClothes resGetListClothes) {
+                        Log.d("subcribe", resGetListClothes.get_Respon().respone_code+"");
+
                         if (resGetListClothes.get_Respon().getRespone_code() == 200) {
                             String sizeClothes = resGetListClothes.get_ClothesRes().size() + "";
                             tvQuantityClothes.setText(sizeClothes);
@@ -105,12 +108,12 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
 
                     @Override
                     public void onError(Throwable e) {
+                        Log.d("subcribe", "subrie");
 
                     }
 
                     @Override
                     public void onComplete() {
-                        ProgressDialogCustom.dismissProgressDialog();
                     }
                 });
     }
@@ -118,6 +121,8 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
     private void handleListener() {
         clClothes.setOnClickListener(this);
         clVouchers.setOnClickListener(this);
+        clBills.setOnClickListener(this);
+        clStatistics.setOnClickListener(this);
         ibLogoutSellerAccount.setOnClickListener(this);
     }
 
@@ -126,7 +131,7 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
         tvMoreDetailsVouchers = findViewById(R.id.tvMoreDetailsVouchers);
         tvMoreDetailsBills = findViewById(R.id.tvMoreDetailsBills);
         tvMoreDetailsStatistics = findViewById(R.id.tvMoreDetailsStatistics);
-        tvMoreDetailsSupports = findViewById(R.id.tvMoreDetailsSupports);
+//        tvMoreDetailsSupports = findViewById(R.id.tvMoreDetailsSupports);
         tvNameSellerDashboard = findViewById(R.id.tvNameSellerDashboard);
         tvEmailSellerDashboard = findViewById(R.id.tvEmailSellerDashboard);
         ibLogoutSellerAccount = findViewById(R.id.ibLogoutSellerAccount);
@@ -135,7 +140,7 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
         clClothes = findViewById(R.id.clClothes);
         clVouchers = findViewById(R.id.clVouchers);
         clStatistics = findViewById(R.id.clStatistics);
-        clSupports = findViewById(R.id.clSupports);
+//        clSupports = findViewById(R.id.clSupports);
         tvQuantityClothes = findViewById(R.id.tvQuantityClothes);
         tvQuantityVouchers = findViewById(R.id.tvQuantityVouchers);
     }
@@ -145,7 +150,7 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
         tvMoreDetailsVouchers.setPaintFlags(tvMoreDetailsVouchers.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         tvMoreDetailsBills.setPaintFlags(tvMoreDetailsBills.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         tvMoreDetailsStatistics.setPaintFlags(tvMoreDetailsStatistics.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        tvMoreDetailsSupports.setPaintFlags(tvMoreDetailsSupports.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+//        tvMoreDetailsSupports.setPaintFlags(tvMoreDetailsSupports.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
     }
 
     private void fillValueSeller() {
@@ -164,6 +169,14 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
                 break;
             case R.id.clVouchers:
                 startActivity(new Intent(this, VouchersManagementActivity.class));
+                overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
+                break;
+            case R.id.clBills:
+                startActivity(new Intent(this, BillsManagementActivity.class));
+                overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
+                break;
+            case R.id.clStatistics:
+                startActivity(new Intent(this, StatisticActivity.class));
                 overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
                 break;
             case R.id.ibLogoutSellerAccount:
@@ -195,5 +208,6 @@ public class SellerDashboardActivity extends AppCompatActivity implements View.O
     }
 
     private void logout() {
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }

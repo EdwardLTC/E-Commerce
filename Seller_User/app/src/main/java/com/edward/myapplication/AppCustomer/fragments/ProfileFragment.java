@@ -2,6 +2,7 @@ package com.edward.myapplication.AppCustomer.fragments;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 
@@ -14,24 +15,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.edward.myapplication.AppCustomer.views.BillsManagementCustomerActivity;
+import com.edward.myapplication.AppCustomer.views.MainMycart;
 import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.R;
+import com.edward.myapplication.dao.BillDao;
+import com.edward.myapplication.model.BillDetail;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
     CircleImageView iv_profile;
-    ImageView ic_more,ic_bag,ic_ticket,ic_star;
     TextView txtProfileName, tvNameCustomer, tvMailCustomer, tvAddressCustomer, tvPhoneCustomer, tvUpdateProfile
-            ,txtProfileEmail,txtProfileProcessOrderNumber,txtProfilePromocodesNumber,txtProfileReviewesNumber,txtPIName,txtPIMail,txtPIAddess,txtPIPhoneNumber;
+            ,txtProfileEmail,tvCountClothesInBill;
 
-
+    BillDao billDao;
+    List<BillDetail> lsBillDetail;
+    LinearLayout llMoveToMyCart, llProgressOrder;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,10 +50,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        billDao = new BillDao(requireActivity());
         initViews(view);
         fillValue();
 
         tvUpdateProfile.setOnClickListener(this);
+        llMoveToMyCart.setOnClickListener(this);
+        llProgressOrder.setOnClickListener(this);
     }
 
     private void initViews(View view) {
@@ -57,9 +68,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         tvAddressCustomer = view.findViewById(R.id.tvAddressCustomer);
         tvPhoneCustomer = view.findViewById(R.id.tvPhoneCustomer);
         tvUpdateProfile = view.findViewById(R.id.tvUpdateProfile);
+        llMoveToMyCart = view.findViewById(R.id.llMoveToMyCart);
+        tvCountClothesInBill = view.findViewById(R.id.tvCountClothesInBill);
+        llProgressOrder = view.findViewById(R.id.llProgressOrder);
 
     }
 
+    @SuppressLint("SetTextI18n")
     private void fillValue() {
         Glide.with(requireActivity()).load(LoginActivity.PERSONRES.getImgUrl()).into(iv_profile);
         txtProfileName.setText(LoginActivity.PERSONRES.getName());
@@ -69,6 +84,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         tvPhoneCustomer.setText(LoginActivity.PERSONRES.getPhoneNum());
         tvAddressCustomer.setText(LoginActivity.PERSONRES.getAddress());
         tvUpdateProfile.setPaintFlags(tvUpdateProfile.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        lsBillDetail = billDao.getListBillDetail( LoginActivity.PERSONRES.getId()+"");
+        tvCountClothesInBill.setText(lsBillDetail.size()+"");
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -81,6 +99,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                         .replace(R.id.content_frame_home, new UpdateProfileFragment())
                         .commit();
                 break;
+            case R.id.llMoveToMyCart:
+                startActivity(new Intent(requireActivity(), MainMycart.class));
+                break;
+            case R.id.llProgressOrder:
+                startActivity(new Intent(requireActivity(), BillsManagementCustomerActivity.class));
         }
     }
 }

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         clCustomers.setOnClickListener(this);
         clCategories.setOnClickListener(this);
         clStatistics.setOnClickListener(this);
-        clNotifications.setOnClickListener(this);
+//        clNotifications.setOnClickListener(this);
         ibLogout.setOnClickListener(this);
     }
 
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvMoreDetailsCustomers = findViewById(R.id.tvMoreDetailsCustomers);
         tvMoreDetailsCategories = findViewById(R.id.tvMoreDetailsCategories);
         tvMoreDetailsStatistics = findViewById(R.id.tvMoreDetailsStatistics);
-        tvMoreDetailsNotifications = findViewById(R.id.tvMoreDetailsNotifications);
+//        tvMoreDetailsNotifications = findViewById(R.id.tvMoreDetailsNotifications);
 
         // số lượng quản lý
         tvQuantitySellers = findViewById(R.id.tvQuantitySellers);
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         clCustomers = findViewById(R.id.clCustomers);
         clCategories = findViewById(R.id.clCategories);
         clStatistics = findViewById(R.id.clStatistics);
-        clNotifications = findViewById(R.id.clNotifications);
+//        clNotifications = findViewById(R.id.clNotifications);
 
         ibLogout = findViewById(R.id.ibLogout);
         tvAdminUsername = findViewById(R.id.tvAdminUsername);
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvMoreDetailsCustomers.setPaintFlags(tvMoreDetailsCustomers.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         tvMoreDetailsCategories.setPaintFlags(tvMoreDetailsCategories.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         tvMoreDetailsStatistics.setPaintFlags(tvMoreDetailsStatistics.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        tvMoreDetailsNotifications.setPaintFlags(tvMoreDetailsNotifications.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+//        tvMoreDetailsNotifications.setPaintFlags(tvMoreDetailsNotifications.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
     }
 
     @Override
@@ -106,11 +106,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
                 break;
-            case R.id.clNotifications:
-                intent = new Intent(this, NotificationsManagementActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
-                break;
+//            case R.id.clNotifications:
+//                intent = new Intent(this, NotificationsManagementActivity.class);
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.anim_enter_splash, R.anim.anim_exit_splash);
+//                break;
             case R.id.ibLogout:
                 showBottomSheetDialog();
                 break;

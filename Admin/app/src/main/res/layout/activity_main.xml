@@ -334,63 +334,63 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clNotifications"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/img_gradient_yellow"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:elevation="6dp">
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/clNotifications"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="110dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:background="@drawable/img_gradient_yellow"-->
+<!--            android:layout_marginLeft="24dp"-->
+<!--            android:layout_marginRight="24dp"-->
+<!--            android:elevation="6dp">-->
 
-            <LinearLayout
-                android:id="@+id/ll1"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="24dp"
-                android:background="@drawable/background_round_yellow_blur"
-                android:gravity="center"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/ll1"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_marginLeft="24dp"-->
+<!--                android:background="@drawable/background_round_yellow_blur"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintLeft_toLeftOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
 
-                <ImageView
-                    android:id="@+id/iv1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_notify" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/iv1"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:srcCompat="@drawable/ic_notify" />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
-            <TextView
-                android:id="@+id/tv2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Notifications"
-                android:textSize="20sp"
-                android:fontFamily="@font/gordita_medium"
-                android:layout_marginLeft="16dp"
-                android:textColor="@color/white"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toEndOf="@+id/ll1"
-                app:layout_constraintTop_toTopOf="@+id/ll1" />
+<!--            <TextView-->
+<!--                android:id="@+id/tv2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Notifications"-->
+<!--                android:textSize="20sp"-->
+<!--                android:fontFamily="@font/gordita_medium"-->
+<!--                android:layout_marginLeft="16dp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/ll1"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/ll1" />-->
 
-            <TextView
-                android:id="@+id/tvMoreDetailsNotifications"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="More details"
-                android:textSize="16sp"
-                android:layout_marginBottom="4dp"
-                android:fontFamily="@font/gordita_regular"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/ll1"
-                app:layout_constraintStart_toStartOf="@+id/tv2" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvMoreDetailsNotifications"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="More details"-->
+<!--                android:textSize="16sp"-->
+<!--                android:layout_marginBottom="4dp"-->
+<!--                android:fontFamily="@font/gordita_regular"-->
+<!--                android:textColor="@color/white"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/ll1"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/tv2" />-->
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
 

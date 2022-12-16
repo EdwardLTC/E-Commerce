@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.edward.myapplication.AppCustomer.adapters.MycartAdapter;
 import com.edward.myapplication.AppCustomer.adapters.VouchersInMyCartAdapter;
 import com.edward.myapplication.AppSeller.views.VouchersManagementActivity;
+import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
@@ -63,9 +64,9 @@ public class MainMycart extends AppCompatActivity implements ChooseVoucher, View
     private MycartAdapter mycartAdapter;
     private VouchersInMyCartAdapter vouchersInMyCartAdapter;
     private BillDao billDao;
-    private int idUser = 21;
-    private int idSeller = 20;
-    private int idVoucher = -1;
+    private final int idUser = LoginActivity.PERSONRES.getId();
+    private final int idSeller = 20;
+    private int idVoucher = 0;
     private int ratio = 0;
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
@@ -90,12 +91,25 @@ public class MainMycart extends AppCompatActivity implements ChooseVoucher, View
 
         tvAllPriceClothes.setText("$" + getSumOfPriceClothes(lsBillDetail));
 
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainMycart.super.onBackPressed();
+            }
+        });
+
         btncheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 listBillDetailReq = billDao.getListBillDetailReg(idUser+"");
 
+                for (BillDetailReq billDetailReq : listBillDetailReq) {
+                    Log.d("Bill detail: ", billDetailReq.toString());
+                }
                 if (rdoIsDeliveryChecked.isChecked()) {
+//                    billDao.delete(idUser);
+                    Log.d("Bill: ", new BillReq(idUser, idSeller, idVoucher, "In processing", listBillDetailReq).toString());
+                    Toast.makeText(MainMycart.this, idUser+" "+ idSeller+" "+ idVoucher, Toast.LENGTH_SHORT).show();
                     ServiceAPI.serviceApi.CreateBill(new BillReq(idUser, idSeller, idVoucher, "In processing", listBillDetailReq))
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
@@ -131,6 +145,8 @@ public class MainMycart extends AppCompatActivity implements ChooseVoucher, View
 
                                 @Override
                                 public void onError(Throwable e) {
+                                    Log.d(">>>>>>>: ", "err");
+
                                 }
 
                                 @Override

@@ -2,7 +2,8 @@ package com.edward.myapplication.model.modelrespon;
 
 import java.io.Serializable;
 
-public class BillRes implements Serializable {
+public class
+BillRes implements Serializable {
     public int id;
     public int iduser;
     public int idseller;

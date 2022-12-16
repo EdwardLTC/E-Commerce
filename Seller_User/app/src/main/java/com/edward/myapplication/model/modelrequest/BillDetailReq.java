@@ -39,4 +39,13 @@ public class BillDetailReq implements Serializable {
     public void setQuantily(int quantily) {
         this.quantily = quantily;
     }
+
+    @Override
+    public String toString() {
+        return "BillDetailReq{" +
+                "idclothes=" + idclothes +
+                ", size='" + size + '\'' +
+                ", quantily=" + quantily +
+                '}';
+    }
 }

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.bumptech.glide.Glide;
+import com.edward.myapplication.AppCustomer.views.CustomerAllClothesActivity;
 import com.edward.myapplication.AppCustomer.views.MainProductdetalls;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
@@ -60,6 +61,7 @@ public class AllClothesAdapter extends RecyclerView.Adapter<AllClothesAdapter.Vi
             public void onClick(View view) {
                 Intent intent = new Intent(c, MainProductdetalls.class);
                 intent.putExtra("clothesRes", clothesRes);
+                CustomerAllClothesActivity.CLOTHEsRES = clothesRes;
                 c.startActivity(intent);
             }
         });
