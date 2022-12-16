@@ -1,334 +1,329 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:scrollbars="none"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_profile"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_marginRight="16dp"-->
+<!--        android:background="@drawable/ic_more"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_background_profile" />
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/gordita_medium"
-        android:text="Profile"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/ic_more"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_profile"
         android:layout_width="104dp"
         android:layout_height="107dp"
-        android:layout_marginTop="110dp"
         android:background="@drawable/img_avatar"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/txtProfileName"
         android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="232dp"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/gordita_medium"
         android:text="Alex Nikiforov"
+        android:layout_marginTop="12dp"
         android:textSize="24dp"
-        android:textStyle="bold"
-        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
 
     <TextView
+        android:id="@+id/txtProfileEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
-        android:layout_marginRight="136dp"
-        android:fontFamily="@font/gordita_light"
+        android:fontFamily="@font/gordita_regular"
         android:text="alex@msn.com"
-        android:textSize="20dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/round_white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="288dp"
-        android:layout_marginRight="240dp"
-        android:background="@drawable/border_white"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/round_orange"
-        app:layout_constraintLeft_toLeftOf="@id/round_white"
-        app:layout_constraintTop_toTopOf="@id/round_white" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="57dp"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/ic_bag"
-        app:layout_constraintLeft_toLeftOf="@id/round_white"
-        app:layout_constraintTop_toTopOf="@id/round_white" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="100dp"
-        android:fontFamily="@font/gordita_black"
-        android:text="Progress Order"
-        android:textSize="10dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/round_white"
-        app:layout_constraintTop_toTopOf="@id/round_white" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="124dp"
-        android:fontFamily="@font/gordita_medium"
-        android:textStyle="bold"
-        android:text="10+"
-        android:textSize="10dp"
-        app:layout_constraintLeft_toLeftOf="@id/round_white"
-        app:layout_constraintTop_toTopOf="@id/round_white" />
-
-    <ImageView
-        android:id="@+id/round_white2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="288dp"
-        android:layout_marginRight="100dp"
-        android:background="@drawable/border_white"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/round_blue"
-        app:layout_constraintLeft_toLeftOf="@id/round_white2"
-        app:layout_constraintTop_toTopOf="@id/round_white2" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="63dp"
-        android:background="@drawable/ic_ticket"
-        app:layout_constraintLeft_toLeftOf="@id/round_white2"
-        app:layout_constraintTop_toTopOf="@id/round_white2" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="42dp"
-        android:layout_marginTop="100dp"
-        android:fontFamily="@font/gordita_black"
-        android:text="Promocodes"
-        android:textSize="10dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/round_white2"
-        app:layout_constraintTop_toTopOf="@id/round_white2" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="124dp"
-        android:fontFamily="@font/gordita_medium"
-        android:textStyle="bold"
-        android:text="5"
-        android:textSize="10dp"
-        app:layout_constraintLeft_toLeftOf="@id/round_white2"
-        app:layout_constraintTop_toTopOf="@id/round_white2" />
-
-    <ImageView
-        android:id="@+id/round_white3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="256dp"
-        android:layout_marginTop="288dp"
-        android:background="@drawable/border_white"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/round_yellow"
-        app:layout_constraintLeft_toLeftOf="@id/round_white3"
-        app:layout_constraintTop_toTopOf="@id/round_white3" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="57dp"
-        android:layout_marginTop="58dp"
-        android:background="@drawable/ic_star"
-        app:layout_constraintLeft_toLeftOf="@id/round_white3"
-        app:layout_constraintTop_toTopOf="@id/round_white3" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="100dp"
-        android:fontFamily="@font/gordita_black"
-        android:text="Reviewes"
-        android:textSize="10dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/round_white3"
-        app:layout_constraintTop_toTopOf="@id/round_white3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="124dp"
-        android:fontFamily="@font/gordita_medium"
-        android:textStyle="bold"
-        android:text="4.5K"
-        android:textSize="10dp"
-        app:layout_constraintLeft_toLeftOf="@id/round_white3"
-        app:layout_constraintTop_toTopOf="@id/round_white3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="468dp"
-        android:fontFamily="@font/gordita_bold"
-        android:text="Personal Information"
-        android:textSize="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtProfileName" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="524dp"
-        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtProfileEmail"
+        android:layout_marginTop="36dp">
+        <LinearLayout
+            android:id="@+id/llMoveToMyCart"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_orange"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_shop_selected"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gordita_black"
+                android:text="My cart"
+                android:textSize="12dp"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvCountClothesInBill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gordita_medium"
+                android:textStyle="bold"
+                android:text="10+"
+                android:layout_marginTop="4dp"
+                android:textSize="12dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llProgressOrder"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_orange"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_bag"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gordita_black"
+                android:text="Progress Order"
+                android:textSize="12dp"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gordita_medium"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp"
+                android:text="10+"
+                android:textSize="12dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="368dp"
+        android:fontFamily="@font/gordita_medium"
+        android:text="Personal Information"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        android:layout_marginTop="4dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/gordita_regular"
                 android:text="Name"
-                android:fontFamily="@font/gordita_light"
-                android:layout_marginLeft="26dp"/>
+                android:textColor="@color/black" />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvNameCustomer"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chris Harison"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
                 android:fontFamily="@font/gordita_black"
-                android:layout_marginLeft="200dp"/>
+                android:gravity="right"
+                android:text="Chris Harison" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email"
-                android:fontFamily="@font/gordita_light"
-                android:layout_marginLeft="26dp"/>
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/gordita_regular"
+                android:text="Email:"
+                android:textColor="@color/black" />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvMailCustomer"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chris@gmail.com"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
                 android:fontFamily="@font/gordita_black"
-                android:layout_marginLeft="200dp"/>
+                android:gravity="right"
+                android:text="Chris@gmail.com" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location"
-                android:fontFamily="@font/gordita_light"
-                android:layout_marginLeft="26dp"/>
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/gordita_regular"
+                android:text="Location:"
+                android:textColor="@color/black" />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvAddressCustomer"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="San Diego"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
                 android:fontFamily="@font/gordita_black"
-                android:layout_marginLeft="200dp"/>
+                android:gravity="right"
+                android:text="San Diego" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Phone Number"
-                android:fontFamily="@font/gordita_light"
-                android:layout_marginLeft="26dp"/>
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/gordita_regular"
+                android:text="Phone Number:"
+                android:textColor="@color/black" />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvPhoneCustomer"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="012345678"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
                 android:fontFamily="@font/gordita_black"
-                android:layout_marginLeft="150dp"/>
+                android:gravity="right"
+                android:text="012345678" />
 
         </LinearLayout>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvUpdateProfile"
+        android:layout_marginRight="16dp"
+        android:fontFamily="@font/gordita_regular"
+        android:textColor="#01579B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        app:layout_constraintBottom_toBottomOf="@+id/textView20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView20" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>

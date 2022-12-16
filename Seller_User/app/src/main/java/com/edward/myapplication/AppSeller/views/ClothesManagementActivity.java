@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import com.edward.myapplication.R;
 import com.edward.myapplication.AppSeller.adapters.ViewPagerClothes;
+import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -24,6 +25,7 @@ public class ClothesManagementActivity extends AppCompatActivity implements View
     ViewPagerClothes viewPagerClothesAdapter;
     ImageView ivAddClothes;
     CardView cvBack;
+    public static ClothesRes CLOTHES_RES = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,18 +90,5 @@ public class ClothesManagementActivity extends AppCompatActivity implements View
         }
     }
 
-    public String MD5(String md5) {
-        try {
-            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
-            byte[] array = md.digest(md5.getBytes("UTF-8"));
-            StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < array.length; ++i) {
-                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
-            }
-            return sb.toString();
-        } catch (java.security.NoSuchAlgorithmException e) {
-        } catch(UnsupportedEncodingException ex){
-        }
-        return null;
-    }
+
 }

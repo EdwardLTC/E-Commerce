@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.edward.myapplication.AppSeller.views.VouchersManagementActivity;
+import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.AppSeller.adapters.ClothesAdapter;
@@ -50,7 +52,7 @@ public class ClothesFragment extends Fragment implements OnItem {
     private ClothesAdapter clothesAdapter;
     private EditText edtSearchClothes;
 
-    private int idSeller = 11;
+    private int idSeller = LoginActivity.PERSONRES.getId();
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -99,7 +101,7 @@ public class ClothesFragment extends Fragment implements OnItem {
         initRecycleView();
         ls = new ArrayList<>();
         loadClothesList();
-
+        Log.d(">>>>", LoginActivity.PERSONRES.getId()+"");
         edtSearchClothes.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
@@ -264,3 +266,4 @@ public class ClothesFragment extends Fragment implements OnItem {
     }
 
 }
+

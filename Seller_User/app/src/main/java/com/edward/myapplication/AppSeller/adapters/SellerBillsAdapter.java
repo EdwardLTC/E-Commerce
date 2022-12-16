@@ -2,6 +2,7 @@ package com.edward.myapplication.AppSeller.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.edward.myapplication.AppSeller.views.BillsManagementActivity;
+import com.edward.myapplication.AppSeller.views.SellerBillDetailsActivity;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.model.modelrespon.BillRes;
@@ -20,6 +23,10 @@ import com.edward.myapplication.model.modelrespon.ResGetListBill;
 import com.edward.myapplication.model.modelrespon.ResGetPerson;
 import com.edward.myapplication.model.modelrespon.Respon;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Observer;
@@ -31,7 +38,8 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
 
     Context c;
     List<BillRes> ls;
-
+    @SuppressLint("SimpleDateFormat")
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");;
     public SellerBillsAdapter(Context c, List<BillRes> ls) {
         this.c = c;
         this.ls = ls;
@@ -48,50 +56,29 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BillRes billRes = ls.get(position);
-
-        ServiceAPI.serviceApi.GetPersonWhere(billRes.getIduser())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResGetPerson>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(ResGetPerson resGetPerson) {
-                        if (resGetPerson.get_Respon().getRespone_code() == 200) {
-                            holder.tvSellerBillNameCustomers.setText("Name: " + resGetPerson.get_PersonRes().getName());
-                            holder.tvSellerBillAddressCustomers.setText("Address: " + resGetPerson.get_PersonRes().getAddress());
-
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-
+        holder.tvSellerBillNameCustomers.setText(billRes.getSellerName());
+        holder.tvSellerBillAddressCustomers.setText(billRes.getUserAddress());
         holder.tvSellerBillStatusCustomers.setText("Status: " + billRes.getStatus());
-        holder.tvSellerBillDateCreatedCustomers.setText("Day of payment: " + billRes.getDateCreate());
+        try {
+            Date date = sdf.parse(billRes.getDateCreate());
+            holder.tvSellerBillDateCreatedCustomers.setText("Day of payment: " + sdf.format(date));
 
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+//        Date date = new Date(billRes.getDateCreate().substring(0,9) )
 
 
         holder.clItemBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                BillsManagementActivity.BILL = billRes;
+                c.startActivity(new Intent(c, SellerBillDetailsActivity.class));
             }
         });
 
         Log.d("Status: ", billRes.getStatus());
-        if (billRes.getStatus().equals("Completed")) {
+        if (billRes.getStatus().equals("Bill Completed")) {
             holder.btConfirmStatusBill.setVisibility(View.INVISIBLE);
             holder.btConfirmStatusBill.setEnabled(false);
         } else {
@@ -100,7 +87,7 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
             holder.btConfirmStatusBill.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ServiceAPI.serviceApi.UpdateStatusBill("Completed", billRes.getId())
+                    ServiceAPI.serviceApi.UpdateStatusBill("Bill Completed", billRes.getId())
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(new Observer<Respon>() {
@@ -112,7 +99,7 @@ public class SellerBillsAdapter extends RecyclerView.Adapter<SellerBillsAdapter.
                                 @Override
                                 public void onNext(Respon respon) {
                                     if (respon.getRespone_code() == 200) {
-                                        holder.tvSellerBillStatusCustomers.setText("Status: Completed");
+                                        holder.tvSellerBillStatusCustomers.setText("Status:Bill Completed");
                                         holder.btConfirmStatusBill.setVisibility(View.INVISIBLE);
                                         holder.btConfirmStatusBill.setEnabled(false);
                                     }

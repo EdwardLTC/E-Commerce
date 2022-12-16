@@ -5,6 +5,9 @@ import com.edward.myapplication.model.modelrequest.FavoriteReq;
 import com.edward.myapplication.model.modelrequest.PersonReq;
 import com.edward.myapplication.model.modelrequest.VoucherReq;
 import com.edward.myapplication.model.modelrequest.BillReq;
+import com.edward.myapplication.model.modelrespon.BillRes;
+import com.edward.myapplication.model.modelrespon.ResBill;
+import com.edward.myapplication.model.modelrespon.ResGetBillPayment;
 import com.edward.myapplication.model.modelrespon.ResGetCategory;
 import com.edward.myapplication.model.modelrespon.ResGetClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListBill;
@@ -13,7 +16,9 @@ import com.edward.myapplication.model.modelrespon.ResGetListClothes;
 import com.edward.myapplication.model.modelrespon.ResGetListProperties;
 import com.edward.myapplication.model.modelrespon.ResGetListVoucher;
 import com.edward.myapplication.model.modelrespon.ResGetPerson;
+import com.edward.myapplication.model.modelrespon.ResGetStatistical;
 import com.edward.myapplication.model.modelrespon.ResGetVoucher;
+import com.edward.myapplication.model.modelrespon.ResSellerIncome;
 import com.edward.myapplication.model.modelrespon.Respon;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -54,6 +59,9 @@ public interface ServiceAPI {
     @GET("Login")
     Observable<ResGetPerson> Login(@Query(("_email")) String _email, @Query(("_psw")) String _psw);
 
+    @POST("UpdatePerson")
+    Observable<Respon> UpdatePerson (@Body PersonReq personReq);
+
     @GET("GetAllFavoritesOf")
     Observable<ResGetListClothes> GetAllFavoritesOf(@Query(("userID")) int userID);
 
@@ -74,7 +82,6 @@ public interface ServiceAPI {
 
     @GET("GetCategoryWhere")
     Observable<ResGetCategory> GetCategoryWhere(@Query("id") int id);
-
 
     @GET("GetAllVoucher")
     Observable<ResGetListVoucher> GetAllVoucher();
@@ -100,9 +107,6 @@ public interface ServiceAPI {
     @GET("GetPersonWhere")
     Observable<ResGetPerson> GetPersonWhere(@Query("Id") int id);
 
-
-    @POST("DeletePerson")
-    Observable<Respon> DeletePerson(@Query("id") int id);
     @POST("CreatePerson")
     Observable<Respon> CreatePerson(@Body PersonReq personReq); // id tu tanwg neen la cu set mac dinh la 1
 
@@ -119,6 +123,27 @@ public interface ServiceAPI {
     Observable<Respon> MarkBillComplete (@Query("idBill") int idBill);
 
     @POST("CreateBill")
-    Observable<BillReq> CreateBill (@Body BillReq billReq);
+    Observable<ResBill> CreateBill (@Body BillReq billReq);
 
+    @GET("GetClothesFromFromBill")
+    Observable<ResGetListClothes> GetClothesFromFromBill(@Query("billId") int billId);
+
+    @GET("GetBillWhereCompleted")
+    Observable<ResGetListBill> GetBillWhereCompleted();
+
+
+    @GET("GetBillWhereNotCompleted")
+    Observable<ResGetListBill> GetBillWhereNotCompleted();
+
+    @GET("GetBillPayment")
+    Observable<ResGetBillPayment> GetBillPayment(@Query("idBill") int idBill);
+
+    @GET("GetStatistical")
+    Observable<ResGetStatistical> GetStatistical();
+
+    @GET("SellerIncome")
+    Observable<ResSellerIncome> SellerIncome(@Query("idSeller") int idSeller);
+
+    @GET("GetClothesFromBillCustomer")
+    Observable<ResGetListClothes>GetClothesFromBillCustomer(@Query("idCus") int idCus, @Query("billId") int billId);
 }

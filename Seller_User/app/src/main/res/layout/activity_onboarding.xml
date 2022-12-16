@@ -31,31 +31,40 @@
     android:padding="12dp">
 
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/layout_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_alignParentEnd="true"
         android:gravity="center_vertical"
-        android:background="@color/btn_default"
->
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@color/btn_default"
+        android:background="@color/btn_default">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Next >"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Next"
+                android:textColor="@color/white"
+                android:fontFamily="@font/gordita_medium"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_right_twice"
+                app:tint="@color/white" />
+        </LinearLayout>
 
 
-
-
-            />
-
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>
 
 </RelativeLayout>

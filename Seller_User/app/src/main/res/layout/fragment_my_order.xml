@@ -47,6 +47,7 @@
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager2"
         android:layout_width="409dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
@@ -59,8 +60,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout4"
         app:layout_constraintVertical_bias="0.0" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavView"
+        android:id="@+id/bottomNavVieworder"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginBottom="12dp"
@@ -72,3 +74,4 @@
         app:menu="@menu/nav_bottom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

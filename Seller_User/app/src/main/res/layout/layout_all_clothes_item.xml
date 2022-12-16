@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="8dp"
+    android:layout_margin="4dp"
     android:background="@drawable/style_corners_16">
 
     <androidx.cardview.widget.CardView
@@ -48,7 +48,7 @@
         android:text="$165"
         android:textColor="@color/black"
         android:textSize="12sp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

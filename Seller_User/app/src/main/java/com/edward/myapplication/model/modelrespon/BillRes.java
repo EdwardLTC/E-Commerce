@@ -2,13 +2,34 @@ package com.edward.myapplication.model.modelrespon;
 
 import java.io.Serializable;
 
-public class BillRes implements Serializable {
+public class
+BillRes implements Serializable {
     public int id;
     public int iduser;
     public int idseller;
     public int idvoucher;
     public String dateCreate;
     public String status;
+    public String sellerName;
+    public String userAddress;
+
+    public String getSellerName() {
+        return sellerName;
+    }
+
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+
 
     public BillRes(int id, int iduser, int idseller, int idvoucher, String dateCreate, String status) {
         this.id = id;
