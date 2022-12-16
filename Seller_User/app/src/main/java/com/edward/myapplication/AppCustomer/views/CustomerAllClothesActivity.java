@@ -9,18 +9,23 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edward.myapplication.AppCustomer.adapters.AllClothesAdapter;
+import com.edward.myapplication.AppSeller.views.BillsManagementActivity;
 import com.edward.myapplication.ProgressDialogCustom;
 import com.edward.myapplication.R;
 import com.edward.myapplication.api.ServiceAPI;
+import com.edward.myapplication.helper.MyHelper;
 import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.edward.myapplication.model.modelrespon.ResGetListClothes;
+import com.edward.myapplication.model.modelrespon.VoucherRes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +43,8 @@ public class CustomerAllClothesActivity extends AppCompatActivity implements Vie
     ImageView ivBackToMainActivityFromAllClothes;
     EditText edtSearchAllClothes;
     TextView tvRefreshAllClothes, tvCantFindAllClothes, tvTryAgainAllClothes;
+
+    public static ClothesRes CLOTHEsRES = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +56,43 @@ public class CustomerAllClothesActivity extends AppCompatActivity implements Vie
 
         ivBackToMainActivityFromAllClothes.setOnClickListener(this);
         tvRefreshAllClothes.setOnClickListener(this);
+
+        edtSearchAllClothes.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_SEARCH) {
+                    String find = textView.getText().toString();
+                    if (!find.isEmpty()) {
+                        searchAllClothes(find);
+//                        searchSellers(find);
+                    }
+                    MyHelper.hideKeyboard(CustomerAllClothesActivity.this);
+                    return true;
+                }
+
+                return false;
+            }
+        });
+    }
+
+    private void searchAllClothes(String find) {
+        List<ClothesRes> lsSearch = new ArrayList<>();
+        for (ClothesRes clothesRes : ls) {
+            if (clothesRes.getName().toLowerCase().contains(find.toLowerCase())) {
+                lsSearch.add(clothesRes);
+            }
+        }
+
+        allClothesAdapter = new AllClothesAdapter(lsSearch, this);
+        rcvAllClothes.setAdapter(allClothesAdapter);
+
+        if (lsSearch.size() == 0) {
+            tvTryAgainAllClothes.setVisibility(View.VISIBLE);
+            tvCantFindAllClothes.setVisibility(View.VISIBLE);
+        } else {
+            tvTryAgainAllClothes.setVisibility(View.INVISIBLE);
+            tvCantFindAllClothes.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void initViews() {
@@ -119,6 +163,8 @@ public class CustomerAllClothesActivity extends AppCompatActivity implements Vie
                 startActivity(new Intent(this, MainActivity.class));
                 break;
             case R.id.tvRefreshAllClothes:
+                edtSearchAllClothes.setText("");
+                loadAllClothesList();
                 break;
         }
     }

@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.edward.myapplication.AppCustomer.views.MainActivity;
-import com.edward.myapplication.interfaces.LoadFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,9 +18,8 @@ import com.edward.myapplication.interfaces.LoadFragment;
  * create an instance of this fragment.
  */
 public class OnboardingFragment1 extends Fragment {
-    private Button btn_obf1;
+
     private View nview;
-    private LoadFragment loadFragment;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -69,12 +67,6 @@ public class OnboardingFragment1 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         nview = inflater.inflate(R.layout.fragment_onboarding1, container, false);
-        btn_obf1 = nview.findViewById(R.id.btn_obd1);
-        btn_obf1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
 
         return nview;
     }

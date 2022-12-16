@@ -79,7 +79,6 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
     Uri imageUri;
 
     private int idSeller = LoginActivity.PERSONRES.getId();
-
     // picker dialog
     List<String> lsCategories;
     List<Integer> lsIdCategories;
@@ -125,6 +124,7 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
         mProgressDialog.setCanceledOnTouchOutside(false);
         // fill value to update
         clothesUpdate = (ClothesRes)getIntent().getSerializableExtra("clothesUpdate");
+
         idCategorySelected = clothesUpdate.getIdCategory();
         lsClothesPropertiesUpdate = (List<ClothesPropertiesRes>) getIntent().getSerializableExtra("lsClothesPropertiesUpdate");
 
@@ -200,13 +200,16 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
                 });
 
 
-
+        int len = clothesUpdate.getImgsUrl().size();
         Glide.with(this).load(clothesUpdate.getImgsUrl().get(0)).into(ibUpdateCloth1);
-        Glide.with(this).load(clothesUpdate.getImgsUrl().get(1)).into(ibUpdateCloth2);
 
-        if (clothesUpdate.getImgsUrl().size() > 2) {
-            Glide.with(this).load(clothesUpdate.getImgsUrl().get(2)).into(ibUpdateCloth3);
+        if (len > 1) {
+            Glide.with(this).load(clothesUpdate.getImgsUrl().get(1)).into(ibUpdateCloth2);
+            if (clothesUpdate.getImgsUrl().size() > 2) {
+                Glide.with(this).load(clothesUpdate.getImgsUrl().get(2)).into(ibUpdateCloth3);
+            }
         }
+
 
     }
 
@@ -369,10 +372,10 @@ public class UpdateClothesActivity extends AppCompatActivity implements View.OnC
                 break;
             case R.id.ivBackFromUpdateClothesToClothesInformationActivity:
                 Intent intent = new Intent(this, SellerClothesInformationActivity.class);
-                ClothesRes clothesResBack = new ClothesRes(clothesUpdate.getId(), idSeller,
-                        clothesReq.getIdCategory(), clothesReq.getDes(),
-                        clothesReq.getName(), clothesReq.getImgUrls());
-                intent.putExtra("clothes", clothesResBack);
+//                ClothesRes clothesResBack = new ClothesRes(clothesUpdate.getId(), idSeller,
+//                        clothesReq.getIdCategory(), clothesReq.getDes(),
+//                        clothesReq.getName(), clothesReq.getImgUrls());
+//                intent.putExtra("clothes", clothesResBack);
                 startActivity(intent);
                 break;
             case R.id.btUpdateCategoryClothes:

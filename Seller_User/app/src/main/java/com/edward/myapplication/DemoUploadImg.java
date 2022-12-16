@@ -46,7 +46,7 @@ public class DemoUploadImg extends AppCompatActivity {
                     Log.e("CHECK", Objects.requireNonNull(resultData.get("url")).toString());
                     list.add(Objects.requireNonNull(resultData.get("url")).toString());
                     if (list.size() == uri.size()) {
-                        Log.e(list.size() + "", "");
+                        Log.e(list.size()+"","");
                         //call api hear, after that clear list
                         //mProgressDialog.dismiss();
                     }

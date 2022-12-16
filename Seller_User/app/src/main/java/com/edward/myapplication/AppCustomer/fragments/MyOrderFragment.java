@@ -23,6 +23,8 @@ public class MyOrderFragment extends Fragment {
     TabLayout tabLayout;
     ViewPager viewPager;
     BottomNavigationView bottomNavigationView;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

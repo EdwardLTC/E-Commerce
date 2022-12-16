@@ -30,7 +30,7 @@
                 android:id="@+id/ivClothesItem"
                 android:layout_width="100dp"
                 android:layout_height="110dp"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/shirt" />
         </androidx.cardview.widget.CardView>
 
@@ -90,6 +90,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_margin="8dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_close" />
 

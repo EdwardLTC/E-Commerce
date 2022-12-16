@@ -9,14 +9,62 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_render"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <!-- Meta data for your file for server url -->
+        <meta-data
+            android:name="com.parse.SERVER_URL"
+            android:value="@string/back4app_server_url" /> <!-- Meta data for your file for application id -->
+        <meta-data
+            android:name="com.parse.APPLICATION_ID"
+            android:value="@string/back4app_app_id" /> <!-- Meta data for your file for client key -->
+        <meta-data
+            android:name="com.parse.CLIENT_KEY"
+            android:value="@string/back4app_client_key" />
+
+        <activity
+            android:name=".AppCustomer.views.BillsManagementCustomerActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AppCustomer.views.CustomerBillDetailsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AppSeller.views.StatisticActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AppSeller.views.SellerBillDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AppCustomer.fragments.PrivacyActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AppCustomer.fragments.FAQctivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AppCustomer.fragments.EmailSupportActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".OnboardingActivity"
             android:exported="true">
@@ -30,36 +78,30 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
+        <activity
+            android:name=".AppCustomer.views.MainMycart"
+            android:exported="true" />
+        <activity
+            android:name=".AppCustomer.views.ProductsDetailActivity"
+            android:exported="true" />
         <activity
             android:name=".AppCustomer.views.CustomerAllClothesActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".AppCustomer.views.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
+        <activity
+            android:name=".AppSeller.views.BillsManagementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AppSeller.views.UpdateClothesActivity"
+            android:exported="false" />
         <activity
             android:name=".AppSeller.views.AddClothesActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".AppCustomer.views.MainProductdetalls"
-            android:exported="false"/>
-
-
-
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
@@ -71,25 +113,7 @@
             android:exported="false" />
         <activity
             android:name=".AppSeller.views.ClothesManagementActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-
-
-
-
-
-        <activity
-            android:name=".AppCustomer.views.MainMycart"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".AppCustomer.fragments.MainPayment"
             android:exported="false" />
@@ -100,7 +124,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".AppSeller.views.ClothesListOfCategoryActivity"
             android:exported="false" />

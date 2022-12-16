@@ -3,6 +3,58 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/drawable/arrow___left_2.xml" value="0.3305" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/drawable/background_size_clothes.xml" value="0.184" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/drawable/background_size_clothes_disabled.xml" value="0.184" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/drawable/bottom_nav_settings.xml" value="0.336" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/drawable/ic_settings.xml" value="0.336" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/drawable/ic_settings_selected.xml" value="0.336" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/activity_add_clothes.xml" value="0.20625" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/activity_customer_all_clothes.xml" value="0.3625" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/activity_customer_bill_details.xml" value="0.21302083333333333" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/activity_login.xml" value="0.1992619926199262" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/activity_onboarding.xml" value="0.6" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/activity_products.xml" value="0.284375" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/activity_seller_bill_details.xml" value="0.19814814814814816" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/activity_seller_dashboard.xml" value="0.25" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/activity_sign_up.xml" value="0.284375" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/activity_staticstic.xml" value="0.3625" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/activity_vouchers_management.xml" value="0.3625" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/fragment_customers_all_categories.xml" value="0.2965811965811966" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/fragment_favorite.xml" value="0.3085399449035813" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/fragment_inhome.xml" value="0.25" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/fragment_my_order.xml" value="0.284375" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/fragment_my_wallet.xml" value="0.284375" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/fragment_onboarding1.xml" value="0.284375" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/fragment_onboarding2.xml" value="0.284375" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/fragment_onboarding3.xml" value="0.284375" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/fragment_profile.xml" value="0.284375" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/fragment_search.xml" value="0.284375" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/fragment_setting.xml" value="0.284375" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/fragment_updateprofile.xml" value="0.3625" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_all_clothes_item.xml" value="0.284375" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_bill_customer_item.xml" value="0.26875" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_bill_seller_item.xml" value="0.20989583333333334" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_bt_size_item.xml" value="0.3614583333333333" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_checkout.xml" value="0.16354166666666667" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_clothes_image_item.xml" value="0.284375" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_clothes_item.xml" value="0.21302083333333333" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_customer_all_clothes_in_bill.xml" value="0.25" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_mycart.xml" value="0.3569230769230769" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_productdetalls.xml" value="0.3625" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_seller_all_clothes_in_bill.xml" value="0.3569230769230769" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_seller_statistic.xml" value="0.3569230769230769" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_seller_statistic_item.xml" value="0.19814814814814816" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_vouchers_in_mycart_item.xml" value="0.3625" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/layout_vouchers_item.xml" value="0.3625" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/one_item_cart.xml" value="0.26875" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/one_item_categorys.xml" value="0.536" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/one_item_favorite.xml" value="0.3625" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/one_item_home.xml" value="0.25" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/layout/profile.xml" value="0.3625" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/menu/nav_bottom.xml" value="0.284375" />
+        <entry key="..\:/FPLEdu/Ky4/DuAn1/Deadline/ASM-Ecmerce/E-Commerce/Seller_User/app/src/main/res/menu/nav_drawer.xml" value="0.25" />
         <entry key="..\:/Project_First/E-Commerce/Seller_User/app/src/main/res/layout/activity_add_clothes.xml" value="0.284375" />
         <entry key="..\:/Project_First/E-Commerce/Seller_User/app/src/main/res/layout/activity_clothes_list_of_category.xml" value="0.284375" />
         <entry key="..\:/Project_First/E-Commerce/Seller_User/app/src/main/res/layout/activity_main.xml" value="0.284375" />

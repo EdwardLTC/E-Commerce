@@ -18,6 +18,9 @@ import com.edward.myapplication.api.ServiceAPI;
 import com.edward.myapplication.helper.MyHelper;
 import com.edward.myapplication.model.modelrequest.PersonReq;
 import com.edward.myapplication.model.modelrespon.Respon;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 import com.saadahmedsoft.popupdialog.PopupDialog;
 import com.saadahmedsoft.popupdialog.Styles;
 import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
@@ -28,6 +31,8 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
+
 
 public class SignUpActivity extends AppCompatActivity {
     private Button btSignup;
@@ -46,6 +51,7 @@ public class SignUpActivity extends AppCompatActivity {
         edtPasswordreply =findViewById(R.id.edtPasswordReply);
         edtEmailsignup = findViewById(R.id.edtEmailSignup);
         edtPassword = findViewById(R.id.edtPasswordSignup);
+
         txtlogin=findViewById(R.id.txtlogin);
         rdoCustomer = findViewById(R.id.rdoCustomers);
         rdoSeller = findViewById(R.id.rdoSeller);
@@ -61,6 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
         btSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String userName = edtEmailsignup.getText().toString();
                 String email = edtEmailsignup.getText().toString();
                 String password = edtPassword.getText().toString();
                 String passwordReply = edtPasswordreply.getText().toString();
@@ -76,8 +83,39 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this, "Password doesn't match", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
-                        signup(email, password);
+                        registerUser(userName, password, email);
+//                        signup(email, password);
                     }
+                }
+            }
+        });
+    }
+
+    private void registerUser(String userName, String password, String email) {
+
+        // on below line we are creating
+        // a new user using parse user.
+        ParseUser user = new ParseUser();
+
+        // Set the user's username, user email and password,
+        // which can be obtained from edit text
+        user.setUsername(userName);
+        user.setEmail(email);
+        user.setPassword(password);
+
+        // calling a method to register the user.
+        user.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                // on user registration checking
+                // if the error is null or not.
+                if (e == null) {
+                    signup(email, password);
+                } else {
+                    // if we get any error then we are logging out
+                    // our user and displaying an error message
+                    ParseUser.logOut();
+                    Toast.makeText(SignUpActivity.this, "Fail to Register User..", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -101,15 +139,14 @@ public class SignUpActivity extends AppCompatActivity {
                         if (respon.getRespone_code() == 200) {
                             PopupDialog.getInstance(SignUpActivity.this)
                                     .setStyle(Styles.SUCCESS)
-                                    .setHeading("Well Done")
-                                    .setHeading("You have successfully"+
-                                            " registered")
+                                    .setHeading("User Registered successfully \n Please verify your email")
                                     .setCancelable(false)
                                     .showDialog(new OnDialogButtonClickListener() {
                                         @Override
                                         public void onDismissClicked(Dialog dialog1) {
                                             super.onDismissClicked(dialog1);
-                                            startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                                            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                                            startActivity(intent);
                                         }
                                     });
                         }
@@ -119,14 +156,17 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onError(Throwable e) {
                         ProgressDialogCustom.dismissProgressDialog();
 
+
                     }
 
                     @Override
                     public void onComplete() {
                         ProgressDialogCustom.dismissProgressDialog();
-
                     }
+
+
                 });
+
     }
 
     public boolean isValidEmail(String email) {

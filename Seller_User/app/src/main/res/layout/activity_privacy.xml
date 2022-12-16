@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AppCustomer.fragments.PrivacyActivity">
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="16dp"
+        android:text="PRIVACY"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="1. Purpose of collecting and using data"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="378dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+android:text="Collecting your data serves to provide you with user-friendly, efficient and secure internet services. We (Springer-Verlag GmbH, Heidelberger Platz 3, 14197 Berlin, Germany, as data controller) collect personal data whenever you visit the “Shopping Cart” area on the website. We use the personal data in order to provide those users who are interested with information. Furthermore, we generally process the data with the goal of improving our service and ensuring its security."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="2. The form and scope of collecting and processing personal data"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="377dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+android:text="Our web server does not generally store information when persons visit our website. Only if an error, other technical problem occurs or if a visitor carries out an action, certain data will be stored in what is known as log files. A log file contains the time and date when an error or the event (e.g. click) occurred. In our log files we furthermore store IP addresses of website visitors. We collect and store log files for security reasons to be able to identify, investigate and stop any improper use of our portal."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="3. Passing on data to third parties"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="379dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+android:text="As a general rule, personal data will only be disclosed to third parties
+
+if and to the extent necessary for the performance of the contracts we have with you or in order to enforce any claims we are entitled to,
+if you have given your consent to such disclosure,
+if we are required by law or ordered by a court to disclose such information or
+if such information is requested by government agencies, including, without limitation, law enforcement and supervisory authorities, if and to the extent is necessary to remove a risk to public safety and order and to prosecute criminal offences."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="4. Disclosure, rectification, deletion, account freezing"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="381dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+android:text="You have the right to obtain confirmation and disclosure of personal data we hold about you at any time. Requests may be made in text form by email to our customer service at customerservice@springer.com or in writing to Springer-Verlag GmbH, Heidelberger Platz 3, 14197 Berlin, Germany.
+
+Moreover, you have the right to have your personal data corrected, blocked or deleted if the statutory conditions for this are met, respectively. If we have stored any incorrect information about you, please let us know and we will correct it without undue delay. For corrections, please contact us at the postal or email address indicated above."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="5. Cookies, etc."
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="382dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="We use so-called cookies or other instruments to analyze the usage of our website. Cookies are small files which are saved on your hard drive and which provide us with specific information. This information above all includes the IP address, your browser type, the URL click stream (the chronological order of our internet sites you visited), the date and the time of your visit on our website as well as the cookie number."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="6. Security"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="382dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+android:text="We employ technical and organizational security measures to guarantee that your data is protected from loss, incorrect modifications and unauthorized third-party access. To the greatest extent possible, we ensure that only authorized persons have access to your personal data and only insofar as it is necessary in the scope of the above-mentioned purposes."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

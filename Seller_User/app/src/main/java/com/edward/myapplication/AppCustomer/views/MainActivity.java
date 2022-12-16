@@ -25,10 +25,19 @@ import com.bumptech.glide.Glide;
 import com.edward.myapplication.AppCustomer.fragments.HomeFragment;
 import com.edward.myapplication.LoginActivity;
 import com.edward.myapplication.R;
+import com.edward.myapplication.api.ServiceAPI;
+import com.edward.myapplication.model.modelrespon.PersonRes;
+import com.edward.myapplication.model.modelrespon.ResGetPerson;
 import com.google.android.material.navigation.NavigationView;
 import com.saadahmedsoft.popupdialog.PopupDialog;
 import com.saadahmedsoft.popupdialog.Styles;
 import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     LinearLayout content;
-    ImageView ivAvatar;
+    CircleImageView ivAvatar;
     TextView tvName, tvEmail;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -54,9 +63,7 @@ public class MainActivity extends AppCompatActivity {
         tvName = findViewById(R.id.tvName);
         tvEmail = findViewById(R.id.tvEmail);
 
-        Glide.with(this).load(LoginActivity.PERSONRES.getImgUrl()).into(ivAvatar);
-        tvName.setText(LoginActivity.PERSONRES.getName());
-        tvEmail.setText(LoginActivity.PERSONRES.getMail());
+
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close) {
             private float scaleFactor = 6f;
@@ -111,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 });
                         break;
+
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -127,5 +135,50 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.content_frame, fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fillValue();
+
+    }
+
+    private void fillValue() {
+
+        ServiceAPI.serviceApi.GetPersonWhere(LoginActivity.PERSONRES.getId())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResGetPerson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResGetPerson resGetPerson) {
+                        PersonRes personRes = resGetPerson._PersonRes;
+
+                        Glide.with(MainActivity.this).load(personRes.getImgUrl()).into(ivAvatar);
+                        tvName.setText(personRes.getName());
+                        tvEmail.setText(personRes.getMail());
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }

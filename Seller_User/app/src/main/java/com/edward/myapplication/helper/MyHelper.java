@@ -75,6 +75,7 @@ public class MyHelper {
     }
 
 
+
     // gõ xong tự ẩn bàn phím
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);

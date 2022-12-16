@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import com.edward.myapplication.R;
 import com.edward.myapplication.AppSeller.adapters.ViewPagerClothes;
+import com.edward.myapplication.model.modelrespon.ClothesRes;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -24,6 +25,7 @@ public class ClothesManagementActivity extends AppCompatActivity implements View
     ViewPagerClothes viewPagerClothesAdapter;
     ImageView ivAddClothes;
     CardView cvBack;
+    public static ClothesRes CLOTHES_RES = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
